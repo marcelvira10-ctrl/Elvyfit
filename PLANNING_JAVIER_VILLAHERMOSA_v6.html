@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<title>Javier Villahermosa — Asesoría Elvyfit · Fase 1 Construcción</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;--surface:#141414;--card:#1c1c1c;--border:#2a2a2a;
+    --red:#e50914;--orange:#f5a623;--green:#4caf50;--blue:#2196f3;
+    --white:#fff;--gray:#999;--light-gray:#ccc;--yellow:#ffd700;--cyan:#00bcd4;--pink:#f48fb1;--purple:#ce93d8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{background:#0a0a0a;color-scheme:dark;}
+  body{background:#0a0a0a;color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;-webkit-text-size-adjust:100%;}
+  .section{background:#0a0a0a;}
+  a{color:inherit;text-decoration:none;}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,#001a1a 0%,#0a0a0a 100%);padding:46px 24px 30px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(33,150,243,.14) 0%,transparent 60%);}
+  .hero-brand{font-family:'Bebas Neue';font-size:11px;letter-spacing:5px;color:var(--blue);margin-bottom:14px;position:relative;}
+  .hero-name{font-family:'Bebas Neue';font-size:clamp(56px,13vw,100px);line-height:.9;position:relative;}
+  .hero-sub{font-family:'Bebas Neue';font-size:clamp(30px,7vw,56px);line-height:1;color:var(--red);margin-bottom:16px;position:relative;}
+  .hero-desc{color:var(--gray);font-size:14px;margin-bottom:22px;position:relative;max-width:540px;margin-left:auto;margin-right:auto;}
+  .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
+  .badge{border:1.5px solid;border-radius:999px;padding:7px 15px;font-size:12.5px;font-weight:600;white-space:nowrap;}
+  .badge-red{border-color:var(--red);color:var(--red);}
+  .badge-yellow{border-color:var(--orange);color:var(--orange);}
+  .badge-green{border-color:var(--green);color:var(--green);}
+  .badge-blue{border-color:#5bc8f5;color:#5bc8f5;}
+  .badge-cyan{border-color:var(--cyan);color:var(--cyan);}
+  .badge-new{border-color:var(--yellow);color:var(--yellow);background:rgba(255,215,0,.08);}
+
+  /* NAV */
+  nav{background:var(--surface);border-bottom:2px solid var(--red);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
+  nav::-webkit-scrollbar{display:none;}
+  .nav-tab{padding:15px 18px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray);cursor:pointer;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;transition:all .2s;}
+  .nav-tab:hover{color:var(--white);}
+  .nav-tab.active{color:var(--white);border-bottom:3px solid var(--red);}
+
+  /* SECTIONS */
+  .section{display:none;padding:34px 24px;max-width:1200px;margin:0 auto;}
+  .section.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  @media(max-width:600px){.section{padding:18px 14px;}}
+  .section-title{font-family:'Bebas Neue';font-size:34px;margin-bottom:22px;display:flex;align-items:center;gap:12px;line-height:1;}
+  .section-title::before{content:'';display:block;width:5px;height:32px;background:var(--red);border-radius:2px;}
+  .section-title span{color:var(--red);}
+
+  /* GRIDS */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media(max-width:900px){.grid-4{grid-template-columns:1fr 1fr;}.grid-3{grid-template-columns:1fr;}.grid-2{grid-template-columns:1fr;}}
+  @media(max-width:600px){.grid-4{grid-template-columns:1fr 1fr;}}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px;}
+  .card-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .ct-red{color:var(--red);}.ct-orange{color:var(--orange);}.ct-green{color:var(--green);}.ct-blue{color:var(--blue);}.ct-yellow{color:var(--yellow);}.ct-purple{color:var(--purple);}.ct-cyan{color:var(--cyan);}.ct-pink{color:var(--pink);}
+
+  .stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);}
+  .stat-row:last-child{border-bottom:none;}
+  .stat-label{color:var(--light-gray);font-size:14px;}
+  .stat-value{font-weight:700;font-size:14px;}
+  .val-orange{color:var(--orange);}.val-green{color:var(--green);}.val-blue{color:#7dd3fc;}.val-cyan{color:var(--cyan);}
+
+  .info-box{background:rgba(229,9,20,.08);border:1px solid rgba(229,9,20,.3);border-radius:8px;padding:15px 18px;margin-bottom:22px;font-size:14px;color:var(--light-gray);line-height:1.6;}
+  .info-box-green{background:rgba(76,175,80,.08);border-color:rgba(76,175,80,.3);}
+  .info-box-yellow{background:rgba(255,215,0,.08);border-color:rgba(255,215,0,.3);}
+  .info-box-blue{background:rgba(33,150,243,.08);border-color:rgba(33,150,243,.3);}
+
+  .goal-item{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:14px;color:var(--light-gray);line-height:1.5;}
+  .goal-dot{width:7px;height:7px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+  .goal-item strong{color:var(--white);}
+
+  .profile-quote{background:linear-gradient(135deg,#001a00,#0a0a0a);border:1px solid rgba(76,175,80,.3);border-radius:12px;padding:28px;font-style:italic;font-size:15.5px;line-height:1.8;color:var(--light-gray);text-align:center;margin-top:22px;}
+  .profile-quote strong{color:var(--white);font-style:normal;}
+  .profile-quote .signature{margin-top:16px;font-size:13px;color:var(--green);font-style:normal;font-weight:700;letter-spacing:2px;}
+
+  /* MACROS */
+  .macro-display{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:22px;}
+  .macro-total{font-family:'Bebas Neue';font-size:54px;color:var(--orange);line-height:1;}
+  .macro-label{color:var(--gray);font-size:13px;margin-bottom:18px;}
+  .macro-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:520px){.macro-bars{grid-template-columns:1fr;}}
+  .macro-item label{font-size:12px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+  .macro-item .macro-val{font-size:22px;font-weight:700;margin:4px 0;}
+  .macro-item .macro-bar{height:5px;border-radius:3px;margin-top:6px;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;}
+  .legend div{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--light-gray);}
+  .dot{width:13px;height:13px;border-radius:50%;display:inline-block;}
+
+  /* SUPP */
+  .supp-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;align-items:center;gap:14px;}
+  .supp-icon{font-size:24px;}
+  .supp-name{font-weight:700;font-size:15px;}
+  .supp-dose{font-size:13px;color:var(--orange);margin-top:2px;}
+  .supp-note{font-size:12px;color:var(--gray);margin-top:3px;}
+
+  /* DIET */
+  .day-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+  .day-btn{padding:8px 15px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--gray);transition:all .2s;}
+  .day-btn.active{background:var(--red);border-color:var(--red);color:#fff;}
+  .day-content{display:none;}
+  .day-content.active{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  @media(max-width:1000px){.day-content.active{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.day-content.active{grid-template-columns:1fr;}}
+  .meal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;}
+  .meal-card-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--border);}
+  .meal-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;gap:10px;}
+  .meal-item-name{font-size:13px;color:var(--light-gray);}
+  .meal-item-qty{font-size:12.5px;font-weight:700;white-space:nowrap;}
+  .q-p{color:var(--blue);}.q-c{color:var(--yellow);}.q-g{color:var(--pink);}.q-v{color:var(--green);}.q-n{color:var(--gray);}
+  .meal-kcal{margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);font-size:11px;color:var(--gray);text-align:right;}
+
+  /* SHOPPING */
+  .shopping-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:600px){.shopping-grid{grid-template-columns:1fr;}}
+  .shop-list{list-style:none;}
+  .shop-list li{padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--light-gray);display:flex;align-items:center;gap:10px;}
+  .shop-list li:last-child{border-bottom:none;}
+  .shop-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+
+  /* TRAINING */
+  .training-day{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+  .training-header{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+  .training-header:hover{background:rgba(255,255,255,.03);}
+  .training-header-title{font-family:'Bebas Neue';font-size:19px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .training-body{display:none;padding:0 18px 18px;}
+  .training-body.open{display:block;}
+  .exercise-row{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);gap:14px;}
+  .exercise-row:last-child{border-bottom:none;}
+  .ex-left{flex:1;min-width:0;}
+  .ex-name{font-size:14.5px;font-weight:600;color:var(--white);line-height:1.3;}
+  .ex-sets{font-size:12px;color:var(--orange);font-weight:700;margin-top:3px;}
+  .ex-right{text-align:right;flex-shrink:0;}
+  .ex-rir{font-size:11px;color:var(--red);font-weight:700;white-space:nowrap;}
+  .vid-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 12px;background:#ff0000;border-radius:7px;color:#fff;font-weight:700;font-size:12.5px;}
+  .vid-link svg{width:13px;height:13px;fill:#fff;}
+  .abs-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(0,188,212,.12);border:1px solid rgba(0,188,212,.3);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--cyan);font-weight:700;}
+  .abs-box{margin-top:14px;padding:14px;background:rgba(0,188,212,.07);border:1px solid rgba(0,188,212,.25);border-radius:8px;}
+  .abs-box .lab{color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:1.5px;margin-bottom:10px;}
+  .chevron{transition:transform .2s;font-size:15px;color:var(--gray);}
+  .chevron.open{transform:rotate(180deg);}
+
+  /* SEGUIMIENTO */
+  .seg-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+  .save-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--green);color:#000;font-weight:700;font-size:14px;border:none;border-radius:8px;cursor:pointer;}
+  .save-btn.saved{background:var(--blue);color:#fff;}
+  .export-btn{padding:12px 18px;background:var(--card);color:var(--orange);font-weight:700;font-size:13px;border:1.5px solid var(--orange);border-radius:8px;cursor:pointer;}
+  .clear-btn{padding:12px 18px;background:var(--card);color:var(--red);font-weight:700;font-size:13px;border:1.5px solid var(--red);border-radius:8px;cursor:pointer;}
+  .seg-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+  .seg-btn{padding:8px 13px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--gray);}
+  .seg-content{display:none;}.seg-content.active{display:block;}
+  .tracker-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tracker-table{border-collapse:collapse;width:100%;min-width:760px;font-size:13px;}
+  .tracker-table th{background:#111;color:var(--gray);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 10px;border:1px solid var(--border);white-space:nowrap;}
+  .tracker-table td{border:1px solid var(--border);padding:0;background:#161616;}
+  .tracker-table td input{width:100%;height:36px;background:#161616;border:none;color:#ffffff;font-size:14px;font-weight:700;font-family:'Inter';padding:0 8px;outline:none;text-align:center;}
+  .tracker-table td input:focus{background:#262626;color:#fff;}
+  .tracker-table td input::placeholder{color:#666;font-weight:400;}
+  .ex-header-row td{background:rgba(245,166,35,.09);color:var(--orange);padding:9px 12px !important;font-weight:700;font-size:13px;}
+  .ex-header-row.abs td{background:rgba(0,188,212,.1);color:var(--cyan);}
+  .serie-label{padding:0 10px !important;color:var(--gray);font-size:12px;font-weight:600;width:80px;}
+  .rir-cell{background:rgba(229,9,20,.05);color:var(--red);font-size:10px;font-weight:700;text-align:center;padding:0 4px !important;}
+  .seg-week-num{background:#1a0000 !important;color:var(--red) !important;border-bottom:2px solid var(--red) !important;}
+  .weight-log{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:14px;}
+  .weight-cell{background:#161616;border:1px solid var(--border);border-radius:8px;padding:10px;}
+  .weight-cell label{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+  .weight-cell input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:#5ddf7f;font-size:18px;font-weight:700;font-family:'Bebas Neue';padding:4px 0;outline:none;text-align:center;}
+  .weight-cell input::placeholder{color:#555;}
+
+  footer{background:#0a0a0a;border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--gray);font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-brand">ASESORÍA ELVYFIT — MARC ELVIRA PEINADO</div>
+  <div class="hero-name">JAVIER</div>
+  <div class="hero-sub">FASE 1 — CONSTRUCCIÓN</div>
+  <div class="hero-desc">Tu primer plan de verdad: ganar músculo desde cero. Calculado a tu cuerpo, tu trabajo físico y tu horario. Sin prisas, con sistema.</div>
+  <div class="hero-badges">
+    <div class="badge badge-yellow">3.200 kcal / día</div>
+    <div class="badge badge-blue">P 120 · C 480 · G 90</div>
+    <div class="badge badge-green">🎯 Ganar músculo</div>
+    <div class="badge badge-red">🏋️ 4 días · ~16:00</div>
+    <div class="badge badge-cyan">💧 3,5 L agua</div>
+    <div class="badge badge-new">✦ TODO AL FALLO</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <button class="nav-tab active" onclick="showTab('perfil',this)">Perfil</button>
+  <button class="nav-tab" onclick="showTab('nutricion',this)">Nutrición</button>
+  <button class="nav-tab" onclick="showTab('dieta',this)">Dieta semanal</button>
+  <button class="nav-tab" onclick="showTab('compra',this)">Lista compra</button>
+  <button class="nav-tab" onclick="showTab('cocina',this)">Cocina fácil</button>
+  <button class="nav-tab" onclick="showTab('entreno',this)">Entrenamiento</button>
+  <button class="nav-tab" onclick="showTab('actividad',this)">Actividad y descanso</button>
+  <button class="nav-tab" onclick="showTab('mente',this)">Mentalidad</button>
+  <button class="nav-tab" onclick="showTab('objetivos',this)">Objetivos</button>
+  <button class="nav-tab" onclick="showTab('seguimiento',this)">📊 Seguimiento</button>
+</nav>
+
+<!-- ===== PERFIL ===== -->
+<div class="section active" id="perfil">
+  <div class="section-title">PERFIL <span>ACTUAL</span></div>
+  <div class="info-box info-box-blue">
+    ⚡ <strong>Fase 1 — Construcción.</strong> Partes de 66 kg con poca masa muscular y nunca has seguido una rutina fija. Eso no es un problema: es tu mayor ventaja. Como principiante real, las ganancias van a llegar rápido si haces lo correcto cada semana. Construimos base, fuerza y músculo. El reto número uno para ti no es entrenar: es <strong>comer suficiente</strong>.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-title ct-red">📍 Punto de partida</div>
+      <div class="stat-row"><span class="stat-label">Edad</span><span class="stat-value val-orange">26 años</span></div>
+      <div class="stat-row"><span class="stat-label">Altura</span><span class="stat-value val-orange">1,80 m</span></div>
+      <div class="stat-row"><span class="stat-label">Peso actual</span><span class="stat-value val-orange">66 kg</span></div>
+      <div class="stat-row"><span class="stat-label">Trabajo</span><span class="stat-value" style="color:var(--light-gray);font-size:12px">Físico — recogida de residuos</span></div>
+      <div class="stat-row"><span class="stat-label">Experiencia</span><span class="stat-value" style="color:var(--light-gray);font-size:12px">Principiante (entreno intermitente)</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🎯 Proyección 12 semanas</div>
+      <div class="stat-row"><span class="stat-label">Objetivo peso</span><span class="stat-value val-green">69–71 kg</span></div>
+      <div class="stat-row"><span class="stat-label">Ritmo sano</span><span class="stat-value val-green">+0,25–0,4 kg / semana</span></div>
+      <div class="stat-row"><span class="stat-label">Ganancia estimada</span><span class="stat-value val-green">+3 a 5 kg de músculo/peso</span></div>
+      <div class="stat-row"><span class="stat-label">Foco</span><span class="stat-value val-green">Fuerza + masa tren superior</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-title ct-green">✅ Lo que juega a tu favor</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div><strong>Principiante:</strong> margen de mejora enorme, progreso rápido</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div><strong>Duermes 8 h:</strong> base de recuperación de lujo</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div><strong>No bebes ni fumas:</strong> nada que sabotee tus resultados</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div><strong>~10.000 pasos + trabajo físico:</strong> muy activo (ya lo metemos en el cálculo)</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-red">⚠️ Lo que vamos a corregir</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>Entrenar de forma <strong>intermitente y sin rutina</strong> → ahora tienes sistema</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>Comer poco para tu gasto → subimos a <strong>3.200 kcal</strong></div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>No tienes el hábito de cocinar → tienes un sistema sencillo en la pestaña "Cocina fácil"</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>Sin microondas en el trabajo → comida portátil que se come fría</div>
+    </div>
+  </div>
+
+  <div class="profile-quote">
+    "Javier, no te ha faltado capacidad. Te ha faltado un plan y constancia.<br>
+    Eres delgado <strong>hoy</strong>, no para siempre. Miles de personas con tu cuerpo se han transformado.<br>
+    La diferencia entre quien lo logra y quien no, no es la genética.<br>
+    Es <strong>repetir lo correcto cada semana</strong>, aunque no apetezca.<br>
+    Sigue el plan y el cambio es inevitable."
+    <div class="signature">— MARC ELVIRA · @ELVYFIT9</div>
+  </div>
+</div>
+
+<!-- ===== NUTRICION ===== -->
+<div class="section" id="nutricion">
+  <div class="section-title">NUTRICIÓN & <span>MACROS</span></div>
+
+  <div class="info-box info-box-yellow">
+    🔧 <strong>Cómo están calculadas tus calorías:</strong> Metabolismo basal (Mifflin) = <strong>1.660 kcal</strong>. Gasto total × 1,85 por tu trabajo muy físico + 10.000 pasos + entreno = <strong>~3.070 kcal</strong>. Con el superávit para construir músculo, empezamos en <strong>3.200 kcal</strong> y <strong>120 g de proteína</strong> al día.
+  </div>
+
+  <div class="macro-display">
+    <div style="font-size:11px;color:var(--gray);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px">CALORÍAS Y MACROS INICIALES AL DÍA</div>
+    <div class="macro-total">3.200 kcal</div>
+    <div class="macro-label">Superávit para construir músculo · Agua: 3,5 L mínimo</div>
+    <div class="macro-bars">
+      <div class="macro-item"><label>Proteína</label><div class="macro-val" style="color:var(--blue)">120 g</div><div style="font-size:11px;color:var(--gray)">480 kcal · 15%</div><div class="macro-bar" style="background:var(--blue);width:45%"></div></div>
+      <div class="macro-item"><label>Carbohidratos</label><div class="macro-val" style="color:var(--yellow)">480 g</div><div style="font-size:11px;color:var(--gray)">1.920 kcal · 60%</div><div class="macro-bar" style="background:var(--yellow);width:92%"></div></div>
+      <div class="macro-item"><label>Grasas</label><div class="macro-val" style="color:var(--pink)">90 g</div><div style="font-size:11px;color:var(--gray)">810 kcal · 25%</div><div class="macro-bar" style="background:var(--pink);width:43%"></div></div>
+    </div>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+      <div style="font-size:11px;color:var(--gray);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">Código de colores de la dieta</div>
+      <div class="legend">
+        <div><span class="dot" style="background:var(--blue)"></span> Proteínas (P)</div>
+        <div><span class="dot" style="background:var(--yellow)"></span> Carbohidratos (C)</div>
+        <div><span class="dot" style="background:var(--pink)"></span> Grasas (G)</div>
+        <div><span class="dot" style="background:var(--green)"></span> Fibra / verduras / micros</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="font-size:22px">SUPLEMENTOS <span>AL DÍA</span></div>
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="supp-item">
+      <div class="supp-icon">💊</div>
+      <div><div class="supp-name">Creatina monohidrato</div><div class="supp-dose">5 g / día</div><div class="supp-note">Da igual el momento, aconsejable junto a la proteína. El suplemento nº1.</div></div>
+    </div>
+    <div class="supp-item">
+      <div class="supp-icon">🥛</div>
+      <div><div class="supp-name">Proteína isolate (whey)</div><div class="supp-dose">30–40 g / día</div><div class="supp-note">En el batido post-entreno (C4). Comodidad para llegar a la proteína.</div></div>
+    </div>
+  </div>
+  <div class="info-box" style="margin-bottom:24px">💡 Con estos dos basta. Nada de quemadores, BCAAs ni pre-entrenos: no aportan a tu objetivo. Si comes poca verdura, un multivitamínico es opcional.</div>
+
+  <div class="section-title" style="font-size:22px">NOTAS <span>CLAVE AL DÍA</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title ct-cyan">📋 Reglas del día a día</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Comer cada <strong>3–4 horas</strong></div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Agua: <strong>3,5 L mínimo</strong> al día</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Contacta con Marc si algún alimento no te gusta</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Registrar tu peso cada <strong>domingo en ayunas</strong> (para ti, en la pestaña Seguimiento)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div><strong>Consistencia &gt; perfección</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-orange">🍽️ Flexibilidad y trucos</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Puedes cambiar <strong>arroz por pasta</strong> (macarrones/spaghetti) y a la inversa: 60 g pasta = 50 g arroz crudo</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Evitar <strong>ultraprocesados y azúcar</strong></div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>De todas las comidas de la semana puedes hacer <strong>2 libres</strong> (mejor C3 o C5). En tu caso, lo importante es no quedarte corto de calorías</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Salsas: mejor salsa 0</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Si tomas café, sin problema con un poco de leche entera</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DIETA SEMANAL ===== -->
+<div class="section" id="dieta">
+  <div class="section-title">DIETA <span>SEMANAL</span></div>
+  <div class="info-box info-box-green">
+    🥗 5 comidas al día (~3.200 kcal). <strong>C2 es tu comida del trabajo:</strong> se come fría, sin microondas. <strong>C4 es el batido justo después de entrenar.</strong> Sin salmón ni brócoli (tus alimentos descartados, sustituidos por merluza/ternera/huevos y espinacas/judías/calabacín). Los colores indican el macro principal de cada alimento.
+  </div>
+  <div class="day-tabs" id="dietTabs"></div>
+  <div id="dietContents"></div>
+</div>
+
+<!-- ===== COMPRA ===== -->
+<div class="section" id="compra">
+  <div class="section-title">LISTA DE <span>COMPRA</span></div>
+  <div class="info-box">🛒 Cantidades para <strong>1 semana</strong> (Javier, 1 persona). Todo de <strong>Mercadona</strong>. La columna en color es lo que necesitas; al lado, qué comprar. Compra de golpe el domingo y lo tienes hecho.</div>
+  <div class="shopping-grid">
+    <div class="card">
+      <div class="card-title ct-blue">🥩 Proteínas</div>
+      <ul class="shop-list">
+        <li>Huevos — <span class="q-p">9 ud/sem</span> · compra <strong>1 docena</strong></li>
+        <li>Pechuga de pollo — <span class="q-p">330 g/sem</span> · compra <strong>1 bandeja (~400 g)</strong></li>
+        <li>Ternera magra (filetes o picada) — <span class="q-p">330 g/sem</span> · compra <strong>~350 g (1 bandeja)</strong></li>
+        <li>Pavo (filetes frescos) — <span class="q-p">250 g/sem</span> · compra <strong>1 bandeja (~300 g)</strong></li>
+        <li>Pavo en lonchas — <span class="q-p">280 g/sem</span> · compra <strong>3 sobres de 100 g</strong></li>
+        <li>Merluza congelada — <span class="q-p">180 g/sem</span> · compra <strong>1 bolsa congelada</strong> (sobra para otra semana)</li>
+        <li>Leche entera — <span class="q-p">1,4 L/sem</span> · compra <strong>2 briks de 1 L</strong></li>
+        <li>Proteína isolate (whey) — <span class="q-p">140 g/sem</span> · de tu bote (uno de ~500 g dura 3–4 semanas)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title ct-yellow">🍚 Carbohidratos</div>
+      <ul class="shop-list">
+        <li>Avena en copos — <span class="q-c">770 g/sem</span> · compra <strong>1 paquete de 1 kg</strong></li>
+        <li>Arroz (blanco + integral) — <span class="q-c">600 g/sem</span> · compra <strong>1 paquete de cada</strong></li>
+        <li>Pasta (macarrones/spaghetti) — <span class="q-c">240 g/sem</span> · compra <strong>1 paquete de 500 g</strong></li>
+        <li>Pan de espelta integral — <span class="q-c">770 g/sem</span> · compra <strong>2 paquetes (~400 g c/u)</strong></li>
+        <li>Patata — <span class="q-c">2,4 kg/sem</span> · compra <strong>1 malla de 2,5 kg</strong></li>
+        <li>Boniato — <span class="q-c">800 g/sem</span> · compra <strong>2–3 piezas (~800 g)</strong></li>
+        <li>Crema de arroz — <span class="q-c">420 g/sem</span> · compra <strong>1 bote</strong> (o usa más avena)</li>
+        <li>Plátano — <span class="q-c">14 ud/sem</span> · compra <strong>1 penca (~14)</strong></li>
+        <li>Manzana — <span class="q-c">7 ud/sem</span> · compra <strong>7</strong></li>
+        <li>Fruta libre (kiwi, pera, naranja…) — <span class="q-c">7 ud/sem</span> · compra <strong>7 piezas</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title ct-pink">🥑 Grasas</div>
+      <ul class="shop-list">
+        <li>Aceite de oliva virgen extra — <span class="q-g">~170 ml/sem</span> · de la botella (1 cucharada ≈ 10–12 ml por comida)</li>
+        <li>Crema de cacahuete — <span class="q-g">140 g/sem</span> · compra <strong>1 bote</strong> (dura semanas)</li>
+        <li>Almendras crudas — <span class="q-g">140 g/sem</span> · compra <strong>1 bolsa de 200 g</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🥦 Verduras y extras</div>
+      <ul class="shop-list">
+        <li>Espinacas — <span class="q-v">1,25 kg/sem</span> · compra <strong>frescas en bolsa o congeladas</strong> (las congeladas van perfectas)</li>
+        <li>Calabacín — <span class="q-v">575 g/sem</span> · compra <strong>2 piezas (~600 g)</strong></li>
+        <li>Judías verdes — <span class="q-v">550 g/sem</span> · compra <strong>~600 g</strong> (frescas o congeladas)</li>
+        <li>Zanahoria — <span class="q-v">75 g/sem</span> · compra <strong>1–2 zanahorias</strong></li>
+        <li>Creatina monohidrato — <span class="q-n">5 g/día</span> · de tu bote (uno de 250–500 g dura meses)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COCINA ===== -->
+<div class="section" id="cocina">
+  <div class="section-title">COCINA <span>FÁCIL</span></div>
+  <div class="info-box info-box-yellow">👨‍🍳 Me dijiste que en casa no sueles cocinar tú y que tendrás que coger el hábito. Tranquilo: no necesitas ser chef. Necesitas <strong>1 hora el domingo</strong> y 4 técnicas básicas. Las primeras 2 semanas te costará porque es nuevo, no porque seas malo. Después es automático.</div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-title ct-green">🗓️ El plan del domingo (1 hora)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Cuece <strong>arroz y pasta</strong> para 3–4 días, guárdalo en táperes</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Haz a la plancha <strong>pollo/ternera</strong> para varios días (20 min)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Cuece <strong>una docena de huevos</strong>: snack o desayuno instantáneo</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Deja preparada la <strong>avena en bote</strong> (overnight oats) para los desayunos</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-cyan">🥪 Tu comida del trabajo (sin microondas)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Monta el <strong>bocadillo la noche anterior</strong> (pan espelta + pavo en lonchas)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Se come <strong>frío</strong>, aguanta perfecto en la mochila</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Alternativa fría: táper de <strong>arroz/pasta + atún</strong> tipo ensalada</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Bocadillo de pavo + manzana + frutos secos: cero cocina</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-orange">⚡ 3 recetas de 10 minutos para empezar</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div><strong>Arroz salteado:</strong> arroz ya cocido + pollo a tiras + huevo revuelto + verdura congelada. 5 min a la sartén.</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div><strong>Tortitas de avena:</strong> bate 80 g avena + 2 huevos + 1 plátano → a la sartén. Desayuno o merienda potente.</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div><strong>Patata + ternera:</strong> patata cocida + ternera picada a la sartén con aceite y sal. Cena en 12 min.</div>
+  </div>
+</div>
+
+<!-- ===== ENTRENO ===== -->
+<div class="section" id="entreno">
+  <div class="section-title">PLAN DE <span>ENTRENAMIENTO</span></div>
+  <div class="info-box">
+    🔹 Rutina de <strong>4 días</strong>, sesiones de 60–75 min, pensada para entrenar sobre las 16:00. Una serie menos por grupo muscular que la rutina base y la intensidad al máximo: <strong>TODAS las series al fallo, empezando por la TOP SET.</strong> <span style="color:var(--cyan)">🔵 Abdominales en los Días 1, 3 y 4.</span> <strong>Toca el botón rojo 🎬 de cada ejercicio para ver el vídeo de la técnica.</strong>
+  </div>
+
+  <div class="info-box info-box-yellow">
+    🔥 <strong>MÉTODO TOP SET — todas las series al fallo.</strong> Así se entrena cada ejercicio:<br>
+    <strong>1) Calentamiento:</strong> 1–2 series ligeras de aproximación para "avisar" al músculo (no cuentan como series de trabajo).<br>
+    <strong>2) 1ª serie = TOP SET:</strong> es tu serie más fuerte. Pon el <strong>máximo peso</strong> que puedas mover en el rango de repeticiones con buena técnica y llévala <strong>AL FALLO</strong> (hasta que no puedas hacer ni una repetición más limpia).<br>
+    <strong>3) Series siguientes = BACK-OFF:</strong> <strong>baja un poco el peso</strong> (más o menos un 10–15%) y sácalas <strong>también AL FALLO</strong>. Al bajar el peso puedes seguir apretando aunque ya estés cansado y así acumulas más estímulo.<br>
+    👉 <strong>Resultado: TODAS las series al fallo.</strong> "Máximo peso" siempre significa el máximo con la técnica correcta: si la forma se rompe, esa repetición no cuenta y ahí termina la serie.
+  </div>
+
+  <div class="grid-4" style="margin-bottom:22px">
+    <div class="card" style="border-color:rgba(33,150,243,.4)"><div style="font-size:10px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 1</div><div style="font-size:13px;font-weight:700">Pecho · Hombro · Tríceps</div><div style="margin-top:6px"><span class="abs-badge">+ ABS</span></div></div>
+    <div class="card" style="border-color:rgba(229,9,20,.4)"><div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 2</div><div style="font-size:13px;font-weight:700">Espalda · Bíceps</div></div>
+    <div class="card" style="border-color:rgba(76,175,80,.4)"><div style="font-size:10px;color:var(--green);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 3</div><div style="font-size:13px;font-weight:700">Pierna completa</div><div style="margin-top:6px"><span class="abs-badge">+ ABS</span></div></div>
+    <div class="card" style="border-color:rgba(33,150,243,.4)"><div style="font-size:10px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 4</div><div style="font-size:13px;font-weight:700">Hombro · Espalda · Brazo</div><div style="margin-top:6px"><span class="abs-badge">+ ABS</span></div></div>
+  </div>
+
+  <div class="info-box info-box-blue">📅 <strong>Reparto sugerido:</strong> Lun · Mar · Jue · Vie (deja descanso entre medias). Si un finde trabajas, mueve el día sin problema. Lo importante es completar los 4 entrenos. <strong>Calentamiento:</strong> 5 min de movilidad + 1–2 series ligeras en el primer ejercicio. <strong>Descansos:</strong> 2–3 min en ejercicios grandes, 60–90 s en aislamientos.</div>
+
+  <div id="trainingContainer"></div>
+</div>
+
+<!-- ===== ACTIVIDAD Y DESCANSO ===== -->
+<div class="section" id="actividad">
+  <div class="section-title">ACTIVIDAD & <span>DESCANSO</span></div>
+  <div class="info-box info-box-green">🛌 El músculo no crece cuando entrenas: crece cuando descansas. Y como tu trabajo ya es muy físico, el descanso pesa todavía más. No necesitas añadir cardio: tu trabajo + 10.000 pasos ya lo cubren de sobra (ya está en el cálculo de calorías).</div>
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-title ct-cyan">🚶 Actividad diaria</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Mantén tus <strong>~10.000 pasos</strong>. No hace falta más (ya gastas mucho en el trabajo)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>Nada de cardio extra:</strong> quemaría energía que necesitas para crecer</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Agua: <strong>3,5 L</strong>, más en días de trabajo y calor</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">😴 Recuperación</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Tus <strong>8 h de sueño</strong> son oro: protégelas (pantalla fuera 30 min antes)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Días sin gym = días en los que <strong>construyes</strong>, no días perdidos</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>No metas más gimnasio del programado: irías más lento, no más rápido</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Agujetas al empezar = normales. No miden si el entreno fue bueno</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-orange">🧠 Estrés (marcaste 6/10)</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>El estrés crónico dificulta recuperar y crecer. Tus mejores armas ya las tienes: dormir, entrenar y no meter alcohol ni tabaco.</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Una semana muy quemado: baja una marcha en el gym, pero <strong>no abandones</strong>. Bajar el ritmo no es parar.</div>
+  </div>
+</div>
+
+<!-- ===== MENTALIDAD ===== -->
+<div class="section" id="mente">
+  <div class="section-title">MENTALIDAD & <span>CABEZA</span></div>
+  <div class="info-box">🧠 Esto es la mitad del éxito y casi nadie lo trabaja. Escrito pensando en ti y en lo que me contaste. Léelo cuando flojees.</div>
+
+  <div class="grid-2">
+    <div class="card"><div class="card-title ct-purple">1 · Tu enemigo es la intermitencia</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Antes lo intentabas "sin rutina y de forma intermitente". No fallaste por capacidad: fallaste por falta de sistema. Ahora lo tienes. Tu único trabajo es <strong style="color:#fff">no romper la cadena</strong>. Mejor el 80% cada semana durante meses que el 100% diez días y desaparecer.</p></div>
+    <div class="card"><div class="card-title ct-purple">2 · Eres delgado HOY, no para siempre</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Ser delgado es tu punto de partida, no una sentencia. No te compares con el que lleva 5 años. Compárate con el <strong style="color:#fff">Javier de hace un mes</strong>.</p></div>
+    <div class="card"><div class="card-title ct-purple">3 · Come aunque no tengas hambre</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Para ti, comer ES entrenamiento. Habrá días que cueste llegar a 3.200 kcal. No es opcional: es la parte que construye el músculo. Si no comes, entrenas para nada. Tira de leche entera, batidos y frutos secos para sumar fácil.</p></div>
+    <div class="card"><div class="card-title ct-purple">4 · Tu trabajo es un arma de doble filo</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Te da base y actividad, pero también cansa y quema mucho. Por eso comes tanto y el descanso es sagrado. No te sientas vago por descansar: ya haces ejercicio en el trabajo. El gym es el estímulo dirigido; el sofá de después es donde creces.</p></div>
+    <div class="card"><div class="card-title ct-purple">5 · Los resultados llegan tarde y de golpe</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Las primeras semanas parecerá que no pasa nada. Mentira: por dentro ya estás cambiando. El día que menos lo esperes, alguien te dirá "¿estás más fuerte?". Aguanta hasta ahí.</p></div>
+    <div class="card"><div class="card-title ct-purple">6 · Cocinar te costará 2 semanas</div><p style="font-size:14px;color:var(--light-gray);line-height:1.6">Es nuevo, no difícil. Empieza por cocinar UNA cosa esta semana. No intentes ser perfecto el primer día. El hábito llega solo si insistes.</p></div>
+  </div>
+
+  <div class="profile-quote" style="margin-top:18px">
+    "No busques motivación. Busca no negociar contigo cada día si vas o no.<br>
+    <strong>Vas. Punto.</strong> Esa es la disciplina que te va a cambiar."
+    <div class="signature">— ELVYFIT</div>
+  </div>
+</div>
+
+<!-- ===== OBJETIVOS ===== -->
+<div class="section" id="objetivos">
+  <div class="section-title">OBJETIVOS & <span>EXPECTATIVAS</span></div>
+  <div class="grid-3" style="margin-bottom:18px">
+    <div class="card"><div class="card-title ct-blue">🎯 Corto plazo (4 sem)</div><div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Coger el hábito: 4 entrenos/semana sin fallar</div><div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Aprender la técnica de los básicos</div><div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Acostumbrarte a comer 3.200 kcal</div><div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Empezar a cocinar/preparar comida</div></div>
+    <div class="card"><div class="card-title ct-orange">📈 Medio plazo (12 sem)</div><div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Subir a 69–71 kg de forma controlada</div><div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Subir cargas en todos los ejercicios</div><div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Notar el tren superior más lleno</div></div>
+    <div class="card"><div class="card-title ct-green">🏆 Largo plazo (6 m+)</div><div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Cambio físico evidente en fotos</div><div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Fuerza y energía notablemente mayores</div><div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>El gym como hábito de por vida</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-title ct-cyan">📏 Cómo medimos que vas bien</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>Báscula 1×/semana</strong>, mismo día, en ayunas. Buscamos la tendencia, no un día suelto</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>El peso sube lento</strong> (~+1 kg/mes). Si no se mueve en 2–3 semanas, subimos comida</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>Las cargas suben</strong> (lo registras en Seguimiento)</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>Fotos cada 3–4 semanas</strong>, misma luz y postura</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">✅ Checklist semanal</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Completé mis 4 entrenos y registré cargas</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Intenté superar alguna carga o repetición</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Llegué a mis comidas la mayoría de días</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Tomé la creatina a diario</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Dormí mis 8 h casi todos los días</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Me pesé 1 vez (domingo, en ayunas) y lo anoté</div>
+    <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Preparé/cociné comida con antelación al menos una vez</div>
+  </div>
+</div>
+
+<!-- ===== SEGUIMIENTO ===== -->
+<div class="section" id="seguimiento">
+  <div class="section-title">📊 SEGUIMIENTO <span>12 SEMANAS</span></div>
+  <div class="info-box info-box-blue">
+    💾 Apunta aquí tus <strong>cargas (kg) y repeticiones</strong> de cada serie en cada sesión. La <strong>Serie 1 es tu TOP SET</strong> (peso máximo al fallo): es tu mejor referencia de fuerza. Se guarda solo en tu móvil y sigue ahí cuando vuelvas a abrir el enlace. Objetivo: <strong>superar cada semana lo de la anterior</strong> (1 kg o 1 repe más). Para no perder nada, abre el enlace en <strong>Safari/Chrome</strong> y añádelo a la pantalla de inicio. Haz copia con "Exportar CSV" de vez en cuando.
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-title ct-green">⚖️ Peso semanal (domingo, en ayunas)</div>
+    <div class="weight-log" id="weightLog"></div>
+  </div>
+
+  <div class="seg-toolbar">
+    <button class="save-btn" onclick="saveData()">💾 Guardar todo</button>
+    <button class="export-btn" onclick="exportCSV()">📤 Exportar CSV</button>
+    <button class="clear-btn" onclick="confirmClear()">🗑️ Borrar</button>
+    <span id="saveStatus" style="font-size:13px;color:var(--green);display:none;align-self:center">✓ Guardado</span>
+  </div>
+
+  <div class="seg-tabs" id="segTabs"></div>
+  <div id="segContents"></div>
+</div>
+
+<footer>
+  ASESORÍA ELVYFIT · Marc Elvira Peinado · @elvyfit9<br>
+  Plan personalizado para Javier Villahermosa · Fase 1 — Construcción · Los cálculos son una estimación profesional y se ajustan con tus datos reales.
+</footer>
+
+<script>
+/* ============ NAV ============ */
+function showTab(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleDay(id){
+  document.getElementById('body-'+id).classList.toggle('open');
+  document.getElementById('chev-'+id).classList.toggle('open');
+}
+
+/* ============ DIETA DATA ============ */
+const MEALS_FIXED = {
+  c1:{title:'🌅 C1 — DESAYUNO',color:'ct-orange',items:[
+    ['Huevos','1 ud','q-p'],['Avena','110 g','q-c'],
+    ['Leche entera','200 ml','q-p'],['Plátano','1 ud','q-c'],['Crema de cacahuete','20 g','q-g']
+  ],kcal:'~720 kcal'},
+  c2:{title:'🥪 C2 — TRABAJO (frío)',color:'ct-blue',items:[
+    ['Pan espelta integral','110 g','q-c'],['Pavo en lonchas','40 g','q-p'],
+    ['Manzana','1 ud','q-c'],['Almendras','20 g','q-g']
+  ],kcal:'~560 kcal'},
+  c4:{title:'💪 C4 — POST-ENTRENO',color:'ct-purple',items:[
+    ['Proteína isolate','20 g','q-p'],['Plátano','1 ud','q-c'],['Crema de arroz','60 g','q-c'],
+    ['Creatina','5 g','q-n']
+  ],kcal:'~360 kcal'}
+};
+const DIET = {
+  LUN:{c3:[['Arroz integral (crudo)','150 g','q-c'],['Pechuga pollo','80 g','q-p'],['Calabacín','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Merluza','90 g','q-p'],['Patata','400 g','q-c'],['Espinacas','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  MAR:{c3:[['Arroz blanco (crudo)','150 g','q-c'],['Ternera magra','80 g','q-p'],['Espinacas','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Ternera magra','85 g','q-p'],['Boniato','400 g','q-c'],['Judías verdes','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  MIE:{c3:[['Pasta (mac./spag.)','120 g','q-c'],['Pavo','80 g','q-p'],['Zanahoria + calabacín','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Pavo','90 g','q-p'],['Patata','400 g','q-c'],['Espinacas','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  JUE:{c3:[['Arroz blanco (crudo)','150 g','q-c'],['Pechuga pollo','80 g','q-p'],['Judías verdes','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Huevos','2 ud','q-p'],['Patata','400 g','q-c'],['Calabacín','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  VIE:{c3:[['Patata','400 g','q-c'],['Ternera magra','80 g','q-p'],['Espinacas','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Merluza','90 g','q-p'],['Boniato','400 g','q-c'],['Espinacas','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  SAB:{c3:[['Arroz blanco (crudo)','150 g','q-c'],['Pechuga pollo','80 g','q-p'],['Calabacín','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Ternera magra','85 g','q-p'],['Patata','400 g','q-c'],['Judías verdes','200 g','q-v'],['Aceite oliva','12 ml','q-g']]},
+  DOM:{c3:[['Pasta (mac./spag.)','120 g','q-c'],['Pavo','80 g','q-p'],['Espinacas','150 g','q-v'],['Aceite oliva','12 ml','q-g'],['Fruta','1 ud','q-c']],
+       c5:[['Pechuga pollo','90 g','q-p'],['Patata','400 g','q-c'],['Espinacas','200 g','q-v'],['Aceite oliva','12 ml','q-g']]}
+};
+const DAYLABELS={LUN:'LUN',MAR:'MAR',MIE:'MIÉ',JUE:'JUE',VIE:'VIE',SAB:'SÁB',DOM:'DOM'};
+
+function mealCard(title,color,items,kcal){
+  let rows = items.map(it=>`<div class="meal-item"><span class="meal-item-name">${it[0]}</span><span class="meal-item-qty ${it[2]}">${it[1]}</span></div>`).join('');
+  return `<div class="meal-card"><div class="meal-card-title ${color}">${title}</div>${rows}${kcal?`<div class="meal-kcal">${kcal}</div>`:''}</div>`;
+}
+function renderDiet(){
+  const tabs=document.getElementById('dietTabs'), cont=document.getElementById('dietContents');
+  let tabsHtml='', contHtml='';
+  Object.keys(DIET).forEach((d,i)=>{
+    tabsHtml+=`<button class="day-btn${i===0?' active':''}" onclick="showDietDay('${d}',this)">${DAYLABELS[d]}</button>`;
+    const c3=mealCard('🍽️ C3 — COMIDA (pre-entreno)','ct-green',DIET[d].c3,'~760 kcal');
+    const c5=mealCard('🌙 C5 — CENA','ct-red',DIET[d].c5,'~700 kcal');
+    contHtml+=`<div class="day-content${i===0?' active':''}" id="diet-${d}">
+      ${mealCard(MEALS_FIXED.c1.title,MEALS_FIXED.c1.color,MEALS_FIXED.c1.items,MEALS_FIXED.c1.kcal)}
+      ${mealCard(MEALS_FIXED.c2.title,MEALS_FIXED.c2.color,MEALS_FIXED.c2.items,MEALS_FIXED.c2.kcal)}
+      ${c3}
+      ${mealCard(MEALS_FIXED.c4.title,MEALS_FIXED.c4.color,MEALS_FIXED.c4.items,MEALS_FIXED.c4.kcal)}
+      ${c5}
+    </div>`;
+  });
+  tabs.innerHTML=tabsHtml; cont.innerHTML=contHtml;
+}
+function showDietDay(d,el){
+  document.querySelectorAll('.day-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('#dietTabs .day-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('diet-'+d).classList.add('active');
+  if(el) el.classList.add('active');
+}
+
+/* ============ ENTRENO DATA (Alex base, -1 serie por grupo, al fallo) ============ */
+const TRAIN = [
+  {id:'t1',color:'var(--blue)',icon:'🔵',title:'DÍA 1 — PECHO · HOMBRO · TRÍCEPS',abs:true,
+   ex:[
+    {n:'Press superior inclinado mancuernas',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'9fy0A5xWsgk'},
+    {n:'Press máquina pecho plano',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'E9tGqbSOe9Y'},
+    {n:'Pec Deck (aperturas)',s:'2 series · 10-12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'WKfTStqIXrw'},
+    {n:'Press militar máquina',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'XZ3EGgAS47g'},
+    {n:'Elevaciones laterales mancuernas',s:'3 series · 10-12 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'aKl46TMtzGk'},
+    {n:'Tríceps katana unilateral en polea',s:'2 series · 10-12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'LPQp_A5ojOo'},
+    {n:'Extensión tríceps en polea (cuerda)',s:'2 series · 10-12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'iiA6LOkV-rw'}
+   ],
+   absEx:[{n:'🔵 Crunch abdominales en máquina',s:'3 series · 12-10 reps',r:'TODAS AL FALLO',v:'DLU0RKjZV2g'}]},
+
+  {id:'t2',color:'var(--red)',icon:'🔴',title:'DÍA 2 — ESPALDA · BÍCEPS',abs:false,
+   ex:[
+    {n:'Jalón al pecho agarre prono',s:'3 series · 8-10 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'t7RQJF7rc1Y'},
+    {n:'Remo unilateral en polea con banco',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'1AAilO1XhKM'},
+    {n:'Jalón al pecho agarre cerrado',s:'2 series · 10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'YR4Ytkhtihs'},
+    {n:'Pullover en polea',s:'2 series · 12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'9YQ1YXKko8s'},
+    {n:'Curl predicador en máquina',s:'2 series · 10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'cgyCmCHC2zo'},
+    {n:'Curl martillo con mancuernas',s:'2 series · 10-12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'i60DlC_Wj0E'}
+   ]},
+
+  {id:'t3',color:'var(--green)',icon:'🟢',title:'DÍA 3 — PIERNA COMPLETA',abs:true,
+   ex:[
+    {n:'Prensa inclinada de piernas',s:'3 series · 8-12 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'AJ6N_TcoU6M'},
+    {n:'Sentadilla Hack en máquina',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'R8ZyWx1EgoY'},
+    {n:'Sentadilla búlgara',s:'2 series · 10-12 reps (x pierna)',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'7bV1tIUC2Es'},
+    {n:'Extensión de cuádriceps en máquina',s:'2 series · 12-15 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'PAPf4i-VJoc'},
+    {n:'Curl femoral sentado',s:'3 series · 10-12 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'CBCPBnMzsMI'},
+    {n:'Gemelo en máquina',s:'3 series · 12-15 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'HObKQtrmU9g'}
+   ],
+   absEx:[{n:'🔵 Crunch abdominales en máquina',s:'3 series · 12-10 reps',r:'TODAS AL FALLO',v:'DLU0RKjZV2g'}]},
+
+  {id:'t4',color:'var(--blue)',icon:'🔵',title:'DÍA 4 — HOMBRO · ESPALDA · BRAZO',abs:true,
+   ex:[
+    {n:'Press militar con mancuernas',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'o5M9RZ-vWrc'},
+    {n:'Elevación lateral unilateral en polea',s:'3 series · 10-12 reps',r:'TOP SET + 2 back-off · TODAS AL FALLO',v:'2FFErVTJb3c'},
+    {n:'Pájaros en polea (hombro posterior)',s:'2 series · 12 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'t-Wwn0x35eI'},
+    {n:'Remo en barra multipower',s:'2 series · 8-10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'kdfnnWWAxNk'},
+    {n:'Curl de bíceps tumbado en banco',s:'2 series · 10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'ZY19YNmm7tQ'},
+    {n:'Press francés barra recta (tríceps)',s:'2 series · 10 reps',r:'TOP SET + 1 back-off · TODAS AL FALLO',v:'0kT1atwDmVg'}
+   ],
+   absEx:[{n:'🔵 Oblicuo de lado colgado en barra',s:'2 series · 10 reps (x lado)',r:'TODAS AL FALLO',v:'b2YliuSIuUM'}]}
+];
+
+function exRow(ex){
+  return `<div class="exercise-row">
+    <div class="ex-left">
+      <div class="ex-name">${ex.n}</div>
+      <div class="ex-sets">${ex.s}</div>
+      <a class="vid-link" href="https://www.youtube.com/watch?v=${ex.v}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver vídeo
+      </a>
+    </div>
+    <div class="ex-right"><div class="ex-rir">${ex.r}</div></div>
+  </div>`;
+}
+function renderTraining(){
+  const c=document.getElementById('trainingContainer');
+  c.innerHTML = TRAIN.map(d=>{
+    const main=d.ex.map(exRow).join('');
+    let abs='';
+    if(d.abs && d.absEx){
+      abs=`<div class="abs-box"><div class="lab">🔵 ABDOMINALES</div>${d.absEx.map(exRow).join('')}</div>`;
+    }
+    const absBadge = d.abs?'<span class="abs-badge">+ ABS</span>':'';
+    return `<div class="training-day">
+      <div class="training-header" onclick="toggleDay('${d.id}')">
+        <div class="training-header-title"><span style="color:${d.color}">${d.icon}</span> ${d.title} ${absBadge}</div>
+        <span class="chevron" id="chev-${d.id}">▼</span>
+      </div>
+      <div class="training-body" id="body-${d.id}">${main}${abs}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ============ SEGUIMIENTO ============ */
+const WEEKS=12;
+const KEY='javier_tracking_v1';
+
+function renderWeightLog(){
+  let html='';
+  for(let w=1;w<=WEEKS;w++){
+    html+=`<div class="weight-cell"><label>SEM ${w}</label><input type="text" inputmode="decimal" placeholder="kg" id="peso_w${w}" oninput="autoSave()"></div>`;
+  }
+  document.getElementById('weightLog').innerHTML=html;
+}
+
+function buildSeg(){
+  const tabsEl=document.getElementById('segTabs'), contEl=document.getElementById('segContents');
+  let tabsHtml='', contHtml='';
+  TRAIN.forEach((day,di)=>{
+    tabsHtml+=`<button class="seg-btn${di===0?' active':''}" style="border-color:${day.color}${di===0?';background:'+day.color+';color:#fff':''}" onclick="showSeg('${day.id}',this,'${day.color}')">Día ${di+1}</button>`;
+    const all=[...day.ex.map(e=>({...e,abs:false})), ...((day.absEx||[]).map(e=>({...e,abs:true})))];
+    let rows='';
+    all.forEach((ex,ei)=>{
+      rows+=`<tr class="ex-header-row${ex.abs?' abs':''}"><td colspan="${3*WEEKS+1}">${ex.n} &nbsp;<span style="font-weight:400;color:var(--gray);font-size:11px">${ex.s} · ${ex.r}</span></td></tr>`;
+      // one row per "serie" inferred from scheme number (max 3)
+      const nSeries = (ex.s.match(/^\s*(\d)/)||[])[1] ? parseInt(ex.s.match(/^\s*(\d)/)[1]) : 2;
+      for(let si=1; si<=nSeries; si++){
+        let cells='';
+        for(let w=1;w<=WEEKS;w++){
+          const k=`${day.id}_e${ei}_s${si}_w${w}`;
+          cells+=`<td><input type="text" inputmode="decimal" placeholder="kg" id="${k}_kg" oninput="autoSave()"></td>
+                  <td><input type="text" inputmode="numeric" placeholder="rep" id="${k}_rep" oninput="autoSave()"></td>
+                  <td class="rir-cell">${si===1?'TOP':'F'}</td>`;
+        }
+        rows+=`<tr><td class="serie-label">${si===1?'Serie 1 · TOP':'Serie '+si+' · back'}</td>${cells}</tr>`;
+      }
+      rows+=`<tr><td colspan="${3*WEEKS+1}" style="height:5px;background:#0a0a0a;border:none"></td></tr>`;
+    });
+    let thw='';
+    for(let w=1;w<=WEEKS;w++) thw+=`<th class="seg-week-num" colspan="3">SEM ${w}</th>`;
+    let sub='';
+    for(let w=1;w<=WEEKS;w++) sub+='<th>KG</th><th>REP</th><th style="color:var(--red)">FALLO</th>';
+    contHtml+=`<div class="seg-content${di===0?' active':''}" id="seg-${day.id}">
+      <div style="color:${day.color};font-family:'Bebas Neue';font-size:20px;margin-bottom:12px">${day.title}</div>
+      <div class="tracker-wrap"><table class="tracker-table">
+        <thead><tr><th rowspan="2" style="min-width:90px">SERIE</th>${thw}</tr><tr>${sub}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div></div>`;
+  });
+  tabsEl.innerHTML=tabsHtml; contEl.innerHTML=contHtml;
+}
+function showSeg(id,el,color){
+  document.querySelectorAll('.seg-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.seg-btn').forEach(b=>{b.classList.remove('active');b.style.background='var(--card)';b.style.color='var(--gray)';});
+  document.getElementById('seg-'+id).classList.add('active');
+  if(el){el.classList.add('active');el.style.background=color;el.style.color='#fff';}
+}
+
+/* ============ SAVE / LOAD ============ */
+function collect(){
+  const data={};
+  document.querySelectorAll('input[id]').forEach(i=>{ if(i.value) data[i.id]=i.value; });
+  return data;
+}
+function autoSave(){
+  try{ localStorage.setItem(KEY, JSON.stringify(collect())); }catch(e){}
+}
+function saveData(){
+  try{
+    localStorage.setItem(KEY, JSON.stringify(collect()));
+    const b=document.querySelector('.save-btn'), s=document.getElementById('saveStatus');
+    b.classList.add('saved'); b.textContent='✓ Guardado'; s.style.display='inline';
+    setTimeout(()=>{b.classList.remove('saved');b.textContent='💾 Guardar todo';s.style.display='none';},1800);
+  }catch(e){ alert('No se pudo guardar en este navegador. Prueba a exportar CSV o abre el enlace en Safari/Chrome.'); }
+}
+function loadData(){
+  try{
+    const raw=localStorage.getItem(KEY); if(!raw) return;
+    const d=JSON.parse(raw);
+    Object.entries(d).forEach(([id,v])=>{ const el=document.getElementById(id); if(el) el.value=v; });
+  }catch(e){}
+}
+function confirmClear(){
+  if(confirm('¿Borrar TODOS tus datos guardados (pesos y cargas)? No se puede deshacer.')){
+    localStorage.removeItem(KEY);
+    document.querySelectorAll('input[id]').forEach(i=>i.value='');
+  }
+}
+function exportCSV(){
+  let csv='Bloque,Detalle,';
+  for(let w=1;w<=WEEKS;w++) csv+=`S${w}_kg,S${w}_rep,`;
+  csv+='\n';
+  // peso
+  let prow='Peso,Domingo ayunas,';
+  for(let w=1;w<=WEEKS;w++){ const p=document.getElementById('peso_w'+w); prow+=`${p?p.value:''},,`; }
+  csv+=prow+'\n';
+  TRAIN.forEach(day=>{
+    const all=[...day.ex, ...(day.absEx||[])];
+    all.forEach((ex,ei)=>{
+      const nSeries=(ex.s.match(/^\s*(\d)/)||[])[1]?parseInt(ex.s.match(/^\s*(\d)/)[1]):2;
+      for(let si=1;si<=nSeries;si++){
+        let row=`"${day.title}","${ex.n} S${si}",`;
+        for(let w=1;w<=WEEKS;w++){
+          const kg=document.getElementById(`${day.id}_e${ei}_s${si}_w${w}_kg`);
+          const rep=document.getElementById(`${day.id}_e${ei}_s${si}_w${w}_rep`);
+          row+=`${kg?kg.value:''},${rep?rep.value:''},`;
+        }
+        csv+=row+'\n';
+      }
+    });
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download='seguimiento_javier.csv'; a.click(); URL.revokeObjectURL(url);
+}
+
+/* ============ INIT ============ */
+renderDiet();
+renderTraining();
+renderWeightLog();
+buildSeg();
+loadData();
+</script>
+</body>
+</html>
