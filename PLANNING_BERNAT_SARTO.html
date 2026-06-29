@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bernat Sarto — Asesoría Elvyfit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --card: #1c1c1c;
+    --border: #2a2a2a;
+    --red: #e50914;
+    --orange: #f5a623;
+    --green: #4caf50;
+    --blue: #2196f3;
+    --white: #ffffff;
+    --gray: #999999;
+    --light-gray: #cccccc;
+    --yellow: #ffd700;
+    --purple: #9c27b0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+  /* HERO */
+  .hero {
+    background: linear-gradient(180deg, #1a0000 0%, #0a0a0a 100%);
+    padding: 48px 40px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% -20%, rgba(229,9,20,0.15) 0%, transparent 60%);
+  }
+  .hero-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--red);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 100px);
+    line-height: 0.9;
+    color: var(--white);
+    position: relative;
+    margin-bottom: 0;
+  }
+  .hero-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(50px, 8vw, 80px);
+    line-height: 1;
+    color: var(--red);
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .hero-desc {
+    color: var(--gray);
+    font-size: 15px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .badge {
+    border: 1.5px solid;
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-red { border-color: var(--red); color: var(--red); }
+  .badge-yellow { border-color: var(--orange); color: var(--orange); }
+  .badge-green { border-color: var(--green); color: var(--green); }
+  .badge-blue { border-color: #5bc8f5; color: #5bc8f5; }
+  .badge-new { border-color: var(--yellow); color: var(--yellow); background: rgba(255,215,0,0.08); }
+  /* NAV */
+  nav {
+    background: var(--surface);
+    border-bottom: 2px solid var(--red);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+  }
+  .nav-tab:hover { color: var(--white); }
+  .nav-tab.active { color: var(--white); border-bottom: 3px solid var(--red); }
+  /* SECTIONS */
+  .section { display: none; padding: 40px; max-width: 1200px; margin: 0 auto; }
+  .section.active { display: block; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 2px;
+  }
+  .section-title span { color: var(--red); }
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 900px) {
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .section { padding: 20px; }
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ct-red { color: var(--red); }
+  .ct-orange { color: var(--orange); }
+  .ct-green { color: var(--green); }
+  .ct-blue { color: var(--blue); }
+  .ct-yellow { color: var(--yellow); }
+  .ct-purple { color: #ce93d8; }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: var(--light-gray); font-size: 14px; }
+  .stat-value { font-weight: 700; font-size: 14px; }
+  .val-red { color: var(--red); }
+  .val-orange { color: var(--orange); }
+  .val-green { color: var(--green); }
+  .val-yellow { color: var(--yellow); }
+  .val-blue { color: #7dd3fc; }
+  /* INFO BOX */
+  .info-box {
+    background: rgba(229, 9, 20, 0.08);
+    border: 1px solid rgba(229, 9, 20, 0.3);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--light-gray);
+    line-height: 1.6;
+  }
+  .info-box-green {
+    background: rgba(76, 175, 80, 0.08);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+  }
+  .info-box-yellow {
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+  }
+  /* MACRO BAR */
+  .macro-display {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .macro-total {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .macro-label { color: var(--gray); font-size: 13px; margin-bottom: 20px; }
+  .macro-bars { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .macro-item label { font-size: 12px; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .macro-item .macro-val { font-size: 22px; font-weight: 700; margin: 4px 0; }
+  .macro-item .macro-bar { height: 4px; border-radius: 2px; margin-top: 6px; }
+  /* DAYS TABS */
+  .day-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .day-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    color: var(--gray);
+    transition: all 0.2s;
+  }
+  .day-btn:hover { border-color: var(--red); color: var(--white); }
+  .day-btn.active { background: var(--red); border-color: var(--red); color: white; }
+  .day-content { display: none; }
+  .day-content.active { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+  @media (max-width: 1000px) { .day-content.active { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .day-content.active { grid-template-columns: 1fr; } }
+  .meal-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .meal-card-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .meal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+  .meal-item-name { font-size: 13px; color: var(--light-gray); }
+  .meal-item-qty { font-size: 12px; font-weight: 700; }
+  .qty-orange { color: var(--orange); }
+  .qty-yellow { color: var(--yellow); }
+  .qty-green { color: var(--green); }
+  /* LISTA COMPRA */
+  .shopping-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .shopping-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .shopping-grid { grid-template-columns: 1fr; } }
+  /* TRAINING */
+  .training-day {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .training-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .training-header:hover { background: rgba(255,255,255,0.03); }
+  .training-header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .training-body {
+    display: none;
+    padding: 0 20px 20px;
+  }
+  .training-body.open { display: block; }
+  .exercise-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .exercise-row:last-child { border-bottom: none; }
+  .ex-name {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+    cursor: pointer;
+    color: var(--white);
+    transition: color 0.2s;
+  }
+  .ex-name:hover { color: var(--red); }
+  .ex-sets { font-size: 12px; color: var(--orange); font-weight: 700; white-space: nowrap; }
+  .ex-rir { font-size: 11px; color: var(--gray); white-space: nowrap; }
+  /* VIDEO MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    margin-bottom: 16px;
+    padding-right: 32px;
+  }
+  .video-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    background: #000;
+    border: none;
+  }
+  .video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #0d0d0d;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    gap: 12px;
+    cursor: pointer;
+    border: 2px dashed var(--border);
+    transition: all 0.2s;
+  }
+  .video-placeholder:hover { border-color: var(--red); color: var(--red); }
+  .video-icon { font-size: 40px; }
+  .video-search-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: var(--red);
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .video-search-link:hover { background: #c00; }
+  /* CARDIO */
+  .cardio-option {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .cardio-option-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* OBJETIVOS */
+  .phase-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .phase-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--orange);
+  }
+  .goal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--light-gray);
+    line-height: 1.5;
+  }
+  .goal-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  /* PERFIL */
+  .profile-quote {
+    background: linear-gradient(135deg, #1a0000, #0a0a0a);
+    border: 1px solid rgba(229,9,20,0.3);
+    border-radius: 12px;
+    padding: 32px;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--light-gray);
+    text-align: center;
+    margin-top: 24px;
+  }
+  .profile-quote strong { color: var(--white); font-style: normal; }
+  .profile-quote .signature {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--red);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  /* SUPP */
+  .supp-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .supp-icon { font-size: 24px; }
+  .supp-name { font-weight: 700; font-size: 15px; }
+  .supp-dose { font-size: 13px; color: var(--orange); margin-top: 2px; }
+  .supp-note { font-size: 12px; color: var(--gray); margin-top: 3px; }
+  /* CHEVRON */
+  .chevron { transition: transform 0.2s; font-size: 16px; color: var(--gray); }
+  .chevron.open { transform: rotate(180deg); }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(76,175,80,0.12);
+    border: 1px solid rgba(76,175,80,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .chip-up { background: rgba(245,166,35,0.12); border-color: rgba(245,166,35,0.3); color: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-brand">ASESORÍA ELVYFIT — MARC ELVIRA PEINADO</div>
+  <div class="hero-name">BERNAT</div>
+  <div class="hero-sub">TRANSFORMACIÓN</div>
+  <div class="hero-desc">Plan personalizado — 12 semanas · Objetivo: definir y ganar músculo</div>
+  <div class="hero-badges">
+    <div class="badge badge-red">🥤 Batido merienda <span style="font-size:10px;opacity:0.7;margin-left:4px">~1.100 kcal</span></div>
+    <div class="badge badge-yellow">~4.450 kcal diarias</div>
+    <div class="badge badge-green">83 kg · 22 años</div>
+    <div class="badge badge-blue">Superávit controlado</div>
+    <div class="badge badge-new">✦ ACTUALIZADO</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-tab active" onclick="showTab('perfil')">PERFIL</button>
+  <button class="nav-tab" onclick="showTab('nutricion')">NUTRICIÓN</button>
+  <button class="nav-tab" onclick="showTab('dieta')">DIETA SEMANAL</button>
+  <button class="nav-tab" onclick="showTab('compra')">LISTA COMPRA</button>
+  <button class="nav-tab" onclick="showTab('entreno')">ENTRENAMIENTO</button>
+  <button class="nav-tab" onclick="showTab('cardio')">CARDIO</button>
+  <button class="nav-tab" onclick="showTab('objetivos')">OBJETIVOS</button>
+</nav>
+
+<!-- PERFIL -->
+<div class="section active" id="perfil">
+  <div class="section-title">PERFIL <span>ACTUAL</span></div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="card-title ct-red">📍 Punto de partida</div>
+      <div class="stat-row"><span class="stat-label">Edad</span><span class="stat-value val-orange">22 años</span></div>
+      <div class="stat-row"><span class="stat-label">Altura</span><span class="stat-value val-orange">1,95 m</span></div>
+      <div class="stat-row"><span class="stat-label">Peso</span><span class="stat-value val-orange">83 kg</span></div>
+      <div class="stat-row"><span class="stat-label">% Grasa aprox.</span><span class="stat-value val-orange">20-22%</span></div>
+      <div class="stat-row"><span class="stat-label">Experiencia</span><span class="stat-value" style="color:var(--light-gray);font-size:12px;text-align:right;max-width:200px">Calistenia + pesas (hace 3 años), sin constancia</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🎯 Proyección 12 semanas</div>
+      <div class="stat-row"><span class="stat-label">Peso estimado</span><span class="stat-value val-green">83,5 kg</span></div>
+      <div class="stat-row"><span class="stat-label">% Grasa estimado</span><span class="stat-value val-green">16-17%</span></div>
+      <div class="stat-row"><span class="stat-label">Pérdida de grasa</span><span class="stat-value val-green">-2 kg grasa</span></div>
+      <div class="stat-row"><span class="stat-label">Ganancia muscular</span><span class="stat-value val-green">+2,5 kg músculo</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-title ct-orange">📋 Estado actual</div>
+    <div style="color:var(--light-gray);font-size:14px;line-height:1.7">
+      Base muscular desarrollada pero no destacable por falta de constancia. Mucho margen de mejora. <strong>Buen potencial en pecho medio, espalda y hombros.</strong> Piernas muy rezagadas — trabajo específico prioritario.
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title ct-red">❌ ¿Qué evitamos?</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>Ganar más grasa con un volumen innecesario</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--red)"></div>Definiciones agresivas que hagan perder músculo</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">✅ ¿Qué vamos a hacer?</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Superávit progresivo → ~4.450 kcal/día (incluye batido merienda de ~1.100 kcal)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Progresión semanal de carga en el gym</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Construir una base muscular sólida</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Trabajo específico de piernas</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Cardio para favorecer pérdida de grasa</div>
+    </div>
+  </div>
+  <div class="profile-quote">
+    "Bernat, tienes base. Tienes genética. Ahora toca disciplina y trabajo real.<br>
+    No es cuestión de motivación puntual. Es cuestión de repetir lo correcto cada día.<br>
+    Si sigues el plan, comes como toca, descansas y progresas en el gimnasio, <strong>el cambio va a llegar</strong>.<br>
+    La diferencia entre alguien normal y alguien con un gran físico no es el talento.<br>
+    Es la <strong>CONSTANCIA</strong>."
+    <div class="signature">— MARC ELVIRA · @ELVYFIT9</div>
+  </div>
+</div>
+
+<!-- NUTRICION -->
+<div class="section" id="nutricion">
+  <div class="section-title">NUTRICIÓN & <span>MACROS</span></div>
+  <div class="info-box info-box-yellow">
+    ✦ Nuevo: la merienda (C4) pasa a ser un <strong>batido de ~1.100 kcal</strong> sin avena (leche entera, plátano, crema de arroz, dátiles, miel, whey, crema de cacahuete y cacao). Se quita la avena del desayuno (se sustituye por plátano). Con esto el total sube a <strong>~4.450 kcal/día</strong>.
+  </div>
+  <div class="macro-display">
+    <div class="macro-total">~4.450 kcal</div>
+    <div class="macro-label">Calorías diarias totales (Plan actualizado — incluye batido merienda de ~1.100 kcal)</div>
+    <div class="macro-bars">
+      <div class="macro-item">
+        <label>Proteína</label>
+        <div class="macro-val" style="color:#2196f3">216 g <span class="chip chip-up">↑ +21g</span></div>
+        <div style="font-size:12px;color:var(--gray)">864 kcal · 19%</div>
+        <div class="macro-bar" style="background:var(--blue);width:72%"></div>
+      </div>
+      <div class="macro-item">
+        <label>Carbohidratos</label>
+        <div class="macro-val" style="color:var(--orange)">534 g <span class="chip chip-up">↑ +44g</span></div>
+        <div style="font-size:12px;color:var(--gray)">2.136 kcal · 48%</div>
+        <div class="macro-bar" style="background:var(--orange);width:92%"></div>
+      </div>
+      <div class="macro-item">
+        <label>Grasas</label>
+        <div class="macro-val" style="color:#f48fb1">158 g <span class="chip chip-up">↑ +31g</span></div>
+        <div style="font-size:12px;color:var(--gray)">1.422 kcal · 32%</div>
+        <div class="macro-bar" style="background:#f48fb1;width:64%"></div>
+      </div>
+    </div>
+  </div>
+  <!-- SUPLEMENTOS -->
+  <div class="section-title" style="font-size:24px">SUPLEMENTOS <span>DIARIOS</span></div>
+  <div class="grid-3" style="margin-bottom:28px">
+    <div class="supp-item">
+      <div class="supp-icon">💊</div>
+      <div>
+        <div class="supp-name">Creatina Monohidrato</div>
+        <div class="supp-dose">8 g / día</div>
+        <div class="supp-note">Da igual el momento. Aconsejable junto a la proteína.</div>
+      </div>
+    </div>
+    <div class="supp-item">
+      <div class="supp-icon">🥛</div>
+      <div>
+        <div class="supp-name">Whey Isolate</div>
+        <div class="supp-dose">80 g / día (desayuno + batido)</div>
+        <div class="supp-note">Comida 4 / merienda pre-post entreno</div>
+      </div>
+    </div>
+    <div class="supp-item">
+      <div class="supp-icon">🐟</div>
+      <div>
+        <div class="supp-name">Omega 3</div>
+        <div class="supp-dose">2 cápsulas / día</div>
+        <div class="supp-note">Separación mínima de 6 horas entre tomas</div>
+      </div>
+    </div>
+  </div>
+  <!-- NOTAS CLAVE -->
+  <div class="section-title" style="font-size:24px">NOTAS <span>CLAVE</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title ct-blue">💧 Hidratación y timing</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Agua: 3,5 L mínimo al día (≥25 L/semana)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Comer cada 3–4 horas</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Foto peso cada domingo en ayunas → a Marc</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-orange">🍽️ Flexibilidad</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>2 comidas libres por semana (preferiblemente comida 3 o 5)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Puedes cambiar arroz por pasta (120g arroz = 120g pasta)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Evitar ultraprocesados y azúcar. Salsas 0 ok.</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Café con un poco de leche entera: sin problema</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIETA SEMANAL -->
+<div class="section" id="dieta">
+  <div class="section-title">DIETA <span>SEMANAL</span></div>
+  <div class="info-box info-box-yellow">
+    🥤 <strong>Nuevo batido en la merienda (C4) ~1.100 kcal:</strong> leche entera 450 ml, plátano, crema de arroz 40 g (poca, si no queda muy espeso), dátiles, miel, whey, crema de cacahuete y un toque de cacao. <strong>Sin avena</strong> (también se quita del desayuno → plátano). Total actual: <strong>~4.450 kcal/día</strong>.
+  </div>
+  <div class="day-tabs">
+    <button class="day-btn active" onclick="showDay('lunes')">LUN</button>
+    <button class="day-btn" onclick="showDay('martes')">MAR</button>
+    <button class="day-btn" onclick="showDay('miercoles')">MIÉ</button>
+    <button class="day-btn" onclick="showDay('jueves')">JUE</button>
+    <button class="day-btn" onclick="showDay('viernes')">VIE</button>
+    <button class="day-btn" onclick="showDay('sabado')">SÁB</button>
+    <button class="day-btn" onclick="showDay('domingo')">DOM</button>
+  </div>
+
+  <!-- LUNES -->
+  <div class="day-content active" id="day-lunes">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz integral (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pechuga de pollo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Judías verdes</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Ternera magra</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Ensalada mixta</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Patata</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- MARTES -->
+  <div class="day-content" id="day-martes">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz blanco (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Ternera magra</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Pavo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Patata</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- MIERCOLES -->
+  <div class="day-content" id="day-miercoles">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz integral (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pavo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Judías verdes</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Solomillo de cerdo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Boniato</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- JUEVES -->
+  <div class="day-content" id="day-jueves">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz blanco (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pechuga de pollo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Zanahoria + calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Ternera</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Patata</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- VIERNES -->
+  <div class="day-content" id="day-viernes">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz integral (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Ternera magra</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Judías verdes</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Pechuga de pollo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Ensalada mixta</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Boniato</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- SABADO -->
+  <div class="day-content" id="day-sabado">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Pasta (mac./spaghetti)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pechuga de pollo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Solomillo de cerdo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Patata</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+
+  <!-- DOMINGO -->
+  <div class="day-content" id="day-domingo">
+    <div class="meal-card">
+      <div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div>
+      <div class="meal-item"><span class="meal-item-name">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pan espelta integral</span><span class="meal-item-qty qty-orange">3 reb.</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aguacate</span><span class="meal-item-qty qty-orange">½ ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div>
+      <div class="meal-item"><span class="meal-item-name">Yogur proteico fresa</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Almendras <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">70 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Nueces <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">30 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">1 ud</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div>
+      <div class="meal-item"><span class="meal-item-name">Arroz integral (crudo)</span><span class="meal-item-qty qty-orange">190 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Pavo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Judías verdes</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-purple">🥤 C4 — BATIDO MERIENDA <span style="font-size:11px;color:var(--gray);font-weight:400">~1.100 kcal</span></div>
+      <div class="meal-item"><span class="meal-item-name">Leche entera</span><span class="meal-item-qty qty-yellow">450 ml</span></div>
+      <div class="meal-item"><span class="meal-item-name">Plátano</span><span class="meal-item-qty qty-yellow">1 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de arroz</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Dátiles</span><span class="meal-item-qty qty-yellow">3 ud</span></div>
+      <div class="meal-item"><span class="meal-item-name">Miel</span><span class="meal-item-qty qty-yellow">20 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Whey Isolate</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Crema de cacahuete</span><span class="meal-item-qty qty-yellow">40 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Cacao puro (opcional)</span><span class="meal-item-qty qty-yellow">10 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-yellow">8 g</span></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-card-title ct-red">🌙 C5 — CENA</div>
+      <div class="meal-item"><span class="meal-item-name">Pavo</span><span class="meal-item-qty qty-orange">180 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Boniato</span><span class="meal-item-qty qty-orange">600 g</span></div>
+      <div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip chip-up">↑</span></span><span class="meal-item-qty qty-yellow">15 ml</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTA COMPRA -->
+<div class="section" id="compra">
+  <div class="section-title">LISTA DE <span>COMPRA</span></div>
+  <div class="info-box info-box-yellow">
+    Cantidades para 7 días. <strong>Nuevo:</strong> ingredientes del batido de la merienda (leche entera, crema de arroz, dátiles, miel, crema de cacahuete, cacao). Fuera la avena. Los artículos en amarillo son los del batido.
+  </div>
+  <div class="shopping-grid">
+    <div class="card">
+      <div class="card-title ct-orange">🌅 COMIDA 1 — DESAYUNO</div>
+      <div class="stat-row"><span class="stat-label">Proteína en polvo <span class="chip" style="background:rgba(33,150,243,0.12);border-color:rgba(33,150,243,0.3);color:#5bc8f5">⇄</span></span><span class="stat-value val-yellow">280 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pan espelta integral</span><span class="stat-value val-orange">840 g</span></div>
+      <div class="stat-row"><span class="stat-label">Aguacate</span><span class="stat-value val-orange">~490 g (4 ud)</span></div>
+      <div class="stat-row"><span class="stat-label">Arándanos</span><span class="stat-value val-orange">350 g</span></div>
+      <div class="stat-row"><span class="stat-label">Plátanos (desayuno)</span><span class="stat-value val-yellow">7 unidades</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-blue">☕ COMIDA 2 — MEDIA MAÑANA</div>
+      <div class="stat-row"><span class="stat-label">Yogur proteico fresa</span><span class="stat-value val-orange">7 unidades</span></div>
+      <div class="stat-row">
+        <span class="stat-label">Almendras <span class="chip chip-up">↑</span></span>
+        <span class="stat-value val-yellow">490 g</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Nueces <span class="chip chip-up">↑</span></span>
+        <span class="stat-value val-yellow">210 g</span>
+      </div>
+      <div class="stat-row"><span class="stat-label">Manzanas</span><span class="stat-value val-orange">7 unidades</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🍽️ COMIDA 3 — PRINCIPAL</div>
+      <div class="stat-row"><span class="stat-label">Pechuga de pollo</span><span class="stat-value val-orange">540 g</span></div>
+      <div class="stat-row"><span class="stat-label">Ternera magra</span><span class="stat-value val-orange">360 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pavo</span><span class="stat-value val-orange">360 g</span></div>
+      <div class="stat-row"><span class="stat-label">Arroz integral</span><span class="stat-value val-orange">760 g</span></div>
+      <div class="stat-row"><span class="stat-label">Arroz blanco</span><span class="stat-value val-orange">380 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pasta (mac/spag)</span><span class="stat-value val-orange">190 g</span></div>
+      <div class="stat-row"><span class="stat-label">Judías verdes</span><span class="stat-value val-orange">600 g</span></div>
+      <div class="stat-row"><span class="stat-label">Calabacín</span><span class="stat-value val-orange">450 g</span></div>
+      <div class="stat-row"><span class="stat-label">Ensalada mixta</span><span class="stat-value val-orange">300 g</span></div>
+      <div class="stat-row">
+        <span class="stat-label">Aceite oliva (C3) <span class="chip chip-up">↑</span></span>
+        <span class="stat-value val-yellow">105 ml</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-purple">🥤 COMIDA 4 — BATIDO (~1.100 kcal)</div>
+      <div class="stat-row"><span class="stat-label">Leche entera</span><span class="stat-value val-yellow">~3,15 L</span></div>
+      <div class="stat-row"><span class="stat-label">Plátanos</span><span class="stat-value val-yellow">7 unidades</span></div>
+      <div class="stat-row"><span class="stat-label">Crema de arroz</span><span class="stat-value val-yellow">280 g</span></div>
+      <div class="stat-row"><span class="stat-label">Dátiles</span><span class="stat-value val-yellow">21 unidades</span></div>
+      <div class="stat-row"><span class="stat-label">Miel</span><span class="stat-value val-yellow">140 g</span></div>
+      <div class="stat-row"><span class="stat-label">Whey Isolate</span><span class="stat-value val-yellow">280 g</span></div>
+      <div class="stat-row"><span class="stat-label">Crema de cacahuete</span><span class="stat-value val-yellow">280 g</span></div>
+      <div class="stat-row"><span class="stat-label">Cacao puro (opcional)</span><span class="stat-value val-yellow">70 g</span></div>
+      <div class="stat-row"><span class="stat-label">Creatina</span><span class="stat-value val-orange">56 g</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-red">🌙 COMIDA 5 — CENA</div>
+      <div class="stat-row"><span class="stat-label">Ternera</span><span class="stat-value val-orange">360 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pechuga pollo (cena)</span><span class="stat-value val-orange">180 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pavo (cena)</span><span class="stat-value val-orange">360 g</span></div>
+      <div class="stat-row"><span class="stat-label">Solomillo cerdo</span><span class="stat-value val-orange">360 g</span></div>
+      <div class="stat-row"><span class="stat-label">Espinacas</span><span class="stat-value val-orange">450 g</span></div>
+      <div class="stat-row"><span class="stat-label">Patata</span><span class="stat-value val-orange">2.400 g</span></div>
+      <div class="stat-row"><span class="stat-label">Boniato</span><span class="stat-value val-orange">1.800 g</span></div>
+      <div class="stat-row">
+        <span class="stat-label">Aceite oliva (cena) <span class="chip chip-up">↑</span></span>
+        <span class="stat-value val-yellow">105 ml</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-blue">💧 LÍQUIDOS & EXTRAS</div>
+      <div class="stat-row"><span class="stat-label">Agua</span><span class="stat-value val-blue">≥25 L / semana</span></div>
+      <div class="stat-row"><span class="stat-label">Omega 3</span><span class="stat-value val-orange">14 cápsulas</span></div>
+      <div class="stat-row" style="border-top:1px dashed var(--border);margin-top:8px;padding-top:8px">
+        <span class="stat-label" style="font-size:12px;color:var(--gray)">Aceite oliva total semana</span>
+        <span class="stat-value val-yellow" style="font-size:12px">~210 ml</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label" style="font-size:12px;color:var(--gray)">Almendras total semana</span>
+        <span class="stat-value val-yellow" style="font-size:12px">490 g</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label" style="font-size:12px;color:var(--gray)">Nueces total semana <span class="chip chip-up">↑</span></span>
+        <span class="stat-value val-yellow" style="font-size:12px">210 g</span>
+      </div>
+    </div>
+  </div>
+  <div class="info-box" style="margin-top:20px">
+    💡 <strong>Condimentos:</strong> Puedes usar especias libremente (ajo en polvo, cebolla, orégano, pimentón). Evita salsas comerciales con azúcar. Puedes variar entre arroz y pasta — 120g arroz crudo = 120g pasta.
+  </div>
+</div>
+
+<!-- ENTRENAMIENTO -->
+<div class="section" id="entreno">
+  <div class="section-title">PLAN DE <span>ENTRENAMIENTO</span></div>
+  <div class="info-box">
+    🔹 <strong>Sistema rotativo de 5 días.</strong> Haz una serie de prueba antes de cada ejercicio. Tempo: 2–1–1–1. Descansos: 3 min ejercicios grandes, 2:30 min aislamientos. <strong>Haz clic en cualquier ejercicio para ver el vídeo.</strong>
+  </div>
+  <div class="grid-4" style="margin-bottom:24px">
+    <div class="card" style="border-color:rgba(33,150,243,0.4)">
+      <div style="font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 1</div>
+      <div style="font-size:14px;font-weight:700">Pecho · Hombro · Tríceps</div>
+    </div>
+    <div class="card" style="border-color:rgba(229,9,20,0.4)">
+      <div style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 2</div>
+      <div style="font-size:14px;font-weight:700">Espalda · Bíceps</div>
+    </div>
+    <div class="card" style="border-color:rgba(76,175,80,0.4)">
+      <div style="font-size:11px;color:var(--green);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 3</div>
+      <div style="font-size:14px;font-weight:700">Pierna Completa</div>
+    </div>
+    <div class="card" style="border-color:rgba(33,150,243,0.4)">
+      <div style="font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 4</div>
+      <div style="font-size:14px;font-weight:700">Pecho · Hombro</div>
+    </div>
+    <div class="card" style="border-color:rgba(229,9,20,0.4)">
+      <div style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 5</div>
+      <div style="font-size:14px;font-weight:700">Espalda · Bíceps · Tríceps</div>
+    </div>
+    <div class="card" style="border-color:rgba(153,153,153,0.2)">
+      <div style="font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 6–7</div>
+      <div style="font-size:14px;font-weight:700;color:var(--gray)">Descanso</div>
+    </div>
+  </div>
+
+  <!-- DIA 1 -->
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t1')">
+      <div class="training-header-title"><span style="color:var(--blue)">🔵</span> DÍA 1 — PECHO · HOMBRO · TRÍCEPS</div>
+      <span class="chevron" id="chev-t1">▼</span>
+    </div>
+    <div class="training-body" id="body-t1">
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press superior inclinado mancuernas','press inclinado mancuernas tutorial')">Press superior inclinado mancuernas 🎬</div>
+          <div class="ex-sets">2×10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press máquina pecho plano','press maquina pecho plano tutorial')">Press máquina pecho plano 🎬</div>
+          <div class="ex-sets">3×10 · 8 · 6</div>
+        </div>
+        <div class="ex-rir">RIR 1 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Pec Deck','pec deck mariposa pecho tutorial')">Pec Deck 🎬</div>
+          <div class="ex-sets">3×12 · 12 · 10</div>
+        </div>
+        <div class="ex-rir">RIR FALLO · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press militar máquina','press militar maquina hombro tutorial')">Press militar máquina 🎬</div>
+          <div class="ex-sets">3×10 · 8 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Elevaciones laterales mancuernas','elevaciones laterales mancuernas hombro tutorial')">Elevaciones laterales mancuernas 🎬</div>
+          <div class="ex-sets">3×15 · 12 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Tríceps katana unilateral','triceps katana polea unilateral tutorial')">Tríceps katana unilateral 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Extensión tríceps cuerno','extension triceps cuerno polea tutorial')">Extensión tríceps cuerno 🎬</div>
+          <div class="ex-sets">3×12 · 12 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA 2 -->
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t2')">
+      <div class="training-header-title"><span style="color:var(--red)">🔴</span> DÍA 2 — ESPALDA · BÍCEPS</div>
+      <span class="chevron" id="chev-t2">▼</span>
+    </div>
+    <div class="training-body" id="body-t2">
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Jalón al pecho agarre prono','jalon al pecho agarre prono tutorial')">Jalón al pecho agarre prono 🎬</div>
+          <div class="ex-sets">3×10 · 8 · 6</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Remo unilateral en polea con banco','remo unilateral polea banco espalda tutorial')">Remo unilateral en polea con banco 🎬</div>
+          <div class="ex-sets">3×10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Jalón al pecho agarre cerrado','jalon agarre cerrado espalda tutorial')">Jalón al pecho agarre cerrado 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Pullover en polea','pullover polea espalda tutorial')">Pullover en polea 🎬</div>
+          <div class="ex-sets">3×12 · 12 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl predicador máquina','curl predicador maquina biceps tutorial')">Curl predicador máquina 🎬</div>
+          <div class="ex-sets">3×10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl martillo','curl martillo mancuernas biceps tutorial')">Curl martillo 🎬</div>
+          <div class="ex-sets">3×10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA 3 -->
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t3')">
+      <div class="training-header-title"><span style="color:var(--green)">🟢</span> DÍA 3 — PIERNA COMPLETA</div>
+      <span class="chevron" id="chev-t3">▼</span>
+    </div>
+    <div class="training-body" id="body-t3">
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Sentadilla Hack en máquina','sentadilla hack maquina cuadriceps tutorial')">Sentadilla Hack en máquina 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 2 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Prensa inclinada','prensa inclinada pierna tutorial')">Prensa inclinada 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 2 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Sentadilla búlgara','sentadilla bulgara pierna tutorial')">Sentadilla búlgara 🎬</div>
+          <div class="ex-sets">3×12 · 12 · 10 (por pierna)</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Extensión de cuádriceps en máquina','extension cuadriceps maquina tutorial')">Extensión de cuádriceps en máquina 🎬</div>
+          <div class="ex-sets">3×15 · 12-15 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl femoral sentado','curl femoral sentado isquiotibiales tutorial')">Curl femoral sentado 🎬</div>
+          <div class="ex-sets">4×12 · 10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Gemelo en máquina','gemelo maquina pantorrilla tutorial')">Gemelo en máquina 🎬</div>
+          <div class="ex-sets">4×15 · 12 · 10 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO · FALLO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA 4 -->
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t4')">
+      <div class="training-header-title"><span style="color:var(--blue)">🔵</span> DÍA 4 — PECHO · HOMBRO</div>
+      <span class="chevron" id="chev-t4">▼</span>
+    </div>
+    <div class="training-body" id="body-t4">
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press militar con mancuernas','press militar mancuernas hombro tutorial')">Press militar con mancuernas 🎬</div>
+          <div class="ex-sets">3×10 · 8 · 6</div>
+        </div>
+        <div class="ex-rir">RIR 1 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Elevación lateral unilateral en polea','elevacion lateral unilateral polea hombro tutorial')">Elevación lateral unilateral en polea 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 2 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Pájaros en polea unilateral','pajaros polea unilateral hombro posterior tutorial')">Pájaros en polea unilateral (Pec Deck invertido) 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press inclinado en multipower','press inclinado multipower smith pecho superior tutorial')">Press inclinado en multipower (pecho superior) 🎬</div>
+          <div class="ex-sets">3×10 · 8 · 6</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Cruces en polea baja','cruces polea baja pecho inferior tutorial')">Cruces en polea baja (pecho inferior) 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA 5 -->
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t5')">
+      <div class="training-header-title"><span style="color:var(--red)">🔴</span> DÍA 5 — ESPALDA · BÍCEPS · TRÍCEPS</div>
+      <span class="chevron" id="chev-t5">▼</span>
+    </div>
+    <div class="training-body" id="body-t5">
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Remo en barra multipower','remo barra multipower smith espalda tutorial')">Remo en barra multipower 🎬</div>
+          <div class="ex-sets">3×10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl de bíceps tumbado en banco','curl biceps tumbado banco inclinado tutorial')">Curl de bíceps tumbado en banco 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl de bíceps en polea arriba unilateral','curl biceps polea alta unilateral tutorial')">Curl de bíceps en polea arriba unilateral 🎬</div>
+          <div class="ex-sets">2×12 · 10 · 8 (cada brazo)</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Curl predicador en máquina o banco','curl predicador maquina banco biceps tutorial')">Curl predicador en máquina o banco 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · 1 · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Extensión de tríceps en polea unilateral','extension triceps polea unilateral tutorial')">Extensión de tríceps en polea unilateral 🎬</div>
+          <div class="ex-sets">3×12 · 10 · 10</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+      <div class="exercise-row">
+        <div>
+          <div class="ex-name" onclick="openVideo('Press francés barra recta','press frances barra recta triceps tutorial')">Press francés barra recta 🎬</div>
+          <div class="ex-sets">3×10 · 10 · 8</div>
+        </div>
+        <div class="ex-rir">RIR 1 · FALLO · FALLO</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARDIO -->
+<div class="section" id="cardio">
+  <div class="section-title">CARDIO <span>BERNAT</span></div>
+  <div class="info-box info-box-green">
+    🎯 El cardio en esta fase aumenta el gasto calórico, mejora la salud cardiovascular y facilita la pérdida de grasa, sin afectar negativamente al entrenamiento de fuerza.
+  </div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card" style="border-color:rgba(33,150,243,0.4)">
+      <div class="card-title ct-blue">📅 Frecuencia</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>4 días por semana</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Lunes – Martes – Jueves – Viernes</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Realizar después del entrenamiento de pesas</div>
+    </div>
+    <div class="card" style="border-color:rgba(255,215,0,0.4)">
+      <div class="card-title ct-yellow">🚶 Actividad diaria</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--yellow)"></div>Mantener 10.000 pasos al día</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--yellow)"></div>Aumenta gasto calórico y mejora salud general</div>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="cardio-option" style="border-color:rgba(76,175,80,0.4)">
+      <div class="cardio-option-title"><span style="color:var(--green)">🟢</span> Opción 1 — Cinta (RECOMENDADO)</div>
+      <div class="stat-row"><span class="stat-label">Duración</span><span class="stat-value val-green">20 min</span></div>
+      <div class="stat-row"><span class="stat-label">Velocidad</span><span class="stat-value val-green">5 – 5,5 km/h</span></div>
+      <div class="stat-row"><span class="stat-label">Inclinación</span><span class="stat-value val-green">6 – 8 %</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Cardio moderado, fácil de recuperar y muy efectivo. Debes poder seguir hablando.</div>
+    </div>
+    <div class="cardio-option" style="border-color:rgba(156,39,176,0.4)">
+      <div class="cardio-option-title"><span style="color:#ce93d8)">🟣</span> Opción 2 — Nadar</div>
+      <div class="stat-row"><span class="stat-label">Duración</span><span class="stat-value" style="color:#ce93d8">20 min</span></div>
+      <div class="stat-row"><span class="stat-label">Intensidad</span><span class="stat-value" style="color:#ce93d8">Moderada</span></div>
+      <div class="stat-row"><span class="stat-label">Cadencia</span><span class="stat-value" style="color:#ce93d8">70–80 RPM</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Ritmo constante. Debes poder mantener respiración elevada pero constante.</div>
+    </div>
+    <div class="cardio-option" style="border-color:rgba(245,166,35,0.4)">
+      <div class="cardio-option-title"><span style="color:var(--orange)">🟠</span> Opción 3 — Salir a correr</div>
+      <div class="stat-row"><span class="stat-label">Duración</span><span class="stat-value val-orange">15–20 min</span></div>
+      <div class="stat-row"><span class="stat-label">Ritmo</span><span class="stat-value val-orange">6:00–6:30 min/km</span></div>
+      <div class="stat-row"><span class="stat-label">Tipo</span><span class="stat-value val-orange">Constante</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Evitar sprints o esfuerzos muy intensos. Ritmo cómodo y constante.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OBJETIVOS -->
+<div class="section" id="objetivos">
+  <div class="section-title">OBJETIVOS & <span>EXPECTATIVAS</span></div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="phase-card">
+      <div class="phase-title">📈 FASE 1 — Semanas 1-4</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Mejora clara en la fuerza en ejercicios principales</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Mejor técnica y mayor control del movimiento</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Aumento progresivo de cargas semana a semana</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Mayor conexión mente–músculo</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Ligero aumento de masa muscular (+0,6 kg)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Inicio de la reducción de grasa corporal</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Mejor postura y estabilidad general</div>
+      <div style="margin-top:14px;padding:12px;background:rgba(33,150,243,0.06);border-radius:8px;font-size:13px;color:var(--gray)">
+        💡 El objetivo NO es transformar el físico de golpe. Es construir una base sólida y crear el hábito de progresar.
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-title">📈 FASE 2 — Semanas 4-8</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Reducción progresiva del % graso de abdomen y lumbar</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Mayor definición y masa muscular en todos los grupos</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Espalda con más forma y anchura</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Mejor tono muscular general</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Aumento claro de fuerza en ejercicios principales</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Mejora notable de tren inferior</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>La ropa empezará a quedar más apretada</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Mayor energía y mejor recuperación</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-red">🎯 OBJETIVO FINAL — 12 semanas</div>
+    <div class="grid-4">
+      <div style="text-align:center;padding:16px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green)">-2 kg</div>
+        <div style="font-size:13px;color:var(--gray)">grasa corporal</div>
+      </div>
+      <div style="text-align:center;padding:16px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--orange)">+2,5 kg</div>
+        <div style="font-size:13px;color:var(--gray)">masa muscular</div>
+      </div>
+      <div style="text-align:center;padding:16px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--blue)">16-17%</div>
+        <div style="font-size:13px;color:var(--gray)">grasa corporal final</div>
+      </div>
+      <div style="text-align:center;padding:16px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--red)">83,5 kg</div>
+        <div style="font-size:13px;color:var(--gray)">peso estimado</div>
+      </div>
+    </div>
+  </div>
+  <div class="profile-quote" style="margin-top:24px">
+    <em>"Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito."</em>
+    <div class="signature">— ARISTÓTELES · VÍA @ELVYFIT9</div>
+    <div style="margin-top:16px;font-size:13px;color:var(--gray)">📱 +34 640 064 383 · elvyfit.bcn@gmail.com</div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <div class="modal-title" id="modalTitle">Ejercicio</div>
+    <div class="video-placeholder" id="videoPlaceholder" onclick="searchVideo()">
+      <div class="video-icon">▶️</div>
+      <div style="font-size:15px;font-weight:700">Buscar en YouTube</div>
+      <div style="font-size:13px;color:var(--gray)" id="modalQuery"></div>
+    </div>
+    <a class="video-search-link" id="ytLink" href="#" target="_blank" rel="noopener">
+      🔴 Ver en YouTube
+    </a>
+  </div>
+</div>
+
+<script>
+  function showTab(tab) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function showDay(day) {
+    document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('day-' + day).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleDay(id) {
+    const body = document.getElementById('body-' + id);
+    const chev = document.getElementById('chev-' + id);
+    body.classList.toggle('open');
+    chev.classList.toggle('open');
+  }
+
+  let currentQuery = '';
+  function openVideo(name, query) {
+    currentQuery = query;
+    document.getElementById('modalTitle').textContent = name;
+    document.getElementById('modalQuery').textContent = query;
+    const ytUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query + ' gym español');
+    document.getElementById('ytLink').href = ytUrl;
+    document.getElementById('videoModal').classList.add('open');
+  }
+
+  function closeVideo() {
+    document.getElementById('videoModal').classList.remove('open');
+  }
+
+  function searchVideo() {
+    const url = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(currentQuery + ' gym español');
+    window.open(url, '_blank');
+  }
+
+  document.getElementById('videoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeVideo();
+  });
+</script>
+</body>
+</html>
