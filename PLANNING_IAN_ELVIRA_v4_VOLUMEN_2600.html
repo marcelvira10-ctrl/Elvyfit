@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Elvira — Camino a un físico de ensueño · Fase Volumen · Asesoría Elvyfit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --card: #1c1c1c;
+    --border: #2a2a2a;
+    --red: #e50914;
+    --orange: #f5a623;
+    --green: #4caf50;
+    --blue: #2196f3;
+    --white: #ffffff;
+    --gray: #999999;
+    --light-gray: #cccccc;
+    --yellow: #ffd700;
+    --cyan: #00bcd4;
+    --olive: #8fbc5a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--white); font-family:'Inter',sans-serif; min-height:100vh; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(180deg,#001a1a 0%,#0a0a0a 100%);
+    padding: 48px 40px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background: radial-gradient(ellipse at 50% -20%, rgba(33,150,243,0.12) 0%, transparent 60%);
+  }
+  .hero-brand { font-family:'Bebas Neue',sans-serif; font-size:11px; letter-spacing:6px; color:var(--blue); margin-bottom:16px; position:relative; }
+  .hero-name { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,10vw,100px); line-height:0.9; color:var(--white); position:relative; }
+  .hero-sub { font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,7vw,72px); line-height:1; color:var(--red); position:relative; margin-bottom:20px; }
+  .hero-desc { color:var(--gray); font-size:15px; margin-bottom:24px; position:relative; }
+  .hero-badges { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
+  .badge { border:1.5px solid; border-radius:999px; padding:7px 18px; font-size:13px; font-weight:600; white-space:nowrap; }
+  .badge-red { border-color:var(--red); color:var(--red); }
+  .badge-yellow { border-color:var(--orange); color:var(--orange); }
+  .badge-green { border-color:var(--green); color:var(--green); }
+  .badge-blue { border-color:#5bc8f5; color:#5bc8f5; }
+  .badge-new { border-color:var(--yellow); color:var(--yellow); background:rgba(255,215,0,0.08); }
+  .badge-cyan { border-color:var(--cyan); color:var(--cyan); }
+
+  /* NAV */
+  nav {
+    background:var(--surface);
+    border-bottom:2px solid var(--red);
+    display:flex;
+    overflow-x:auto;
+    scrollbar-width:none;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-tab {
+    padding:16px 22px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gray);
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+    background:none;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    white-space:nowrap;
+    transition:all 0.2s;
+  }
+  .nav-tab:hover { color:var(--white); }
+  .nav-tab.active { color:var(--white); border-bottom:3px solid var(--red); }
+
+  /* SECTIONS */
+  .section { display:none; padding:40px; max-width:1300px; margin:0 auto; }
+  .section.active { display:block; }
+  @media(max-width:600px){ .section{ padding:16px; } }
+
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:36px;
+    margin-bottom:28px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .section-title::before { content:''; display:block; width:5px; height:36px; background:var(--red); border-radius:2px; }
+  .section-title span { color:var(--red); }
+
+  /* GRIDS */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  @media(max-width:900px){ .grid-4{grid-template-columns:1fr 1fr;} .grid-3{grid-template-columns:1fr;} .grid-2{grid-template-columns:1fr;} }
+  @media(max-width:600px){ .grid-4{grid-template-columns:1fr;} }
+
+  /* CARDS */
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:24px; }
+  .card-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .ct-red{color:var(--red);} .ct-orange{color:var(--orange);} .ct-green{color:var(--green);}
+  .ct-blue{color:var(--blue);} .ct-yellow{color:var(--yellow);} .ct-purple{color:#ce93d8;}
+  .ct-cyan{color:var(--cyan);}
+
+  .stat-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); }
+  .stat-row:last-child { border-bottom:none; }
+  .stat-label { color:var(--light-gray); font-size:14px; }
+  .stat-value { font-weight:700; font-size:14px; }
+  .val-red{color:var(--red);} .val-orange{color:var(--orange);} .val-green{color:var(--green);}
+  .val-yellow{color:var(--yellow);} .val-blue{color:#7dd3fc;} .val-cyan{color:var(--cyan);}
+
+  /* INFO BOXES */
+  .info-box { background:rgba(229,9,20,0.08); border:1px solid rgba(229,9,20,0.3); border-radius:8px; padding:16px 20px; margin-bottom:24px; font-size:14px; color:var(--light-gray); line-height:1.6; }
+  .info-box-green { background:rgba(76,175,80,0.08); border:1px solid rgba(76,175,80,0.3); }
+  .info-box-yellow { background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.3); }
+  .info-box-blue { background:rgba(33,150,243,0.08); border:1px solid rgba(33,150,243,0.3); }
+
+  /* MACRO DISPLAY */
+  .macro-display { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:28px; margin-bottom:24px; }
+  .macro-total { font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--orange); line-height:1; margin-bottom:4px; }
+  .macro-label { color:var(--gray); font-size:13px; margin-bottom:20px; }
+  .macro-bars { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .macro-item label { font-size:12px; color:var(--gray); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+  .macro-item .macro-val { font-size:22px; font-weight:700; margin:4px 0; }
+  .macro-item .macro-bar { height:4px; border-radius:2px; margin-top:6px; }
+
+  /* DAY TABS */
+  .day-tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .day-btn { padding:8px 16px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--card); color:var(--gray); transition:all 0.2s; }
+  .day-btn:hover { border-color:var(--red); color:var(--white); }
+  .day-btn.active { background:var(--red); border-color:var(--red); color:white; }
+  .day-content { display:none; }
+  .day-content.active { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  @media(max-width:1000px){ .day-content.active{grid-template-columns:1fr 1fr;} }
+  @media(max-width:600px){ .day-content.active{grid-template-columns:1fr;} }
+
+  .meal-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; }
+  .meal-card-title { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .meal-item { display:flex; justify-content:space-between; align-items:center; padding:5px 0; }
+  .meal-item-name { font-size:13px; color:var(--light-gray); }
+  .meal-item-qty { font-size:12px; font-weight:700; }
+  .qty-orange{color:var(--orange);} .qty-yellow{color:var(--yellow);} .qty-green{color:var(--green);} .qty-red{color:var(--red);} .qty-new{color:var(--yellow);}
+
+  /* CHIPS */
+  .chip { display:inline-flex; align-items:center; gap:4px; background:rgba(76,175,80,0.12); border:1px solid rgba(76,175,80,0.3); border-radius:4px; padding:2px 8px; font-size:11px; color:var(--green); font-weight:700; margin-left:6px; }
+  .chip-down { background:rgba(229,9,20,0.12); border-color:rgba(229,9,20,0.3); color:var(--red); }
+  .chip-new { background:rgba(255,215,0,0.14); border-color:rgba(255,215,0,0.45); color:var(--yellow); }
+
+  /* SHOPPING */
+  .shopping-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:900px){ .shopping-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:600px){ .shopping-grid{grid-template-columns:1fr;} }
+
+  /* TRAINING */
+  .training-day { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:16px; }
+  .training-header { padding:16px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; transition:background 0.2s; }
+  .training-header:hover { background:rgba(255,255,255,0.03); }
+  .training-header-title { font-family:'Bebas Neue',sans-serif; font-size:20px; display:flex; align-items:center; gap:10px; }
+  .training-body { display:none; padding:0 20px 20px; }
+  .training-body.open { display:block; }
+  .exercise-row { display:flex; justify-content:space-between; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--border); gap:16px; }
+  .exercise-row:last-child { border-bottom:none; }
+  .ex-name { font-size:14px; font-weight:600; flex:1; cursor:pointer; color:var(--white); transition:color 0.2s; }
+  .ex-name:hover { color:var(--red); }
+  .ex-sets { font-size:12px; color:var(--orange); font-weight:700; white-space:nowrap; }
+  .ex-rir { font-size:11px; color:var(--gray); white-space:nowrap; }
+  .ex-abs { font-size:12px; color:var(--cyan); font-weight:700; }
+
+  /* ABS BADGE */
+  .abs-badge { display:inline-flex; align-items:center; gap:4px; background:rgba(0,188,212,0.12); border:1px solid rgba(0,188,212,0.3); border-radius:4px; padding:2px 8px; font-size:11px; color:var(--cyan); font-weight:700; margin-left:8px; }
+
+  /* VIDEO MODAL */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:999; justify-content:center; align-items:center; padding:20px; }
+  .modal-overlay.open { display:flex; }
+  .modal-box { background:#1a1a1a; border:1px solid #333; border-radius:12px; padding:24px; max-width:700px; width:100%; position:relative; }
+  .modal-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--gray); font-size:22px; cursor:pointer; }
+  .modal-close:hover { color:var(--white); }
+  .modal-title { font-family:'Bebas Neue',sans-serif; font-size:26px; margin-bottom:16px; padding-right:32px; }
+  .video-placeholder { width:100%; aspect-ratio:16/9; background:#0d0d0d; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--gray); gap:12px; cursor:pointer; border:2px dashed var(--border); transition:all 0.2s; }
+  .video-placeholder:hover { border-color:var(--red); color:var(--red); }
+  .video-search-link { display:inline-flex; align-items:center; gap:8px; margin-top:12px; padding:10px 20px; background:var(--red); border-radius:6px; color:white; font-weight:600; font-size:14px; text-decoration:none; }
+
+  /* CARDIO */
+  .cardio-option { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; }
+  .cardio-option-title { font-size:15px; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+
+  /* GOALS */
+  .goal-item { display:flex; align-items:flex-start; gap:10px; padding:6px 0; font-size:14px; color:var(--light-gray); line-height:1.5; }
+  .goal-dot { width:7px; height:7px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+
+  /* PHASE CARD */
+  .phase-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:24px; }
+  .phase-title { font-family:'Bebas Neue',sans-serif; font-size:22px; margin-bottom:16px; color:var(--orange); }
+
+  /* QUOTE */
+  .profile-quote { background:linear-gradient(135deg,#001a00,#0a0a0a); border:1px solid rgba(76,175,80,0.3); border-radius:12px; padding:32px; font-style:italic; font-size:16px; line-height:1.8; color:var(--light-gray); text-align:center; margin-top:24px; }
+  .profile-quote strong { color:var(--white); font-style:normal; }
+  .profile-quote .signature { margin-top:16px; font-size:13px; color:var(--green); font-style:normal; font-weight:700; letter-spacing:2px; }
+
+  /* SUPP */
+  .supp-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; display:flex; align-items:center; gap:14px; }
+  .supp-icon { font-size:24px; }
+  .supp-name { font-weight:700; font-size:15px; }
+  .supp-dose { font-size:13px; color:var(--orange); margin-top:2px; }
+  .supp-note { font-size:12px; color:var(--gray); margin-top:3px; }
+
+  /* CHEVRON */
+  .chevron { transition:transform 0.2s; font-size:16px; color:var(--gray); }
+  .chevron.open { transform:rotate(180deg); }
+
+  /* ============ SEGUIMIENTO ============ */
+  .seguimiento-tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .seg-btn { padding:8px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; border:1.5px solid var(--border); background:var(--card); color:var(--gray); transition:all 0.2s; }
+  .seg-btn:hover { border-color:var(--blue); color:var(--white); }
+  .seg-btn.active { background:var(--blue); border-color:var(--blue); color:white; }
+  .seg-content { display:none; }
+  .seg-content.active { display:block; }
+
+  .tracker-wrap { overflow-x:auto; }
+  .tracker-table { border-collapse:collapse; width:100%; min-width:900px; font-size:13px; }
+  .tracker-table th {
+    background:#111;
+    color:var(--gray);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    white-space:nowrap;
+    position:sticky;
+    top:0;
+    z-index:2;
+  }
+  .tracker-table td { border:1px solid var(--border); padding:0; vertical-align:middle; }
+  .tracker-table td input {
+    width:100%;
+    height:36px;
+    background:transparent;
+    border:none;
+    color:var(--white);
+    font-size:13px;
+    font-family:'Inter',sans-serif;
+    padding:0 10px;
+    outline:none;
+    text-align:center;
+  }
+  .tracker-table td input:focus { background:rgba(255,255,255,0.04); }
+  .tracker-table td input::placeholder { color:#444; }
+
+  .ex-header-row td {
+    background:#1a1a1a;
+    padding:10px 14px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.5px;
+  }
+  .ex-header-row.abs-row td { background:rgba(0,188,212,0.10); color:var(--cyan); }
+  .ex-header-row.normal-row td { background:rgba(255,166,35,0.08); color:var(--orange); }
+
+  .serie-label-cell {
+    padding:0 12px !important;
+    width:90px;
+    min-width:90px;
+    color:var(--gray);
+    font-size:12px;
+    font-weight:600;
+  }
+  .rir-cell { background:rgba(229,9,20,0.05) !important; }
+  .rir-cell input { color:var(--red) !important; }
+  .rir-fallo { color:var(--red); font-size:11px; font-weight:700; padding:0 8px; white-space:nowrap; }
+
+  .week-header-group th { text-align:center; }
+  .seg-week-num {
+    background:#1a0000 !important;
+    color:var(--red) !important;
+    font-size:11px !important;
+    border-bottom:2px solid var(--red) !important;
+  }
+
+  .save-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 24px;
+    background:var(--green);
+    color:#000;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+    transition:background 0.2s;
+  }
+  .save-btn:hover { background:#43a047; }
+  .save-btn.saved { background:var(--blue); color:white; }
+
+  .export-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 24px;
+    background:var(--card);
+    color:var(--orange);
+    font-weight:700;
+    font-size:14px;
+    border:1.5px solid var(--orange);
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+    margin-left:12px;
+    transition:all 0.2s;
+  }
+  .export-btn:hover { background:rgba(245,166,35,0.1); }
+
+  .clear-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 20px;
+    background:var(--card);
+    color:var(--red);
+    font-weight:700;
+    font-size:13px;
+    border:1.5px solid var(--red);
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+    margin-left:12px;
+  }
+
+  .progress-bar-wrap { background:#222; border-radius:4px; height:6px; margin-top:8px; }
+  .progress-bar-fill { height:6px; border-radius:4px; background:var(--green); transition:width 0.4s; }
+
+  .week-progress { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+  .week-pill {
+    padding:4px 10px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:700;
+    background:var(--card);
+    border:1px solid var(--border);
+    color:var(--gray);
+    cursor:pointer;
+    transition:all 0.15s;
+  }
+  .week-pill:hover { border-color:var(--blue); color:var(--white); }
+  .week-pill.has-data { border-color:var(--green); color:var(--green); }
+
+  /* ---- IAN: hero red accent + no-JS graceful degradation ---- */
+  .hero{background:linear-gradient(180deg,#1a0306 0%,#0a0a0a 100%);}
+  .hero::before{background:radial-gradient(ellipse at 50% -20%, rgba(229,9,20,0.16) 0%, transparent 60%);}
+  .hero-brand{color:var(--red);}
+  /* default (no JS): everything visible */
+  .section{display:block}
+  html.js .section{display:none}
+  html.js .section.active{display:block}
+  .day-content{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  @media(max-width:1000px){.day-content{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.day-content{grid-template-columns:1fr}}
+  html.js .day-content{display:none}
+  html.js .day-content.active{display:grid}
+  .training-body{display:block}
+  html.js .training-body{display:none}
+  html.js .training-body.open{display:block}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-brand">ASESORÍA ELVYFIT — MARC ELVIRA PEINADO</div>
+  <div class="hero-name">IAN ELVIRA</div>
+  <div class="hero-sub">CAMINO A UN FÍSICO DE ENSUEÑO</div>
+  <div class="hero-desc">Fase VOLUMEN (limpio) · Objetivo 70 kg · ≈2.600 kcal/día · Superávit moderado</div>
+  <div class="hero-badges">
+    <div class="badge badge-yellow">≈2.600 kcal / día</div>
+    <div class="badge badge-blue">P: 155g · C: 335g · G: 70g</div>
+    <div class="badge badge-green">🎯 Objetivo 70 kg</div>
+    <div class="badge badge-cyan">🚶 15.000 pasos · 7 días</div>
+    <div class="badge badge-new">🔼 SUPERÁVIT MODERADO</div>
+    <div class="badge badge-new">✦ FASE VOLUMEN</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-tab active" onclick="showTab('perfil')">PERFIL</button>
+  <button class="nav-tab" onclick="showTab('nutricion')">NUTRICIÓN</button>
+  <button class="nav-tab" onclick="showTab('dieta')">DIETA SEMANAL</button>
+  <button class="nav-tab" onclick="showTab('compra')">LISTA COMPRA</button>
+  <button class="nav-tab" onclick="showTab('entreno')">ENTRENAMIENTO</button>
+  <button class="nav-tab" onclick="showTab('cardio')">CARDIO</button>
+  <button class="nav-tab" onclick="showTab('objetivos')">OBJETIVOS</button>
+  <button class="nav-tab" onclick="showTab('seguimiento')">📊 SEGUIMIENTO</button>
+</nav>
+
+<!-- PERFIL -->
+<div class="section active" id="perfil">
+  <div class="section-title">PERFIL <span>ACTUAL</span></div>
+  <div class="info-box info-box-yellow">
+    🔼 <strong>Fase VOLUMEN limpio — hacia los 70 kg.</strong> Pasamos a un <strong>superávit moderado (≈2.600 kcal/día)</strong> para ganar peso de forma más limpia (más músculo, menos grasa). Priorizamos carbohidratos, reintroducimos grasas saludables y mantenemos la proteína alta.
+  </div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="card-title ct-red">📍 Punto de partida actual</div>
+      <div class="stat-row"><span class="stat-label">Edad</span><span class="stat-value val-orange">21 años</span></div>
+      <div class="stat-row"><span class="stat-label">Altura</span><span class="stat-value val-orange">1,69 m</span></div>
+      <div class="stat-row"><span class="stat-label">Peso actual</span><span class="stat-value val-orange">65,3 kg</span></div>
+      <div class="stat-row"><span class="stat-label">% Grasa aprox.</span><span class="stat-value val-orange">20–22 %</span></div>
+      <div class="stat-row"><span class="stat-label">Experiencia</span><span class="stat-value" style="color:var(--light-gray);font-size:12px">Base desde los 16 · 2 años sin estructura</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🎯 Objetivo — volumen limpio</div>
+      <div class="stat-row"><span class="stat-label">Peso objetivo</span><span class="stat-value val-green">70 kg</span></div>
+      <div class="stat-row"><span class="stat-label">Ritmo esperado</span><span class="stat-value val-green">~0,3–0,5 kg/sem</span></div>
+      <div class="stat-row"><span class="stat-label">Estrategia</span><span class="stat-value val-green">Superávit moderado · ≈2.600 kcal</span></div>
+      <div class="stat-row"><span class="stat-label">Tipo de peso</span><span class="stat-value" style="color:var(--light-gray);font-size:12px">Sobre todo músculo + poca grasa</span></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="card-title ct-green">✅ Qué vamos a hacer</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Superávit moderado (≈+600 kcal vs plan previo)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Carbohidratos altos + grasas saludables de vuelta</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Progresión de cargas en el gym (más fuerza = más músculo)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Proteína alta (~155 g) para maximizar el músculo</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-orange">⚠️ A tener en cuenta</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Primeros días: subida rápida por agua + glucógeno (normal)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Ganancia limpia = más lenta, pero de más calidad</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>No saltarse comidas: el superávit es lo que hace crecer</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Peso cada domingo en ayunas + fotos → Marc</div>
+    </div>
+  </div>
+  <div class="profile-quote">
+    "Ian, toca comer bien y entrenar fuerte. El músculo se construye con superávit, cargas y descanso.<br>
+    Vamos a subir de peso de forma limpia — con paciencia y constancia.<br>
+    <strong>Camino a los 70 kg.</strong> La diferencia está en la <strong>CONSTANCIA</strong>."
+    <div class="signature">— MARC ELVIRA · @ELVYFIT9</div>
+  </div>
+</div>
+
+<!-- NUTRICION -->
+<div class="section" id="nutricion">
+  <div class="section-title">NUTRICIÓN & <span>MACROS</span></div>
+  <div class="info-box info-box-yellow">
+    🔼 <strong>FASE VOLUMEN limpio — ≈2.600 kcal/día.</strong> Superávit moderado de ~+600 kcal vs el plan previo, para ganar peso de calidad. Priorizamos <strong>carbohidratos</strong> y reintroducimos <strong>grasas saludables</strong> (aceite, aguacate, frutos secos); proteína alta (~155 g). Todos los cambios van marcados ↑ / NUEVO.
+  </div>
+  <div class="macro-display">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:11px;color:var(--gray);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px">PLAN PREVIO</div>
+        <div class="macro-total" style="color:var(--gray);font-size:44px">2.000 kcal</div>
+        <div class="macro-label">Etapa anterior</div>
+        <div class="macro-bars">
+          <div class="macro-item"><label>Proteína</label><div class="macro-val" style="color:var(--blue)">134 g</div><div class="macro-bar" style="background:var(--blue);width:60%"></div></div>
+          <div class="macro-item"><label>Carbos</label><div class="macro-val" style="color:var(--orange)">255 g</div><div class="macro-bar" style="background:var(--orange);width:60%"></div></div>
+          <div class="macro-item"><label>Grasas</label><div class="macro-val" style="color:#f48fb1">30 g</div><div class="macro-bar" style="background:#f48fb1;width:26%"></div></div>
+        </div>
+      </div>
+      <div style="border-left:2px solid var(--border);padding-left:24px">
+        <div style="font-size:11px;color:var(--yellow);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px">FASE VOLUMEN 🔼</div>
+        <div class="macro-total" style="color:var(--yellow)">≈2.600 kcal</div>
+        <div class="macro-label">Superávit moderado · volumen limpio</div>
+        <div class="macro-bars">
+          <div class="macro-item"><label>Proteína</label><div class="macro-val" style="color:var(--blue)">155 g <span style="color:var(--green);font-size:11px">↑+21</span></div><div class="macro-bar" style="background:var(--blue);width:68%"></div></div>
+          <div class="macro-item"><label>Carbos</label><div class="macro-val" style="color:var(--orange)">335 g <span style="color:var(--green);font-size:11px">↑+80</span></div><div class="macro-bar" style="background:var(--orange);width:78%"></div></div>
+          <div class="macro-item"><label>Grasas</label><div class="macro-val" style="color:#f48fb1">70 g <span style="color:var(--green);font-size:11px">↑+40</span></div><div class="macro-bar" style="background:#f48fb1;width:52%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="font-size:24px">SUPLEMENTOS <span>DIARIOS</span></div>
+  <div class="grid-2" style="margin-bottom:28px">
+    <div class="supp-item"><div class="supp-icon">💊</div><div><div class="supp-name">Creatina Monohidrato</div><div class="supp-dose">5 g / día</div><div class="supp-note">Da igual el momento. Mejor junto a la proteína.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">🥛</div><div><div class="supp-name">Whey Isolate</div><div class="supp-dose">40 g / día <span style="color:var(--green);font-size:11px">↑ antes 30g</span></div><div class="supp-note">Comida 4 / merienda</div></div></div>
+  </div>
+
+  <div class="section-title" style="font-size:24px">NOTAS <span>CLAVE</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title ct-cyan">🍽️ Comer para crecer — PRIORIDAD</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div><strong>No saltarse ninguna comida</strong> — el superávit es lo que hace subir</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Si te cuesta, bebe parte de las calorías (batidos, leche, crema de arroz)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Agua: 3,5 L mínimo al día</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Peso cada domingo en ayunas + fotos → Marc</div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-orange">🍽️ Flexibilidad y reglas</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>2 comidas libres por semana (C3 o C5 preferiblemente)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Arroz ↔ pasta: 60 g pasta = 50 g arroz crudo</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Aceite de oliva de vuelta: cocina/aliña con él sin problema</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--orange)"></div>Café con leche entera OK · evita ultraprocesados igualmente</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIETA -->
+<div class="section" id="dieta">
+  <div class="section-title">DIETA <span>SEMANAL</span></div>
+  <div class="info-box info-box-yellow">
+    🔼 <strong>FASE VOLUMEN (≈2.600 kcal):</strong> Huevos 2→3 · Avena 30 g NUEVO · Pan 2→3 reb · Queso cabra 10→20 g · Aguacate ¼→½ · Queso fresco 100→150 g · Frutos secos 30 g NUEVO · Arroz 75→120 g / Pasta 90→150 g · Proteína C3/C5 →150 g · Aceite 12 ml (vuelve) · Whey 30→40 g · Plátano 1→2 · Crema arroz 40→50 g · Patata/Boniato 200→300 g.
+  </div>
+  <div class="day-tabs">
+    <button class="day-btn active" onclick="showDay('lunes')">LUN</button>
+    <button class="day-btn" onclick="showDay('martes')">MAR</button>
+    <button class="day-btn" onclick="showDay('miercoles')">MIÉ</button>
+    <button class="day-btn" onclick="showDay('jueves')">JUE</button>
+    <button class="day-btn" onclick="showDay('viernes')">VIE</button>
+    <button class="day-btn" onclick="showDay('sabado')">SÁB</button>
+    <button class="day-btn" onclick="showDay('domingo')">DOM</button>
+  </div>
+  <div class="day-content active" id="day-lunes">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz integral (crudo) <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Pechuga pollo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Brócoli</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Salmón <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Patata <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-martes">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz blanco (crudo) <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Ternera magra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Merluza <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Patata <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-miercoles">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Pavo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Brócoli</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Pechuga pollo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Boniato <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-jueves">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz blanco <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Pechuga pollo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Zanahoria + calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Merluza <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Patata <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-viernes">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Ternera magra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Brócoli</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Salmón <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Boniato <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-sabado">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Pasta (mac./spag.) <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Pechuga pollo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Calabacín</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Pavo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Patata <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+  <div class="day-content" id="day-domingo">
+    <div class="meal-card"><div class="meal-card-title ct-orange">🌅 C1 — DESAYUNO</div><div class="meal-item"><span class="meal-item-name">Huevos <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 ud</span></div><div class="meal-item"><span class="meal-item-name">Claras</span><span class="meal-item-qty qty-orange">150 ml</span></div><div class="meal-item"><span class="meal-item-name">Avena <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div><div class="meal-item"><span class="meal-item-name">Pan espelta integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">3 reb.</span></div><div class="meal-item"><span class="meal-item-name">Queso de cabra <span class="chip">↑</span></span><span class="meal-item-qty qty-green">20 g</span></div><div class="meal-item"><span class="meal-item-name">Aguacate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">½ ud</span></div><div class="meal-item"><span class="meal-item-name">Arándanos</span><span class="meal-item-qty qty-orange">50 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-blue">☕ C2 — MEDIA MAÑANA</div><div class="meal-item"><span class="meal-item-name">Queso fresco batido 0% <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Manzana</span><span class="meal-item-qty qty-orange">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Frutos secos (nueces/almendras) <span class="chip chip-new">NUEVO</span></span><span class="meal-item-qty qty-new">30 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-green">🍽️ C3 — COMIDA PRINCIPAL</div><div class="meal-item"><span class="meal-item-name">Arroz integral <span class="chip">↑</span></span><span class="meal-item-qty qty-green">120 g</span></div><div class="meal-item"><span class="meal-item-name">Pavo <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Brócoli</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Aceite oliva <span class="chip">↑</span></span><span class="meal-item-qty qty-green">12 ml</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-purple">💪 C4 — MERIENDA</div><div class="meal-item"><span class="meal-item-name">Whey Isolate <span class="chip">↑</span></span><span class="meal-item-qty qty-green">40 g</span></div><div class="meal-item"><span class="meal-item-name">Plátano <span class="chip">↑</span></span><span class="meal-item-qty qty-green">2 ud</span></div><div class="meal-item"><span class="meal-item-name">Crema de arroz <span class="chip">↑</span></span><span class="meal-item-qty qty-green">50 g</span></div><div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty qty-orange">5 g</span></div></div>
+    <div class="meal-card"><div class="meal-card-title ct-red">🌙 C5 — CENA</div><div class="meal-item"><span class="meal-item-name">Merluza <span class="chip">↑</span></span><span class="meal-item-qty qty-green">150 g</span></div><div class="meal-item"><span class="meal-item-name">Espinacas</span><span class="meal-item-qty qty-orange">150 g</span></div><div class="meal-item"><span class="meal-item-name">Patata <span class="chip">↑</span></span><span class="meal-item-qty qty-green">300 g</span></div></div>
+  </div>
+</div>
+
+<!-- COMPRA -->
+<div class="section" id="compra">
+  <div class="section-title">LISTA DE <span>COMPRA</span></div>
+  <div class="info-box info-box-yellow">
+    Cantidades para 7 días de <strong>FASE VOLUMEN (≈2.600 kcal/día)</strong>. 🔼 = subido vs plan previo · NUEVO = alimento nuevo.
+  </div>
+  <div class="shopping-grid">
+    <div class="card">
+      <div class="card-title ct-orange">🌅 COMIDA 1 — DESAYUNO</div>
+      <div class="stat-row"><span class="stat-label">Huevos 🔼</span><span class="stat-value val-green">21 unidades</span></div>
+      <div class="stat-row"><span class="stat-label">Claras de huevo</span><span class="stat-value val-orange">1.050 ml</span></div>
+      <div class="stat-row"><span class="stat-label">Avena NUEVO</span><span class="stat-value val-yellow">210 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pan espelta integral 🔼</span><span class="stat-value val-green">21 rebanadas</span></div>
+      <div class="stat-row"><span class="stat-label">Queso de cabra 🔼</span><span class="stat-value val-green">140 g</span></div>
+      <div class="stat-row"><span class="stat-label">Aguacate 🔼</span><span class="stat-value val-green">~500 g (4 ud)</span></div>
+      <div class="stat-row"><span class="stat-label">Arándanos</span><span class="stat-value val-orange">350 g</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-blue">☕ COMIDA 2 — MEDIA MAÑANA</div>
+      <div class="stat-row"><span class="stat-label">Queso fresco batido 0% 🔼</span><span class="stat-value val-green">1.050 g</span></div>
+      <div class="stat-row"><span class="stat-label">Manzanas</span><span class="stat-value val-orange">14 unidades</span></div>
+      <div class="stat-row"><span class="stat-label">Frutos secos (nueces/almendras) NUEVO</span><span class="stat-value val-yellow">210 g</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-green">🍽️ COMIDA 3 — PRINCIPAL</div>
+      <div class="stat-row"><span class="stat-label">Pechuga pollo 🔼</span><span class="stat-value val-green">450 g</span></div>
+      <div class="stat-row"><span class="stat-label">Ternera magra 🔼</span><span class="stat-value val-green">300 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pavo 🔼</span><span class="stat-value val-green">300 g</span></div>
+      <div class="stat-row"><span class="stat-label">Arroz integral 🔼</span><span class="stat-value val-green">480 g</span></div>
+      <div class="stat-row"><span class="stat-label">Arroz blanco 🔼</span><span class="stat-value val-green">240 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pasta (mac./spag.) 🔼</span><span class="stat-value val-green">150 g</span></div>
+      <div class="stat-row"><span class="stat-label">Verduras (brócoli, calabacín, zanahoria)</span><span class="stat-value val-orange">1.050 g</span></div>
+      <div class="stat-row"><span class="stat-label">Aceite de oliva 🔼 (vuelve)</span><span class="stat-value val-green">84 ml</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-purple">💪 COMIDA 4 — MERIENDA</div>
+      <div class="stat-row"><span class="stat-label">Plátanos 🔼</span><span class="stat-value val-green">14 unidades</span></div>
+      <div class="stat-row"><span class="stat-label">Crema de arroz 🔼</span><span class="stat-value val-green">350 g</span></div>
+      <div class="stat-row"><span class="stat-label">Whey Isolate 🔼</span><span class="stat-value val-green">280 g</span></div>
+      <div class="stat-row"><span class="stat-label">Creatina</span><span class="stat-value val-orange">35 g</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-red">🌙 COMIDA 5 — CENA</div>
+      <div class="stat-row"><span class="stat-label">Salmón 🔼</span><span class="stat-value val-green">300 g</span></div>
+      <div class="stat-row"><span class="stat-label">Merluza 🔼</span><span class="stat-value val-green">450 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pechuga pollo (cena) 🔼</span><span class="stat-value val-green">150 g</span></div>
+      <div class="stat-row"><span class="stat-label">Pavo (cena) 🔼</span><span class="stat-value val-green">150 g</span></div>
+      <div class="stat-row"><span class="stat-label">Espinacas</span><span class="stat-value val-orange">1.050 g</span></div>
+      <div class="stat-row"><span class="stat-label">Patata 🔼</span><span class="stat-value val-green">1.500 g</span></div>
+      <div class="stat-row"><span class="stat-label">Boniato 🔼</span><span class="stat-value val-green">600 g</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title ct-cyan">💧 LÍQUIDOS & EXTRAS</div>
+      <div class="stat-row"><span class="stat-label">Agua</span><span class="stat-value val-cyan">≥21 L / semana</span></div>
+      <div style="margin-top:12px;padding:10px;background:rgba(76,175,80,0.08);border:1px solid rgba(76,175,80,0.25);border-radius:6px;font-size:12px;color:var(--green)">
+        🔼 <strong>Fase volumen:</strong> el aceite de oliva vuelve y entran avena y frutos secos. Si no te entra tanta comida: batidos con leche entera + plátano + crema de arroz.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENTRENAMIENTO -->
+<div class="section" id="entreno">
+  <div class="section-title">PLAN DE <span>ENTRENAMIENTO</span></div>
+  <div class="info-box">
+    🔹 Sistema rotativo 5 días + 2 de descanso. Serie de prueba antes de cada ejercicio. Tempo 2–1–1–1. Descansos: 3 min grandes, 2:30 min aislamientos. Trabajo a 1–2 RIR, última serie al fallo. <strong>Clic en cualquier ejercicio 🎬 para ver el vídeo.</strong>
+  </div>
+  <div class="grid-4" style="margin-bottom:24px">
+    <div class="card" style="border-color:rgba(33,150,243,0.4)">
+      <div style="font-size:10px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 1 · LUNES</div>
+      <div style="font-size:13px;font-weight:700">Pecho · Hombro · Tríceps</div></div>
+    <div class="card" style="border-color:rgba(229,9,20,0.4)">
+      <div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 2 · MARTES</div>
+      <div style="font-size:13px;font-weight:700">Espalda · Bíceps</div></div>
+    <div class="card" style="border-color:rgba(76,175,80,0.4)">
+      <div style="font-size:10px;color:var(--green);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 3 · MIÉRCOLES</div>
+      <div style="font-size:13px;font-weight:700">Pierna Completa</div></div>
+    <div class="card" style="border-color:rgba(33,150,243,0.4)">
+      <div style="font-size:10px;color:var(--blue);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 4 · JUEVES</div>
+      <div style="font-size:13px;font-weight:700">Pecho · Hombro</div></div>
+    <div class="card" style="border-color:rgba(229,9,20,0.4)">
+      <div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 5 · VIERNES</div>
+      <div style="font-size:13px;font-weight:700">Espalda · Bíceps · Tríceps</div></div>
+    <div class="card" style="border-color:rgba(150,150,150,0.3)">
+      <div style="font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 6 · SÁBADO</div>
+      <div style="font-size:13px;font-weight:700">Descanso</div>
+      <div style="margin-top:4px;font-size:11px;color:var(--gray)">15.000 pasos</div></div>
+    <div class="card" style="border-color:rgba(150,150,150,0.3)">
+      <div style="font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1.5px;margin-bottom:6px">DÍA 7 · DOMINGO</div>
+      <div style="font-size:13px;font-weight:700">Descanso</div>
+      <div style="margin-top:4px;font-size:11px;color:var(--gray)">15.000 pasos · peso + fotos</div></div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t1')">
+      <div class="training-header-title"><span style="color:var(--blue)">🔵</span> DÍA 1 — PECHO · HOMBRO · TRÍCEPS</div>
+      <span class="chevron" id="chev-t1">▼</span>
+    </div>
+    <div class="training-body" id="body-t1">
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press máquina pecho plano','press máquina pecho plano tutorial')">Press máquina pecho plano 🎬</div><div class="ex-sets">3×6 · 8 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press máquina pecho inclinado','press máquina pecho inclinado tutorial')">Press máquina pecho inclinado 🎬</div><div class="ex-sets">2×8 · 10</div></div><div class="ex-rir">RIR 0 · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Pec Deck','pec deck tutorial')">Pec Deck 🎬</div><div class="ex-sets">3×10 · 10 · 10</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press militar máquina','press militar máquina tutorial')">Press militar máquina 🎬</div><div class="ex-sets">3×6 · 8 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Elevaciones laterales mancuernas','elevaciones laterales mancuernas tutorial')">Elevaciones laterales mancuernas 🎬</div><div class="ex-sets">3×10 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Tríceps katana unilateral','tríceps katana unilateral tutorial')">Tríceps katana unilateral 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Fondos en máquina','fondos en máquina tutorial')">Fondos en máquina 🎬</div><div class="ex-sets">3×8 · 10 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+    </div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t2')">
+      <div class="training-header-title"><span style="color:var(--red)">🔴</span> DÍA 2 — ESPALDA · BÍCEPS</div>
+      <span class="chevron" id="chev-t2">▼</span>
+    </div>
+    <div class="training-body" id="body-t2">
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Jalón al pecho agarre prono','jalón al pecho agarre prono tutorial')">Jalón al pecho agarre prono 🎬</div><div class="ex-sets">3×6 · 8 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Remo máquina unilateral agarre supino (por brazo)','remo máquina unilateral agarre supino tutorial')">Remo máquina unilateral agarre supino (por brazo) 🎬</div><div class="ex-sets">3×8 · 8 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Jalón al pecho agarre cerrado','jalón al pecho agarre cerrado tutorial')">Jalón al pecho agarre cerrado 🎬</div><div class="ex-sets">3×8 · 10 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Pullover en polea','pullover en polea tutorial')">Pullover en polea 🎬</div><div class="ex-sets">3×10 · 10 · 12</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl predicador máquina','curl predicador máquina tutorial')">Curl predicador máquina 🎬</div><div class="ex-sets">3×8 · 10 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl martillo','curl martillo tutorial')">Curl martillo 🎬</div><div class="ex-sets">3×8 · 8 · 10</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+    </div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t3')">
+      <div class="training-header-title"><span style="color:var(--green)">🟢</span> DÍA 3 — PIERNA COMPLETA</div>
+      <span class="chevron" id="chev-t3">▼</span>
+    </div>
+    <div class="training-body" id="body-t3">
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Sentadilla Hack en máquina','sentadilla hack en máquina tutorial')">Sentadilla Hack en máquina 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Prensa inclinada','prensa inclinada tutorial')">Prensa inclinada 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Sentadilla búlgara (por pierna)','sentadilla búlgara tutorial')">Sentadilla búlgara (por pierna) 🎬</div><div class="ex-sets">3×10 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Extensión de cuádriceps en máquina','extensión de cuádriceps en máquina tutorial')">Extensión de cuádriceps en máquina 🎬</div><div class="ex-sets">3×10 · 12 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl femoral sentado','curl femoral sentado tutorial')">Curl femoral sentado 🎬</div><div class="ex-sets">4×8 · 10 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Gemelo en máquina','gemelo en máquina tutorial')">Gemelo en máquina 🎬</div><div class="ex-sets">4×10 · 10 · 12 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO · FALLO</div></div>
+    </div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t4')">
+      <div class="training-header-title"><span style="color:var(--blue)">🔵</span> DÍA 4 — PECHO · HOMBRO</div>
+      <span class="chevron" id="chev-t4">▼</span>
+    </div>
+    <div class="training-body" id="body-t4">
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press militar con mancuernas','press militar con mancuernas tutorial')">Press militar con mancuernas 🎬</div><div class="ex-sets">3×6 · 8 · 8</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Elevación lateral unilateral en polea (por brazo)','elevación lateral unilateral en polea tutorial')">Elevación lateral unilateral en polea (por brazo) 🎬</div><div class="ex-sets">3×8 · 10 · 10</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Pájaros en máquina unilateral (Pec Deck inv.)','pájaros en máquina unilateral tutorial')">Pájaros en máquina unilateral (Pec Deck inv.) 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press inclinado en multipower (pecho sup.)','press inclinado en multipower tutorial')">Press inclinado en multipower (pecho sup.) 🎬</div><div class="ex-sets">3×6 · 8 · 8</div></div><div class="ex-rir">RIR 0 · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Cruces en polea baja (pecho inferior)','cruces en polea baja tutorial')">Cruces en polea baja (pecho inferior) 🎬</div><div class="ex-sets">3×10 · 10 · 12</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+    </div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" onclick="toggleDay('t5')">
+      <div class="training-header-title"><span style="color:var(--red)">🔴</span> DÍA 5 — ESPALDA · BÍCEPS · TRÍCEPS</div>
+      <span class="chevron" id="chev-t5">▼</span>
+    </div>
+    <div class="training-body" id="body-t5">
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Remo en T','remo en t tutorial')">Remo en T 🎬</div><div class="ex-sets">3×6 · 8 · 10</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl de bíceps tumbado en banco','curl de bíceps tumbado en banco tutorial')">Curl de bíceps tumbado en banco 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl de bíceps en polea arriba unilateral (cada brazo)','curl de bíceps en polea arriba unilateral tutorial')">Curl de bíceps en polea arriba unilateral (cada brazo) 🎬</div><div class="ex-sets">2×8 · 10</div></div><div class="ex-rir">FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Curl predicador en máquina','curl predicador en máquina tutorial')">Curl predicador en máquina 🎬</div><div class="ex-sets">3×8 · 10 · 12</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Extensión de tríceps en polea unilateral','extensión de tríceps en polea unilateral tutorial')">Extensión de tríceps en polea unilateral 🎬</div><div class="ex-sets">3×8 · 10 · 10</div></div><div class="ex-rir">FALLO · FALLO · FALLO</div></div>
+      <div class="exercise-row"><div><div class="ex-name" onclick="openVideo('Press francés barra recta','press francés barra recta tutorial')">Press francés barra recta 🎬</div><div class="ex-sets">4×6 · 8 · 10 · 10</div></div><div class="ex-rir">FALLO · FALLO · FALLO · FALLO</div></div>
+    </div>
+  </div>
+  <div class="training-day">
+    <div class="training-header" style="cursor:default">
+      <div class="training-header-title"><span style="color:var(--gray)">⚪</span> DÍA 6 y 7 — DESCANSO</div>
+      <span style="font-size:12px;color:var(--gray)">Recupera · duerme 7–9 h · 15.000 pasos</span>
+    </div>
+  </div>
+</div>
+
+<!-- CARDIO -->
+<div class="section" id="cardio">
+  <div class="section-title">CARDIO <span>IAN</span></div>
+  <div class="info-box" style="background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.35)">
+    🚶 <strong>Ian — pasos en volumen.</strong> Ahora mismo <strong>NO estás llegando a los 15.000 pasos diarios</strong>. Es imprescindible cumplirlos SÍ O SÍ: son la pieza que mantiene el gasto y una recomposición limpia mientras subimos los carbohidratos. Sin esos pasos, el extra de energía se aprovecha peor y cuesta más ver el abdomen.
+  </div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card" style="border-color:rgba(0,188,212,0.4)">
+      <div class="card-title ct-cyan">📅 Frecuencia — 7 DÍAS</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>L·M·X·J·V: pasos repartidos en el día + tras pesas</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>SÁB·DOM (descanso de pesas): igualmente 15.000 pasos</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Paseos post-comida, escaleras, caminar al gym</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--cyan)"></div>Apunta los pasos en el seguimiento si quieres</div>
+    </div>
+    <div class="card" style="border-color:rgba(255,215,0,0.4)">
+      <div class="card-title ct-yellow">🚶 15.000 pasos — MÍNIMO DIARIO</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--yellow)"></div><strong>15.000 pasos mínimo cada día</strong> — sin excepción</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--yellow)"></div>Si te pasas, no pasa nada — mejor</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--yellow)"></div>Realiza el cardio después del entreno de pesas</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Objetivo: facilitar la pérdida de grasa y subir el gasto</div>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="cardio-option" style="border-color:rgba(76,175,80,0.4)">
+      <div class="cardio-option-title"><span style="color:var(--green)">🟢</span> Opción 1 — Cinta (RECOMENDADO)</div>
+      <div class="stat-row"><span class="stat-label">Hasta</span><span class="stat-value val-green">15.000 pasos</span></div>
+      <div class="stat-row"><span class="stat-label">Velocidad</span><span class="stat-value val-green">5 – 5,5 km/h</span></div>
+      <div class="stat-row"><span class="stat-label">Inclinación</span><span class="stat-value val-green">6 – 8 %</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Respiración elevada pero pudiendo hablar.</div>
+    </div>
+    <div class="cardio-option" style="border-color:rgba(156,39,176,0.4)">
+      <div class="cardio-option-title">🟣 Opción 2 — Caminar por la calle</div>
+      <div class="stat-row"><span class="stat-label">Hasta</span><span class="stat-value" style="color:#ce93d8">15.000 pasos</span></div>
+      <div class="stat-row"><span class="stat-label">Intensidad</span><span class="stat-value" style="color:#ce93d8">Moderada</span></div>
+      <div class="stat-row"><span class="stat-label">Cadencia</span><span class="stat-value" style="color:#ce93d8">70–80 RPM</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Ritmo constante y continuo.</div>
+    </div>
+    <div class="cardio-option" style="border-color:rgba(245,166,35,0.4)">
+      <div class="cardio-option-title">🟠 Opción 3 — Salir a correr</div>
+      <div class="stat-row"><span class="stat-label">Hasta</span><span class="stat-value val-orange">15.000 pasos</span></div>
+      <div class="stat-row"><span class="stat-label">Ritmo</span><span class="stat-value val-orange">6:00–6:30 min/km</span></div>
+      <div class="stat-row"><span class="stat-label">Tipo</span><span class="stat-value val-orange">Constante</span></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--gray);line-height:1.5">Evitar sprints. Ritmo cómodo.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OBJETIVOS -->
+<div class="section" id="objetivos">
+  <div class="section-title">OBJETIVOS & <span>EXPECTATIVAS</span></div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="phase-card">
+      <div class="phase-title">📈 Semanas 1–2 (Arranque)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Subida inicial en la báscula por agua + glucógeno: +1 a +1,5 kg</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Más fuerza y mejores bombeos en el gym</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--blue)"></div>Adaptación a comer algo más — no fallar comidas</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-title">📈 A partir de la semana 3 (Ganancia limpia)</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Ganancia lenta y de calidad: ~0,3–0,5 kg/semana</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Músculo más lleno en pecho, hombros y espalda</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Progresión clara de cargas semana a semana</div>
+      <div class="goal-item"><div class="goal-dot" style="background:var(--green)"></div>Poca grasa acumulada gracias al superávit moderado</div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-title ct-red">🎯 OBJETIVO — VOLUMEN LIMPIO</div>
+    <div class="grid-4">
+      <div style="text-align:center;padding:16px"><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green)">70 kg</div><div style="font-size:13px;color:var(--gray)">peso objetivo</div></div>
+      <div style="text-align:center;padding:16px"><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--orange)">+4,7 kg</div><div style="font-size:13px;color:var(--gray)">ganancia total</div></div>
+      <div style="text-align:center;padding:16px"><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--yellow)">≈2.600</div><div style="font-size:13px;color:var(--gray)">kcal / día</div></div>
+      <div style="text-align:center;padding:16px"><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--blue)">~0,4</div><div style="font-size:13px;color:var(--gray)">kg / semana</div></div>
+      <div style="text-align:center;padding:16px"><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--cyan)">Limpio</div><div style="font-size:13px;color:var(--gray)">tipo de volumen</div></div>
+    </div>
+  </div>
+  <div class="profile-quote">
+    <em>"Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito."</em>
+    <div class="signature">— ARISTÓTELES · VÍA @ELVYFIT9</div>
+    <div style="margin-top:16px;font-size:13px;color:var(--gray)">📱 +34 640 064 383 · elvyfit.bcn@gmail.com</div>
+  </div>
+</div>
+
+<!-- SEGUIMIENTO -->
+<div class="section" id="seguimiento">
+  <div class="section-title">📊 SEGUIMIENTO <span>6 SEMANAS</span></div>
+  <div class="info-box info-box-blue">
+    📝 Rellena peso (kg), repeticiones y RIR de cada serie cada semana. Los datos se guardan automáticamente en tu navegador. Objetivo: cada semana <strong>+1–2 reps o +2,5 kg</strong>.
+  </div>
+  <noscript><div class="info-box" style="background:rgba(229,9,20,0.08);border-color:rgba(229,9,20,0.3)">⚠ Para rellenar y guardar el seguimiento, abre este archivo en <strong>Chrome o Safari</strong> (no dentro del visor de WhatsApp). El resto del plan se ve sin problema.</div></noscript>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+    <button class="save-btn" onclick="saveData()">💾 Guardar todo</button>
+    <button class="export-btn" onclick="exportCSV()">📥 Exportar CSV</button>
+    <button class="clear-btn" onclick="confirmClear()">🗑 Borrar todo</button>
+    <div id="saveStatus" style="font-size:13px;color:var(--green);display:none">✓ Guardado</div>
+  </div>
+  <div class="seguimiento-tabs" id="segTabs"></div>
+  <div id="segContents"></div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <div class="modal-title" id="modalTitle">Ejercicio</div>
+    <div class="video-placeholder" onclick="searchVideo()">
+      <div style="font-size:40px">▶️</div>
+      <div style="font-size:15px;font-weight:700">Buscar en YouTube</div>
+      <div style="font-size:13px;color:var(--gray)" id="modalQuery"></div>
+    </div>
+    <a class="video-search-link" id="ytLink" href="#" target="_blank" rel="noopener">🔴 Ver en YouTube</a>
+  </div>
+</div>
+
+<script>
+function showTab(tab){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById(tab).classList.add('active');event.target.classList.add('active');window.scrollTo(0,0);}
+function showDay(day){document.querySelectorAll('.day-content').forEach(d=>d.classList.remove('active'));document.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('active'));document.getElementById('day-'+day).classList.add('active');event.target.classList.add('active');}
+function toggleDay(id){document.getElementById('body-'+id).classList.toggle('open');document.getElementById('chev-'+id).classList.toggle('open');}
+
+let currentQuery='';
+function openVideo(name,query){currentQuery=query;document.getElementById('modalTitle').textContent=name;document.getElementById('modalQuery').textContent=query;document.getElementById('ytLink').href='https://www.youtube.com/results?search_query='+encodeURIComponent(query+' español gym');document.getElementById('videoModal').classList.add('open');}
+function closeVideo(){document.getElementById('videoModal').classList.remove('open');}
+function searchVideo(){window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(currentQuery+' español gym'),'_blank');}
+document.getElementById('videoModal').addEventListener('click',e=>{if(e.target.id==='videoModal')closeVideo();});
+
+const DAYS=[
+  {
+    "id": "d1",
+    "label": "DÍA 1 — Pecho · Hombro · Tríceps",
+    "color": "#2196f3",
+    "exercises": [
+      {
+        "name": "Press máquina pecho plano",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Press máquina pecho inclinado",
+        "sets": [
+          "S1",
+          "S2"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Pec Deck",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Press militar máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Elevaciones laterales mancuernas",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Tríceps katana unilateral",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Fondos en máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d2",
+    "label": "DÍA 2 — Espalda · Bíceps",
+    "color": "#e50914",
+    "exercises": [
+      {
+        "name": "Jalón al pecho agarre prono",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Remo máquina unilateral agarre supino (por brazo)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Jalón al pecho agarre cerrado",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Pullover en polea",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl predicador máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl martillo",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d3",
+    "label": "DÍA 3 — Pierna Completa",
+    "color": "#4caf50",
+    "exercises": [
+      {
+        "name": "Sentadilla Hack en máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Prensa inclinada",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Sentadilla búlgara (por pierna)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Extensión de cuádriceps en máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl femoral sentado",
+        "sets": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Gemelo en máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d4",
+    "label": "DÍA 4 — Pecho · Hombro",
+    "color": "#2196f3",
+    "exercises": [
+      {
+        "name": "Press militar con mancuernas",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Elevación lateral unilateral en polea (por brazo)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Pájaros en máquina unilateral (Pec Deck inv.)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Press inclinado en multipower (pecho sup.)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "RIR 0",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Cruces en polea baja (pecho inferior)",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d5",
+    "label": "DÍA 5 — Espalda · Bíceps · Tríceps",
+    "color": "#e50914",
+    "exercises": [
+      {
+        "name": "Remo en T",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl de bíceps tumbado en banco",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl de bíceps en polea arriba unilateral (cada brazo)",
+        "sets": [
+          "S1",
+          "S2"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Curl predicador en máquina",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Extensión de tríceps en polea unilateral",
+        "sets": [
+          "S1",
+          "S2",
+          "S3"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      },
+      {
+        "name": "Press francés barra recta",
+        "sets": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "rir": [
+          "FALLO",
+          "FALLO",
+          "FALLO",
+          "FALLO"
+        ]
+      }
+    ]
+  }
+];
+const WEEKS=6;
+const STORE='ian_tracking';
+
+function buildSeguimiento(){
+  const tabsEl=document.getElementById('segTabs'),contentsEl=document.getElementById('segContents');
+  tabsEl.innerHTML='';contentsEl.innerHTML='';
+  DAYS.forEach((day,di)=>{
+    const btn=document.createElement('button');
+    btn.className='seg-btn'+(di===0?' active':'');btn.textContent='Día '+(di+1);btn.style.borderColor=day.color;
+    if(di===0){btn.style.background=day.color;btn.style.color='#fff';}
+    btn.onclick=function(){
+      document.querySelectorAll('.seg-btn').forEach(b=>{b.classList.remove('active');b.style.background='var(--card)';b.style.color='var(--gray)';});
+      document.querySelectorAll('.seg-content').forEach(c=>c.classList.remove('active'));
+      this.classList.add('active');this.style.background=day.color;this.style.color='#fff';
+      document.getElementById('seg-'+day.id).classList.add('active');
+    };
+    tabsEl.appendChild(btn);
+    const div=document.createElement('div');div.className='seg-content'+(di===0?' active':'');div.id='seg-'+day.id;
+    div.innerHTML=`<div style="color:${day.color};font-family:'Bebas Neue',sans-serif;font-size:22px;margin-bottom:16px">${day.label}</div><div class="tracker-wrap">${buildTable(day)}</div>`;
+    contentsEl.appendChild(div);
+  });
+  loadData();
+}
+
+function buildTable(day){
+  let thWeeks='';for(let w=1;w<=WEEKS;w++)thWeeks+=`<th class="seg-week-num" colspan="3">SEM ${w}</th>`;
+  let rows='';
+  day.exercises.forEach((ex,ei)=>{
+    rows+=`<tr class="ex-header-row normal-row"><td colspan="${3*WEEKS+1}" style="padding:10px 14px;font-weight:700;font-size:13px;color:var(--orange)">${ex.name}</td></tr>`;
+    ex.sets.forEach((setLabel,si)=>{
+      const rir=ex.rir[si]||'';let weekCells='';
+      for(let w=1;w<=WEEKS;w++){
+        const key=`${day.id}_ex${ei}_s${si}_w${w}`;
+        weekCells+=`<td><input type="number" min="0" max="500" step="0.5" placeholder="kg" id="${key}_kg" title="Peso (kg)"></td><td><input type="number" min="0" max="100" placeholder="reps" id="${key}_rep" title="Repeticiones"></td><td class="rir-cell" style="width:60px;min-width:60px"><span class="rir-fallo" style="font-size:10px;padding:0 4px">${rir}</span></td>`;
+      }
+      rows+=`<tr><td class="serie-label-cell">${setLabel}</td>${weekCells}</tr>`;
+    });
+    rows+=`<tr><td colspan="${3*WEEKS+1}" style="height:6px;background:#0a0a0a;border:none"></td></tr>`;
+  });
+  let colDefs='<col style="width:130px;min-width:130px">';
+  for(let w=1;w<=WEEKS;w++)colDefs+='<col style="width:60px"><col style="width:55px"><col style="width:60px">';
+  return `<table class="tracker-table"><colgroup>${colDefs}</colgroup><thead><tr><th rowspan="2" style="min-width:130px">SERIE</th>${thWeeks}</tr><tr>${'<th>KG</th><th>REPS</th><th style="color:var(--red)">RIR</th>'.repeat(WEEKS)}</tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function saveData(){
+  const data={};document.querySelectorAll('input[id]').forEach(inp=>{if(inp.value)data[inp.id]=inp.value;});
+  try{
+    localStorage.setItem(STORE,JSON.stringify(data));
+    const btn=document.querySelector('.save-btn'),status=document.getElementById('saveStatus');
+    btn.classList.add('saved');btn.textContent='✓ Guardado';status.style.display='block';
+    setTimeout(()=>{btn.classList.remove('saved');btn.textContent='💾 Guardar todo';status.style.display='none';},2000);
+  }catch(e){alert('No se pudo guardar. Prueba a exportar CSV.');}
+}
+function loadData(){
+  try{const raw=localStorage.getItem(STORE);if(!raw)return;const data=JSON.parse(raw);
+    Object.entries(data).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val;});}catch(e){}
+}
+function confirmClear(){
+  if(confirm('¿Borrar TODOS los datos guardados? No se puede deshacer.')){
+    localStorage.removeItem(STORE);document.querySelectorAll('input[id]').forEach(inp=>inp.value='');alert('Datos borrados.');}
+}
+function exportCSV(){
+  let csv='Día,Ejercicio,Serie,';for(let w=1;w<=WEEKS;w++)csv+=`Sem${w}_kg,Sem${w}_reps,`;csv+='\n';
+  DAYS.forEach(day=>{day.exercises.forEach((ex,ei)=>{ex.sets.forEach((setLabel,si)=>{
+    let row=`"${day.label}","${ex.name}","${setLabel}",`;
+    for(let w=1;w<=WEEKS;w++){const kg=document.getElementById(`${day.id}_ex${ei}_s${si}_w${w}_kg`),rep=document.getElementById(`${day.id}_ex${ei}_s${si}_w${w}_rep`);row+=`${kg?kg.value:''},${rep?rep.value:''},`;}
+    csv+=row+'\n';});});});
+  const blob=new Blob(["\ufeff"+csv],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ian_seguimiento.csv';a.click();URL.revokeObjectURL(a.href);
+}
+document.addEventListener('input',e=>{if(e.target.tagName==='INPUT'&&e.target.id){try{const data={};document.querySelectorAll('input[id]').forEach(inp=>{if(inp.value)data[inp.id]=inp.value;});localStorage.setItem(STORE,JSON.stringify(data));}catch(err){}}});
+
+buildSeguimiento();
+</script>
+</body>
+</html>
