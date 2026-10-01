@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LUCIA · Asesoría Elvyfit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  --bg:#000000; --card:#0e0e0f; --card2:#141416; --line:#26262a;
+  --ink:#f2f2f3; --mut:#9a9aa2;
+  --red:#ff2d3f; --redsoft:#3a0c11;
+  --blue:#4da3ff; --yellow:#ffc73a; --green:#3ddc84; --pink:#ff6fae; --purple:#b388ff; --orange:#ff9a3c;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.5;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom,0px));
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+
+/* ---------- HEADER ---------- */
+header{
+  background:radial-gradient(130% 110% at 50% 0%,#3d0d14 0%,#160508 45%,#000 100%);
+  padding:26px 16px 22px;text-align:center;border-bottom:2px solid var(--red);
+}
+.brand{font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;font-weight:600;opacity:.9}
+h1{font-family:Oswald,Impact,sans-serif;font-weight:700;font-size:54px;line-height:1;margin:14px 0 0;letter-spacing:1px}
+.goal{font-family:Oswald,Impact,sans-serif;font-weight:700;font-size:28px;color:var(--red);letter-spacing:1px;margin-top:2px}
+.lead{color:#c9c9ce;font-size:14.5px;margin:12px auto 0;max-width:420px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.bdg{border:1.5px solid;border-radius:999px;padding:7px 16px;font-size:13.5px;font-weight:600;background:rgba(0,0,0,.35)}
+.b-y{border-color:var(--yellow);color:var(--yellow)}
+.b-b{border-color:var(--blue);color:var(--blue)}
+.b-g{border-color:var(--green);color:var(--green)}
+.b-r{border-color:var(--red);color:var(--red)}
+.b-c{border-color:#59c6ff;color:#59c6ff}
+
+/* ---------- SECCIONES ---------- */
+main{padding-top:18px}
+.panel{display:none;animation:fade .18s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+h2.sec{font-family:Oswald,Impact,sans-serif;font-weight:700;font-size:26px;letter-spacing:.5px;margin:4px 0 14px;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:5px;height:26px;background:var(--red);border-radius:3px;display:inline-block}
+h2.sec span{color:var(--red)}
+h3.sub{font-family:Oswald,Impact,sans-serif;font-weight:500;font-size:17px;letter-spacing:.6px;margin:22px 0 8px;color:var(--ink);text-transform:uppercase}
+
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.box.blue{border-color:#1d4f80;background:#0a141f}
+.box.red{border-color:#6b1420;background:#160609}
+.box.green{border-color:#1d6340;background:#07140d}
+.box.yellow{border-color:#6b5411;background:#17130a}
+.box .t{font-weight:700;font-size:14px;margin-bottom:6px}
+.box.blue .t{color:var(--blue)} .box.red .t{color:var(--red)}
+.box.green .t{color:var(--green)} .box.yellow .t{color:var(--yellow)}
+ul{margin:6px 0;padding-left:20px} li{margin:4px 0}
+p{margin:7px 0}
+.mut{color:var(--mut);font-size:13.5px}
+b{font-weight:700}
+
+/* colores macro */
+.p{color:var(--blue)} .c{color:var(--yellow)} .g{color:var(--pink)} .v{color:var(--green)} .w{color:#e6e6e8}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.lg{display:flex;align-items:center;gap:6px;font-size:13px;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+
+/* ---------- DIETA ---------- */
+.dayblock{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+.dayhead{background:#1a1a1d;padding:9px 14px;font-family:Oswald,sans-serif;font-weight:700;letter-spacing:1.5px;font-size:15px;color:var(--green);text-transform:uppercase;border-left:4px solid var(--red)}
+.meal{padding:10px 14px;border-top:1px solid var(--line)}
+.meal .mt{font-size:11.5px;letter-spacing:1.6px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.meal ul{margin:0;padding-left:17px;font-size:14px}
+
+/* ---------- LISTA COMPRA ---------- */
+.shop{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 14px 12px;margin:10px 0}
+.shop h4{color:var(--red);font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin:14px 0 6px}
+.item{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:14.5px;border-bottom:1px dashed #1e1e22}
+.item:last-child{border-bottom:0}
+.item input{appearance:none;-webkit-appearance:none;width:20px;height:20px;min-width:20px;border:2px solid #3a3a40;border-radius:6px;background:transparent;position:relative;cursor:pointer}
+.item input:checked{background:var(--green);border-color:var(--green)}
+.item input:checked::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#04150b;font-weight:800;font-size:13px}
+.item input:checked + span{text-decoration:line-through;color:#5c5c63}
+
+/* ---------- ENTRENO ---------- */
+.split{display:grid;gap:8px;margin:10px 0}
+.sp{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:11px;padding:11px 13px}
+.sp .d{font-family:Oswald,sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;min-width:52px;color:var(--mut)}
+.sp .n{font-weight:700;font-size:14.5px}
+.sp.d1{border-left-color:var(--red)} .sp.d1 .n{color:var(--red)}
+.sp.d2{border-left-color:var(--blue)} .sp.d2 .n{color:var(--blue)}
+.sp.d5{border-left-color:var(--green)} .sp.d5 .n{color:var(--green)}
+.sp.off{border-left-color:#3a3a40} .sp.off .n{color:var(--mut)}
+
+.wday{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+.wday > .h{padding:12px 14px;font-family:Oswald,sans-serif;font-weight:700;font-size:17px;letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.wday.r > .h{background:#190609;color:var(--red);border-bottom-color:#4a1018}
+.wday.b > .h{background:#07131f;color:var(--blue);border-bottom-color:#17395c}
+.wday.g > .h{background:#07150e;color:var(--green);border-bottom-color:#174a2f}
+.ex{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #1a1a1e;font-size:14.5px}
+.ex:last-child{border-bottom:0}
+.ex .nm{font-weight:600;flex:1;min-width:0}
+.ex .sr{font-family:Oswald,sans-serif;font-weight:700;font-size:13.5px;color:var(--yellow);white-space:nowrap;background:#1a1611;border:1px solid #4a3c14;border-radius:8px;padding:3px 9px}
+.vid{flex:0 0 auto;width:38px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:#1d0609;border:1px solid #5e121c;color:var(--red);font-size:14px;text-decoration:none;transition:.15s}
+.vid:active{background:var(--red);color:#fff;border-color:var(--red)}
+.vid.sea{background:#15151a;border-color:#33333b;color:#8a8a93;font-size:13px}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;padding:2px 7px;border-radius:5px;margin-left:7px;vertical-align:middle}
+.tag.abs{background:#2a2410;color:var(--yellow)}
+
+.tempo{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0}
+.tempo div{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:9px 6px;text-align:center}
+.tempo .nmb{font-family:Oswald,sans-serif;font-size:24px;font-weight:700;color:var(--red);line-height:1}
+.tempo .lb{font-size:11px;color:var(--mut);margin-top:3px}
+
+/* ---------- BOTTOM BAR ---------- */
+nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(10,10,11,.96);
+  backdrop-filter:saturate(1.3) blur(14px);
+  -webkit-backdrop-filter:saturate(1.3) blur(14px);
+  border-top:1px solid #222227;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  display:flex;
+}
+nav button{
+  flex:1;background:none;border:0;color:#6e6e76;font-family:inherit;
+  padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;
+  font-size:9.5px;letter-spacing:.4px;font-weight:700;text-transform:uppercase;cursor:pointer;
+  border-top:2px solid transparent;margin-top:-1px;
+}
+nav button .ic{font-size:19px;line-height:1}
+nav button.on{color:var(--red);border-top-color:var(--red)}
+
+footer{color:#55555c;font-size:12px;text-align:center;padding:26px 14px 10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Asesoría Elvyfit — Marc Elvira Peinado</div>
+  <h1>LUCIA</h1>
+  <div class="goal">DEFINICIÓN</div>
+  <p class="lead">Plan personalizado. Rutina de 3 días de gimnasio + cardio y macros ajustados al objetivo.</p>
+  <div class="badges">
+    <span class="bdg b-y">⚡ Kcal/día: a definir</span>
+    <span class="bdg b-b">P · C · G a definir</span>
+    <span class="bdg b-g">🎯 Perder grasa</span>
+    <span class="bdg b-r">🏋️ 3 días gym</span>
+    <span class="bdg b-c">💧 3,5 L agua</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ========== PERFIL ========== -->
+<section class="panel on" id="perfil">
+  <h2 class="sec">PERFIL <span>ACTUAL</span></h2>
+
+  <div class="box blue">
+    <div class="t">⚡ Fase de definición</div>
+    Ajustamos los macros al objetivo con un déficit para <b>perder grasa</b> progresando en cargas.
+    Técnica <b>2-1-1-1</b> y <b>3 min de descanso</b> entre series en los ejercicios más demandantes.
+  </div>
+
+  <div class="box red">
+    <div class="t">💬 Lucia, léeme esto antes de empezar</div>
+    Esto no va de matarte de hambre ni de reventarte: va de <b>ser constante</b> con la comida y meterle
+    cabeza e intensidad a cada serie. Confía en el proceso, apúntamelo todo cada semana y lo vamos
+    ajustando. Vamos a por ello.
+  </div>
+
+  <h3 class="sub">Reglas generales</h3>
+
+  <div class="box">
+    <div class="t" style="color:var(--red)">🔹 ENTRENAMIENTO</div>
+    <ul>
+      <li>Haz una <b>serie de prueba</b> antes de cada ejercicio para elegir el peso óptimo.</li>
+      <li>Calienta el músculo que vas a trabajar (<b>2-3 series ligeras</b>).</li>
+      <li>Técnica siempre perfecta: <b>calidad &gt; cantidad</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box yellow">
+    <div class="t">📝 APUNTAR — ¡¡ULTRA IMPORTANTE!!</div>
+    Apunta <b>pesos y repeticiones</b> en el Excel. Semana a semana: <b>+1-2 reps o +2,5 kg</b>.
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--red)">🔹 RIR</div>
+    <ul>
+      <li>Trabajar a <b>1-2 RIR</b>.</li>
+      <li>Las <b>dos últimas series</b> de todos los ejercicios, <b>al fallo</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--red)">🔹 DESCANSOS ENTRE SERIES</div>
+    <ul>
+      <li>Ejercicios más demandantes: <b>3 min</b>.</li>
+      <li>Secundarios (poleas o músculos pequeños tipo brazo): <b>2:30 min</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--red)">🔹 TEMPO 2-1-1-1 (todos los ejercicios)</div>
+    <div class="tempo">
+      <div><div class="nmb">2</div><div class="lb">bajas</div></div>
+      <div><div class="nmb">1</div><div class="lb">pausa abajo</div></div>
+      <div><div class="nmb">1</div><div class="lb">subes</div></div>
+      <div><div class="nmb">1</div><div class="lb">pausa arriba</div></div>
+    </div>
+    <p class="mut">Ejemplo en press banca: bajas en 2 s, pausa 1 s, subes en 1 s, pausa 1 s arriba.</p>
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--red)">🔹 CALENTAMIENTO</div>
+    <ul>
+      <li><b>5 min</b> de movilidad.</li>
+      <li><b>2-3 series progresivas</b> antes del primer ejercicio pesado.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <div class="t">😴 RECUPERACIÓN</div>
+    <ul>
+      <li>Dormir <b>7-9 horas</b>.</li>
+      <li>No saltarse comidas.</li>
+      <li>Hidratación.</li>
+      <li>Estrés bajo control.</li>
+    </ul>
+    <p class="mut">El músculo crece fuera del gym, en el descanso.</p>
+  </div>
+
+  <div class="box red">
+    <div class="t">📸 SEGUIMIENTO</div>
+    Enviar <b>3 fotos a Marc cada domingo en ayunas</b> junto al <b>peso corporal</b>.
+  </div>
+</section>
+
+<!-- ========== NUTRICIÓN ========== -->
+<section class="panel" id="nutricion">
+  <h2 class="sec">NUTRICIÓN Y <span>ESTRUCTURA</span></h2>
+
+  <div class="box yellow">
+    <div class="t">CALORÍAS Y MACROS INICIALES AL DÍA</div>
+    <ul>
+      <li><span class="p">Proteína:</span> _____ g</li>
+      <li><span class="g">Grasas:</span> _____ g</li>
+      <li><span class="c">Carbohidratos:</span> _____ g</li>
+      <li><b>Agua: 3,5 L mínimo</b></li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Código de colores</h3>
+  <div class="legend">
+    <span class="lg"><i class="dot" style="background:#4da3ff"></i> Proteínas (P)</span>
+    <span class="lg"><i class="dot" style="background:#ffc73a"></i> Carbohidratos (C)</span>
+    <span class="lg"><i class="dot" style="background:#ff6fae"></i> Grasas (G)</span>
+    <span class="lg"><i class="dot" style="background:#3ddc84"></i> Fibra / verduras / micros</span>
+  </div>
+
+  <h3 class="sub">Notas clave al día</h3>
+  <div class="box">
+    <ul>
+      <li><b>Come cada 3-4 h.</b></li>
+      <li>Contacta con Marc si algún alimento no te gusta.</li>
+      <li>Puedes cambiar el <span class="c">arroz</span> por la <span class="c">pasta</span> (macarrones o espaguetis) y a la inversa.</li>
+      <li>Evitar <b>ultraprocesados y azúcar</b>.</li>
+      <li>Registrar el peso <b>cada domingo en ayunas</b> y mandar foto a Marc.</li>
+      <li><b>Consistencia &gt; perfección.</b></li>
+      <li>De todas las comidas de la semana puedes <b>saltarte 2</b> para hacer comida libre. Intenta que sea la <span style="color:var(--red)">comida 3</span> o la <span style="color:var(--red)">comida 5</span>. ¡El equilibrio es la clave!</li>
+      <li>No comer con salsas; si te apetece mucho, <b>salsa 0</b>.</li>
+      <li>Si tomas café, no hay ningún problema en ponerle un poco de leche entera.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Suplementos al día</h3>
+  <div class="box blue">
+    <ul>
+      <li><b>Creatina monohidrato</b> — da igual el momento, aconsejable junto a la proteína.</li>
+      <li><span class="p"><b>Proteína isolate</b></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== DIETA SEMANAL ========== -->
+<section class="panel" id="dieta">
+  <h2 class="sec">DIETA <span>SEMANAL</span></h2>
+  <p class="mut">5 comidas al día. Los pesos del arroz y la pasta son <b>en crudo</b>.</p>
+  <div id="dietaWrap"></div>
+</section>
+
+<!-- ========== LISTA COMPRA ========== -->
+<section class="panel" id="compra">
+  <h2 class="sec">LISTA DE <span>COMPRA</span></h2>
+  <p class="mut">Cantidades para <b>7 días</b>. Toca para ir tachando.</p>
+  <div class="shop" id="shopWrap"></div>
+  <div class="box blue"><div class="t">💧 Líquidos</div>Agua: <b>≥ 24,5 L por semana</b> (3,5 L/día mínimo).</div>
+</section>
+
+<!-- ========== ENTRENAMIENTO ========== -->
+<section class="panel" id="entreno">
+  <h2 class="sec">PLAN DE <span>ENTRENAMIENTO</span></h2>
+
+  <h3 class="sub">Cómo funciona el sistema</h3>
+  <div class="split">
+    <div class="sp d1"><span class="d">DÍA 1</span><span class="n">Glúteo + femoral + abdomen</span></div>
+    <div class="sp d2"><span class="d">DÍA 2</span><span class="n">Upper body</span></div>
+    <div class="sp off"><span class="d">DÍA 3</span><span class="n">Descanso</span></div>
+    <div class="sp off"><span class="d">DÍA 4</span><span class="n">Descanso</span></div>
+    <div class="sp d5"><span class="d">DÍA 5</span><span class="n">Glúteo + cuádriceps + abdomen</span></div>
+    <div class="sp off"><span class="d">DÍA 6-7</span><span class="n">Descanso (fin de semana)</span></div>
+  </div>
+
+  <p class="mut">Toca el ▶ de cada ejercicio para ver el vídeo de la técnica.</p>
+
+  <div class="wday r">
+    <div class="h">Día 1 — Glúteo + femoral + abdomen</div>
+    <div class="ex"><span class="nm">Hip thrust</span><span class="sr">3 × 8-10</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/bup775DiMUE">▶</a></div>
+    <div class="ex"><span class="nm">Peso muerto rumano</span><span class="sr">3 × 8-10</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/QjP9g7M_Idg">▶</a></div>
+    <div class="ex"><span class="nm">Búlgara inclinada</span><span class="sr">3 × 8-10</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/cytfxsIK_Hk">▶</a></div>
+    <div class="ex"><span class="nm">Curl femoral</span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/nmqG-tIr0hc">▶</a></div>
+    <div class="ex"><span class="nm">Patada de glúteo</span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/B9Fqo0KqeWc">▶</a></div>
+    <div class="ex"><span class="nm">Crunch en polea <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/xYIVO1nCm3E">▶</a></div>
+    <div class="ex"><span class="nm">Elevaciones de piernas <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/pBC7ciQ5BMc">▶</a></div>
+  </div>
+
+  <div class="wday b">
+    <div class="h">Día 2 — Upper body</div>
+    <div class="ex"><span class="nm">Jalón al pecho, agarre prono</span><span class="sr">3 × 10 · 10 · 8</span><a class="vid" target="_blank" rel="noopener" href="https://youtu.be/55X8yLezpwc">▶</a></div>
+    <div class="ex"><span class="nm">Press de hombro</span><span class="sr">3 × 8-10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/8yY0zXMjBd0">▶</a></div>
+    <div class="ex"><span class="nm">Tríceps en polea</span><span class="sr">3 × 8-10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/4NWWB0f0vzQ">▶</a></div>
+    <div class="ex"><span class="nm">Curl predicador máquina</span><span class="sr">3 × 12 · 10 · 10</span><a class="vid sea" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=curl+predicador+m%C3%A1quina+t%C3%A9cnica">🔍</a></div>
+    <div class="ex"><span class="nm">Crunch en polea <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/xYIVO1nCm3E">▶</a></div>
+    <div class="ex"><span class="nm">Elevaciones de piernas <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/pBC7ciQ5BMc">▶</a></div>
+  </div>
+
+  <div class="wday g">
+    <div class="h">Día 5 — Glúteo + cuádriceps + abdomen</div>
+    <div class="ex"><span class="nm">Sentadilla hack</span><span class="sr">3 × 8-10</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/B68s4br0uMQ">▶</a></div>
+    <div class="ex"><span class="nm">Peso muerto sumo</span><span class="sr">3 × 8-10</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/eBu8SPUTEmk">▶</a></div>
+    <div class="ex"><span class="nm">Step up</span><span class="sr">2 × 8-10 / pierna</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/yHyrYdgE36M">▶</a></div>
+    <div class="ex"><span class="nm">Extensión de cuádriceps</span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/S50jrJDzO4M">▶</a></div>
+    <div class="ex"><span class="nm">Abducciones</span><span class="sr">2 × 12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/Vw32LcBYYrI">▶</a></div>
+    <div class="ex"><span class="nm">Crunch en polea <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/xYIVO1nCm3E">▶</a></div>
+    <div class="ex"><span class="nm">Elevaciones de piernas <span class="tag abs">abdomen</span></span><span class="sr">3 × 10-12</span><a class="vid" target="_blank" rel="noopener" href="https://youtube.com/shorts/pBC7ciQ5BMc">▶</a></div>
+  </div>
+
+  <div class="box red">
+    <div class="t">⚠️ Vídeo pendiente</div>
+    En el Canva original, el icono de vídeo del <b>curl predicador máquina</b> apuntaba por error al vídeo del
+    crunch en polea, así que ahí he dejado una lupa 🔍 que abre la búsqueda. Pásame el enlace bueno y lo cambio.
+  </div>
+
+  <div class="box yellow">
+    <div class="t">📈 PROGRESIÓN</div>
+    Cada semana: <b>+1-2 repeticiones o +2,5 kg</b> en cada ejercicio. Si una semana no sube ninguna de las dos, revisa descanso, comida y técnica.
+  </div>
+</section>
+
+<!-- ========== CARDIO ========== -->
+<section class="panel" id="cardio">
+  <h2 class="sec">CARDIO <span>12 SEMANAS</span></h2>
+
+  <div class="box yellow">
+    <div class="t">🎯 Objetivo del cardio</div>
+    Aumentar el <b>gasto calórico</b>, mejorar la <b>salud cardiovascular</b> y facilitar la <b>pérdida de grasa</b>,
+    sin que afecte negativamente al entrenamiento de fuerza.
+  </div>
+
+  <div class="box blue">
+    <div class="t">🔵 Frecuencia</div>
+    <ul>
+      <li><b>3 días por semana</b>, los mismos días de gimnasio (día 1, día 2 y día 5).</li>
+      <li>Realizarlo <b>después del entrenamiento de pesas</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <div class="t">🟢 Opción 1 — Cinta caminando (recomendada)</div>
+    <ul>
+      <li>Duración: <b>20 minutos</b></li>
+      <li>Velocidad: <b>5 – 5,5 km/h</b></li>
+      <li>Inclinación: <b>6 – 8 %</b></li>
+    </ul>
+    <p class="mut">Cardio moderado, fácil de recuperar y muy efectivo para aumentar el gasto calórico sin generar demasiada fatiga. Debes poder mantener una respiración elevada pero <b>pudiendo seguir hablando</b>.</p>
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--purple)">🟣 Opción 2 — Bicicleta estática</div>
+    <ul>
+      <li>Duración: <b>20 minutos</b></li>
+      <li>Intensidad: <b>moderada</b></li>
+      <li>Cadencia: <b>70 – 80 RPM</b></li>
+    </ul>
+    <p class="mut">Mismo criterio: respiración elevada pero pudiendo seguir hablando.</p>
+  </div>
+
+  <div class="box">
+    <div class="t" style="color:var(--orange)">🟠 Opción 3 — Salir a correr</div>
+    <ul>
+      <li>Duración: <b>15 – 20 minutos</b></li>
+      <li>Ritmo constante y cómodo</li>
+    </ul>
+    <p class="mut">Evitar sprints o esfuerzos muy intensos.</p>
+  </div>
+
+  <div class="box yellow">
+    <div class="t">🟡 Actividad diaria</div>
+    Mantener <b>8.000 – 10.000 pasos diarios</b>. Ayuda a aumentar el gasto calórico diario y a mejorar la salud general.
+  </div>
+</section>
+
+<footer>Asesoría Elvyfit · Marc Elvira Peinado — Plan personalizado para Lucia</footer>
+</main>
+
+<nav id="nav">
+  <button class="on" data-go="perfil"><span class="ic">👤</span>Perfil</button>
+  <button data-go="nutricion"><span class="ic">🥗</span>Nutrición</button>
+  <button data-go="dieta"><span class="ic">📅</span>Dieta</button>
+  <button data-go="compra"><span class="ic">🛒</span>Compra</button>
+  <button data-go="entreno"><span class="ic">🏋️</span>Entreno</button>
+  <button data-go="cardio"><span class="ic">🏃</span>Cardio</button>
+</nav>
+
+<script>
+/* ---------- NAVEGACIÓN ---------- */
+document.querySelectorAll('#nav button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#nav button').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    b.classList.add('on');
+    var el=document.getElementById(b.dataset.go);
+    if(el) el.classList.add('on');
+    window.scrollTo({top:0,behavior:'instant'});
+  });
+});
+
+/* ---------- DIETA ---------- */
+var C1=["2 huevos|p","160 ml claras|p","2 rebanadas pan espelta|c","Queso de cabra 15 g|g","½ aguacate|g","40 g arándanos|c"];
+var C2=["Yogur griego 0% 200 g|p","Almendras 10 g|g","1 manzana|c"];
+var C4=["Whey isolate 30 g|p","1 plátano|c","30 g crema de arroz|c","Creatina 8 g|w"];
+var dias=[
+ ["LUNES",["110 g arroz integral (crudo)|c","180 g pechuga de pollo|p","5 ml aceite de oliva|g"],["150 g salmón|p","200 g espinacas|v","130 g patata|c"]],
+ ["MARTES",["110 g arroz blanco|c","180 g ternera magra|p","150 g calabacín|v","5 ml aceite de oliva|g"],["150 g merluza|p","200 g espinacas|v","130 g patata|c"]],
+ ["MIÉRCOLES",["110 g arroz integral|c","180 g pavo|p","150 g brócoli|v","5 ml aceite de oliva|g"],["150 g pechuga de pollo|p","200 g espinacas|v","130 g boniato|c"]],
+ ["JUEVES",["110 g arroz blanco|c","180 g pechuga de pollo|p","150 g zanahoria + calabacín|v","5 ml aceite de oliva|g"],["150 g merluza|p","200 g espinacas|v","130 g patata|c"]],
+ ["VIERNES",["110 g arroz integral|c","180 g ternera magra|p","150 g brócoli|v","5 ml aceite de oliva|g"],["150 g salmón|p","200 g espinacas|v","130 g boniato|c"]],
+ ["SÁBADO",["110 g pasta: macarrones o espaguetis (puedes poner salsa 0)|c","180 g pechuga de pollo|p","150 g calabacín|v","5 ml aceite de oliva|g"],["150 g pavo|p","200 g espinacas|v","130 g patata|c"]],
+ ["DOMINGO",["110 g arroz integral|c","180 g pavo|p","150 g brócoli|v","5 ml aceite de oliva|g"],["150 g merluza|p","200 g espinacas|v","130 g patata|c"]]
+];
+function li(arr){
+  return '<ul>'+arr.map(function(s){
+    var p=s.split('|');
+    return '<li class="'+p[1]+'">'+p[0]+'</li>';
+  }).join('')+'</ul>';
+}
+function meal(t,arr){return '<div class="meal"><div class="mt">'+t+'</div>'+li(arr)+'</div>';}
+document.getElementById('dietaWrap').innerHTML = dias.map(function(d){
+  return '<div class="dayblock"><div class="dayhead">'+d[0]+'</div>'
+    + meal('Comida 1 · Desayuno',C1)
+    + meal('Comida 2 · Media mañana',C2)
+    + meal('Comida 3 · Comida principal',d[1])
+    + meal('Comida 4 · Pre/post entreno',C4)
+    + meal('Comida 5 · Cena',d[2])
+    + '</div>';
+}).join('');
+
+/* ---------- LISTA DE COMPRA ---------- */
+var shop=[
+ ["Comida 1 · Desayuno (igual todos los días)",["Huevos: 14 unidades","Claras de huevo: 1.120 ml","Pan espelta integral: 420 g","Aguacate: 490 g (~4 medianos)","Queso de cabra: 105 g","Arándanos: 280 g"]],
+ ["Comida 2 · Media mañana",["Yogur griego 0%: 1.400 g","Almendras: 70 g","Manzanas: 7 unidades"]],
+ ["Comida 3 · Comida principal",["Pechuga de pollo: 540 g","Ternera magra: 360 g","Pavo: 360 g","Arroz integral: 440 g","Arroz blanco: 220 g","Verduras (brócoli, calabacín, zanahoria, pimiento): 1.050 g","Aceite de oliva: 35 ml"]],
+ ["Comida 4 · Merienda pre/post entreno",["Plátanos: 7 unidades","Crema de arroz: 210 g","Whey isolate: 210 g","Creatina: 35 g"]],
+ ["Comida 5 · Cena",["Salmón: 300 g","Merluza: 450 g","Pechuga de pollo: 150 g","Pavo: 150 g","Espinacas: 1.400 g","Patata: 650 g","Boniato: 260 g"]]
+];
+var saved={};
+try{ saved=JSON.parse(localStorage.getItem('lucia-shop')||'{}'); }catch(e){ saved={}; }
+document.getElementById('shopWrap').innerHTML = shop.map(function(g){
+  return '<h4>'+g[0]+'</h4>'+g[1].map(function(it){
+    var id='k'+it.replace(/[^a-zA-Z0-9]/g,'').slice(0,24);
+    var ck=saved[id]?' checked':'';
+    return '<label class="item"><input type="checkbox" data-k="'+id+'"'+ck+'><span>'+it+'</span></label>';
+  }).join('');
+}).join('');
+document.querySelectorAll('#shopWrap input').forEach(function(i){
+  i.addEventListener('change',function(){
+    saved[i.dataset.k]=i.checked;
+    try{ localStorage.setItem('lucia-shop',JSON.stringify(saved)); }catch(e){}
+  });
+});
+</script>
+</body>
+</html>
