@@ -20,7 +20,7 @@ var CLIENTE = {
      gramos de cada día, macros y lista de la compra.
      ══════════════════════════════════════════════════ */
 
-  kcal:  2300,     /* kcal al día */
+  kcal:  2400,     /* kcal al día */
   peso:  113,      /* kg — de aquí salen la proteína y la grasa */
   pasos: 15000,    /* media diaria de pasos */
 
