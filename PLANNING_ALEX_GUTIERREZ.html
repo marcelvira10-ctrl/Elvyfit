@@ -416,12 +416,25 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
     for (var i=0;i<els.length;i++){ var k=els[i].getAttribute("data-v"); if (V[k]!==undefined) els[i].textContent=V[k]; }
   }
 
-  /* ---------- último ajuste: solo lo nuevo, sin "antes → ahora" ---------- */
+  /* ---------- último ajuste: qué sube o baja con este cambio (por día) ---------- */
   function pintaCambios(){
     var c=document.getElementById("cambiosWrap"); if(!c) return;
-    var h=C.historial||[], x=h[h.length-1];
-    if(!x){ c.innerHTML=""; return; }
-    c.innerHTML = '<div class="info-box ib-green">📌 <b>Último ajuste · '+esc(x.fecha)+':</b> '+esc(x.texto)+'</div>';
+    var h=C.historial||[], x=h[h.length-1], A=C.ajuste;
+    if(!x && !A){ c.innerHTML=""; return; }
+    var lista="";
+    if(A && A.desdeKcal && A.desdeKcal!==C.kcal){
+      var prev=C.dias.map(function(d){ return { dia:d.dia, comidas:E.ajustarDia(d.comidas, E.objetivo(A.desdePeso||C.peso, A.desdeKcal, C.ratios)) }; });
+      var dk=C.kcal-A.desdeKcal;
+      lista += '<div class="food-row"><span class="food-item"><b>Calorías al día</b></span><span class="food-qty" style="color:'+(dk>0?"var(--green)":"var(--orange)")+'">'+(dk>0?"+":"−")+E.num(Math.abs(dk))+' kcal</span></div>';
+      E.cambios(prev, DIAS).forEach(function(m){
+        var d=Math.round(m.dif/7/5)*5; if(Math.abs(d)<5) return;
+        lista += '<div class="food-row"><span class="food-item">'+esc(txt(m.clave).split(",")[0].replace(/ \(.*\)/,""))+'</span><span class="food-qty" style="color:'+(d>0?"var(--green)":"var(--orange)")+'">'+(d>0?"+":"−")+Math.abs(d)+(m.ml?" ml":" g")+' / día</span></div>';
+      });
+    }
+    c.innerHTML = '<div class="meal-card" style="margin-bottom:18px;border-color:var(--green)"><div class="meal-head"><div class="meal-name">📌 ÚLTIMO AJUSTE'+(x?' · '+esc(x.fecha.toUpperCase()):'')+'</div></div><div class="meal-foods">'
+      + (x?'<div style="color:var(--light-gray);line-height:1.6;margin-bottom:8px">'+esc(x.texto)+'</div>':'')
+      + (lista?'<div style="margin:6px 0 2px;font-size:10px;letter-spacing:2px;color:var(--gray)">LO QUE CAMBIA EN TU PLATO</div>'+lista:'')
+      + '<div style="margin-top:8px;font-size:11px;color:var(--gray)">Los gramos exactos de cada día, en DIETA. La compra ya está actualizada.</div></div></div>';
   }
 
   pintaNumeros(); pintaCambios(); pintaDieta(); pintaCompra(); pintaEntreno(); pintaTracker();

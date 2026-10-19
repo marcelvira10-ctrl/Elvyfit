@@ -48,9 +48,12 @@ var CLIENTE = {
     deporte: "Futbol sala + castellers", deporteDias: 3, deporteMin: 100
   },
 
+  /* --- ÚLTIMO AJUSTE: sale en el Perfil con lo que sube/baja cada alimento.
+         "desdeKcal" = las kcal que tenía justo antes de este cambio.          --- */
+  ajuste: { desdeKcal: 3300 },
   /* --- ÚLTIMO AJUSTE: sale en el Perfil. Solo lo nuevo, sin números viejos --- */
   historial: [
-    { fecha: "19 oct", texto: "3.550 kcal al día. Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg): la proteína va en el batido, el huevo y los carbos, sin carne ni pescado. El batido lleva avena y crema de arroz." }
+    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día, todo en carbohidratos (batido y patata). Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg): la proteína va en el batido, el huevo y los carbos, sin carne ni pescado. El batido lleva avena y crema de arroz." }
   ],
 
   /* --- LAS 4 COMIDAS: ESTO ES LA BASE --- */
