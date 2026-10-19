@@ -1,0 +1,1327 @@
+/* ============================================================
+   AMARO — DATOS DEL PLAN
+
+   ESTE es el archivo que tocas tú (o te lo cambio yo desde el chat).
+   Cambia un número, guarda, y el planning recalcula solo
+   los gramos de cada día, los macros y la lista de la compra.
+   Pesos EN CRUDO (arroz, pasta, patata, carne, pescado).
+   ============================================================ */
+
+/* Alimentos que el motor común no tiene todavía (se añaden aquí, sin tocar el motor).
+   Los valores marcados ok:false son de referencia: se comprueban con la etiqueta. */
+if (typeof ELVYFIT !== "undefined") {
+  var AL = ELVYFIT.ALIMENTOS;
+  AL.arroz_integral  = AL.arroz_integral  || { n:"Arroz integral",               p:7.5,  c:76.0, g:2.9,  crudo:true,  ok:false, cat:"carbo" };
+  AL.pasta_blanca    = AL.pasta_blanca    || { n:"Pasta blanca",                  p:12.5, c:71.0, g:1.5,  crudo:true,  ok:false, cat:"carbo" };
+  AL.tortitas_jamon  = AL.tortitas_jamon  || { n:"Tortitas sabor jamón",          p:8.0,  c:81.0, g:3.0,  crudo:false, ok:false, cat:"carbo" };
+  AL.alcachofa       = AL.alcachofa       || { n:"Alcachofa",                     p:3.3,  c:11.0, g:0.2,  crudo:true,  ok:false, cat:"verdura" };
+  AL.almendras       = AL.almendras       || { n:"Almendras",                     p:21.0, c:22.0, g:49.0, crudo:false, ok:false, cat:"grasa" };
+  AL.crema_cacahuete = AL.crema_cacahuete || { n:"Crema de cacahuete",            p:25.0, c:20.0, g:50.0, crudo:false, ok:false, cat:"grasa" };
+  AL.yogur_proteina  = AL.yogur_proteina  || { n:"Yogur proteico de chocolate",   p:9.0,  c:6.0,  g:2.0,  crudo:false, ok:false, cat:"prote" };
+  AL.pavo_loncha     = AL.pavo_loncha     || { n:"Loncha de pavo",               p:18.0, c:1.5,  g:1.5,  crudo:false, ok:false, cat:"prote" };
+}
+
+var CLIENTE = {
+  "nombre": "AMARO",
+  "apellido": "",
+  "slug": "amaro",
+  "clave": "amaro_plan_v12",
+  "claveAntigua": "amaro_tracking_v1",
+  "kcal": 4110,
+  "peso": 68.4,
+  "pasos": 8000,
+  "ratios": {
+    "p": 3.19,
+    "g": 1.29
+  },
+  "perfil": {
+    "edad": 22,
+    "altura": 172,
+    "sexo": "hombre",
+    "trabajo": 60,
+    "gymDias": 5,
+    "gymMin": 60,
+    "deporte": "Calistenia",
+    "deporteDias": 0,
+    "deporteMin": 0
+  },
+  "entreno": {
+    "detalle": "🔥 <b>Todas las series al fallo (RIR 0)</b> · 🧠 <b>técnica perfecta</b> y una serie de aproximación antes de cada ejercicio",
+    "tip": "🎬 Toca «Ver vídeo» para ver cómo se hace. Técnica perfecta siempre."
+  },
+  "extraCompra": [
+    [
+      "Creatina monohidrato",
+      "6 g/día (42 g)"
+    ]
+  ],
+  "ajuste": {},
+  "historial": [
+    {
+      "fecha": "19 oct",
+      "texto": "Plan de volumen: 4.110 kcal al día (las kcal reales de tu plan), con 218 g de proteína y 88 g de grasa. Los gramos son casi los de tu plan original. Nueva rutina de 5 días con fondos, búlgara y bayesian, y abdominales en los días 1, 3 y 5."
+    }
+  ],
+  "dias": [
+    {
+      "dia": "LUN",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz_integral",
+              250
+            ],
+            [
+              "pollo",
+              140
+            ],
+            [
+              "alcachofa",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "salmon",
+              140
+            ],
+            [
+              "ensalada",
+              150
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "MAR",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz",
+              250
+            ],
+            [
+              "ternera",
+              140
+            ],
+            [
+              "judia_verde",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "merluza",
+              140
+            ],
+            [
+              "calabacin",
+              150
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "MIÉ",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz_integral",
+              250
+            ],
+            [
+              "pavo",
+              140
+            ],
+            [
+              "alcachofa",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "pollo",
+              140
+            ],
+            [
+              "judia_verde",
+              150
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "JUE",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz",
+              250
+            ],
+            [
+              "pollo",
+              140
+            ],
+            [
+              "calabacin",
+              75
+            ],
+            [
+              "zanahoria",
+              75
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "merluza",
+              140
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "ensalada",
+              150
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "VIE",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz_integral",
+              250
+            ],
+            [
+              "ternera",
+              140
+            ],
+            [
+              "alcachofa",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "salmon",
+              140
+            ],
+            [
+              "judia_verde",
+              150
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "SÁB",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "pasta_blanca",
+              250
+            ],
+            [
+              "pollo",
+              140
+            ],
+            [
+              "calabacin",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "pavo",
+              140
+            ],
+            [
+              "ensalada",
+              200
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "dia": "DOM",
+      "comidas": [
+        {
+          "titulo": "🍳 C1 — DESAYUNO",
+          "clase": "ct-orange",
+          "items": [
+            [
+              "huevo",
+              120
+            ],
+            [
+              "claras",
+              100
+            ],
+            [
+              "pan_espelta",
+              220
+            ],
+            [
+              "pavo_loncha",
+              30
+            ],
+            [
+              "aguacate",
+              75
+            ],
+            [
+              "arandanos",
+              40
+            ]
+          ]
+        },
+        {
+          "titulo": "🥣 C2 — MEDIA MAÑANA",
+          "clase": "ct-yellow",
+          "items": [
+            [
+              "almendras",
+              15
+            ],
+            [
+              "manzana",
+              150
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              10
+            ]
+          ]
+        },
+        {
+          "titulo": "🍽️ C3 — COMIDA",
+          "clase": "ct-blue",
+          "items": [
+            [
+              "arroz_integral",
+              250
+            ],
+            [
+              "pavo",
+              140
+            ],
+            [
+              "calabacin",
+              150
+            ],
+            [
+              "aove",
+              5
+            ]
+          ]
+        },
+        {
+          "titulo": "💪 C4 — PRE/POST ENTRENO",
+          "clase": "ct-purple",
+          "items": [
+            [
+              "isolate",
+              30
+            ],
+            [
+              "platano",
+              240
+            ],
+            [
+              "tortitas_jamon",
+              70
+            ],
+            [
+              "crema_cacahuete",
+              25
+            ]
+          ]
+        },
+        {
+          "titulo": "🌙 C5 — CENA",
+          "clase": "ct-green",
+          "items": [
+            [
+              "merluza",
+              140
+            ],
+            [
+              "judia_verde",
+              150
+            ],
+            [
+              "patata",
+              600
+            ],
+            [
+              "yogur_proteina",
+              150
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "rutina": [
+    {
+      "id": "D1",
+      "emoji": "🔵",
+      "color": "var(--blue)",
+      "cc": "var(--blue)",
+      "chip": "D1 · Pecho",
+      "titulo": "DÍA 1 — PECHO · HOMBRO · TRÍCEPS",
+      "ejercicios": [
+        {
+          "nombre": "Press máquina pecho plano",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/m-KFtIghoqw"
+        },
+        {
+          "nombre": "Press máquina pecho inclinado",
+          "reps": [
+            "8",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/vdWbsdOtKII"
+        },
+        {
+          "nombre": "Pec Deck (aperturas)",
+          "reps": [
+            "8",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/HL88KYqhzQI"
+        },
+        {
+          "nombre": "Press militar máquina",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/BqdJeb6jHko"
+        },
+        {
+          "nombre": "Elevaciones laterales mancuernas",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://youtube.com/shorts/j2tjiP-YoDU"
+        },
+        {
+          "nombre": "Tríceps katana unilateral",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://youtube.com/shorts/HNH6a33SZB0"
+        },
+        {
+          "nombre": "Fondos para tríceps",
+          "reps": [
+            "6",
+            "8",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=HRTD0ggY3MI"
+        },
+        {
+          "nombre": "Crunch abdominales en máquina",
+          "reps": [
+            "12",
+            "10",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+        },
+        {
+          "nombre": "Oblicuo de lado colgado en barra (por lado)",
+          "reps": [
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "emoji": "🔴",
+      "color": "var(--red)",
+      "cc": "var(--red)",
+      "chip": "D2 · Espalda",
+      "titulo": "DÍA 2 — ESPALDA · BÍCEPS",
+      "ejercicios": [
+        {
+          "nombre": "Jalón al pecho agarre prono",
+          "reps": [
+            "6",
+            "8",
+            "8"
+          ],
+          "video": "https://youtu.be/55X8yLezpwc"
+        },
+        {
+          "nombre": "Remo máquina neutro unilateral",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/sYl2uUE7kt0"
+        },
+        {
+          "nombre": "Jalón al pecho agarre cerrado",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/bBM95Ir4zCs"
+        },
+        {
+          "nombre": "Pullover polea",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://youtube.com/shorts/dX5DHCZ-7p8"
+        },
+        {
+          "nombre": "Curl predicador máquina",
+          "reps": [
+            "6",
+            "8",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/vq9JynSsol8"
+        },
+        {
+          "nombre": "Curl martillo",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/NCeVr-vm6Ig"
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "emoji": "🦵",
+      "color": "var(--green)",
+      "cc": "var(--green)",
+      "chip": "D3 · Pierna",
+      "titulo": "DÍA 3 — PIERNA",
+      "ejercicios": [
+        {
+          "nombre": "Sentadilla Hack en máquina",
+          "reps": [
+            "8",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=R8ZyWx1EgoY"
+        },
+        {
+          "nombre": "Prensa inclinada",
+          "reps": [
+            "8",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+        },
+        {
+          "nombre": "Sentadilla búlgara (por pierna)",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=7bV1tIUC2Es"
+        },
+        {
+          "nombre": "Extensión de cuádriceps en máquina",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+        },
+        {
+          "nombre": "Curl femoral tumbado (individual)",
+          "reps": [
+            "8",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=9xbBr5Ytl8c"
+        },
+        {
+          "nombre": "Gemelo en prensa",
+          "reps": [
+            "10",
+            "10",
+            "12",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=zmNBx-Ilhdc"
+        },
+        {
+          "nombre": "Crunch abdominales en máquina",
+          "reps": [
+            "12",
+            "10",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+        },
+        {
+          "nombre": "Oblicuo de lado colgado en barra (por lado)",
+          "reps": [
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+        }
+      ]
+    },
+    {
+      "id": "D4",
+      "emoji": "🔵",
+      "color": "var(--cyan)",
+      "cc": "var(--cyan)",
+      "chip": "D4 · Pecho",
+      "titulo": "DÍA 4 — PECHO · HOMBRO",
+      "ejercicios": [
+        {
+          "nombre": "Press militar con mancuernas",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/PWtkHROaH3Y"
+        },
+        {
+          "nombre": "Elevación lateral unilateral en polea",
+          "reps": [
+            "8",
+            "10",
+            "12"
+          ],
+          "video": "https://youtube.com/shorts/3uljNfhx1EI"
+        },
+        {
+          "nombre": "Pájaros en máquina (Pec Deck invertido)",
+          "reps": [
+            "8",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/LLgkANwIKzk"
+        },
+        {
+          "nombre": "Press inclinado en multipower (pecho superior)",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/6Ijq_ukPE50"
+        },
+        {
+          "nombre": "Cruces en polea baja (pecho inferior)",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://youtube.com/shorts/gHNpRoKeAdA"
+        }
+      ]
+    },
+    {
+      "id": "D5",
+      "emoji": "🔴",
+      "color": "var(--orange)",
+      "cc": "var(--orange)",
+      "chip": "D5 · Espalda",
+      "titulo": "DÍA 5 — ESPALDA · BÍCEPS · TRÍCEPS",
+      "ejercicios": [
+        {
+          "nombre": "Remo en máquina convergente (Hammer Strength)",
+          "reps": [
+            "8",
+            "8",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/yFo-EFYzf1s"
+        },
+        {
+          "nombre": "Curl de bíceps tumbado en banco",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/2bzTfdB3j4M"
+        },
+        {
+          "nombre": "Curl de bíceps BAYESIAN unilateral (cada brazo)",
+          "reps": [
+            "8",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=7e04YRwlZ9U"
+        },
+        {
+          "nombre": "Curl predicador en máquina o banco",
+          "reps": [
+            "6",
+            "8"
+          ],
+          "video": "https://youtube.com/shorts/vq9JynSsol8"
+        },
+        {
+          "nombre": "Extensión de tríceps en polea unilateral",
+          "reps": [
+            "8",
+            "10",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/hip11n3QXzU"
+        },
+        {
+          "nombre": "Press francés barra recta",
+          "reps": [
+            "8",
+            "10",
+            "10"
+          ],
+          "video": "https://youtu.be/hBz7jSJM3Yw"
+        },
+        {
+          "nombre": "Crunch abdominales en máquina",
+          "reps": [
+            "12",
+            "10",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+        },
+        {
+          "nombre": "Oblicuo de lado colgado en barra (por lado)",
+          "reps": [
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+        }
+      ]
+    }
+  ],
+  "progreso": {},
+  "textos": {
+    "huevo": "Huevo entero",
+    "claras": "Claras pasteurizadas (revueltas, sin aceite)",
+    "pan_espelta": "Pan de espelta integral, tostado",
+    "pavo_loncha": "Loncha de pavo",
+    "aguacate": "Aguacate",
+    "arandanos": "Arándanos",
+    "almendras": "Almendras",
+    "manzana": "Manzana golden (1 ud)",
+    "tortitas_jamon": "Tortitas sabor jamón (2 paquetes)",
+    "crema_cacahuete": "Crema de cacahuete",
+    "arroz_integral": "Arroz integral",
+    "arroz": "Arroz blanco",
+    "pasta_blanca": "Pasta (macarrones / espaguetis)",
+    "pollo": "Pechuga de pollo fileteada",
+    "ternera": "Ternera magra",
+    "pavo": "Solomillo de pavo",
+    "merluza": "Merluza",
+    "salmon": "Salmón",
+    "alcachofa": "Alcachofas a la plancha",
+    "judia_verde": "Judías verdes",
+    "calabacin": "Calabacín a la plancha",
+    "zanahoria": "Zanahoria",
+    "ensalada": "Ensalada (hojas, zanahoria, tomate, cebolla)",
+    "aove": "Aceite de oliva virgen extra",
+    "isolate": "Proteína whey isolate",
+    "platano": "Plátano (2 ud)",
+    "patata": "Patata",
+    "yogur_proteina": "Yogur proteico de chocolate (1 ud)"
+  }
+};
