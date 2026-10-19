@@ -27,7 +27,7 @@ var CLIENTE = {
   "slug": "amaro",
   "clave": "amaro_plan_v12",
   "claveAntigua": "amaro_tracking_v1",
-  "kcal": 4110,
+  "kcal": 3150,
   "peso": 68.4,
   "pasos": 8000,
   "ratios": {
@@ -55,11 +55,11 @@ var CLIENTE = {
       "6 g/día (42 g)"
     ]
   ],
-  "ajuste": {},
+  "ajuste": { "desdeKcal": 4110 },
   "historial": [
     {
       "fecha": "19 oct",
-      "texto": "Plan de volumen: 4.110 kcal al día (las kcal reales de tu plan), con 218 g de proteína y 88 g de grasa. Los gramos son casi los de tu plan original. Nueva rutina de 5 días con fondos, búlgara y bayesian, y abdominales en los días 1, 3 y 5."
+      "texto": "Plan de volumen: 3.150 kcal al día, con 218 g de proteína y 88 g de grasa. Bajamos 960 kcal sobre todo en carbohidratos (de 612 g a 372 g). Proteína y grasa se mantienen en 218 g y 88 g, y alguna fuente de proteína sube unos gramos para cuadrar. Nueva rutina de 5 días con fondos, búlgara y bayesian, y abdominales en los días 1, 3 y 5."
     }
   ],
   "dias": [
