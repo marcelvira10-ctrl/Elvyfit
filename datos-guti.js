@@ -59,7 +59,30 @@ var CLIENTE = {
   ajuste: { desdeKcal: 3300 },
   /* --- ÚLTIMO AJUSTE: sale en el Perfil. Solo lo nuevo, sin números viejos --- */
   historial: [
-    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día. Solo cambian la patata y la avena; el resto del plan queda igual. Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg)." },
+    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día. Solo cambian la patata y la avena; el resto del plan queda igual. Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg)." }
+  ],
+
+  /* --- LAS 4 COMIDAS: ESTO ES LA BASE --- */
+  /*  Los gramos de aquí son el punto de partida. El planning   */
+  /*  los ajusta solo para cuadrar con las kcal de arriba.      */
+  /*  La proteína en polvo, el huevo y la verdura no se tocan.  */
+  /*  Solo hace falta tocarlo si quieres cambiar QUÉ come.      */
+  dias: [
+
+    /* ─────────── LUN ─────────── */
+    {
+      dia: "LUN",
+      comidas: [
+        {
+          titulo: "🌅 C1 · DESAYUNO",
+          clase:  "c1",
+          items: [
+            ["pan_espelta", 70],
+            ["huevo", 60],
+            ["platano", 200],
+            ["miel", 80]
+          ]
+        },
         {
           titulo: "🍖 C2 · ALMUERZO",
           clase:  "c2",
