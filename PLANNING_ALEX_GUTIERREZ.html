@@ -157,6 +157,22 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 .sum-line{font-size:12.5px;line-height:1.55;padding:7px 0;border-bottom:1px dotted rgba(255,255,255,.08);color:var(--light-gray)}
 .food-qty{white-space:nowrap;padding-left:8px}
 .sum-line b{color:#fff}.sum-empty{color:var(--gray)}.sum-line .g{color:var(--green);font-weight:700}.sum-line .b{color:var(--orange);font-weight:700}
+.main-sec.s8 input.ik{color:#6fd0ff;border:1px solid rgba(61,214,236,.55);background:rgba(61,214,236,.08);font-weight:700}
+.main-sec.s8 input.ir{color:#ffd84d;border:1px solid rgba(255,216,77,.55);background:rgba(255,216,77,.08);font-weight:700}
+.main-sec.s8 input.ik::placeholder{color:rgba(111,208,255,.45)}
+.main-sec.s8 input.ir::placeholder{color:rgba(255,216,77,.45)}
+.food-end{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.chg{display:inline-block;font-weight:800;font-size:11px;padding:3px 8px;border-radius:999px;white-space:nowrap;line-height:1.4}
+.chg.up{background:rgba(76,217,138,.15);color:#4cd98a;border:1px solid rgba(76,217,138,.6)}
+.chg.down{background:rgba(255,159,67,.15);color:#ff9f43;border:1px solid rgba(255,159,67,.6)}
+.chg.new{background:rgba(111,208,255,.15);color:#6fd0ff;border:1px solid rgba(111,208,255,.6)}
+.aj-box{background:linear-gradient(160deg,rgba(76,217,138,.12),rgba(0,0,0,0));border:1px solid #4cd98a;border-radius:12px;padding:16px;margin-bottom:18px}
+.aj-head{font-family:'Bebas Neue';font-size:20px;letter-spacing:.5px;color:#fff;margin-bottom:6px}
+.aj-text{font-size:12.5px;line-height:1.6;color:var(--light-gray);margin-bottom:6px}
+.aj-sub{margin:12px 0 2px;font-size:10px;letter-spacing:2px;color:var(--gray)}
+.aj-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dotted rgba(255,255,255,.08);font-size:13px;flex-wrap:wrap}
+.aj-row b{color:#fff}
+.aj-foot{font-size:11px;color:var(--gray);margin-top:10px;line-height:1.5}
 </style></head><body>
 
 <input type="radio" id="r0" class="tgl" name="nav" checked><input type="radio" id="r1" class="tgl" name="nav"><input type="radio" id="r2" class="tgl" name="nav"><input type="radio" id="r3" class="tgl" name="nav"><input type="radio" id="r4" class="tgl" name="nav"><input type="radio" id="r5" class="tgl" name="nav"><input type="radio" id="r6" class="tgl" name="nav"><input type="radio" id="r7" class="tgl" name="nav"><input type="radio" id="r8" class="tgl" name="nav">
@@ -201,7 +217,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <div class="sec-title">Tu <span>Dieta</span> Semanal</div>
   <div class="info-box ib-green">🥑 <b>4 comidas · ~<span data-v="kcal">3.550</span> kcal/día.</b> C1 y C3 son casi iguales cada día — C3 es un <b>batido líquido</b> (whey + leche entera + avena molida) para meter carbos sin llenarte. Arroz y pasta al mínimo. C2 y C4 varían. Toca cada día. Arroz, pasta, patata y boniato van en <b>peso en crudo</b>.</div>
   <div class="macro-legend"><span><span class="dot" style="background:var(--cyan)"></span>Proteína</span><span><span class="dot" style="background:var(--yellow)"></span>Carbohidrato</span><span><span class="dot" style="background:var(--pink)"></span>Grasa</span><span><span class="dot" style="background:#6fdd8b"></span>Verdura</span></div>
-  <div id="dietWrap"><div class="noscript-warn">⚠️ Si no ves tu dieta, abre este plan en <b>Chrome</b> o <b>Safari</b> (no en el visor de WhatsApp).</div></div>
+  <div id="dietAjuste"></div><div id="dietWrap"><div class="noscript-warn">⚠️ Si no ves tu dieta, abre este plan en <b>Chrome</b> o <b>Safari</b> (no en el visor de WhatsApp).</div></div>
 
 </div>
 
@@ -286,13 +302,40 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
 
   var QCL = { carbo:"m-carb", fruta:"m-carb", prote:"m-prot", supl:"m-prot", grasa:"m-fat", verdura:"m-veg" };
 
+  /* ----- qué ha cambiado: se compara con el plan de antes del último ajuste ----- */
+  var A = C.ajuste || {};
+  var PREV = (A.desdeKcal && A.desdeKcal !== C.kcal) ? C.dias.map(function(d){
+    return { dia:d.dia, comidas:E.ajustarDia(d.comidas, E.objetivo(A.desdePeso || C.peso, A.desdeKcal, C.ratios)) };
+  }) : null;
+  function sumaSemana(D){
+    var t={}; D.forEach(function(d){ d.comidas.forEach(function(c){ c.items.forEach(function(it){ t[it[0]]=(t[it[0]]||0)+it[1]; }); }); });
+    return t;
+  }
+  var TOT_NOW = sumaSemana(DIAS), TOT_PREV = PREV ? sumaSemana(PREV) : null;
+  /* flecha ▲ verde si sube, ▼ naranja si baja; vacío si el cambio es mínimo */
+  function flecha(dif, sufijo, umbral){
+    if (Math.abs(dif) < (umbral || 5)) return "";
+    var sube = dif > 0;
+    return '<span class="chg ' + (sube ? "up" : "down") + '">' + (sube ? "▲ +" : "▼ −") + sufijo + '</span>';
+  }
+  function cantFlecha(dif, clave, sufijo){
+    var a = E.ALIMENTOS[clave] || {};
+    return flecha(dif, E.peso(Math.abs(dif), a.ml) + (sufijo || ""));
+  }
+
   /* ---------- DIETA ---------- */
-  function ficha(c){
-    var m = E.macros(c.items), filas = "";
+  function ficha(c, di, ci){
+    var m = E.macros(c.items), filas = "", antes = null;
+    if (PREV && PREV[di] && PREV[di].comidas[ci]) {
+      antes = {}; PREV[di].comidas[ci].items.forEach(function(it){ antes[it[0]] = (antes[it[0]] || 0) + it[1]; });
+    }
     c.items.forEach(function(it){
       var a = E.ALIMENTOS[it[0]]; if (!a) return;
+      var tag = "";
+      if (antes) tag = antes[it[0]] ? cantFlecha(it[1] - antes[it[0]], it[0], " al día") : '<span class="chg new">NUEVO</span>';
       filas += '<div class="food-row"><span class="food-item">' + esc(E.nombre(it[0], txt(it[0])))
-             + '</span><span class="food-qty ' + (QCL[a.cat]||"") + '">' + esc(E.cantidad(it[0], it[1])) + '</span></div>';
+             + '</span><span class="food-end"><span class="food-qty ' + (QCL[a.cat] || "") + '">' + esc(E.cantidad(it[0], it[1]))
+             + '</span>' + tag + '</span></div>';
     });
     return '<div class="meal-card"><div class="meal-head"><div class="meal-name">' + esc(c.titulo)
          + '</div><div class="meal-cal">≈' + Math.round(m.kcal) + ' kcal · P' + Math.round(m.p)
@@ -304,7 +347,7 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
       radios += '<input type="radio" name="dd" id="dd'+i+'" class="tgl"'+(i===0?" checked":"")+'>';
       chips  += '<label for="dd'+i+'" class="chip">'+esc(d.dia)+'</label>';
       var cards="", tot=[];
-      d.comidas.forEach(function(c){ cards += ficha(c); tot.push(E.macros(c.items)); });
+      d.comidas.forEach(function(c){ cards += ficha(c, i, d.comidas.indexOf(c)); tot.push(E.macros(c.items)); });
       var t = E.suma(tot);
       panes += '<div class="day-pane dpd'+i+'"><div class="meal-grid">'+cards+'</div>'
              + '<div class="info-box ib-red" style="margin-top:16px">🎯 <b>Total '+esc(d.dia)+':</b> 🔥 '+E.num(t.kcal)
@@ -337,7 +380,7 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
         else if (x.k==="isolate") q = Math.round(x.g) + " g (" + Math.round(x.g/30) + " scoops)";
         else if (x.k==="platano") q = E.peso(x.g) + " (~" + Math.ceil(x.g/120) + " uds)";
         else q = E.peso(x.g, x.a.ml);
-        rows += '<div class="shop-row"><span class="n">'+esc(txt(x.k).split(",")[0])+'</span><span class="q">'+q+'</span></div>';
+        rows += '<div class="shop-row"><span class="n">'+esc(txt(x.k).split(",")[0])+'</span><span class="q">'+q+(TOT_PREV ? ' ' + cantFlecha((TOT_NOW[x.k]||0) - (TOT_PREV[x.k]||0), x.k, ' esta semana') : '')+'</span></div>';
       });
       if (b.cl==="veg") rows += '<div class="shop-row"><span class="n">Creatina monohidrato</span><span class="q">5 g/día (35 g)</span></div>'
                              + '<div class="shop-row"><span class="n">Sal · especias</span><span class="q">al gusto</span></div>';
@@ -416,25 +459,36 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
     for (var i=0;i<els.length;i++){ var k=els[i].getAttribute("data-v"); if (V[k]!==undefined) els[i].textContent=V[k]; }
   }
 
-  /* ---------- último ajuste: qué sube o baja con este cambio (por día) ---------- */
-  function pintaCambios(){
-    var c=document.getElementById("cambiosWrap"); if(!c) return;
-    var h=C.historial||[], x=h[h.length-1], A=C.ajuste;
-    if(!x && !A){ c.innerHTML=""; return; }
-    var lista="";
-    if(A && A.desdeKcal && A.desdeKcal!==C.kcal){
-      var prev=C.dias.map(function(d){ return { dia:d.dia, comidas:E.ajustarDia(d.comidas, E.objetivo(A.desdePeso||C.peso, A.desdeKcal, C.ratios)) }; });
-      var dk=C.kcal-A.desdeKcal;
-      lista += '<div class="food-row"><span class="food-item"><b>Calorías al día</b></span><span class="food-qty" style="color:'+(dk>0?"var(--green)":"var(--orange)")+'">'+(dk>0?"+":"−")+E.num(Math.abs(dk))+' kcal</span></div>';
-      E.cambios(prev, DIAS).forEach(function(m){
-        var d=Math.round(m.dif/7/5)*5; if(Math.abs(d)<5) return;
-        lista += '<div class="food-row"><span class="food-item">'+esc(txt(m.clave).split(",")[0].replace(/ \(.*\)/,""))+'</span><span class="food-qty" style="color:'+(d>0?"var(--green)":"var(--orange)")+'">'+(d>0?"+":"−")+Math.abs(d)+(m.ml?" ml":" g")+' / día</span></div>';
+  /* ---------- último ajuste: lo nuevo, con flechas. Sale en Perfil y en Dieta ---------- */
+  function bloqueAjuste(){
+    var x = (C.historial || []).slice(-1)[0];
+    if (!x && !PREV) return "";
+    var filas = "";
+    if (PREV) {
+      var dk = C.kcal - A.desdeKcal;
+      filas += '<div class="aj-row"><span>🔥 Calorías al día</span><span><b>' + E.num(A.desdeKcal) + ' → ' + E.num(C.kcal)
+             + ' kcal</b> ' + flecha(dk, E.num(Math.abs(dk)) + " kcal", 1) + '</span></div>';
+      if (A.desdePeso && A.desdePeso !== C.peso) {
+        var dp = C.peso - A.desdePeso;
+        filas += '<div class="aj-row"><span>⚖️ Peso</span><span><b>' + coma(A.desdePeso) + ' → ' + coma(C.peso)
+               + ' kg</b> ' + flecha(dp, coma(Math.abs(dp)) + " kg", 0.05) + '</span></div>';
+      }
+      E.cambios(PREV, DIAS).forEach(function(m){
+        var dd = m.dif / 7;
+        if (Math.abs(dd) < 5) return;
+        var nom = txt(m.clave).split(" (")[0].split(",")[0];
+        filas += '<div class="aj-row"><span>' + esc(nom) + '</span><span>' + flecha(dd, E.peso(Math.round(Math.abs(dd)), m.ml) + " al día") + '</span></div>';
       });
     }
-    c.innerHTML = '<div class="meal-card" style="margin-bottom:18px;border-color:var(--green)"><div class="meal-head"><div class="meal-name">📌 ÚLTIMO AJUSTE'+(x?' · '+esc(x.fecha.toUpperCase()):'')+'</div></div><div class="meal-foods">'
-      + (x?'<div style="color:var(--light-gray);line-height:1.6;margin-bottom:8px">'+esc(x.texto)+'</div>':'')
-      + (lista?'<div style="margin:6px 0 2px;font-size:10px;letter-spacing:2px;color:var(--gray)">LO QUE CAMBIA EN TU PLATO</div>'+lista:'')
-      + '<div style="margin-top:8px;font-size:11px;color:var(--gray)">Los gramos exactos de cada día, en DIETA. La compra ya está actualizada.</div></div></div>';
+    return '<div class="aj-box"><div class="aj-head">📌 ÚLTIMO AJUSTE' + (x ? ' · ' + esc(String(x.fecha).toUpperCase()) : '') + '</div>'
+      + (x ? '<div class="aj-text">' + esc(x.texto) + '</div>' : '')
+      + (filas ? '<div class="aj-sub">LO QUE CAMBIA EN TU PLATO</div>' + filas : '')
+      + '<div class="aj-foot">▲ sube · ▼ baja. Cada comida lleva su flecha, y en COMPRA ves las cantidades de la semana ya actualizadas.</div></div>';
+  }
+  function pintaCambios(){
+    var h = bloqueAjuste();
+    var a1 = document.getElementById("cambiosWrap"); if (a1) a1.innerHTML = h;
+    var a2 = document.getElementById("dietAjuste"); if (a2) a2.innerHTML = h;
   }
 
   pintaNumeros(); pintaCambios(); pintaDieta(); pintaCompra(); pintaEntreno(); pintaTracker();

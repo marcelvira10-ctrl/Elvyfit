@@ -50,6 +50,8 @@ var CLIENTE = {
 
   /* --- ÚLTIMO AJUSTE: sale en el Perfil con lo que sube/baja cada alimento.
          "desdeKcal" = las kcal que tenía justo antes de este cambio.          --- */
+  /* desdeKcal = las kcal de ANTES del último cambio. Cada vez que cambies kcal,
+     pon aquí la cifra vieja: así el planning enseña ▲ / ▼ de lo que cambia. */
   ajuste: { desdeKcal: 3300 },
   /* --- ÚLTIMO AJUSTE: sale en el Perfil. Solo lo nuevo, sin números viejos --- */
   historial: [
