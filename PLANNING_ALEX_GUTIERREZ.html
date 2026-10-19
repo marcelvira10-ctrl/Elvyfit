@@ -276,6 +276,8 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 
 <div id="sumModal" onclick="if(event.target===this)closeSummary()"><div class="sum-box"><div class="sum-head"><div class="sum-title">📈 RESUMEN DE TU PROGRESIÓN</div><button class="btn btn-reset" onclick="closeSummary()">✕ Cerrar</button></div><div id="sumBody"></div></div></div>
 <script src="elvyfit-motor.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="datos-guti.js"></script>
 <script>
 /* ============================================================
@@ -520,11 +522,22 @@ function marcar(){ var n=document.getElementById('savedNote'); if(!n) return; va
   n.textContent='💾 Guardado en este móvil a las '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); n.style.display='block'; }
 function alerta(t,cl){ var w=document.getElementById('saveWarn'); if(!w) return; w.innerHTML=t; w.className='savewarn'+(cl?' '+cl:''); w.style.display=t?'block':'none'; }
 
+/* ---- NUBE: cada cambio de pesos se envía a Firestore (colección "progreso") ---- */
+var FB_CONFIG={apiKey:"AIzaSyA6JVOspcEiMEDik00juvDEKNH9PtYJckc",authDomain:"elvyfit-617ee.firebaseapp.com",projectId:"elvyfit-617ee",storageBucket:"elvyfit-617ee.firebasestorage.app",messagingSenderId:"886955262250",appId:"1:886955262250:web:411f3dc3662b63bd619e53"};
+var nubeDB=null, nubeT=null;
+try{ if(typeof firebase!=='undefined'){ if(!firebase.apps.length) firebase.initializeApp(FB_CONFIG); nubeDB=firebase.firestore(); } }catch(e){ nubeDB=null; }
+function nube(o){
+  if(!nubeDB||!o||!o.d) return;
+  clearTimeout(nubeT);
+  nubeT=setTimeout(function(){
+    try{ nubeDB.collection('progreso').doc(CLIENTE.slug).set({d:o.d,t:o.t||Date.now(),slug:CLIENTE.slug}).catch(function(){}); }catch(e){}
+  },3000);
+}
 function saveTrk(manual){
   var o=recoger(), ok=false;
   try{ localStorage.setItem(KEY,JSON.stringify(o)); ok=true; }catch(e){}
   try{ sessionStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
-  idbSet(o);
+  idbSet(o); nube(o);
   if(ok) marcar();
   else alerta('⚠️ <b>Tu navegador no está dejando guardar.</b> Abre el enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp) y dale a <b>📥 Descargar copia</b> al acabar cada entreno.','hot');
   if(manual==='boton') alert(ok?'✅ Progreso guardado en tu móvil.':'⚠️ No se ha podido guardar aquí. Abre el plan en Chrome o Safari.');
