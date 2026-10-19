@@ -40,6 +40,10 @@ var CLIENTE = {
      Si algún día quieres meter carne, sube "p" a 2 o 2,2.        */
   ratios: { p: 1.6, g: 0.6 },
 
+  /* SOLO se mueven estos alimentos al cambiar kcal. El resto del plan queda igual.
+     Marc decide cada cambio; si no hay lista, se reparte entre todos. */
+  soloEstos: ["patata", "avena"],
+
   /* --- DATOS PARA CALCULAR SU GASTO --- */
   perfil: {
     edad: 26, altura: 183, sexo: "hombre",
@@ -55,30 +59,7 @@ var CLIENTE = {
   ajuste: { desdeKcal: 3300 },
   /* --- ÚLTIMO AJUSTE: sale en el Perfil. Solo lo nuevo, sin números viejos --- */
   historial: [
-    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día, todo en carbohidratos (batido y patata). Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg): la proteína va en el batido, el huevo y los carbos, sin carne ni pescado. El batido lleva avena y crema de arroz." }
-  ],
-
-  /* --- LAS 4 COMIDAS: ESTO ES LA BASE --- */
-  /*  Los gramos de aquí son el punto de partida. El planning   */
-  /*  los ajusta solo para cuadrar con las kcal de arriba.      */
-  /*  La proteína en polvo, el huevo y la verdura no se tocan.  */
-  /*  Solo hace falta tocarlo si quieres cambiar QUÉ come.      */
-  dias: [
-
-    /* ─────────── LUN ─────────── */
-    {
-      dia: "LUN",
-      comidas: [
-        {
-          titulo: "🌅 C1 · DESAYUNO",
-          clase:  "c1",
-          items: [
-            ["pan_espelta", 70],
-            ["huevo", 60],
-            ["platano", 200],
-            ["miel", 80]
-          ]
-        },
+    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día. Solo cambian la patata y la avena; el resto del plan queda igual. Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg)." },
         {
           titulo: "🍖 C2 · ALMUERZO",
           clase:  "c2",

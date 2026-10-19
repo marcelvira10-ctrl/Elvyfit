@@ -238,12 +238,18 @@ var ELVYFIT = (function () {
   }
 
   /* ajusta UN día entero a los macros objetivo */
-  function ajustarDia(comidas, obj) {
+  function ajustarDia(comidas, obj, soloEstos) {
     var copia = comidas.map(function (c) {
       return { titulo: c.titulo, clase: c.clase, items: c.items.map(function (it) { return [it[0], it[1]]; }) };
     });
     var todos = [];
     copia.forEach(function (c) { c.items.forEach(function (it) { todos.push(it); }); });
+
+    /* Si se pasa "soloEstos" (lista de claves), SOLO esos alimentos se mueven;
+       el resto del plan se queda como está. Los macros se miran sobre todo el día. */
+    var movibles = (soloEstos && soloEstos.length)
+      ? todos.filter(function (it) { return soloEstos.indexOf(it[0]) >= 0; })
+      : todos;
 
     /* Varias pasadas: al mover los carbos se arrastra algo de proteína
        (el pan y el arroz también la llevan), así que se vuelve a pasar. */
@@ -252,18 +258,18 @@ var ELVYFIT = (function () {
       var dp = obj.p - m.p, dc = obj.c - m.c, dg = obj.g - m.g;
       if (Math.abs(dp) < 1.5 && Math.abs(dc) < 2 && Math.abs(dg) < 0.8) break;
 
-      if (Math.abs(dp) >= 1.5) repartir(todos, "prote", "p", dp, 5);
+      if (Math.abs(dp) >= 1.5) repartir(movibles, "prote", "p", dp, 5);
 
       m = macros(todos);
       dc = obj.c - m.c;
       if (Math.abs(dc) >= 2) {
-        var puesto = repartir(todos, "carbo", "c", dc, 5);
-        if (Math.abs(puesto) < Math.abs(dc) * 0.9) repartir(todos, "fruta", "c", dc - puesto, 5);
+        var puesto = repartir(movibles, "carbo", "c", dc, 5);
+        if (Math.abs(puesto) < Math.abs(dc) * 0.9) repartir(movibles, "fruta", "c", dc - puesto, 5);
       }
 
       m = macros(todos);
       dg = obj.g - m.g;
-      if (Math.abs(dg) >= 0.8) repartir(todos, "grasa", "g", dg, 1);
+      if (Math.abs(dg) >= 0.8) repartir(movibles, "grasa", "g", dg, 1);
     }
     return copia;
   }
