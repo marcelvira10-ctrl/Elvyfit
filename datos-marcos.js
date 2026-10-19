@@ -17,7 +17,13 @@ var CLIENTE = {
     "p": 1.6,
     "g": 0.4
   },
-  "soloEstos": ["patata", "boniato", "arroz", "pasta_integral"],
+  "gastoTotal": 3200,
+  "soloEstos": [
+    "patata",
+    "boniato",
+    "arroz",
+    "pasta_integral"
+  ],
   "perfil": {
     "edad": 28,
     "altura": 182,

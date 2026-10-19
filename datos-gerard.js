@@ -7,7 +7,7 @@ if (typeof ELVYFIT !== "undefined") {
   AL.yogur_griego     = AL.yogur_griego     || { n:"Yogur griego 0%",         p:10.0, c:3.6,  g:0.2,  crudo:false, ok:false, cat:"prote" };
   AL.tortitas_arroz   = AL.tortitas_arroz   || { n:"Tortitas de arroz",       p:7.5,  c:80.0, g:3.0,  crudo:false, ok:false, cat:"carbo" };
   AL.atun             = AL.atun             || { n:"Atún al natural",         p:25.0, c:0.0,  g:1.0,  crudo:false, ok:false, cat:"prote" };
-  AL.garbanzos        = AL.garbanzos        || { n:"Garbanzos cocidos",       p:8.9,  c:27.0, g:2.6,  crudo:false, ok:false, cat:"carbo" };
+  AL.garbanzos        = AL.garbanzos        || { n:"Garbanzos secos",          p:20.5, c:45.0, g:6.0,  crudo:true,  ok:false, cat:"carbo" };
   AL.crema_cacahuete  = AL.crema_cacahuete  || { n:"Crema de cacahuete 100%", p:25.0, c:20.0, g:50.0, crudo:false, ok:false, cat:"grasa" };
   AL.almendras        = AL.almendras        || { n:"Almendras crudas",        p:21.0, c:22.0, g:49.0, crudo:false, ok:false, cat:"grasa" };
 }
@@ -25,6 +25,7 @@ var CLIENTE = {
     "p": 1.6,
     "g": 0.6
   },
+  "gastoTotal": 3230,
   "soloEstos": [
     "arroz",
     "pasta",
@@ -300,7 +301,7 @@ var CLIENTE = {
             ],
             [
               "garbanzos",
-              60
+              23
             ],
             [
               "tomate",

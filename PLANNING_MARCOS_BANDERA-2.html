@@ -305,7 +305,8 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
   var GST = E.gasto({ peso:C.peso, altura:C.perfil.altura, edad:C.perfil.edad, sexo:C.perfil.sexo,
     pasos:C.pasos, trabajo:C.perfil.trabajo, gymDias:C.perfil.gymDias, gymMin:C.perfil.gymMin,
     deporteDias:C.perfil.deporteDias, deporteMin:C.perfil.deporteMin });
-  var DIAS = C.dias.map(function(d){ return { dia:d.dia, comidas:E.ajustarDia(d.comidas, OBJ, C.soloEstos) }; });
+  if(C.gastoTotal) GST.total=C.gastoTotal; /* gasto que ya figuraba en el planning (si se indica) */
+  var DIAS = C.dias.map(function(d){ return { dia:d.dia, comidas:E.ajustarDia(d.comidas, d.kcal ? E.objetivo(C.peso, d.kcal, C.ratios) : OBJ, C.soloEstos) }; });
 
   var QCL = { carbo:"m-carb", fruta:"m-carb", prote:"m-prot", supl:"m-prot", grasa:"m-fat", verdura:"m-veg" };
 
