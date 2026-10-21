@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Elvyfit Coach">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0a0a">
+<title>Elvyfit Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--card:#141414;--card2:#1d1d1d;--line:#2b2b2b;
+  --text:#f2f2f2;--text2:#bdbdbd;--muted:#8c8c8c;
+  --red:#e50914;--kg:#7fb2ee;--rep:#f0c419;--up:#2fbf5b;--dn:#ef5b5b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg)}
+body{color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.45;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 16px 48px}
+.bebas{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.5px}
+.brand{color:var(--red);font-weight:700;font-size:12px;letter-spacing:4px}
+h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:44px;line-height:1;margin-top:4px}
+.sub{color:var(--text2);font-size:13.5px;margin-top:4px}
+.estado{margin-top:14px;font-size:13px;color:var(--text2);background:var(--card);border-radius:10px;padding:10px 12px;border-left:3px solid var(--line)}
+.estado.ok{border-left-color:var(--up)}.estado.mal{border-left-color:var(--red);color:var(--text)}
+.hidden{display:none!important}
+
+/* login */
+.login{margin-top:16px;background:var(--card);border-radius:12px;padding:16px}
+.login h2{font-size:16px;margin-bottom:10px}
+.login input{width:100%;background:var(--card2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:12px;font-size:16px;margin-bottom:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:0;border-radius:8px;padding:11px 16px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.btn.sec{background:var(--card2);border:1px solid var(--line);color:var(--text)}
+.btn.full{width:100%}
+
+/* lista de clientes */
+.lista{margin-top:18px;display:grid;gap:10px}
+.cli{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid transparent;border-radius:12px;padding:14px 14px;cursor:pointer;text-align:left;width:100%;color:inherit;font-family:inherit}
+.cli:hover,.cli:focus-visible{border-color:var(--line);outline:none}
+.cli b{display:block;font-size:17px}
+.cli span{display:block;font-size:12.5px;color:var(--text2)}
+.cli .sem{flex:none;text-align:right}
+.cli .sem i{display:block;font-style:normal;font-family:"Bebas Neue",Impact,sans-serif;font-size:28px;line-height:1;color:var(--text)}
+.cli .sem small{font-size:11px;color:var(--muted)}
+.nuevo{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--up);margin-right:6px;vertical-align:middle}
+.vacio{margin-top:18px;color:var(--text2);font-size:14px;background:var(--card);border-radius:12px;padding:16px}
+
+/* ficha de cliente */
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.volver{background:none;border:0;color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;padding:6px 0;font-family:inherit}
+.ficha h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:40px;line-height:1;margin-top:8px}
+.meta{color:var(--text2);font-size:13px;margin-top:4px}
+.meta select{background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-size:13px;margin-left:4px}
+.acc{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.leyenda{margin-top:12px;font-size:12.5px;color:var(--text2);display:flex;gap:14px;flex-wrap:wrap}
+.leyenda b.k{color:var(--kg)}.leyenda b.r{color:var(--rep)}
+.peso{margin-top:16px;background:var(--card);border-radius:12px;padding:12px 14px}
+.peso h3,.dia h3{font-size:12px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:8px}
+.pchips{display:flex;gap:8px;flex-wrap:wrap}
+.pchip{background:var(--card2);border-radius:8px;padding:6px 10px;font-size:13px}
+.pchip small{color:var(--muted);margin-right:6px}
+.dia{margin-top:22px}
+.dia>h3{font-size:13px;color:var(--red);letter-spacing:1.5px}
+.ej{background:var(--card);border-radius:12px;padding:12px 12px 10px;margin-top:10px}
+.ej-h b{font-size:15px}
+.ej-h span{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+.tscroll{overflow-x:auto;margin-top:8px;-webkit-overflow-scrolling:touch}
+table{border-collapse:separate;border-spacing:3px;min-width:100%}
+th{font-size:11px;color:var(--muted);font-weight:700;text-align:center;padding:2px 4px;white-space:nowrap}
+th.last{color:var(--text)}
+td.s{font-size:11.5px;color:var(--muted);font-weight:600;white-space:nowrap;padding-right:4px}
+td.c{background:var(--card2);border-radius:7px;text-align:center;padding:6px 7px;white-space:nowrap;position:relative;min-width:60px}
+td.c.last{outline:1px solid #3a3a3a}
+td.c .k{color:var(--kg);font-weight:700;font-size:14px}
+td.c .x{color:var(--muted);font-size:12px;margin:0 2px}
+td.c .r{color:var(--rep);font-weight:700;font-size:14px}
+td.c .o{display:block;font-size:10.5px;color:var(--muted)}
+td.c i{position:absolute;top:2px;right:4px;font-style:normal;font-size:9px}
+td.c i.up{color:var(--up)}td.c i.dn{color:var(--dn)}
+td.c.v{background:transparent;border:1px dashed #2f2f2f}
+.pie{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">ELVYFIT</div>
+    <h1>COACH</h1>
+    <p class="sub">Lo que apuntan tus clientes en su planning, al momento.</p>
+  </header>
+
+  <div id="estado" class="estado">Conectando…</div>
+
+  <form id="login" class="login hidden" autocomplete="on">
+    <h2>Entra con tu cuenta de Elvyfit</h2>
+    <input id="email" type="email" placeholder="Email" autocomplete="username" required>
+    <input id="pass" type="password" placeholder="Contraseña" autocomplete="current-password" required>
+    <button class="btn full" type="submit">Entrar</button>
+  </form>
+
+  <section id="vistaLista">
+    <div id="lista" class="lista"></div>
+  </section>
+
+  <section id="vistaFicha" class="ficha hidden">
+    <div class="top"><button class="volver" id="volver" type="button">← Clientes</button></div>
+    <div id="ficha"></div>
+  </section>
+
+  <p class="pie">Este móvil está marcado como el de Marc: aquí los plannings de clientes no envían nada.<br><span id="salir" class="hidden"> · <a href="#" id="salirBtn" style="color:var(--muted)">Cerrar sesión</a></span></p>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+(function(){
+  try{ localStorage.setItem('elvyfit_coach','1'); }catch(e){}
+  var FB={apiKey:"AIzaSyA6JVOspcEiMEDik00juvDEKNH9PtYJckc",authDomain:"elvyfit-617ee.firebaseapp.com",projectId:"elvyfit-617ee",storageBucket:"elvyfit-617ee.firebasestorage.app",messagingSenderId:"886955262250",appId:"1:886955262250:web:411f3dc3662b63bd619e53"};
+  var $=function(id){ return document.getElementById(id); };
+  var esc=function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+  function estado(t,cl){ var e=$('estado'); e.innerHTML=t; e.className='estado'+(cl?' '+cl:''); e.classList.toggle('hidden',!t); }
+  function toast(t){ var e=$('toast'); e.textContent=t; e.classList.add('on'); setTimeout(function(){ e.classList.remove('on'); },1800); }
+  if(typeof firebase==='undefined'){ estado('⚠️ No se ha podido cargar la conexión. Revisa que tienes internet y recarga.','mal'); return; }
+
+  var app=firebase.apps.length?firebase.app():firebase.initializeApp(FB);
+  var db=app.firestore(), auth=app.auth();
+  var DOCS=[], cliente=null, dispSel=null, quitar=null;
+
+  function hace(t){
+    var s=Math.max(0,(Date.now()-t)/1000);
+    if(s<90) return 'ahora mismo';
+    if(s<3600) return 'hace '+Math.round(s/60)+' min';
+    if(s<86400) return 'hace '+Math.round(s/3600)+' h';
+    var d=Math.round(s/86400); return 'hace '+d+(d===1?' día':' días');
+  }
+  function num(v){ var n=parseFloat(String(v||'').replace(',','.')); return isNaN(n)?null:n; }
+  function fuerza(c){ if(!c) return null; var k=num(c.kg), r=num(c.rep); if(r===null) return null; return k===null||k===0 ? r : k*(1+r/30); }
+  function semanas(doc){
+    var w={}; (doc.dias||[]).forEach(function(d){ (d.ejercicios||[]).forEach(function(e){ (e.series||[]).forEach(function(s){ for(var k in (s.sem||{})) w[k]=1; }); }); });
+    return Object.keys(w).map(Number).sort(function(a,b){return a-b;});
+  }
+  function porCliente(){
+    var g={};
+    DOCS.forEach(function(d){ if(!d.slug) return; (g[d.slug]=g[d.slug]||[]).push(d); });
+    var out=[]; for(var k in g){ g[k].sort(function(a,b){ return (b.t||0)-(a.t||0); }); out.push({slug:k, docs:g[k], ult:g[k][0]}); }
+    out.sort(function(a,b){ return (b.ult.t||0)-(a.ult.t||0); });
+    return out;
+  }
+
+  function pintaLista(){
+    var cs=porCliente();
+    if(!cs.length){ $('lista').innerHTML='<div class="vacio">Todavía no ha llegado nada. En cuanto un cliente apunte un peso en su planning, aparece aquí.</div>'; return; }
+    $('lista').innerHTML=cs.map(function(c){
+      var u=c.ult, ws=semanas(u), w=ws.length?ws[ws.length-1]:null, reciente=(Date.now()-(u.t||0))<86400000;
+      return '<button class="cli" type="button" data-slug="'+esc(c.slug)+'"><div><b>'+(reciente?'<span class="nuevo" title="Últimas 24 h"></span>':'')+esc(u.nombre||c.slug)+'</b>'
+        +'<span>'+esc(hace(u.t||0))+' · '+esc(u.equipo||'')+(c.docs.length>1?' · '+c.docs.length+' móviles':'')+'</span></div>'
+        +(w?'<div class="sem"><i>S'+w+'</i><small>última semana</small></div>':'')+'</button>';
+    }).join('');
+  }
+
+  function celda(c, prev){
+    if(!c) return '<td class="c v"></td>';
+    var a='', f=fuerza(c), p=fuerza(prev);
+    if(f!==null && p!==null){ if(f>p*1.005) a='<i class="up">▲</i>'; else if(f<p*0.995) a='<i class="dn">▼</i>'; }
+    var kg=c.kg?'<span class="k">'+esc(c.kg)+'</span><span class="x">×</span>':'';
+    var otro=c.rir?'RIR '+esc(c.rir):(c.fallo?'fallo '+esc(c.fallo):'');
+    return '<td class="c">'+a+kg+'<span class="r">'+esc(c.rep||'–')+'</span>'+(otro?'<span class="o">'+otro+'</span>':'')+'</td>';
+  }
+  function pintaFicha(){
+    var cs=porCliente(), c=null; cs.forEach(function(x){ if(x.slug===cliente) c=x; });
+    if(!c){ $('ficha').innerHTML='<div class="vacio">Este cliente ya no tiene datos.</div>'; return; }
+    var doc=c.docs[0]; if(dispSel) c.docs.forEach(function(d){ if(d.disp===dispSel) doc=d; });
+    var sel=c.docs.length>1?' · Móvil <select id="disp">'+c.docs.map(function(d){ return '<option value="'+esc(d.disp)+'"'+(d===doc?' selected':'')+'>'+esc((d.equipo||'')+' · '+hace(d.t||0))+'</option>'; }).join('')+'</select>':'';
+    var h='<h2>'+esc((doc.nombre||c.slug).toUpperCase())+'</h2>'
+      +'<p class="meta">Actualizado '+esc(hace(doc.t||0))+' · '+esc(doc.equipo||'')+(doc.archivo?' · '+esc(doc.archivo):'')+sel+'</p>'
+      +'<div class="acc"><button class="btn sec" id="copiar" type="button">📋 Copiar última semana</button></div>'
+      +'<div class="leyenda"><span><b class="k">kg</b> × <b class="r">reps</b></span><span><span style="color:var(--up)">▲</span> mejor que la semana anterior · <span style="color:var(--dn)">▼</span> peor</span></div>';
+    var pk=Object.keys(doc.peso||{}).map(Number).sort(function(a,b){return a-b;});
+    if(pk.length) h+='<div class="peso"><h3>PESO CORPORAL</h3><div class="pchips">'+pk.map(function(w){ return '<span class="pchip"><small>S'+w+'</small>'+esc(doc.peso[w])+' kg</span>'; }).join('')+'</div></div>';
+    (doc.dias||[]).forEach(function(d){
+      h+='<div class="dia"><h3>'+esc(d.dia||'')+'</h3>';
+      (d.ejercicios||[]).forEach(function(e){
+        var ws={}; (e.series||[]).forEach(function(s){ for(var k in (s.sem||{})) ws[k]=1; });
+        var W=Object.keys(ws).map(Number).sort(function(a,b){return a-b;});
+        var last=W[W.length-1];
+        var th='<tr><th></th>'+W.map(function(w){ return '<th'+(w===last?' class="last"':'')+'>SEM '+w+'</th>'; }).join('')+'</tr>';
+        var rows=(e.series||[]).map(function(s){
+          return '<tr><td class="s">'+esc(s.s||'')+'</td>'+W.map(function(w,i){ var cc=celda(s.sem[w], i?s.sem[W[i-1]]:null); return w===last?cc.replace('class="c','class="c last'):cc; }).join('')+'</tr>';
+        }).join('');
+        h+='<div class="ej"><div class="ej-h"><b>'+esc(e.nombre)+'</b>'+(e.detalle?'<span>'+esc(e.detalle)+'</span>':'')+'</div><div class="tscroll"><table>'+th+rows+'</table></div></div>';
+      });
+      h+='</div>';
+    });
+    $('ficha').innerHTML=h;
+    [].forEach.call(document.querySelectorAll('#ficha .tscroll'),function(t){ t.scrollLeft=t.scrollWidth; }); /* se ve primero la última semana */
+    var s=$('disp'); if(s) s.onchange=function(){ dispSel=s.value; pintaFicha(); };
+    $('copiar').onclick=function(){ copiar(doc); };
+  }
+  function copiar(doc){
+    var L=[(doc.nombre||doc.slug).toUpperCase()+' — seguimiento'], pk=Object.keys(doc.peso||{}).map(Number).sort(function(a,b){return a-b;});
+    if(pk.length) L.push('Peso: '+pk.map(function(w){ return 'S'+w+' '+doc.peso[w]+' kg'; }).join(' · '));
+    (doc.dias||[]).forEach(function(d){
+      var lin=[];
+      (d.ejercicios||[]).forEach(function(e){
+        var W=[]; (e.series||[]).forEach(function(s){ for(var k in (s.sem||{})) W.push(+k); });
+        if(!W.length) return; var w=Math.max.apply(null,W);
+        lin.push('• '+e.nombre+' (sem '+w+'): '+(e.series||[]).map(function(s){ var c=s.sem[w]; return c?((c.kg?c.kg+'x':'x')+(c.rep||'?')):'—'; }).join(' | '));
+      });
+      if(lin.length){ L.push(''); L.push('— '+(d.dia||'')+' —'); L=L.concat(lin); }
+    });
+    var t=L.join('\n');
+    (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).then(function(){ toast('Copiado'); },function(){
+      var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{ document.execCommand('copy'); toast('Copiado'); }catch(e){} document.body.removeChild(a);
+    });
+  }
+
+  function abre(slug){ cliente=slug; dispSel=null; $('vistaLista').classList.add('hidden'); $('vistaFicha').classList.remove('hidden'); pintaFicha(); window.scrollTo(0,0); try{ history.replaceState(null,'','#'+encodeURIComponent(slug)); }catch(e){} }
+  function cierra(){ cliente=null; $('vistaFicha').classList.add('hidden'); $('vistaLista').classList.remove('hidden'); pintaLista(); try{ history.replaceState(null,'',location.pathname); }catch(e){} }
+  $('lista').addEventListener('click',function(e){ var b=e.target.closest('.cli'); if(b) abre(b.getAttribute('data-slug')); });
+  $('volver').onclick=cierra;
+
+  function escucha(){
+    if(quitar) quitar();
+    estado('Conectando…');
+    quitar=db.collection('seguimiento').onSnapshot(function(snap){
+      DOCS=[]; snap.forEach(function(d){ DOCS.push(d.data()); });
+      estado('');
+      $('login').classList.add('hidden');
+      if(cliente) pintaFicha(); else { pintaLista(); var h=decodeURIComponent(location.hash.slice(1)); if(h && DOCS.some(function(d){return d.slug===h;})) abre(h); }
+    },function(err){
+      if(err && err.code==='permission-denied'){
+        if(auth.currentUser) estado('⚠️ Tu cuenta no tiene permiso para leer el seguimiento. Revisa las reglas de Firestore.','mal');
+        else { estado('Entra para ver el seguimiento de tus clientes.'); $('login').classList.remove('hidden'); }
+      } else estado('⚠️ No se ha podido conectar ('+esc(err&&err.code||'error')+'). Revisa internet y recarga.','mal');
+    });
+  }
+  $('login').addEventListener('submit',function(e){
+    e.preventDefault();
+    estado('Entrando…');
+    auth.signInWithEmailAndPassword($('email').value.trim(),$('pass').value).catch(function(err){
+      estado('⚠️ No se ha podido entrar: '+esc(err&&err.code==='auth/invalid-credential'?'email o contraseña incorrectos':(err&&err.code||'error')),'mal');
+    });
+  });
+  $('salirBtn').onclick=function(e){ e.preventDefault(); auth.signOut(); };
+  auth.onAuthStateChanged(function(u){ $('salir').classList.toggle('hidden',!u); escucha(); });
+  setInterval(function(){ if(!cliente) pintaLista(); },60000);
+})();
+</script>
+</body>
+</html>
