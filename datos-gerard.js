@@ -805,12 +805,12 @@ var CLIENTE = {
           "video": "https://youtube.com/shorts/j2tjiP-YoDU"
         },
         {
-          "nombre": "Tríceps katana unilateral en polea",
+          "nombre": "Fondos de tríceps (en máquina o libres)",
           "reps": [
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/HNH6a33SZB0"
+          "video": "https://www.youtube.com/watch?v=4PEcd1VDpKY"
         },
         {
           "nombre": "Extensión tríceps polea barra recta",
