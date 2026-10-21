@@ -544,14 +544,14 @@ function semilla(){
   });
   return d;
 }
-function migrar(o){ /* convierte el formato antiguo (t{d}_e{e0}_s_w_kg y peso_wN) al actual */
+function migrar(o){ /* convierte lo apuntado en el planning anterior (t{d}_e{e0}_s_w_kg y peso_wN) al actual.
+  t1, t2, t3, t4 = días de la rutina en el mismo orden (LUN, MIE, JUE, VIE) */
   if(!o||!o.d) return o;
-  var d={};
+  var d={}, R=(typeof CLIENTE!=='undefined'&&CLIENTE.rutina)||[];
   for(var k in o.d){
     var m=/^t(\d)_e(\d+)_s(\d+)_w(\d+)_(kg|rep)$/.exec(k), p=/^peso_w(\d+)$/.exec(k);
-    if(m) d['D'+m[1]+'_e'+(+m[2]+1)+'_s'+m[3]+'_w'+m[4]+'_'+m[5]]=o.d[k];
+    if(m){ var dia=(R[+m[1]-1]&&R[+m[1]-1].id)||('D'+m[1]); d[dia+'_e'+(+m[2]+1)+'_s'+m[3]+'_w'+m[4]+'_'+m[5]]=o.d[k]; }
     else if(p) d['pc_'+p[1]]=o.d[k];
-    else d[k]=o.d[k];
   }
   return {v:2,t:o.t||1,d:d};
 }
@@ -559,11 +559,12 @@ function loadTrk(){
   var cands=[];
   try{ cands.push(parsear(localStorage.getItem(KEY))); }catch(e){}
   try{ cands.push(parsear(sessionStorage.getItem(KEY))); }catch(e){}
-  var antiguo=null; try{ antiguo=migrar(parsear(localStorage.getItem(KEY_OLD))); }catch(e){}
+  var antiguo=null; try{ if(KEY_OLD) antiguo=migrar(parsear(localStorage.getItem(KEY_OLD))); }catch(e){}
+  /* debajo va lo que Marc ha dejado en datos y lo apuntado en el planning anterior; encima, lo apuntado aquí */
+  function base(m){ if(m&&m.borrado) return; aplicar({d:semilla()}); aplicar(antiguo); }
   var b=mejor(cands);
-  if(!b||!b.borrado){ aplicar({d:semilla()}); if(!b) aplicar(antiguo); }
-  aplicar(b);
-  idbGet(function(o){ if(o&&!tocado){ cands.push(o); var m=mejor(cands); if(m&&m!==b){ if(!m.borrado) aplicar({d:semilla()}); aplicar(m); } } });
+  base(b); aplicar(b);
+  idbGet(function(o){ if(o&&!tocado){ cands.push(o); var m=mejor(cands); if(m&&m!==b){ base(m); aplicar(m); } } });
 }
 function resetTrk(){
   if(!confirm('¿Borrar TODO el progreso guardado?')) return;

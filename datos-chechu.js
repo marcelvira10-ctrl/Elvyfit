@@ -12,7 +12,7 @@ var CLIENTE = {
   "apellido": "Yáñez Sampedro",
   "slug": "chechu",
   "clave": "chechu_plan_v1",
-  "claveAntigua": "chechu_tracking_v0",
+  "claveAntigua": "sergi_tracking_v1",
   "kcal": 2005,
   "peso": 94,
   "pasos": 9500,
@@ -87,7 +87,20 @@ var CLIENTE = {
           "10x8"
         ]
       },
-      "Fondos con peso corporal (tríceps)": {},
+      "Fondos con peso corporal (tríceps)": {
+        "1": [
+          "x4",
+          "x4"
+        ],
+        "2": [
+          "x5",
+          "x5"
+        ],
+        "3": [
+          "x6",
+          "x5"
+        ]
+      },
       "Tríceps katana unilateral": {
         "1": [
           "3x13",
@@ -115,7 +128,18 @@ var CLIENTE = {
           "11x10"
         ]
       },
-      "Dragon flag (abdominales)": {}
+      "Dragon flag (abdominales)": {
+        "1": [
+          "x9",
+          "x10",
+          "x8"
+        ],
+        "3": [
+          "x10",
+          "x9",
+          "x7"
+        ]
+      }
     },
     "MIE": {
       "Sentadilla multipower c/ almohadilla espalda": {
@@ -352,7 +376,23 @@ var CLIENTE = {
           "30x6"
         ]
       },
-      "Dragon flag (abdominales)": {}
+      "Dragon flag (abdominales)": {
+        "1": [
+          "x10",
+          "x8",
+          "x7"
+        ],
+        "2": [
+          "x9",
+          "x9",
+          "x8"
+        ],
+        "3": [
+          "x9",
+          "x8",
+          "x8"
+        ]
+      }
     },
     "pesoCorporal": {
       "1": "92",
@@ -1037,6 +1077,7 @@ var CLIENTE = {
         {
           "nombre": "Tríceps katana unilateral",
           "reps": [
+            "fallo",
             "fallo"
           ],
           "video": "https://youtube.com/shorts/HNH6a33SZB0"
