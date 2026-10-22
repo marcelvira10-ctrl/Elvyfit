@@ -555,21 +555,29 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       var w=parseInt($('pSem').value,10), k=num($('pKg').value);
       if(!w||!k||k<30||k>300){ toast('Pon la semana y un peso válido'); return; }
       var m={}; for(var q in Mp) m[q]=Mp[q]; m[w]=String(k);
-      guardaCoach(doc.slug,{peso:m},['peso']).then(function(){ toast('Peso guardado'); });
+      guardaCoach(doc.slug,{peso:m},['peso']).then(function(){ toast('Peso guardado'); }).catch(function(){});
     };
-    [].forEach.call(document.querySelectorAll('[data-borra]'),function(b){ b.onclick=function(){ var w=b.getAttribute('data-borra'), m={}; for(var q in Mp) if(q!==w) m[q]=Mp[q]; guardaCoach(doc.slug,{peso:m},['peso']); }; });
+    [].forEach.call(document.querySelectorAll('[data-borra]'),function(b){ b.onclick=function(){ var w=b.getAttribute('data-borra'), m={}; for(var q in Mp) if(q!==w) m[q]=Mp[q]; guardaCoach(doc.slug,{peso:m},['peso']).catch(function(){}); }; });
     [].forEach.call(document.querySelectorAll('.ejr'),function(b){ b.onclick=function(){ var k=b.getAttribute('data-k'); abiertos[k]=!abiertos[k]; var y=window.scrollY; pintaFicha(); window.scrollTo(0,y); }; });
     [].forEach.call(document.querySelectorAll('[data-excl]'),function(c){ c.onchange=function(){
       var k=c.getAttribute('data-excl'), ex=(CO.excluir||[]).filter(function(x){ return x!==k; }), inc=(CO.incluir||[]).filter(function(x){ return x!==k; });
       if(c.checked) inc.push(k); else ex.push(k);
-      guardaCoach(doc.slug,{excluir:ex,incluir:inc},['excluir','incluir']); }; });
+      guardaCoach(doc.slug,{excluir:ex,incluir:inc},['excluir','incluir']).catch(function(){}); }; });
   }
   function guardaCoach(slug,datos,campos){
+    if(!auth.currentUser){
+      $('login').classList.remove('hidden'); estado('Para guardar tienes que entrar con tu cuenta en este móvil (aquí arriba).','mal'); window.scrollTo(0,0);
+      alert('No has entrado con tu cuenta en este móvil. Entra arriba con tu email y contraseña y vuelve a guardarlo.');
+      return Promise.reject(new Error('sin sesión'));
+    }
     datos.t=Date.now(); campos=campos.concat(['t']);
     COACH[slug]=COACH[slug]||{}; for(var k in datos) COACH[slug][k]=datos[k];
     pintaFicha();
     return db.collection('coach').doc(slug).set(datos,{mergeFields:campos}).catch(function(err){
-      toast('No se ha guardado'); estado('⚠️ No se ha podido guardar ('+esc(err&&err.code||'error')+'). Revisa que las reglas de Firestore incluyen la parte de "coach".','mal'); throw err;
+      var cod=err&&err.code||'error';
+      estado('⚠️ No se ha podido guardar ('+esc(cod)+'). Revisa que las reglas de Firestore incluyen la parte de "coach".','mal');
+      alert('No se ha guardado ('+cod+').'+(cod==='permission-denied'?'\nLas reglas de Firebase todavía no dejan guardar: espera 1 minuto y prueba otra vez. Si sigue, revisa que tienen la parte de "coach".':''));
+      delete COACH[slug]; escucha(); throw err;
     });
   }
 
@@ -662,7 +670,9 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     });
   }
   function subeFotos(slug,files,fecha){
-    if(!files.length) return; toast('Subiendo '+files.length+(files.length===1?' foto…':' fotos…'));
+    if(!files.length) return;
+    if(!auth.currentUser){ $('login').classList.remove('hidden'); window.scrollTo(0,0); alert('No has entrado con tu cuenta en este móvil. Entra arriba con tu email y contraseña y vuelve a subirlas.'); return; }
+    toast('Subiendo '+files.length+(files.length===1?' foto…':' fotos…'));
     var col=db.collection('coach').doc(slug).collection('fotos');
     files.reduce(function(p,f,i){ return p.then(function(){ return comprime(f).then(function(img){ return col.add({img:img,fecha:fecha,t:Date.now()+i}); }); }); },Promise.resolve())
       .then(function(){ toast('Fotos guardadas'); cargaFotos(slug); })
