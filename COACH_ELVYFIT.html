@@ -49,6 +49,7 @@ input,select{font-family:inherit}
 .cli-stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;background:var(--card2);border-radius:999px;padding:3px 9px;color:var(--text2)}
 .chip.up{color:var(--up)}.chip.dn{color:var(--dn)}.chip.warn{color:var(--warn)}
+.envio{margin-top:10px;width:100%;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.45);color:var(--text);border-radius:8px;padding:9px 12px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit}
 .nuevo{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--up);margin-right:6px;vertical-align:middle}
 
 /* ficha */
@@ -250,6 +251,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
   function grupo(n){ for(var i=0;i<GRUPOS.length;i++) if(GRUPOS[i][1].test(n)) return GRUPOS[i][0]; return 'Otros'; }
 
   /* ================= datos del plan (datos-<cliente>.js) ================= */
+  function normDia(t){ t=String(t||'').trim(); var p=t.split(' · '); if(p.length>1&&/^[A-Za-zÁÉÍÓÚÑáéíóúñ0-9]{1,5}$/.test(p[0])) t=p.slice(1).join(' · '); return t.toUpperCase().replace(/\s+/g,' '); }
   function nSerie(lab,i){ var m=/(\d+)/.exec(lab||''); return m?(+m[1]-1):i; }
   function serieTxt(r){ return r.length+(r.length===1?' serie · ':' series · ')+r.join('·'); }
   function cargaPlan(c){
@@ -266,7 +268,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       (C.rutina||[]).forEach(function(d){
         var dia=(d.id||'')+(d.titulo?' · '+d.titulo:''), dd={dia:dia,ejercicios:[]};
         (d.ejercicios||[]).forEach(function(e){
-          reps[dia+'|'+e.nombre]=e.reps||[];
+          reps[normDia(dia)+'|'+e.nombre]=e.reps||[];
           var pe=(P[d.id]||{})[e.nombre]; if(!pe) return;
           var series=[];
           for(var wk in pe){ (pe[wk]||[]).forEach(function(s,si){
@@ -292,7 +294,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       if(!doc) return;
       for(var w in (doc.peso||{})) if(manda||out.peso[w]==null) out.peso[w]=doc.peso[w];
       (doc.dias||[]).forEach(function(d){
-        var D=idx[d.dia]; if(!D){ D=idx[d.dia]={dia:d.dia,ejercicios:[],porNombre:{}}; out.dias.push(D); }
+        var kd=normDia(d.dia), D=idx[kd]; if(!D){ D=idx[kd]={dia:d.dia,ejercicios:[],porNombre:{}}; out.dias.push(D); }
         (d.ejercicios||[]).forEach(function(e){
           var X=D.porNombre[e.nombre]; if(!X){ X=D.porNombre[e.nombre]={nombre:e.nombre,detalle:e.detalle,series:[]}; D.ejercicios.push(X); }
           if(manda&&e.detalle) X.detalle=e.detalle;
@@ -327,7 +329,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     return Object.keys(W).map(function(k){ return W[k]; }).sort(function(a,b){ return a.w-b.w; });
   }
   function objetivosReps(slug, dia, e){
-    var P=PLAN[slug], r=P&&P.reps[dia+'|'+e.nombre];
+    var P=PLAN[slug], r=P&&P.reps[normDia(dia)+'|'+e.nombre];
     if(!r){ var m=/·\s*([\d·\-\s]+)/.exec(e.detalle||''); r=m?m[1].split('·').map(function(x){ return x.trim(); }):[]; }
     return r.map(function(x){ var m=String(x).match(/(\d+)\s*$/); return m?+m[1]:null; });
   }
@@ -471,7 +473,9 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       if(A.global!=null) chips.push('<span class="chip '+cls(A.global)+'">'+flecha(A.global)+pctTxt(A.global)+' fuerza</span>');
       if(!d.t) chips.push('<span class="chip warn">Nube pendiente</span>');
       else if(Date.now()-d.t>8*86400000) chips.push('<span class="chip warn">Sin apuntar hace '+Math.round((Date.now()-d.t)/86400000)+' días</span>');
-      return '<button class="cli" type="button" data-slug="'+esc(d.slug)+'"><div class="cli-top"><b>'+(reciente?'<span class="nuevo" title="Últimas 24 h"></span>':'')+esc(d.nombre)+'</b><span class="cuando">'+esc(hace(d.t))+'</span></div><div class="cli-stats">'+chips.join('')+'</div></button>';
+      var hay=A.peso.length>=2||A.global!=null;
+      return '<div class="cli" role="button" tabindex="0" data-slug="'+esc(d.slug)+'"><div class="cli-top"><b>'+(reciente?'<span class="nuevo" title="Últimas 24 h"></span>':'')+esc(d.nombre)+'</b><span class="cuando">'+esc(hace(d.t))+'</span></div><div class="cli-stats">'+chips.join('')+'</div>'
+        +(hay?'<button class="envio" type="button" data-envio="'+esc(d.slug)+'">📤 Enviar su informe</button>':'')+'</div>';
     }).join('')||'<div class="panel">Todavía no hay clientes.</div>';
   }
 
@@ -669,69 +673,101 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
   /* ================= informe para el cliente (imagen) ================= */
   function modal(h){ var m=$('modal'); m.innerHTML=h; m.classList.remove('hidden'); m.onclick=function(e){ if(e.target===m||e.target.hasAttribute('data-cerrar')) m.classList.add('hidden'); }; }
   function rr(x,X,Y,w,h,r){ x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); }
+  /* índice global de sobrecarga por semana: media de lo que ha subido cada ejercicio respecto a su primera semana
+     (si una semana no lo apunta, cuenta su última marca). La última semana coincide con la fuerza global. */
+  function indiceFuerza(A){
+    var ej=A.ejs.filter(function(x){ return x.pct!=null&&!x.fuera&&x.pts[0].con&&x.grupo!=='Abdomen'; });
+    if(!ej.length) return [];
+    var ws={}; ej.forEach(function(x){ x.pts.forEach(function(p){ ws[p.w]=1; }); });
+    return Object.keys(ws).map(Number).sort(function(a,b){ return a-b; }).map(function(w){
+      var r=[]; ej.forEach(function(x){ var b=x.pts[0].v, v=null; x.pts.forEach(function(p){ if(p.w<=w&&p.con) v=p.v; }); if(v!=null) r.push(v/b-1); });
+      return {w:w,v:r.length?r.reduce(function(s,q){ return s+q; },0)/r.length*100:0};
+    });
+  }
+  function graficaArea(x,pts,bx,by,bw,bh,col,rgb,cero,I){
+    var vs=pts.map(function(p){ return p.v; }), lo=Math.min.apply(null,vs), hi=Math.max.apply(null,vs);
+    if(cero){ lo=Math.min(lo,0); hi=Math.max(hi,0); }
+    if(hi-lo<1e-6){ hi+=1; lo-=1; } var pad=(hi-lo)*0.1; lo-=pad; hi+=pad;
+    var n=pts.length, X=function(i){ return n===1?bx+bw/2:bx+i*bw/(n-1); }, Y=function(v){ return by+(hi-v)/(hi-lo)*bh; };
+    var g=x.createLinearGradient(0,by,0,by+bh); g.addColorStop(0,'rgba('+rgb+',0.55)'); g.addColorStop(1,'rgba('+rgb+',0)');
+    x.beginPath(); x.moveTo(X(0),by+bh); pts.forEach(function(p,i){ x.lineTo(X(i),Y(p.v)); }); x.lineTo(X(n-1),by+bh); x.closePath(); x.fillStyle=g; x.fill();
+    if(cero){ x.setLineDash([10,12]); x.strokeStyle='#3a3a3a'; x.lineWidth=2; x.beginPath(); x.moveTo(bx,Y(0)); x.lineTo(bx+bw,Y(0)); x.stroke(); x.setLineDash([]); }
+    x.strokeStyle=col; x.lineWidth=8; x.lineJoin='round'; x.lineCap='round'; x.beginPath();
+    pts.forEach(function(p,i){ if(i) x.lineTo(X(i),Y(p.v)); else x.moveTo(X(i),Y(p.v)); }); x.stroke();
+    x.textAlign='center';
+    pts.forEach(function(p,i){
+      var last=i===n-1, px=X(i), py=Y(p.v);
+      if(last){ x.save(); x.shadowColor=col; x.shadowBlur=36; x.fillStyle=col; x.beginPath(); x.arc(px,py,17,0,Math.PI*2); x.fill(); x.restore(); x.fillStyle='#fff'; x.beginPath(); x.arc(px,py,7,0,Math.PI*2); x.fill(); }
+      else { x.fillStyle='#141414'; x.beginPath(); x.arc(px,py,11,0,Math.PI*2); x.fill(); x.strokeStyle=col; x.lineWidth=6; x.stroke(); }
+      if(p.txt){ x.font=(last?'800 38px ':'700 28px ')+I; x.fillStyle=last?'#ffffff':'#cfcfcf'; x.textAlign=(n>1&&last)?'right':((n>1&&i===0)?'left':'center'); x.fillText(p.txt,(n>1&&last)?px+20:((n>1&&i===0)?px-20:px),py-(last?34:26)); x.textAlign='center'; }
+      x.font='600 24px '+I; x.fillStyle='#8c8c8c'; x.fillText(p.lab,px,by+bh+44);
+    });
+    x.textAlign='left';
+  }
   function dibujaInforme(doc,A){
-    var gg0=A.grupos.filter(function(g){ return !g.bw||g.g==='Abdomen'; }).slice(0,7);
-    var top0=A.ejs.filter(function(e){ return e.pct!=null&&!e.fuera&&e.pts[0].con; }).length?Math.min(3,A.ejs.filter(function(e){ return e.pct!=null&&!e.fuera&&e.pts[0].con; }).length):0;
-    var W=1080,H=Math.max(1350,340+(A.peso.length>=2?410:0)+((A.global!=null||gg0.length)?200+gg0.length*62:0)+(top0?70+top0*70:0)+130),c=document.createElement('canvas'); c.width=W; c.height=H; var x=c.getContext('2d');
+    var W=1080,H=1350,c=document.createElement('canvas'); c.width=W; c.height=H; var x=c.getContext('2d');
     var B='"Bebas Neue", Impact, "Arial Narrow", sans-serif', I='Inter, -apple-system, "Helvetica Neue", Arial, sans-serif';
+    var IDX=indiceFuerza(A), hayP=A.peso.length>=2, hayF=IDX.length>=2&&A.global!=null;
+    /* fondo con brillo rojo */
     x.fillStyle='#0a0a0a'; x.fillRect(0,0,W,H);
-    x.fillStyle='#e50914'; x.fillRect(72,64,64,6);
-    x.fillStyle='#e50914'; x.font='700 28px '+I; x.fillText('ELVYFIT',72,112);
-    x.fillStyle='#f2f2f2'; x.font='128px '+B; x.fillText('TU PROGRESO',66,236);
-    x.fillStyle='#bdbdbd'; x.font='500 34px '+I; x.fillText(doc.nombre.toUpperCase()+(A.sems.length?'  ·  SEMANAS '+A.sems[0]+' – '+A.L:''),72,290);
-    var y=340;
-    if(A.peso.length>=2){
-      var a=A.peso[0], b=A.peso[A.peso.length-1], dif=b.kg-a.kg;
-      x.fillStyle='#141414'; rr(x,60,y,960,380,24); x.fill();
-      x.fillStyle='#8c8c8c'; x.font='700 24px '+I; x.fillText('PESO CORPORAL',96,y+56);
-      x.fillStyle='#f2f2f2'; x.font='112px '+B; x.fillText(kgTxt(dif).toUpperCase(),96,y+164);
-      x.fillStyle='#bdbdbd'; x.font='500 28px '+I; x.fillText(coma(a.kg)+' → '+coma(b.kg)+' kg  ·  S'+a.w+' – S'+b.w,96,y+210);
-      var px=96,pw=888,py=y+250,ph=100, ks=A.peso.map(function(p){ return p.kg; }), lo=Math.min.apply(null,ks), hi=Math.max.apply(null,ks); if(hi-lo<0.1){ hi+=0.5; lo-=0.5; }
-      var X=function(i){ return px+i*pw/(A.peso.length-1); }, Yp=function(v){ return py+(hi-v)/(hi-lo)*ph; };
-      x.strokeStyle='#e50914'; x.lineWidth=5; x.lineJoin='round'; x.beginPath(); A.peso.forEach(function(p,i){ if(i) x.lineTo(X(i),Yp(p.kg)); else x.moveTo(X(i),Yp(p.kg)); }); x.stroke();
-      A.peso.forEach(function(p,i){ x.fillStyle='#e50914'; x.beginPath(); x.arc(X(i),Yp(p.kg),i===A.peso.length-1?11:8,0,Math.PI*2); x.fill(); });
-      y+=410;
+    var gl=x.createRadialGradient(940,90,0,940,90,760); gl.addColorStop(0,'rgba(229,9,20,0.30)'); gl.addColorStop(1,'rgba(229,9,20,0)'); x.fillStyle=gl; x.fillRect(0,0,W,H);
+    /* cabecera */
+    x.fillStyle='#e50914'; x.fillRect(72,68,70,7);
+    x.font='800 26px '+I; x.fillText('ELVYFIT',72,118);
+    x.fillStyle='#ffffff'; x.font='136px '+B; x.fillText('TU PROGRESO',66,248);
+    x.fillStyle='#bdbdbd'; x.font='600 32px '+I; x.fillText(doc.nombre.toUpperCase()+(A.sems.length?'  ·  SEMANAS '+A.sems[0]+' – '+A.L:''),72,300);
+    var top=340, fin=1240, hueco=26, n=(hayP?1:0)+(hayF?1:0), alto=n?(fin-top-(n-1)*hueco)/n:0;
+    function tarjeta(y,h){ x.fillStyle='#141414'; rr(x,56,y,968,h,30); x.fill(); x.strokeStyle='#232323'; x.lineWidth=2; x.stroke(); }
+    var y=top;
+    if(hayP){
+      var a=A.peso[0], b=A.peso[A.peso.length-1], dif=b.kg-a.kg, sems=b.w-a.w;
+      tarjeta(y,alto);
+      x.fillStyle='#8c8c8c'; x.font='800 24px '+I; x.fillText('PESO CORPORAL',100,y+62);
+      var big=kgTxt(dif).toUpperCase(); x.fillStyle='#ffffff'; x.font='150px '+B; x.fillText(big,94,y+196); var bw=x.measureText(big).width;
+      x.fillStyle='#e8e8e8'; x.font='700 32px '+I; x.fillText(coma(a.kg)+' → '+coma(b.kg)+' kg',94+bw+34,y+146);
+      x.fillStyle='#8c8c8c'; x.font='500 26px '+I; x.fillText('en '+sems+(sems===1?' semana':' semanas'),94+bw+34,y+186);
+      graficaArea(x,A.peso.map(function(p){ return {v:p.kg,txt:coma(p.kg),lab:'S'+p.w}; }),118,y+282,844,alto-282-78,'#e50914','229,9,20',false,I);
+      y+=alto+hueco;
     }
-    var gg=A.grupos.filter(function(g){ return !g.bw||g.g==='Abdomen'; }).slice(0,7);
-    if(A.global!=null||gg.length){
-      var hh=170+gg.length*62; x.fillStyle='#141414'; rr(x,60,y,960,hh,24); x.fill();
-      x.fillStyle='#8c8c8c'; x.font='700 24px '+I; x.fillText('FUERZA',96,y+56);
-      if(A.global!=null){ var gt=pctTxt(A.global); x.fillStyle='#f2f2f2'; x.font='112px '+B; x.fillText(gt,96,y+150); var gw=x.measureText(gt).width; x.fillStyle='#bdbdbd'; x.font='500 28px '+I; x.fillText('global desde la semana '+A.sems[0],96+gw+24,y+146); }
-      var mx=Math.max.apply(null,gg.map(function(g){ return Math.abs(g.v); }))||1, by=y+200;
-      gg.forEach(function(g){
-        x.fillStyle='#f2f2f2'; x.font='600 30px '+I; x.fillText(g.g,96,by+10);
-        x.fillStyle='#262626'; rr(x,300,by-10,560,22,11); x.fill();
-        x.fillStyle=g.v<0?'#5a5a5a':'#e50914'; rr(x,300,by-10,Math.max(22,Math.abs(g.v)/mx*560),22,11); x.fill();
-        x.fillStyle='#f2f2f2'; x.font='700 30px '+I; x.textAlign='right'; x.fillText(pctTxt(g.v),984,by+10); x.textAlign='left';
-        by+=62;
-      });
-      y+=hh+30;
+    if(hayF){
+      tarjeta(y,alto);
+      x.fillStyle='#8c8c8c'; x.font='800 24px '+I; x.fillText('SOBRECARGA PROGRESIVA',100,y+62);
+      var col=A.global>=0?'#2fbf5b':'#ef5b5b', rgb=A.global>=0?'47,191,91':'239,91,91', gt=pctTxt(A.global);
+      x.fillStyle=col; x.font='150px '+B; x.fillText(gt,94,y+196); var gw=x.measureText(gt).width;
+      x.fillStyle='#e8e8e8'; x.font='700 32px '+I; x.fillText('de fuerza global',94+gw+34,y+146);
+      x.fillStyle='#8c8c8c'; x.font='500 26px '+I; x.fillText('en todos sus ejercicios, desde la S'+A.sems[0],94+gw+34,y+186);
+      graficaArea(x,IDX.map(function(p,i){ return {v:p.v,txt:i===IDX.length-1?pctTxt(p.v):'',lab:'S'+p.w}; }),118,y+282,844,alto-282-78,col,rgb,true,I);
+      y+=alto+hueco;
     }
-    var top=A.ejs.filter(function(e){ return e.pct!=null&&!e.fuera&&e.pts[0].con; }).sort(function(a,b){ return b.pct-a.pct; }).slice(0,3);
-    if(top.length){
-      x.fillStyle='#8c8c8c'; x.font='700 24px '+I; x.fillText('LO QUE MÁS HA SUBIDO',72,y+30); y+=70;
-      top.forEach(function(e){ var a=e.pts[0], b=e.pts[e.pts.length-1]; x.fillStyle='#f2f2f2'; x.font='600 28px '+I; var n=e.nombre.length>34?e.nombre.slice(0,33)+'…':e.nombre; x.fillText(n,72,y); x.fillStyle='#2fbf5b'; x.font='700 28px '+I; x.textAlign='right'; x.fillText('▲ '+pctTxt(e.pct),1008,y); x.textAlign='left'; x.fillStyle='#8c8c8c'; x.font='500 22px '+I; x.fillText(coma(num(a.kg))+'×'+a.rep+'  →  '+coma(num(b.kg))+'×'+b.rep,72,y+30); y+=70; });
-    }
-    x.fillStyle='#8c8c8c'; x.font='500 26px '+I; x.fillText('Marc  ·  Elvyfit  ·  @elvyfit9',72,H-60);
+    if(!n){ x.fillStyle='#bdbdbd'; x.font='600 34px '+I; x.fillText('Aún no hay semanas suficientes.',72,520); }
+    /* pie */
+    x.fillStyle='#8c8c8c'; x.font='500 26px '+I; x.fillText('Marc  ·  Elvyfit  ·  @elvyfit9',72,1302);
+    var P=A.plan, meta=(P&&P.obj&&P.gasto)?(P.obj.kcal<P.gasto-100?'def':(P.obj.kcal>P.gasto+100?'vol':'man')):null;
+    var baja=hayP&&A.peso[A.peso.length-1].kg<A.peso[0].kg, sube=hayP&&A.peso[A.peso.length-1].kg>A.peso[0].kg, fuerte=hayF&&A.global>0;
+    var lema=(baja&&fuerte&&meta!=='vol')?'MENOS PESO, MÁS FUERZA':(sube&&fuerte&&meta!=='def')?'MÁS PESO, MÁS FUERZA':fuerte?'CADA SEMANA MÁS FUERTE':(baja&&meta==='def')?'BAJANDO PESO':'SEGUIMOS';
+    x.fillStyle='#e50914'; x.font='48px '+B; x.textAlign='right'; x.fillText(lema,1008,1306); x.textAlign='left';
     return c;
   }
   function abreInforme(doc,A){
     var go=function(){
-      var c=dibujaInforme(doc,A), url=c.toDataURL('image/png'), nombre='progreso-'+doc.slug+'.png';
-      modal('<img src="'+url+'" alt="Informe de '+esc(doc.nombre)+'"><div class="acc"><button class="btn" type="button" id="mEnviar">📤 Enviar</button><a class="btn sec" id="mBajar" download="'+nombre+'" href="'+url+'">Descargar</a><button class="btn sec" type="button" data-cerrar>Cerrar</button></div>');
+      var c=dibujaInforme(doc,A), url=c.toDataURL('image/png'), nombre='progreso-'+doc.slug+'.png', archivo=null;
+      c.toBlob(function(b){ try{ archivo=new File([b],nombre,{type:'image/png'}); }catch(e){ archivo=null; } },'image/png');
+      modal('<img src="'+url+'" alt="Informe de '+esc(doc.nombre)+'"><div class="acc"><button class="btn" type="button" id="mEnviar">📤 Enviar por WhatsApp</button><a class="btn sec" id="mBajar" download="'+nombre+'" href="'+url+'">Descargar</a><button class="btn sec" type="button" data-cerrar>Cerrar</button></div>');
       $('mEnviar').onclick=function(){
-        c.toBlob(function(b){
-          var f=new File([b],nombre,{type:'image/png'});
-          if(navigator.canShare&&navigator.canShare({files:[f]})) navigator.share({files:[f],title:'Tu progreso'}).catch(function(){});
-          else { toast('Este navegador no deja compartir: usa Descargar'); }
-        },'image/png');
+        var txt=doc.nombre+', tu progreso hasta la semana '+(A.L||'');
+        if(archivo&&navigator.canShare&&navigator.canShare({files:[archivo]})) navigator.share({files:[archivo],text:txt}).catch(function(){});
+        else { $('mBajar').click(); toast('Descargada: mándala por WhatsApp desde tus fotos'); }
       };
     };
-    if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('128px "Bebas Neue"'),document.fonts.load('600 30px Inter')]).then(go,go); else go();
+    if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('136px "Bebas Neue"'),document.fonts.load('800 26px Inter'),document.fonts.load('600 32px Inter')]).then(go,go); else go();
   }
 
   /* ================= conexión ================= */
-  $('lista').addEventListener('click',function(e){ var b=e.target.closest('.cli'); if(b) abre(b.getAttribute('data-slug')); });
+  $('lista').addEventListener('click',function(e){
+    var env=e.target.closest('.envio'); if(env){ var d=docCliente(env.getAttribute('data-envio')); abreInforme(d,analiza(d)); return; }
+    var b=e.target.closest('.cli'); if(b) abre(b.getAttribute('data-slug'));
+  });
+  $('lista').addEventListener('keydown',function(e){ if(e.key!=='Enter'&&e.key!==' ') return; var b=e.target.closest('.cli'); if(b&&e.target===b){ e.preventDefault(); abre(b.getAttribute('data-slug')); } });
   $('volver').onclick=cierra;
   function repinta(){ if(cliente) pintaFicha(); else pintaLista(); }
   function escucha(){
