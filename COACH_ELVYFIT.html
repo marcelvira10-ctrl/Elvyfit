@@ -49,7 +49,10 @@ input,select{font-family:inherit}
 .cli-stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;background:var(--card2);border-radius:999px;padding:3px 9px;color:var(--text2)}
 .chip.up{color:var(--up)}.chip.dn{color:var(--dn)}.chip.warn{color:var(--warn)}
-.envio{margin-top:10px;width:100%;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.45);color:var(--text);border-radius:8px;padding:9px 12px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit}
+.acc-cli{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}
+.envio.sec{background:var(--card2);border-color:var(--line);white-space:nowrap}
+.vivo{margin-top:10px;font-size:12.5px;color:var(--text2)}.vivo b{color:var(--up)}
+.envio{margin-top:0;width:100%;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.45);color:var(--text);border-radius:8px;padding:9px 12px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit}
 .nuevo{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--up);margin-right:6px;vertical-align:middle}
 
 /* ficha */
@@ -173,6 +176,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
   </header>
 
   <div id="estado" class="estado">Conectando…</div>
+  <p id="vivo" class="vivo hidden"><b>●</b> En directo: cuando un cliente apunta en su planning, aparece aquí solo.</p>
 
   <form id="login" class="login hidden" autocomplete="on">
     <h2>Entra con tu cuenta de Elvyfit</h2>
@@ -219,7 +223,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
   var app=firebase.apps.length?firebase.app():firebase.initializeApp(FB);
   var db=app.firestore(), auth=app.auth();
   var REG=(window.COACH_CLIENTES||[]), PLAN={}, DOCS=[], COACH={}, coachOK=true;
-  var cliente=null, dispSel=null, tab='resumen', abiertos={}, quitar=[], FOTOS_INI={};
+  var cliente=null, dispSel=null, tab='resumen', abiertos={}, quitar=[], FOTOS_INI={}, VISTO=null;
 
   /* ================= números y textos ================= */
   function num(v){ var n=parseFloat(String(v==null?'':v).replace(',','.')); return isNaN(n)?null:n; }
@@ -475,7 +479,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       else if(Date.now()-d.t>8*86400000) chips.push('<span class="chip warn">Sin apuntar hace '+Math.round((Date.now()-d.t)/86400000)+' días</span>');
       var hay=A.peso.length>=2||A.global!=null;
       return '<div class="cli" role="button" tabindex="0" data-slug="'+esc(d.slug)+'"><div class="cli-top"><b>'+(reciente?'<span class="nuevo" title="Últimas 24 h"></span>':'')+esc(d.nombre)+'</b><span class="cuando">'+esc(hace(d.t))+'</span></div><div class="cli-stats">'+chips.join('')+'</div>'
-        +(hay?'<button class="envio" type="button" data-envio="'+esc(d.slug)+'">📤 Enviar su informe</button>':'')+'</div>';
+        +(hay?'<div class="acc-cli"><button class="envio" type="button" data-envio="'+esc(d.slug)+'">📤 Enviar su informe</button><button class="envio sec" type="button" data-bajar="'+esc(d.slug)+'">⬇️ Descargar</button></div>':'')+'</div>';
     }).join('')||'<div class="panel">Todavía no hay clientes.</div>';
   }
 
@@ -772,9 +776,21 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('136px "Bebas Neue"'),document.fonts.load('800 26px Inter'),document.fonts.load('600 32px Inter')]).then(go,go); else go();
   }
 
+  function bajaInforme(doc,A){
+    var go=function(){
+      var c=dibujaInforme(doc,A), nombre='progreso-'+doc.slug+'-'+hoy()+'.png';
+      c.toBlob(function(b){
+        try{ var u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=nombre; document.body.appendChild(a); a.click(); setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(u); },4000); toast('Descargado: '+nombre); }
+        catch(e){ abreInforme(doc,A); }
+      },'image/png');
+    };
+    if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('136px "Bebas Neue"'),document.fonts.load('800 26px Inter'),document.fonts.load('600 32px Inter')]).then(go,go); else go();
+  }
+
   /* ================= conexión ================= */
   $('lista').addEventListener('click',function(e){
-    var env=e.target.closest('.envio'); if(env){ var d=docCliente(env.getAttribute('data-envio')); abreInforme(d,analiza(d)); return; }
+    var baj=e.target.closest('[data-bajar]'); if(baj){ var d0=docCliente(baj.getAttribute('data-bajar')); bajaInforme(d0,analiza(d0)); return; }
+    var env=e.target.closest('[data-envio]'); if(env){ var d=docCliente(env.getAttribute('data-envio')); abreInforme(d,analiza(d)); return; }
     var b=e.target.closest('.cli'); if(b) abre(b.getAttribute('data-slug'));
   });
   $('lista').addEventListener('keydown',function(e){ if(e.key!=='Enter'&&e.key!==' ') return; var b=e.target.closest('.cli'); if(b&&e.target===b){ e.preventDefault(); abre(b.getAttribute('data-slug')); } });
@@ -785,7 +801,10 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     estado('Conectando…');
     quitar.push(db.collection('seguimiento').onSnapshot(function(snap){
       DOCS=[]; snap.forEach(function(d){ DOCS.push(d.data()); });
-      estado(''); $('login').classList.add('hidden');
+      var ult={}; DOCS.forEach(function(d){ if(d.slug&&(d.t||0)>(ult[d.slug]||0)) ult[d.slug]=d.t||0; });
+      if(VISTO){ for(var sg in ult) if(ult[sg]>(VISTO[sg]||0)){ var R=reg(sg); toast('📥 '+((R&&R.nombre)||sg)+' acaba de apuntar'); } }
+      VISTO=ult;
+      estado(''); $('login').classList.add('hidden'); $('vivo').classList.remove('hidden');
       if(!cliente){ var h=decodeURIComponent(location.hash.slice(1)); if(h&&(reg(h)||DOCS.some(function(d){ return d.slug===h; }))){ abre(h); return; } }
       repinta();
     },function(err){
