@@ -944,16 +944,14 @@ var CLIENTE = {
           "video": "https://www.youtube.com/watch?v=0wZ_dRSbnsA"
         },
         {
-          "nombre": "Gemelo en máquina",
+          "nombre": "Gemelo en máquina prensa",
           "reps": [
             "6-8",
             "8-10",
             "8-10",
-            "8-10",
-            "8-10",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=6KKDFgOKZY0"
+          "video": "https://www.youtube.com/watch?v=_EkH6H7GNyY"
         }
       ]
     }
