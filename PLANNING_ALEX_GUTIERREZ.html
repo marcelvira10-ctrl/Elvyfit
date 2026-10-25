@@ -633,20 +633,55 @@ function showSummary(){
 }
 function closeSummary(){ document.getElementById('sumModal').classList.remove('open'); document.body.style.overflow=''; }
 
+function semanasConDatos(){
+  var set={}; document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){ exData(ex).forEach(function(x){ if(x) set[x.w]=true; }); });
+  for(var w=1;w<=8;w++){ var el=document.getElementById('pc_'+w); if(el&&el.value.trim()) set[w]=true; }
+  return Object.keys(set).map(Number).sort(function(a,b){ return a-b; });
+}
 function sendToMarc(){
   saveTrk();
+  var sems=semanasConDatos();
+  if(!sems.length){ alert('Primero apunta tus kg y reps de esta semana.'); return; }
+  elegirSemana(sems);
+}
+function elegirSemana(sems){
+  var viejo=document.getElementById('semModal'); if(viejo) viejo.parentNode.removeChild(viejo);
+  var m=document.createElement('div'); m.id='semModal';
+  m.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:999;padding:16px';
+  var box=document.createElement('div');
+  box.style.cssText='background:#14141a;border:1px solid #333;border-radius:14px;padding:18px;max-width:340px;width:100%;color:#fff';
+  var ultima=sems[sems.length-1];
+  var h=document.createElement('div'); h.style.cssText='font-weight:700;margin-bottom:6px'; h.textContent='¿Qué semana te envío?';
+  var p=document.createElement('div'); p.style.cssText='font-size:13px;color:#aaa;margin-bottom:12px'; p.textContent='Por defecto, la última que has apuntado.';
+  var sel=document.createElement('select'); sel.style.cssText='width:100%;padding:10px;border-radius:8px;margin-bottom:14px;font-size:15px';
+  sems.forEach(function(w){ var o=document.createElement('option'); o.value=String(w); o.textContent='Semana '+w+(w===ultima?' (última)':''); if(w===ultima) o.selected=true; sel.appendChild(o); });
+  var fila=document.createElement('div'); fila.style.cssText='display:flex;gap:8px';
+  var ok=document.createElement('button'); ok.type='button'; ok.className='btn btn-wa'; ok.style.flex='1'; ok.textContent='📤 Enviar';
+  ok.onclick=function(){ var w=parseInt(sel.value,10); m.parentNode.removeChild(m); generarEnvio(w); };
+  var no=document.createElement('button'); no.type='button'; no.className='btn btn-reset'; no.style.flex='1'; no.textContent='Cancelar';
+  no.onclick=function(){ m.parentNode.removeChild(m); };
+  fila.appendChild(ok); fila.appendChild(no);
+  box.appendChild(h); box.appendChild(p); box.appendChild(sel); box.appendChild(fila);
+  m.appendChild(box);
+  m.addEventListener('click',function(e){ if(e.target===m) m.parentNode.removeChild(m); });
+  document.body.appendChild(m);
+}
+function generarEnvio(w){
   var hoy=new Date(), f=('0'+hoy.getDate()).slice(-2)+'/'+('0'+(hoy.getMonth()+1)).slice(-2)+'/'+hoy.getFullYear();
-  var L=['🏋️ PROGRESO GUTI — '+f,''], cur='', any=false;
-  var p=pesos(' · '); if(p){ L.push('⚖️ '+p); L.push(''); }
+  var L=['🏋️ PROGRESO GUTI — Semana '+w+' · '+f,''], cur='', any=false;
+  var pc=document.getElementById('pc_'+w);
+  var peso=pc&&pc.value.trim();
+  if(peso){ L.push('⚖️ Peso: '+peso+' kg'); L.push(''); }
   document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){
-    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day'), t=lastTwo(exData(ex));
-    if(!t.last) return; any=true;
+    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day'), wk=exData(ex), t=wk[w-1];
+    if(!t) return; any=true;
+    var prev=null; for(var i=w-2;i>=0;i--){ if(wk[i]){ prev=wk[i]; break; } }
     if(day!==cur){ L.push('— '+day+' —'); cur=day; }
-    var l='• '+name+' (sem '+t.last.w+'): '+t.last.series.join(' | ');
-    if(t.prev&&t.prev.vol&&t.last.vol){ var pc=Math.round((t.last.vol-t.prev.vol)/t.prev.vol*100); l+=(pc>0?'  ▲ +'+pc+'%':(pc<0?'  ▼ '+pc+'%':'  = igual'))+' vs sem '+t.prev.w; }
+    var l='• '+name+': '+t.series.join(' | ');
+    if(prev&&prev.vol&&t.vol){ var v=Math.round((t.vol-prev.vol)/prev.vol*100); l+=(v>0?'  ▲ +'+v+'%':(v<0?'  ▼ '+v+'%':'  = igual'))+' vs sem '+prev.w; }
     L.push(l);
   });
-  if(!any&&!p){ alert('Primero apunta tus kg y reps de esta semana.'); return; }
+  if(!any&&!peso){ alert('La semana '+w+' no tiene series apuntadas.'); return; }
   window.open('https://wa.me/34640064383?text='+encodeURIComponent(L.join('\n')),'_blank');
 }
 
