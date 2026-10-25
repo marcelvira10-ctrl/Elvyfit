@@ -115,6 +115,8 @@ main{background:#0a0a0a;min-height:72vh;}
 .tracker input{background:var(--surface);border:1px solid var(--border);color:#fff;padding:4px 1px;border-radius:2px;width:38px;text-align:center;font-size:10px;}
 .tracker input:focus{outline:none;border-color:var(--red);}
 .btn-group{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.semsel{display:inline-flex;align-items:center;gap:6px;background:#141414;border:1px solid #25D366;border-radius:6px;padding:4px 8px;font-size:12px;font-weight:700;color:#bbb}
+.semsel select{background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:4px;padding:6px 4px;font-size:13px;font-weight:700}
 .btn{padding:12px 18px;border:none;border-radius:6px;font-weight:700;cursor:pointer;font-size:12px;}
 .btn-save{background:var(--green);color:#fff}.btn-reset{background:#3a3a3a;color:#fff}.btn-wa{background:#25D366;color:#0a0a0a}.ti{-moz-appearance:textfield}.ti::-webkit-outer-spin-button,.ti::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .noscript-warn{background:rgba(245,166,35,.1);border:1px solid var(--orange);color:var(--orange);padding:12px;border-radius:8px;font-size:12px;margin-bottom:16px;}
@@ -250,12 +252,12 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 </div>
 <div class="main-sec s8">
   <div class="sec-title">Tu <span>Progreso</span> · 8 Semanas</div>
-  <div class="trk-intro">💾 Aquí tienes <b>cada serie de cada ejercicio</b> (todas al fallo). Apunta el <span style="color:var(--cyan)">kg</span> y las <span style="color:var(--yellow)">reps</span> que haces en cada serie, cada semana: <b>se guarda solo</b> en cuanto escribes. Objetivo: superar la semana anterior en peso o reps. Ábrelo en Chrome/Safari.</div>
+  <div class="trk-intro">💾 Aquí tienes <b>cada serie de cada ejercicio</b> (todas al fallo). Apunta el <span style="color:var(--cyan)">kg</span> y las <span style="color:var(--yellow)">reps</span> que haces en cada serie, cada semana: <b>se guarda solo</b> en cuanto escribes. Objetivo: superar la semana anterior en peso o reps. Ábrelo en Chrome/Safari. Al acabar la semana, elige la <b>semana</b> y dale a <b>📤 Enviar a Marc</b>.</div>
   <noscript><div class="noscript-warn">⚠️ Para guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></noscript>
   <div class="savewarn" id="saveWarn"></div>
   <div class="bw-box"><h4>⚖️ PESO CORPORAL (KG) · DOMINGO EN AYUNAS</h4><table class="bw-table"><tr><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th><th>S7</th><th>S8</th></tr><tr><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_1" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_2" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_3" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_4" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_5" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_6" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_7" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_8" placeholder="kg"></td></tr></table></div>
   <div id="trackerWrap"><div class="noscript-warn">⚠️ Para apuntar y guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></div>
-  <div class="btn-group"><button class="btn btn-wa" onclick="sendToMarc()">📤 Enviar a Marc</button><button class="btn btn-save" onclick="showSummary()">📈 Ver resumen</button><button class="btn btn-save" style="background:#2b6cb0" onclick="saveTrk('boton')">💾 Guardar</button></div>
+  <div class="btn-group"><label class="semsel" for="semEnvio">Semana <select id="semEnvio" onchange="this.setAttribute('data-elegida','1')"><option value="1">S1</option></select></label><button class="btn btn-wa" onclick="sendToMarc()">📤 Enviar a Marc</button><button class="btn btn-save" onclick="showSummary()">📈 Ver resumen</button><button class="btn btn-save" style="background:#2b6cb0" onclick="saveTrk('boton')">💾 Guardar</button></div>
   <div class="btn-group" style="margin-top:10px"><button class="btn btn-reset" onclick="bajarCopia()">📥 Descargar copia</button><button class="btn btn-reset" onclick="document.getElementById('fileIn').click()">📂 Restaurar copia</button><button class="btn btn-reset" onclick="resetTrk()">🗑️ Borrar todo</button></div>
   <input type="file" id="fileIn" accept="application/json,.json" style="display:none" onchange="subirCopia(this)">
   <p class="saved-note" id="savedNote"></p>
@@ -274,6 +276,12 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
    Pinta dieta, compra, entreno y progreso desde datos-guti.js,
    calculando con elvyfit-motor.js. Nada va escrito a mano.
    ============================================================ */
+/* Clave fija de cada casilla del seguimiento: día + ejercicio (por su nombre) + serie + semana.
+   No depende del orden de los ejercicios: aunque se añadan, quiten o reordenen, cada peso sigue en su ejercicio. */
+function claveSerie(day, ei, si, w, campo){
+  var e=day.ejercicios[ei], n=0; for(var j=0;j<ei;j++) if(day.ejercicios[j].nombre===e.nombre) n++;
+  return day.id+'|'+e.nombre+(n?'#'+(n+1):'')+'|s'+(si+1)+'|w'+w+'|'+campo;
+}
 var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined");
 (function(){
   if (!GUTI_OK) {
@@ -417,8 +425,8 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
           var cells="";
           for (var w=1; w<=SEM; w++){
             var b = d.id+"_e"+(ei+1)+"_s"+(si+1)+"_w"+w;
-            cells += '<td><input type="text" inputmode="decimal" maxlength="5" class="ti ik" id="'+b+'_kg" placeholder="kg"></td>'
-                   + '<td><input type="text" inputmode="numeric" maxlength="3" class="ti ir" id="'+b+'_rep" placeholder="r"></td>';
+            cells += '<td><input type="text" inputmode="decimal" maxlength="5" class="ti ik" id="'+b+'_kg" data-k="'+esc(claveSerie(d,ei,si,w,'kg'))+'" placeholder="kg"></td>'
+                   + '<td><input type="text" inputmode="numeric" maxlength="3" class="ti ir" id="'+b+'_rep" data-k="'+esc(claveSerie(d,ei,si,w,'rep'))+'" placeholder="r"></td>';
           }
           body += '<tr data-serie="'+(si+1)+'"><td class="scol">Serie '+(si+1)+'<span class="obj">obj '+esc(r)+'</span></td>'+cells+'</tr>';
         });
@@ -491,15 +499,32 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
 /* ============================================================
    GUARDADO DEL PROGRESO — triple copia en el móvil
    (localStorage + sessionStorage + IndexedDB) y copia en archivo.
-   Lo que Marc ha dejado en datos-guti.js sale de base; lo que
-   Guti apunta en el móvil siempre manda encima.
+   - Cada casilla se guarda con su clave fija (día + ejercicio + serie + semana):
+     aunque Marc cambie el planning (añada, quite, reordene ejercicios o series),
+     lo apuntado sigue en su sitio.
+   - Nunca se borra nada al guardar: lo que ya no esté en la página se conserva
+     guardado; solo se borra lo que el cliente vacía a mano.
+   - Lo que Marc deja en datos-chechu.js sale de base; lo que el cliente apunta
+     manda encima. Si Marc corrige un dato de base, se ve la corrección salvo
+     que el cliente haya escrito otra cosa en esa casilla.
    ============================================================ */
-var KEY=CLIENTE.clave, KEY_OLD=CLIENTE.claveAntigua||'';
+var KEY=CLIENTE.clave, KEY_OLD=CLIENTE.claveAntigua||'', KEY_COPIA=KEY+'_copia';
 var DBN='elvyfit_'+CLIENTE.slug, STORE='trk', COPIA=CLIENTE.slug+'_ultima_copia';
-var tocado=false;
+var tocado=false, GUARD={}, SEM={}, PORCLAVE=null;
 
 function allInputs(){ return document.querySelectorAll('.main-sec.s8 input.ti'); }
-function recoger(){ var d={}; allInputs().forEach(function(i){ if(i.value.trim()!=='') d[i.id]=i.value.trim(); }); return {v:2,t:Date.now(),d:d}; }
+function claveDe(i){ return i.getAttribute('data-k')||i.id; }
+function porClave(){ if(!PORCLAVE){ PORCLAVE={}; allInputs().forEach(function(i){ PORCLAVE[claveDe(i)]=i; }); } return PORCLAVE; }
+function recoger(){
+  var d={}, P=porClave(), k;
+  for(k in GUARD) d[k]=GUARD[k];                       /* lo guardado que ya no está en la página, se conserva */
+  for(k in P){
+    var v=P[k].value.trim(), base=(SEM[k]==null?'':String(SEM[k]));
+    if(v===base) delete d[k];                            /* igual que la base de Marc: no hace falta guardarlo */
+    else d[k]=v;                                         /* lo apuntado (o vaciado a mano sobre un dato de base) */
+  }
+  return {v:3,t:Date.now(),d:d};
+}
 function parsear(s){ try{ var o=(typeof s==='string')?JSON.parse(s):s; if(!o) return null; if(!o.d) return {v:1,t:1,d:o}; return o; }catch(e){ return null; } }
 
 function idb(cb){ try{ if(!window.indexedDB) return cb(null); var r=indexedDB.open(DBN,1);
@@ -515,18 +540,20 @@ function alerta(t,cl){ var w=document.getElementById('saveWarn'); if(!w) return;
 
 function saveTrk(manual){
   var o=recoger(), ok=false;
+  GUARD=o.d;
   try{ localStorage.setItem(KEY,JSON.stringify(o)); ok=true; }catch(e){}
   try{ sessionStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
   idbSet(o);
   if(ok) marcar();
   else alerta('⚠️ <b>Tu navegador no está dejando guardar.</b> Abre el enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp) y dale a <b>📥 Descargar copia</b> al acabar cada entreno.','hot');
   if(manual==='boton') alert(ok?'✅ Progreso guardado en tu móvil.':'⚠️ No se ha podido guardar aquí. Abre el plan en Chrome o Safari.');
+  try{ ponSemana(); }catch(e){}
   return ok;
 }
-function aplicar(o){ if(!o||!o.d) return; for(var k in o.d){ var el=document.getElementById(k); if(el) el.value=o.d[k]; } }
+function aplicar(o){ if(!o||!o.d) return; var P=porClave(); for(var k in o.d){ if(P[k]) P[k].value=o.d[k]; } }
 function mejor(l){ var b=null; l.forEach(function(o){ if(o&&o.d&&(!b||(o.t||0)>(b.t||0))) b=o; }); return b; }
 
-/* lo que Marc ha dejado apuntado en datos-guti.js → identificadores del tracker */
+/* lo que Marc ha dejado apuntado en datos-chechu.js, con las claves fijas */
 function semilla(){
   var d={}; if(typeof CLIENTE==='undefined'||!CLIENTE.progreso) return d;
   var P=CLIENTE.progreso;
@@ -536,15 +563,15 @@ function semilla(){
     day.ejercicios.forEach(function(e,ei){
       var pe=pd[e.nombre]; if(!pe) return;
       for(var w in pe){ (pe[w]||[]).forEach(function(s,si){
-        var m=String(s).split(/x|×/i), b=day.id+'_e'+(ei+1)+'_s'+(si+1)+'_w'+w;
-        if(m[0]&&m[0].trim()) d[b+'_kg']=m[0].trim();
-        if(m[1]&&m[1].trim()) d[b+'_rep']=m[1].trim();
+        var m=String(s).split(/x|×/i);
+        if(m[0]&&m[0].trim()) d[claveSerie(day,ei,si,+w,'kg')]=m[0].trim();
+        if(m[1]&&m[1].trim()) d[claveSerie(day,ei,si,+w,'rep')]=m[1].trim();
       }); }
     });
   });
   return d;
 }
-function migrar(o){ /* convierte lo apuntado en el planning anterior (t{d}_e{e0}_s_w_kg y peso_wN) al actual.
+function migrar(o){ /* convierte lo apuntado en el planning anterior (t{d}_e{e0}_s_w_kg y peso_wN) al formato por posición.
   t1, t2, t3, t4 = días de la rutina en el mismo orden (LUN, MIE, JUE, VIE) */
   if(!o||!o.d) return o;
   var d={}, R=(typeof CLIENTE!=='undefined'&&CLIENTE.rutina)||[];
@@ -555,23 +582,51 @@ function migrar(o){ /* convierte lo apuntado en el planning anterior (t{d}_e{e0}
   }
   return {v:2,t:o.t||1,d:d};
 }
+/* lo guardado antes de este cambio (por posición: LUN_e6_s1_w4_kg) → claves fijas. Lo que no encaje se conserva aparte, sin perderse. */
+function aEstable(o){
+  if(!o||!o.d) return null;
+  if(o.v===3) return o;
+  var d={}, dias={}; (CLIENTE.rutina||[]).forEach(function(day){ dias[day.id]=day; });
+  for(var k in o.d){
+    var m=/^([A-Za-z0-9]+)_e(\d+)_s(\d+)_w(\d+)_(kg|rep)$/.exec(k), day=m&&dias[m[1]];
+    if(day&&day.ejercicios[+m[2]-1]) d[claveSerie(day,+m[2]-1,+m[3]-1,+m[4],m[5])]=o.d[k];
+    else if(/^pc_\d+$/.test(k)) d[k]=o.d[k];
+    else d['antiguo|'+k]=o.d[k];
+  }
+  return {v:3,t:o.t||1,d:d,borrado:o.borrado,convertido:true};
+}
+function quitarBase(d){ var o={}; for(var k in d){ var b=(SEM[k]==null?null:String(SEM[k])); if(b===null||String(d[k])!==b) o[k]=d[k]; } return o; }
 function loadTrk(){
-  var cands=[];
-  try{ cands.push(parsear(localStorage.getItem(KEY))); }catch(e){}
-  try{ cands.push(parsear(sessionStorage.getItem(KEY))); }catch(e){}
-  var antiguo=null; try{ if(KEY_OLD) antiguo=migrar(parsear(localStorage.getItem(KEY_OLD))); }catch(e){}
-  /* debajo va lo que Marc ha dejado en datos y lo apuntado en el planning anterior; encima, lo apuntado aquí */
-  function base(m){ if(m&&m.borrado) return; aplicar({d:semilla()}); aplicar(antiguo); }
+  SEM=semilla();
+  var cands=[], raw=null;
+  try{ raw=localStorage.getItem(KEY); if(raw) localStorage.setItem(KEY_COPIA,raw); }catch(e){}   /* copia de seguridad de lo que había */
+  cands.push(aEstable(parsear(raw)));
+  try{ cands.push(aEstable(parsear(sessionStorage.getItem(KEY)))); }catch(e){}
+  var antiguo=null; try{ if(KEY_OLD) antiguo=aEstable(migrar(parsear(localStorage.getItem(KEY_OLD)))); }catch(e){}
+  /* debajo: la base de Marc y lo del planning anterior; encima: lo apuntado aquí */
+  function pon(m){
+    allInputs().forEach(function(i){ i.value=''; });
+    if(!(m&&m.borrado)){ aplicar({d:SEM}); aplicar(antiguo); }
+    aplicar(m);
+    GUARD={}; var k;
+    if(antiguo&&!(m&&m.borrado)) for(k in antiguo.d) GUARD[k]=antiguo.d[k];
+    if(m) for(k in m.d) GUARD[k]=m.d[k];
+    GUARD=quitarBase(GUARD);
+    if((m&&m.convertido)||(antiguo&&!m)) saveTrk();      /* queda guardado ya con las claves fijas */
+    try{ ponSemana(); }catch(e){}
+  }
   var b=mejor(cands);
-  base(b); aplicar(b);
-  idbGet(function(o){ if(o&&!tocado){ cands.push(o); var m=mejor(cands); if(m&&m!==b){ base(m); aplicar(m); } } });
+  pon(b);
+  idbGet(function(o){ if(o&&!tocado){ var e=aEstable(o); cands.push(e); var m=mejor(cands); if(m&&m===e&&m!==b) pon(m); } });
 }
 function resetTrk(){
   if(!confirm('¿Borrar TODO el progreso guardado?')) return;
-  var o={v:2,t:Date.now(),d:{},borrado:true};
+  var o={v:3,t:Date.now(),d:{},borrado:true};
+  GUARD={};
   try{ localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
   try{ sessionStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
   idbSet(o); allInputs().forEach(function(i){ i.value=''; });
+  try{ ponSemana(); }catch(e){}
 }
 
 function bajarCopia(){
@@ -584,8 +639,8 @@ function bajarCopia(){
 }
 function subirCopia(inp){
   var f=inp.files&&inp.files[0]; if(!f) return; var r=new FileReader();
-  r.onload=function(){ var o=parsear(r.result); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
-    aplicar(o); tocado=true; saveTrk(); alert('✅ Progreso restaurado.'); };
+  r.onload=function(){ var o=aEstable(parsear(r.result)); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
+    for(var k in o.d) GUARD[k]=o.d[k]; aplicar(o); tocado=true; saveTrk(); alert('✅ Progreso restaurado.'); };
   r.readAsText(f); inp.value='';
 }
 
@@ -625,21 +680,53 @@ function showSummary(){
 }
 function closeSummary(){ document.getElementById('sumModal').classList.remove('open'); document.body.style.overflow=''; }
 
+/* ---------- Enviar a Marc: elige la semana (por defecto, la última que tiene algo apuntado) ---------- */
+function semanasConDatos(){
+  var w={};
+  document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){ exData(ex).forEach(function(x){ if(x) w[x.w]=1; }); });
+  for(var i=1;i<=8;i++){ var el=document.getElementById('pc_'+i); if(el&&el.value.trim()) w[i]=1; }
+  return Object.keys(w).map(Number).sort(function(a,b){ return a-b; });
+}
+function ponSemana(){
+  var sel=document.getElementById('semEnvio'); if(!sel) return;
+  var ws=semanasConDatos(), ant=sel.value, h='';
+  if(!ws.length) ws=[1];
+  ws.forEach(function(w){ h+='<option value="'+w+'">S'+w+'</option>'; });
+  sel.innerHTML=h;
+  sel.value=(sel.getAttribute('data-elegida')&&ws.indexOf(+ant)>=0)?ant:String(ws[ws.length-1]);
+}
+/* % de cambio de fuerza (peso y repes juntos) comparando solo las series apuntadas en las dos semanas */
+function cambioFuerza(ex,W,P){
+  var filas=ex.querySelectorAll('tr[data-serie]'), sa=0, sb=0, n=0;
+  function fz(r,w){ var k=r.querySelectorAll('.ik')[w-1], p=r.querySelectorAll('.ir')[w-1];
+    var kv=parseFloat(((k&&k.value)||'').replace(',','.')), rv=parseFloat(((p&&p.value)||'').replace(',','.'));
+    if(isNaN(rv)||rv<=0) return null; return (isNaN(kv)||kv<=0)?rv:kv*(1+rv/30); }
+  filas.forEach(function(r){ var x=fz(r,W), y=fz(r,P); if(x!=null&&y!=null){ sa+=x; sb+=y; n++; } });
+  return n&&sb?(sa-sb)/sb*100:null;
+}
 function sendToMarc(){
   saveTrk();
+  var sel=document.getElementById('semEnvio'), ws=semanasConDatos(), W=sel&&sel.value?+sel.value:(ws[ws.length-1]||1);
   var hoy=new Date(), f=('0'+hoy.getDate()).slice(-2)+'/'+('0'+(hoy.getMonth()+1)).slice(-2)+'/'+hoy.getFullYear();
-  var L=['📊 PROGRESO '+(CLIENTE.nombre||'').toUpperCase()+' — '+f,''], cur='', any=false;
-  var p=pesos(' · '); if(p){ L.push('⚖️ '+p); L.push(''); }
+  var L=['📊 PROGRESO '+(CLIENTE.nombre||'').toUpperCase()+' — SEMANA '+W+' — '+f,''], cur='', any=false;
+  var pw=document.getElementById('pc_'+W), pv=pw&&pw.value.trim();
+  if(pv){ var prevP=''; for(var q=W-1;q>=1;q--){ var e2=document.getElementById('pc_'+q); if(e2&&e2.value.trim()){ prevP=' (sem '+q+': '+e2.value.trim()+' kg)'; break; } }
+    L.push('⚖️ Peso: '+pv+' kg'+prevP); L.push(''); any=true; }
   document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){
-    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day'), t=lastTwo(exData(ex));
-    if(!t.last) return; any=true;
+    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day'), wk=exData(ex), act=wk[W-1], prev=null;
+    if(!act) return;
+    for(var i=W-2;i>=0;i--) if(wk[i]){ prev=wk[i]; break; }
+    any=true;
     if(day!==cur){ L.push('— '+day+' —'); cur=day; }
-    var l='• '+name+' (sem '+t.last.w+'): '+t.last.series.join(' | ');
-    if(t.prev&&t.prev.vol&&t.last.vol){ var pc=Math.round((t.last.vol-t.prev.vol)/t.prev.vol*100); l+=(pc>0?'  ▲ +'+pc+'%':(pc<0?'  ▼ '+pc+'%':'  = igual'))+' vs sem '+t.prev.w; }
+    var l='• '+name+': '+act.series.join(' | ');
+    var cv=prev?cambioFuerza(ex,W,prev.w):null;
+    if(cv!=null){ var pc=Math.round(cv); l+=(pc>0?'  ▲ +'+pc+'%':(pc<0?'  ▼ '+pc+'%':'  = igual'))+' vs sem '+prev.w; }
     L.push(l);
   });
-  if(!any&&!p){ alert('Primero apunta tus kg y reps de esta semana.'); return; }
-  window.open('https://wa.me/34640064383?text='+encodeURIComponent(L.join('\n')),'_blank');
+  if(!any){ alert('En la semana '+W+' no hay nada apuntado. Elige otra semana o apunta tus kg y reps.'); return; }
+  var u='https://wa.me/34640064383?text='+encodeURIComponent(L.join('\n').trim()), v=null;
+  try{ v=window.open(u,'_blank'); }catch(e){}
+  if(!v) location.href=u;
 }
 
 function instalado(){ try{ if(window.navigator.standalone===true) return true; if(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){} return false; }
@@ -654,6 +741,7 @@ function instalado(){ try{ if(window.navigator.standalone===true) return true; i
   } else alerta('📲 <b>Haz esto una vez y no se te borra nunca:</b><br>1. Abre este enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp).<br>2. <b>iPhone:</b> Compartir → <i>Añadir a pantalla de inicio</i>. &nbsp;<b>Android:</b> ⋮ → <i>Añadir a pantalla de inicio</i>.<br>3. Entra siempre desde ese icono.<br><br>Si entras cada vez desde WhatsApp, el móvil puede borrarte lo apuntado al cabo de unos días.');
   loadTrk();
   allInputs().forEach(function(i){ ['input','change','blur'].forEach(function(ev){ i.addEventListener(ev,function(){ tocado=true; saveTrk(); }); }); });
+  ponSemana();
   document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden'&&tocado) saveTrk(); });
   window.addEventListener('pagehide',function(){ if(tocado) saveTrk(); });
 })();
