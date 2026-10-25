@@ -150,6 +150,9 @@ table.tracker td.wkcell{padding:4px;}
 .tbtns button{font-weight:700;font-size:13px;border:none;border-radius:8px;padding:11px 18px;cursor:pointer;font-family:'Inter';}
 .btn-save{background:var(--green);color:#0a0a0a;}
 .btn-csv{background:var(--card);color:var(--orange);border:1.5px solid var(--orange)!important;}
+.envio-wrap{display:inline-flex;align-items:stretch;gap:8px;}
+.semsel{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid #25D366;border-radius:8px;padding:6px 10px;font-size:12.5px;font-weight:700;color:#25D366;letter-spacing:.04em;}
+.semsel select{background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:5px;padding:5px 4px;font-size:13px;font-weight:700;font-family:inherit;}
 .btn-reset{background:var(--card);color:#ff5a63;border:1.5px solid var(--red)!important;}
 .saved-note{color:#7ed492;font-size:12.5px;margin-top:10px;display:none;font-weight:700;}
 .savewarn{display:none;background:#1c1708;border:1px solid #5a4a14;border-left:4px solid var(--yellow);border-radius:8px;padding:13px 15px;margin-bottom:14px;font-size:13.5px;color:#ffe9a8;line-height:1.6;}
@@ -604,7 +607,7 @@ table.trk-serie input:focus{border-color:var(--red);background:#1a1410;}
   <div class="section-title">📊 PROGRESO <span>SEMANA A SEMANA</span></div>
   <div class="autosave">💾 Se guarda solo en cuanto escribes</div>
   <div class="savewarn" id="saveWarn"></div>
-  <div class="info-box info-box-blue">💾 Aquí tienes <strong>cada serie de cada uno de tus 3 entrenos</strong> (PUSH, PULL y LEGS). Como se repiten en bucle, solo hay tres: cada vez que te toque PUSH, apuntas en PUSH. Al lado de cada ejercicio pone <strong>cuántas series y a cuántas reps</strong> van (tu guía). <strong>Se guarda solo en cuanto escribes el kg o las reps</strong>, no tienes que darle a nada. Con <strong>📈 Resumen</strong> ves tu sobrecarga progresiva y con <strong>📤 Enviar a Marc</strong> me lo mandas el domingo.</div>
+  <div class="info-box info-box-blue">💾 Aquí tienes <strong>cada serie de cada uno de tus 3 entrenos</strong> (PUSH, PULL y LEGS). Como se repiten en bucle, solo hay tres: cada vez que te toque PUSH, apuntas en PUSH. Al lado de cada ejercicio pone <strong>cuántas series y a cuántas reps</strong> van (tu guía). <strong>Se guarda solo en cuanto escribes el kg o las reps</strong>, no tienes que darle a nada. Con <strong>📈 Resumen</strong> ves tu sobrecarga progresiva. Para mandármelo: elige en <strong>Entreno</strong> cuál quieres enviar (sale puesto el último que has apuntado) y dale a <strong>📤 Enviar a Marc</strong>.</div>
   <div class="info-box info-box-yellow">🔢 <strong>Las columnas son ENTRENOS, no semanas.</strong> E1 es la primera vez que haces ese bloque, E2 la segunda, y así. Como el ciclo es de 4 días, <strong>cada 8 días haces 2 veces PUSH, 2 PULL y 2 LEGS</strong> — en una semana normal te caen dos de cada. Apunta siempre en la siguiente columna libre, da igual el día que sea.</div>
   <div class="info-box" style="margin-top:-6px"><span style="color:#5bc8f5;font-weight:700">● kg</span> (azul) &nbsp;·&nbsp; <span style="color:#ffd24d;font-weight:700">● rep</span> (oro). Supera el entreno anterior en peso o en reps. <strong>Descanso entre series: 3 min.</strong> Ábrelo en Chrome o Safari (en el visor de WhatsApp no guarda).</div>
   <noscript><div class="nojs">⚠️ Para que se guarde la progresión, abre este archivo en Chrome o Safari (no en el visor de WhatsApp). Guárdalo en marcadores y entra siempre desde ahí.</div></noscript>
@@ -613,7 +616,7 @@ table.trk-serie input:focus{border-color:var(--red);background:#1a1410;}
   <div class="tbtns">
     <button class="btn-save" onclick="saveTrk(true)">💾 Guardar</button>
     <button class="btn-csv" onclick="showSummary()">📈 Resumen</button>
-    <button class="btn-csv" onclick="sendToMarc()" style="border-color:#25D366!important;color:#25D366!important">📤 Enviar a Marc</button>
+    <span class="envio-wrap"><label class="semsel" for="semEnvio">Entreno <select id="semEnvio" onchange="this.setAttribute('data-elegida','1')"><option value="1">E1</option></select></label><button class="btn-csv" onclick="sendToMarc()" style="border-color:#25D366!important;color:#25D366!important">📤 Enviar a Marc</button></span>
     <button class="btn-csv" onclick="bajarCopia()" style="border-color:#5bc8f5!important;color:#5bc8f5!important">📥 Descargar copia</button>
     <button class="btn-csv" onclick="document.getElementById('fileIn').click()" style="border-color:var(--purple)!important;color:var(--purple)!important">📂 Restaurar copia</button>
     <button class="btn-reset" onclick="resetTrk()">🗑️ Borrar</button>
@@ -1009,8 +1012,28 @@ var tocado=false, subiendo=null, ultimaNube=0;
 
 function allInputs(){return document.querySelectorAll('#sec-seguimiento input.ik, #sec-seguimiento input.ir');}
 
+/* Lo que ya hay guardado en este móvil, venga de donde venga.
+   Cada casilla se guarda con su clave fija (ejercicio + día + serie + entreno),
+   nunca por posición. */
+function guardado(){
+  var o=null;
+  try{ o=parsear(localStorage.getItem(KEY)); }catch(e){}
+  if(!o||!o.d){ try{ o=parsear(sessionStorage.getItem(KEY)); }catch(e){} }
+  return (o&&o.d)?o.d:{};
+}
+
+/* IMPORTANTE: se SUMA a lo ya guardado, no lo reemplaza.
+   Si Marc cambia la rutina y un ejercicio deja de salir en la página,
+   lo que Álvaro tenía apuntado ahí NO se borra: se queda guardado y
+   vuelve a aparecer si ese ejercicio vuelve. Solo desaparece lo que
+   él mismo vacía con el ejercicio delante. */
 function recoger(){
-  var d={}; allInputs().forEach(function(i){ if(i.value!=='') d[i.id]=i.value; });
+  var prev=guardado(), d={};
+  for(var k in prev){ if(Object.prototype.hasOwnProperty.call(prev,k)) d[k]=prev[k]; }
+  allInputs().forEach(function(i){
+    if(i.value!=='') d[i.id]=i.value;
+    else delete d[i.id];
+  });
   return {v:2, t:Date.now(), d:d};
 }
 function parsear(s){
@@ -1087,6 +1110,7 @@ function saveTrk(manual){
 function aplicar(o){
   if(!o||!o.d) return;
   for(var k in o.d){ var el=document.getElementById(k); if(el && el.value!==o.d[k]) el.value=o.d[k]; }
+  try{ ponEntreno(); }catch(e){}
 }
 function mejor(lista){
   var b=null;
@@ -1191,31 +1215,56 @@ function showSummary(){
 function closeSummary(){document.getElementById('sumModal').classList.remove('open');document.body.style.overflow='';}
 
 
+/* ---------- Enviar a Marc: Álvaro elige QUÉ entreno manda ----------
+   Por defecto sale el último que tiene algo apuntado. */
+function entrenosConDatos(){
+  var hay={};
+  document.querySelectorAll('#sec-seguimiento .trk-ex').forEach(function(ex){
+    exData(ex).forEach(function(x){ if(x) hay[x.w]=1; });
+  });
+  return Object.keys(hay).map(Number).sort(function(a,b){return a-b;});
+}
+function ponEntreno(){
+  var sel=document.getElementById('semEnvio'); if(!sel) return;
+  var ws=entrenosConDatos(), antes=sel.value, h='';
+  if(!ws.length) ws=[1];
+  ws.forEach(function(w){ h+='<option value="'+w+'">E'+w+'</option>'; });
+  sel.innerHTML=h;
+  /* si Álvaro ya ha elegido uno a mano, se respeta mientras siga existiendo */
+  if(sel.getAttribute('data-elegida')&&ws.indexOf(+antes)>=0) sel.value=antes;
+  else sel.value=ws[ws.length-1];
+}
+
 function sendToMarc(){
   saveTrk(true);
-  var L=['📊 PROGRESO ÁLVARO — Elvyfit',''],cur=0,any=false;
-  var byDay={},order=[];
+  var sel=document.getElementById('semEnvio'), ws=entrenosConDatos();
+  if(!ws.length){ alert('Primero apunta tus kg y reps de algún entreno.'); return; }
+  var W=(sel&&sel.value)?parseInt(sel.value,10):ws[ws.length-1];
+
+  var byDay={},order=[],any=false;
   document.querySelectorAll('#sec-seguimiento .trk-ex').forEach(function(ex){
     var name=ex.getAttribute('data-ex'),day=ex.getAttribute('data-day');
     if(!byDay[day]){byDay[day]=[];order.push(day);}
-    var t=lastTwo(exData(ex));
-    if(!t.last)return;
-    any=true;if(t.last.w>cur)cur=t.last.w;
-    var line='• '+name+': '+t.last.series.join(' | ');
-    if(t.prev){
-      var d=t.last.vol-t.prev.vol;
-      if(t.prev.vol>0){
-        var pc=Math.round(d/t.prev.vol*100);
-        line+=(d>0?'  ▲ +'+pc+'%':(d<0?'  ▼ '+pc+'%':'  = igual'))+' vs E'+t.prev.w;
-      }
+    var wk=exData(ex), act=wk[W-1];
+    if(!act) return;                       /* ese día no lo hizo en ese entreno */
+    any=true;
+    /* el anterior con algo apuntado, sea cual sea */
+    var prev=null;
+    for(var i=W-2;i>=0;i--){ if(wk[i]){ prev=wk[i]; break; } }
+    var line='• '+name+': '+act.series.join(' | ');
+    if(prev&&prev.vol>0&&act.vol>0){
+      var d=act.vol-prev.vol, pc=Math.round(d/prev.vol*100);
+      line+=(d>0?'  ▲ +'+pc+'%':(d<0?'  ▼ '+pc+'%':'  = igual'))+' vs E'+prev.w;
     }
     byDay[day].push(line);
   });
-  if(!any){alert('Primero apunta tus kg y reps de esta semana.');return;}
-  L[1]='Entreno '+cur+' de cada bloque · sobrecarga progresiva';L.push('');
-  order.forEach(function(d){if(byDay[d].length){L.push('— '+d+' —');byDay[d].forEach(function(x){L.push(x);});L.push('');}});
-  var pc=[];for(var w=1;w<=8;w++){var el=document.getElementById('pc_'+w);if(el&&el.value)pc.push('S'+w+' '+el.value+'kg');}
-  if(pc.length){L.push('⚖️ Peso: '+pc.join(' · '));}
+  if(!any){ alert('En el entreno E'+W+' no hay nada apuntado. Elige otro en el desplegable.'); return; }
+
+  var f=new Date(), fecha=('0'+f.getDate()).slice(-2)+'/'+('0'+(f.getMonth()+1)).slice(-2);
+  var L=['📊 PROGRESO ÁLVARO — ENTRENO '+W+' — '+fecha,''];
+  order.forEach(function(d){ if(byDay[d].length){ L.push('— '+d+' —'); byDay[d].forEach(function(x){L.push(x);}); L.push(''); } });
+  var pc=[]; for(var w=1;w<=8;w++){ var el=document.getElementById('pc_'+w); if(el&&el.value) pc.push('S'+w+' '+el.value+'kg'); }
+  if(pc.length) L.push('⚖️ Peso: '+pc.join(' · '));
   bajarCopia();
   window.open('https://wa.me/34640064383?text='+encodeURIComponent(L.join('\n')),'_blank');
 }
@@ -1258,9 +1307,10 @@ function avisoCopia(){
     alerta('📲 <b>Haz esto una vez y no se te borra nunca:</b><br>1. Abre este enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp).<br>2. <b>iPhone:</b> botón Compartir → <i>Añadir a pantalla de inicio</i>. &nbsp;<b>Android:</b> ⋮ → <i>Añadir a pantalla de inicio</i>.<br>3. A partir de ahí <b>entra siempre desde ese icono</b>, no desde el enlace de WhatsApp.<br><br>Si entras cada vez desde WhatsApp, el móvil te borra lo apuntado al cabo de unos días. Con el icono, no.');
   }
   loadTrk();
+  try{ ponEntreno(); }catch(e){}
   allInputs().forEach(function(i){
     ['input','change','blur'].forEach(function(ev){
-      i.addEventListener(ev,function(){ tocado=true; saveTrk(true); });
+      i.addEventListener(ev,function(){ tocado=true; saveTrk(true); try{ ponEntreno(); }catch(e){} });
     });
   });
   document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') saveTrk(true); });
