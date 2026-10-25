@@ -1162,6 +1162,89 @@ var CLIENTE = {
       ]
     },
     {
+      "id": "D3V",
+      "emoji": "🦵",
+      "color": "var(--green)",
+      "cc": "var(--green)",
+      "chip": "D3 variante · Pierna",
+      "titulo": "DÍA 3 VARIANTE — PIERNA",
+      "ejercicios": [
+        {
+          "nombre": "Prensa inclinada",
+          "reps": [
+            "8",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+        },
+        {
+          "nombre": "Extensión de cuádriceps en máquina",
+          "reps": [
+            "8",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+        },
+        {
+          "nombre": "Curl femoral tumbado",
+          "reps": [
+            "10",
+            "10",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=9xbBr5Ytl8c"
+        },
+        {
+          "nombre": "Hip thrust en máquina o con barra ligera",
+          "reps": [
+            "10",
+            "10",
+            "10"
+          ],
+          "video": "https://youtube.com/shorts/bup775DiMUE"
+        },
+        {
+          "nombre": "Curl femoral sentado",
+          "reps": [
+            "8",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=jq03iefZxjc"
+        },
+        {
+          "nombre": "Gemelo en prensa",
+          "reps": [
+            "10",
+            "10",
+            "12",
+            "12"
+          ],
+          "video": "https://www.youtube.com/watch?v=zmNBx-Ilhdc"
+        },
+        {
+          "nombre": "Crunch abdominales en máquina",
+          "reps": [
+            "12",
+            "10",
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+        },
+        {
+          "nombre": "Oblicuo de lado colgado en barra (por lado)",
+          "reps": [
+            "10",
+            "10"
+          ],
+          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+        }
+      ]
+    },
+    {
       "id": "D4",
       "emoji": "🔵",
       "color": "var(--cyan)",
@@ -1606,7 +1689,7 @@ var CLIENTE = {
         ]
       }
     },
-    "D3": {
+    "D3V": {
       "Prensa inclinada": {
         "1": [
           "150x7",
@@ -1647,6 +1730,43 @@ var CLIENTE = {
           "90x8",
           "85x9",
           "80x9"
+        ]
+      },
+      "Curl femoral tumbado": {
+        "1": [
+          "45x7",
+          "35x10",
+          "30x12"
+        ],
+        "2": [
+          "45x8",
+          "40x8"
+        ],
+        "3": [
+          "45x8",
+          "40x9",
+          "30x12"
+        ],
+        "4": [
+          "45x7",
+          "40x8",
+          "30x11"
+        ]
+      },
+      "Hip thrust en máquina o con barra ligera": {
+        "1": [
+          "80x12",
+          "80x11",
+          "80x11"
+        ],
+        "2": [
+          "80x10",
+          "80x10"
+        ],
+        "3": [
+          "80x11",
+          "80x10",
+          "80x10"
         ]
       },
       "Gemelo en prensa": {
