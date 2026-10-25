@@ -274,7 +274,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 <footer><div class="logo">ELVYFIT</div><p>Plan personalizado para Gerard Regordosa Yañez · Recomposición Total</p><p style="margin-top:6px">Coach: Marc Elvira · <a href="https://instagram.com/elvyfit9" target="_blank" style="color:var(--red)">📸 @elvyfit9</a></p><p style="margin-top:10px">Guía de entrenamiento y nutrición. No sustituye el criterio de tu médico. Por tu antecedente cardíaco, consulta con tu cardiólogo antes de empezar. 💪❤️</p></footer>
 
 
-<div id="sumModal" onclick="if(event.target===this)closeSummary()"><div class="sum-box"><div class="sum-head"><div class="sum-title">📈 RESUMEN DE TU PROGRESIÓN</div><button class="btn btn-reset" onclick="closeSummary()">✕ Cerrar</button></div><div id="sumBody"></div></div></div>
+<div id="sumModal" onclick="if(event.target===this)closeSummary()"><div class="sum-box"><div class="sum-head"><div class="sum-title" id="sumTitle">📈 RESUMEN DE TU PROGRESIÓN</div><button class="btn btn-reset" onclick="closeSummary()">✕ Cerrar</button></div><div id="sumBody"></div></div></div>
 <script src="elvyfit-motor.js"></script>
 <script src="datos-gerard.js"></script>
 <script>
@@ -507,7 +507,7 @@ var DBN='elvyfit_'+CLIENTE.slug, STORE='trk', COPIA=CLIENTE.slug+'_ultima_copia'
 var tocado=false;
 
 function allInputs(){ return document.querySelectorAll('.main-sec.s8 input.ti'); }
-function recoger(){ var d={}; allInputs().forEach(function(i){ if(i.value.trim()!=='') d[i.id]=i.value.trim(); }); return {v:2,t:Date.now(),d:d}; }
+function recoger(){ var d={}; allInputs().forEach(function(i){ if(i.value.trim()!=='') d[i.id]=i.value.trim(); }); var o={v:2,t:Date.now(),d:d,ex:mapaActual()}; for(var k in HUERF){ o.h=HUERF; break; } return o; }
 function parsear(s){ try{ var o=(typeof s==='string')?JSON.parse(s):s; if(!o) return null; if(!o.d) return {v:1,t:1,d:o}; return o; }catch(e){ return null; } }
 
 function idb(cb){ try{ if(!window.indexedDB) return cb(null); var r=indexedDB.open(DBN,1);
@@ -531,7 +531,44 @@ function saveTrk(manual){
   if(manual==='boton') alert(ok?'✅ Progreso guardado en tu móvil.':'⚠️ No se ha podido guardar aquí. Abre el plan en Chrome o Safari.');
   return ok;
 }
-function aplicar(o){ if(!o||!o.d) return; for(var k in o.d){ var el=document.getElementById(k); if(el) el.value=o.d[k]; } }
+function aplicar(o){ if(!o||!o.d) return; for(var k in o.d){ var el=document.getElementById(k); if(el) el.value=o.d[k]; } if(o.h) for(var j in o.h) HUERF[j]=o.h[j]; }
+/* ============================================================
+   PESOS SEGUROS ANTE CAMBIOS DEL PLAN
+   Cada guardado anota a qué ejercicio (día + nombre) corresponde
+   cada fila. Si se reordena, añade, quita o renombra un ejercicio
+   o una serie, lo apuntado vuelve a su ejercicio. Lo que no tenga
+   casilla en el plan actual se guarda aparte (h) y reaparece si
+   el ejercicio vuelve. Nunca se borra nada apuntado.
+   ============================================================ */
+var EX_BASE={"D1_e1": "D1|Press máquina pecho plano", "D1_e2": "D1|Press máquina pecho inclinado", "D1_e3": "D1|Pec Deck (aperturas)", "D1_e4": "D1|Press militar en máquina", "D1_e5": "D1|Elevaciones laterales mancuernas", "D1_e6": "D1|Fondos de tríceps (en máquina o libres)", "D1_e7": "D1|Extensión tríceps polea barra recta", "D2_e1": "D2|Jalón al pecho agarre prono", "D2_e2": "D2|Remo máquina neutro unilateral", "D2_e3": "D2|Jalón al pecho agarre cerrado", "D2_e4": "D2|Pullover en polea", "D2_e5": "D2|Curl predicador máquina", "D2_e6": "D2|Curl martillo", "D3_e1": "D3|Sentadilla Hack en máquina", "D3_e2": "D3|Prensa de piernas (leg press)", "D3_e3": "D3|Extensión de cuádriceps en máquina", "D3_e4": "D3|Isquiotibiales sentado en máquina", "D3_e5": "D3|Abductor de glúteo en máquina", "D3_e6": "D3|Gemelo en máquina", "D4_e1": "D4|Press militar con mancuernas", "D4_e2": "D4|Elevación lateral unilateral en polea", "D4_e3": "D4|Pájaros en máquina (Pec Deck invertido)", "D4_e4": "D4|Press inclinado en multipower (pecho superior)", "D4_e5": "D4|Cruces en polea baja (pecho inferior)", "D5_e1": "D5|Remo en máquina convergente (Hammer Strength)", "D5_e2": "D5|Curl de bíceps tumbado en banco", "D5_e3": "D5|Curl de bíceps en polea arriba unilateral", "D5_e4": "D5|Curl predicador en máquina o banco", "D5_e5": "D5|Extensión de tríceps en polea unilateral", "D5_e6": "D5|Press francés barra recta"};
+var HUERF={};
+function mapaActual(){ var m={}; document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){ var i=ex.querySelector('input.ti'), p=i&&/^(.+_e\d+)_s\d+_w\d+_(?:kg|rep)$/.exec(i.id); if(p) m[p[1]]=ex.getAttribute('data-day')+'|'+ex.getAttribute('data-ex'); }); return m; }
+function renombre(n){ var R=CLIENTE.renombres||{}, i=0; while(R[n]&&i++<10) n=R[n]; return n; }
+function norm(o){
+  if(!o||!o.d) return o;
+  var mapa=o.ex||EX_BASE, act=mapaActual(), inv={}, invN={}, guardados={}, p, k;
+  for(p in act){ inv[act[p]]=p; var nm=act[p].slice(act[p].indexOf('|')+1); if(!(nm in invN)) invN[nm]=p; }
+  for(p in mapa) guardados[mapa[p]]=1;
+  var d={}, h={}, items=[];
+  for(k in (o.h||{})){ var a=k.split('#'); if(a.length===2) items.push([a[0],null,a[1],o.h[k]]); else h[k]=o.h[k]; }
+  for(k in o.d){
+    var m=/^(.+_e\d+)_(s\d+_w\d+_(?:kg|rep))$/.exec(k);
+    if(!m){ d[k]=o.d[k]; continue; }
+    items.push([mapa[m[1]]||act[m[1]]||null, m[1], m[2], o.d[k]]);
+  }
+  items.forEach(function(it){
+    var dn=it[0], pre=it[1], rest=it[2], v=it[3], dest=null;
+    if(dn){
+      var dia=dn.slice(0,dn.indexOf('|')), n=dn.slice(dn.indexOf('|')+1), rn=renombre(n);
+      dest=inv[dn]||inv[dia+'|'+rn]||invN[n]||invN[rn]||null;
+      if(!dest&&pre&&act[pre]&&!guardados[act[pre]]) dest=pre; /* renombrado en el mismo sitio */
+    } else if(pre) dest=pre;
+    var id=dest?dest+'_'+rest:null;
+    if(id&&document.getElementById(id)){ if(!(id in d)) d[id]=v; }
+    else h[(dn||('@'+pre))+'#'+rest]=v;
+  });
+  var r={v:2,t:o.t||1,d:d,ex:act}; for(k in h){ r.h=h; break; } if(o.borrado) r.borrado=true; return r;
+}
 function mejor(l){ var b=null; l.forEach(function(o){ if(o&&o.d&&(!b||(o.t||0)>(b.t||0))) b=o; }); return b; }
 
 /* lo que Marc ha dejado apuntado en datos-guti.js → identificadores del tracker */
@@ -542,7 +579,7 @@ function semilla(){
   CLIENTE.rutina.forEach(function(day){
     var pd=P[day.id]; if(!pd) return;
     day.ejercicios.forEach(function(e,ei){
-      var pe=pd[e.nombre]; if(!pe) return;
+      var pe=pd[e.nombre]; if(!pe) for(var kk in pd){ if(renombre(kk)===e.nombre){ pe=pd[kk]; break; } } if(!pe) return;
       for(var w in pe){ (pe[w]||[]).forEach(function(s,si){
         var m=String(s).split(/x|×/i), b=day.id+'_e'+(ei+1)+'_s'+(si+1)+'_w'+w;
         if(m[0]&&m[0].trim()) d[b+'_kg']=m[0].trim();
@@ -565,20 +602,20 @@ function migrar(o){ /* convierte el formato antiguo (t{d}_e{e0}_s_w_kg y peso_wN
 }
 function loadTrk(){
   var cands=[];
-  try{ cands.push(parsear(localStorage.getItem(KEY))); }catch(e){}
-  try{ cands.push(parsear(sessionStorage.getItem(KEY))); }catch(e){}
-  var antiguo=null; try{ antiguo=migrar(parsear(localStorage.getItem(KEY_OLD))); }catch(e){}
+  try{ cands.push(norm(parsear(localStorage.getItem(KEY)))); }catch(e){}
+  try{ cands.push(norm(parsear(sessionStorage.getItem(KEY)))); }catch(e){}
+  var antiguo=null; try{ antiguo=norm(migrar(parsear(localStorage.getItem(KEY_OLD)))); }catch(e){}
   var b=mejor(cands);
   if(!b||!b.borrado){ aplicar({d:semilla()}); if(!b) aplicar(antiguo); }
   aplicar(b);
-  idbGet(function(o){ if(o&&!tocado){ cands.push(o); var m=mejor(cands); if(m&&m!==b){ if(!m.borrado) aplicar({d:semilla()}); aplicar(m); } } });
+  idbGet(function(o){ if(o&&!tocado){ o=norm(parsear(o)); cands.push(o); var m=mejor(cands); if(m&&m!==b){ if(!m.borrado) aplicar({d:semilla()}); aplicar(m); } } });
 }
 function resetTrk(){
   if(!confirm('¿Borrar TODO el progreso guardado?')) return;
   var o={v:2,t:Date.now(),d:{},borrado:true};
   try{ localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
   try{ sessionStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
-  idbSet(o); allInputs().forEach(function(i){ i.value=''; });
+  idbSet(o); HUERF={}; allInputs().forEach(function(i){ i.value=''; });
 }
 
 function bajarCopia(){
@@ -591,7 +628,7 @@ function bajarCopia(){
 }
 function subirCopia(inp){
   var f=inp.files&&inp.files[0]; if(!f) return; var r=new FileReader();
-  r.onload=function(){ var o=parsear(r.result); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
+  r.onload=function(){ var o=norm(parsear(r.result)); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
     aplicar(o); tocado=true; saveTrk(); alert('✅ Progreso restaurado.'); };
   r.readAsText(f); inp.value='';
 }
@@ -627,25 +664,54 @@ function showSummary(){
     html+='<div class="sum-line">'+s+'</div>';
   });
   var p=pesos(' · '); if(p) html+='<div class="sum-day">⚖️ PESO</div><div class="sum-line">'+p+'</div>';
+  document.getElementById('sumTitle').textContent='📈 RESUMEN DE TU PROGRESIÓN';
   document.getElementById('sumBody').innerHTML=html;
   document.getElementById('sumModal').classList.add('open'); document.body.style.overflow='hidden';
 }
 function closeSummary(){ document.getElementById('sumModal').classList.remove('open'); document.body.style.overflow=''; }
 
+function semanasConDatos(){
+  var s={};
+  document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){ exData(ex).forEach(function(x){ if(x) s[x.w]=1; }); });
+  for(var w=1;w<=8;w++){ var el=document.getElementById('pc_'+w); if(el&&el.value.trim()) s[w]=1; }
+  return Object.keys(s).map(Number).sort(function(a,b){return a-b;});
+}
 function sendToMarc(){
   saveTrk();
+  var ws=semanasConDatos();
+  if(!ws.length){ alert('Primero apunta tus kg y reps de esta semana.'); return; }
+  var last=ws[ws.length-1], opts='';
+  ws.slice().reverse().forEach(function(w){ opts+='<option value="'+w+'"'+(w===last?' selected':'')+'>Semana '+w+(w===last?' (la última que has apuntado)':'')+'</option>'; });
+  document.getElementById('sumTitle').textContent='📤 ENVIAR A MARC';
+  document.getElementById('sumBody').innerHTML='<div class="sum-line" style="border:0">¿Qué semana le mandas a Marc?</div>'
+    +'<select id="selSem" style="width:100%;padding:12px;margin-top:6px;background:#141414;color:#fff;border:1px solid var(--border);border-radius:8px;font-size:15px;font-weight:700">'+opts+'</select>'
+    +'<div class="btn-group" style="margin-top:14px"><button class="btn btn-wa" onclick="enviarSemana()">📤 Enviar por WhatsApp</button></div>';
+  document.getElementById('sumModal').classList.add('open'); document.body.style.overflow='hidden';
+}
+function enviarSemana(){
+  var w=parseInt(document.getElementById('selSem').value,10);
   var hoy=new Date(), f=('0'+hoy.getDate()).slice(-2)+'/'+('0'+(hoy.getMonth()+1)).slice(-2)+'/'+hoy.getFullYear();
-  var L=['📊 PROGRESO '+(CLIENTE.nombre||'').toUpperCase()+' — '+f,''], cur='', any=false;
-  var p=pesos(' · '); if(p){ L.push('⚖️ '+p); L.push(''); }
+  var L=['📊 PROGRESO '+(CLIENTE.nombre||'').toUpperCase()+' — SEMANA '+w+' — '+f,''];
+  var pc=document.getElementById('pc_'+w), pv=pc&&pc.value.trim();
+  if(pv){ var pa=''; for(var x=w-1;x>=1;x--){ var e2=document.getElementById('pc_'+x); if(e2&&e2.value.trim()){ pa=' (sem '+x+': '+e2.value.trim()+' kg)'; break; } } L.push('⚖️ Peso sem '+w+': '+pv+' kg'+pa); L.push(''); }
+  var dias={}, orden=[];
   document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){
-    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day'), t=lastTwo(exData(ex));
-    if(!t.last) return; any=true;
-    if(day!==cur){ L.push('— '+day+' —'); cur=day; }
-    var l='• '+name+' (sem '+t.last.w+'): '+t.last.series.join(' | ');
-    if(t.prev&&t.prev.vol&&t.last.vol){ var pc=Math.round((t.last.vol-t.prev.vol)/t.prev.vol*100); l+=(pc>0?'  ▲ +'+pc+'%':(pc<0?'  ▼ '+pc+'%':'  = igual'))+' vs sem '+t.prev.w; }
-    L.push(l);
+    var name=ex.getAttribute('data-ex'), day=ex.getAttribute('data-day');
+    if(!dias[day]){ dias[day]={l:[],f:[]}; orden.push(day); }
+    var wk=exData(ex), cur=wk[w-1];
+    if(!cur){ dias[day].f.push(name); return; }
+    var prev=null; for(var y=w-2;y>=0;y--){ if(wk[y]){ prev=wk[y]; break; } }
+    var l='• '+name+': '+cur.series.join(' | ');
+    if(prev&&prev.vol&&cur.vol){ var p=Math.round((cur.vol-prev.vol)/prev.vol*100); l+=(p>0?'  ▲ +'+p+'%':(p<0?'  ▼ '+p+'%':'  = igual'))+' vs sem '+prev.w; }
+    dias[day].l.push(l);
   });
-  if(!any&&!p){ alert('Primero apunta tus kg y reps de esta semana.'); return; }
+  orden.forEach(function(day){
+    var D=dias[day];
+    if(!D.l.length){ L.push('— '+day+' — sin apuntar'); return; }
+    L.push('— '+day+' —'); D.l.forEach(function(x){ L.push(x); });
+    if(D.f.length) L.push('  (sin apuntar: '+D.f.join(', ')+')');
+  });
+  closeSummary();
   window.open('https://wa.me/34640064383?text='+encodeURIComponent(L.join('\n')),'_blank');
 }
 
