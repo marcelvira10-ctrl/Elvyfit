@@ -764,6 +764,98 @@ var CLIENTE = {
       ]
     }
   ],
+  "progreso": {
+    "pesoCorporal": {
+      "2": "113.3"
+    },
+    "PUSH": {
+      "Press máquina pecho plano": {
+        "2": [
+          "15x6",
+          "10x11"
+        ]
+      },
+      "Press máquina pecho inclinado": {
+        "2": [
+          "10x8",
+          "7,5x8"
+        ]
+      },
+      "Pec Deck (aperturas)": {
+        "2": [
+          "30x8",
+          "30x9"
+        ]
+      },
+      "Press militar en máquina": {
+        "2": [
+          "10x8",
+          "10x7"
+        ]
+      },
+      "Elevaciones laterales mancuernas": {
+        "2": [
+          "7x5",
+          "5x15",
+          "5x13"
+        ]
+      },
+      "Tríceps katana unilateral en polea": {
+        "2": [
+          "10x7",
+          "10x5",
+          "10x53"
+        ]
+      },
+      "Extensión tríceps polea barra recta": {
+        "2": [
+          "30x9",
+          "25x12"
+        ]
+      }
+    },
+    "PULL": {
+      "Jalón al pecho agarre prono": {
+        "2": [
+          "50x8",
+          "55x9"
+        ]
+      },
+      "Remo en T": {
+        "2": [
+          "25x7",
+          "25x8"
+        ]
+      },
+      "Jalón en máquina unilateral": {
+        "2": [
+          "45x6",
+          "45x5"
+        ]
+      },
+      "Pullover en polea": {
+        "2": [
+          "35x9",
+          "40x9"
+        ]
+      },
+      "Curl predicador máquina": {
+        "2": [
+          "20x7",
+          "20x7"
+        ]
+      },
+      "Curl martillo": {
+        "2": [
+          "10x7",
+          "10x7"
+        ]
+      }
+    },
+    "pasosSemana": {
+      "2": 5000
+    }
+  },
   "rutina": [
     {
       "id": "PUSH",
