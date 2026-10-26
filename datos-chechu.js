@@ -13,7 +13,7 @@ var CLIENTE = {
   "slug": "chechu",
   "clave": "chechu_plan_v1",
   "claveAntigua": "sergi_tracking_v1",
-  "kcal": 1827,
+  "kcal": 1817,
   "peso": 91,
   "pasos": 9500,
   "ratios": {
@@ -507,13 +507,13 @@ var CLIENTE = {
   "historial": [
     {
       "fecha": "26 oct",
-      "texto": "Lunes, martes, miércoles y viernes haces 3 comidas (C2, C3 y C4), sin desayuno. Jueves, sábado y domingo, 4 comidas con desayuno. Los días sin desayuno llevas 2 scoops de proteína en C3 y 1 scoop en la cena, para llegar a 1,6 g de proteína por kilo (146 g con 91 kg). Arroz de C2 a 100 g en crudo. Media de la semana: 1.827 kcal al día (unas 1.654 los días sin desayuno y 2.059 los días con desayuno)."
+      "texto": "Lunes, martes, miércoles y viernes haces 3 comidas (C2, C3 y C4), sin desayuno. Jueves, sábado y domingo, 4 comidas con desayuno. Los días sin desayuno llevas 2 scoops de proteína en C3 y más carne o pescado en la cena, para llegar a 1,6 g de proteína por kilo (146 g con 91 kg). Arroz de C2 a 100 g en crudo. Media de la semana: 1.817 kcal al día (unas 1.635 los días sin desayuno y 2.059 los días con desayuno)."
     }
   ],
   "dias": [
     {
       "dia": "LUN",
-      "kcal": 1738,
+      "kcal": 1730,
       "comidas": [
         {
           "titulo": "🥗 C2 — ALMUERZO",
@@ -561,7 +561,7 @@ var CLIENTE = {
           "items": [
             [
               "pollo",
-              150
+              240
             ],
             [
               "boniato",
@@ -570,10 +570,6 @@ var CLIENTE = {
             [
               "judia_verde",
               150
-            ],
-            [
-              "isolate",
-              30
             ]
           ]
         }
@@ -581,7 +577,7 @@ var CLIENTE = {
     },
     {
       "dia": "MAR",
-      "kcal": 1670,
+      "kcal": 1662,
       "comidas": [
         {
           "titulo": "🥗 C2 — ALMUERZO",
@@ -629,7 +625,7 @@ var CLIENTE = {
           "items": [
             [
               "carne_picada",
-              130
+              180
             ],
             [
               "patata",
@@ -638,10 +634,6 @@ var CLIENTE = {
             [
               "judia_verde",
               150
-            ],
-            [
-              "isolate",
-              30
             ]
           ]
         }
@@ -649,7 +641,7 @@ var CLIENTE = {
     },
     {
       "dia": "MIÉ",
-      "kcal": 1718,
+      "kcal": 1710,
       "comidas": [
         {
           "titulo": "🥗 C2 — ALMUERZO",
@@ -697,7 +689,7 @@ var CLIENTE = {
           "items": [
             [
               "rodaballo",
-              161
+              306
             ],
             [
               "boniato",
@@ -706,10 +698,6 @@ var CLIENTE = {
             [
               "judia_verde",
               150
-            ],
-            [
-              "isolate",
-              30
             ]
           ]
         }
@@ -803,7 +791,7 @@ var CLIENTE = {
     },
     {
       "dia": "VIE",
-      "kcal": 1670,
+      "kcal": 1666,
       "comidas": [
         {
           "titulo": "🥗 C2 — ALMUERZO",
@@ -851,7 +839,7 @@ var CLIENTE = {
           "items": [
             [
               "rodaballo",
-              161
+              241
             ],
             [
               "boniato",
@@ -860,10 +848,6 @@ var CLIENTE = {
             [
               "judia_verde",
               150
-            ],
-            [
-              "isolate",
-              30
             ]
           ]
         }
@@ -1318,9 +1302,9 @@ var CLIENTE = {
         "2 scoops LUN, MAR, MIÉ y VIE"
       ],
       [
-        "🌙 Scoop en la cena",
+        "🌙 Carne o pescado de la cena",
         "up",
-        "+1 scoop LUN, MAR, MIÉ y VIE"
+        "más cantidad LUN, MAR, MIÉ y VIE"
       ],
       [
         "🍚 Arroz en C2",
@@ -1328,7 +1312,7 @@ var CLIENTE = {
         "100 g en crudo"
       ]
     ],
-    "quitada": "Hoy no hay desayuno. La proteína la tienes en los 2 scoops de C3 y el scoop de la cena.",
+    "quitada": "Hoy no hay desayuno. La proteína la tienes en los 2 scoops de C3 y en más carne o pescado en la cena.",
     "diasAntes": [
       {
         "dia": "LUN",
