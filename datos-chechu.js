@@ -4,7 +4,7 @@ if (typeof ELVYFIT !== "undefined") {
   AL.pan_integral   = AL.pan_integral   || { n:"Pan integral",                p:10.0, c:48.0, g:3.5,  crudo:false, ok:false, cat:"carbo" };
   AL.carne_picada   = AL.carne_picada   || { n:"Carne picada de vacuno",      p:21.0, c:0.0,  g:6.0,  crudo:true,  ok:false, cat:"prote" };
   AL.hamburguesa    = AL.hamburguesa    || { n:"Hamburguesa de ternera",      p:18.0, c:1.0,  g:14.0, crudo:true,  ok:false, cat:"prote" };
-  AL.tortitas_jamon = AL.tortitas_jamon || { n:"Tortitas de maíz sabor jamón", p:7.0,  c:80.0, g:3.5,  crudo:false, ok:false, cat:"carbo" };
+  AL.tortitas_jamon = AL.tortitas_jamon || { n:"Tortitas de maíz sabor jamón", p:6.9,  c:77.0, g:8.6,  crudo:false, ok:false, cat:"carbo" };
 }
 
 var CLIENTE = {
@@ -13,8 +13,8 @@ var CLIENTE = {
   "slug": "chechu",
   "clave": "chechu_plan_v1",
   "claveAntigua": "sergi_tracking_v1",
-  "kcal": 2005,
-  "peso": 94,
+  "kcal": 1827,
+  "peso": 91,
   "pasos": 9500,
   "ratios": {
     "p": 1.6,
@@ -506,36 +506,15 @@ var CLIENTE = {
   ],
   "historial": [
     {
-      "fecha": "19 oct",
-      "texto": "Definición: 2.005 kcal al día con 150 g de proteína, 31 g de grasa y 282 g de carbohidratos (0,33 g/kg de grasa). Pasos de 9.000 a 10.000 y fútbol sala martes y jueves."
+      "fecha": "26 oct",
+      "texto": "Lunes, martes, miércoles y viernes haces 3 comidas (C2, C3 y C4), sin desayuno. Jueves, sábado y domingo, 4 comidas con desayuno. Los días sin desayuno llevas 2 scoops de proteína en C3 y 1 scoop en la cena, para llegar a 1,6 g de proteína por kilo (146 g con 91 kg). Arroz de C2 a 100 g en crudo. Media de la semana: 1.827 kcal al día (unas 1.654 los días sin desayuno y 2.059 los días con desayuno)."
     }
   ],
   "dias": [
     {
       "dia": "LUN",
+      "kcal": 1738,
       "comidas": [
-        {
-          "titulo": "🍳 C1 — DESAYUNO",
-          "clase": "ct-orange",
-          "items": [
-            [
-              "pavo",
-              145
-            ],
-            [
-              "pan_integral",
-              150
-            ],
-            [
-              "aguacate",
-              20
-            ],
-            [
-              "arandanos",
-              80
-            ]
-          ]
-        },
         {
           "titulo": "🥗 C2 — ALMUERZO",
           "clase": "ct-yellow",
@@ -546,7 +525,7 @@ var CLIENTE = {
             ],
             [
               "arroz",
-              80
+              100
             ],
             [
               "judia_verde",
@@ -568,7 +547,7 @@ var CLIENTE = {
             ],
             [
               "isolate",
-              30
+              60
             ],
             [
               "creatina",
@@ -586,11 +565,15 @@ var CLIENTE = {
             ],
             [
               "boniato",
-              445
+              425
             ],
             [
               "judia_verde",
               150
+            ],
+            [
+              "isolate",
+              30
             ]
           ]
         }
@@ -598,29 +581,8 @@ var CLIENTE = {
     },
     {
       "dia": "MAR",
+      "kcal": 1670,
       "comidas": [
-        {
-          "titulo": "🍳 C1 — DESAYUNO",
-          "clase": "ct-orange",
-          "items": [
-            [
-              "pavo",
-              145
-            ],
-            [
-              "pan_integral",
-              150
-            ],
-            [
-              "aguacate",
-              20
-            ],
-            [
-              "arandanos",
-              80
-            ]
-          ]
-        },
         {
           "titulo": "🥗 C2 — ALMUERZO",
           "clase": "ct-yellow",
@@ -631,7 +593,7 @@ var CLIENTE = {
             ],
             [
               "pasta",
-              90
+              95
             ],
             [
               "judia_verde",
@@ -653,7 +615,7 @@ var CLIENTE = {
             ],
             [
               "isolate",
-              30
+              60
             ],
             [
               "creatina",
@@ -671,11 +633,15 @@ var CLIENTE = {
             ],
             [
               "patata",
-              475
+              495
             ],
             [
               "judia_verde",
               150
+            ],
+            [
+              "isolate",
+              30
             ]
           ]
         }
@@ -683,29 +649,8 @@ var CLIENTE = {
     },
     {
       "dia": "MIÉ",
+      "kcal": 1718,
       "comidas": [
-        {
-          "titulo": "🍳 C1 — DESAYUNO",
-          "clase": "ct-orange",
-          "items": [
-            [
-              "pavo",
-              145
-            ],
-            [
-              "pan_integral",
-              150
-            ],
-            [
-              "aguacate",
-              20
-            ],
-            [
-              "arandanos",
-              80
-            ]
-          ]
-        },
         {
           "titulo": "🥗 C2 — ALMUERZO",
           "clase": "ct-yellow",
@@ -716,7 +661,7 @@ var CLIENTE = {
             ],
             [
               "arroz",
-              80
+              100
             ],
             [
               "judia_verde",
@@ -738,7 +683,7 @@ var CLIENTE = {
             ],
             [
               "isolate",
-              30
+              60
             ],
             [
               "creatina",
@@ -761,6 +706,10 @@ var CLIENTE = {
             [
               "judia_verde",
               150
+            ],
+            [
+              "isolate",
+              30
             ]
           ]
         }
@@ -768,6 +717,7 @@ var CLIENTE = {
     },
     {
       "dia": "JUE",
+      "kcal": 2042,
       "comidas": [
         {
           "titulo": "🍳 C1 — DESAYUNO",
@@ -801,7 +751,7 @@ var CLIENTE = {
             ],
             [
               "arroz",
-              80
+              100
             ],
             [
               "judia_verde",
@@ -853,29 +803,8 @@ var CLIENTE = {
     },
     {
       "dia": "VIE",
+      "kcal": 1670,
       "comidas": [
-        {
-          "titulo": "🍳 C1 — DESAYUNO",
-          "clase": "ct-orange",
-          "items": [
-            [
-              "pavo",
-              145
-            ],
-            [
-              "pan_integral",
-              150
-            ],
-            [
-              "aguacate",
-              20
-            ],
-            [
-              "arandanos",
-              80
-            ]
-          ]
-        },
         {
           "titulo": "🥗 C2 — ALMUERZO",
           "clase": "ct-yellow",
@@ -908,7 +837,7 @@ var CLIENTE = {
             ],
             [
               "isolate",
-              30
+              60
             ],
             [
               "creatina",
@@ -926,11 +855,15 @@ var CLIENTE = {
             ],
             [
               "boniato",
-              445
+              435
             ],
             [
               "judia_verde",
               150
+            ],
+            [
+              "isolate",
+              30
             ]
           ]
         }
@@ -938,6 +871,7 @@ var CLIENTE = {
     },
     {
       "dia": "SÁB",
+      "kcal": 2050,
       "comidas": [
         {
           "titulo": "🍳 C1 — DESAYUNO",
@@ -971,7 +905,7 @@ var CLIENTE = {
             ],
             [
               "arroz",
-              80
+              100
             ],
             [
               "judia_verde",
@@ -1011,7 +945,7 @@ var CLIENTE = {
             ],
             [
               "boniato",
-              445
+              425
             ],
             [
               "judia_verde",
@@ -1023,6 +957,7 @@ var CLIENTE = {
     },
     {
       "dia": "DOM",
+      "kcal": 2054,
       "comidas": [
         {
           "titulo": "🍳 C1 — DESAYUNO",
@@ -1056,7 +991,7 @@ var CLIENTE = {
             ],
             [
               "arroz",
-              80
+              100
             ],
             [
               "judia_verde",
@@ -1096,7 +1031,7 @@ var CLIENTE = {
             ],
             [
               "boniato",
-              465
+              430
             ],
             [
               "judia_verde",
@@ -1366,5 +1301,602 @@ var CLIENTE = {
         }
       ]
     }
-  ]
+  ],
+  "ajuste": {
+    "desdeKcal": 2005,
+    "desdePeso": 94,
+    "nota": "diasAntes = los gramos que veía antes del ajuste del 26/10 (solo para las flechas). kcal de cada día = objetivo del motor con el que deja los gramos tal cual; el total real de cada día lo pinta el planning y la media real de la semana es \"kcal\".",
+    "filas": [
+      [
+        "🍳 Desayuno (C1)",
+        "down",
+        "solo JUE, SÁB y DOM"
+      ],
+      [
+        "🥤 Proteína en C3",
+        "up",
+        "2 scoops LUN, MAR, MIÉ y VIE"
+      ],
+      [
+        "🌙 Scoop en la cena",
+        "up",
+        "+1 scoop LUN, MAR, MIÉ y VIE"
+      ],
+      [
+        "🍚 Arroz en C2",
+        "up",
+        "100 g en crudo"
+      ]
+    ],
+    "quitada": "Hoy no hay desayuno. La proteína la tienes en los 2 scoops de C3 y el scoop de la cena.",
+    "diasAntes": [
+      {
+        "dia": "LUN",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "salmon",
+                90
+              ],
+              [
+                "arroz",
+                75
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "pollo",
+                150
+              ],
+              [
+                "boniato",
+                425
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "MAR",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "rodaballo",
+                152
+              ],
+              [
+                "pasta",
+                95
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "carne_picada",
+                130
+              ],
+              [
+                "patata",
+                495
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "MIÉ",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "hamburguesa",
+                110
+              ],
+              [
+                "arroz",
+                80
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "rodaballo",
+                161
+              ],
+              [
+                "boniato",
+                395
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "JUE",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "salmon",
+                90
+              ],
+              [
+                "arroz",
+                80
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "pollo",
+                150
+              ],
+              [
+                "patata",
+                490
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "VIE",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "ternera",
+                130
+              ],
+              [
+                "pasta",
+                90
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "rodaballo",
+                161
+              ],
+              [
+                "boniato",
+                435
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "SÁB",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "pollo",
+                150
+              ],
+              [
+                "arroz",
+                75
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "salmon",
+                90
+              ],
+              [
+                "boniato",
+                425
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "dia": "DOM",
+        "comidas": [
+          {
+            "titulo": "🍳 C1 — DESAYUNO",
+            "items": [
+              [
+                "pavo",
+                145
+              ],
+              [
+                "pan_integral",
+                150
+              ],
+              [
+                "aguacate",
+                20
+              ],
+              [
+                "arandanos",
+                80
+              ]
+            ]
+          },
+          {
+            "titulo": "🥗 C2 — ALMUERZO",
+            "items": [
+              [
+                "carne_picada",
+                120
+              ],
+              [
+                "arroz",
+                75
+              ],
+              [
+                "judia_verde",
+                150
+              ],
+              [
+                "manzana",
+                130
+              ]
+            ]
+          },
+          {
+            "titulo": "💪 C3 — POST ENTRENO",
+            "items": [
+              [
+                "tortitas_jamon",
+                35
+              ],
+              [
+                "isolate",
+                30
+              ],
+              [
+                "creatina",
+                8
+              ]
+            ]
+          },
+          {
+            "titulo": "🌙 C4 — CENA",
+            "items": [
+              [
+                "rodaballo",
+                161
+              ],
+              [
+                "boniato",
+                430
+              ],
+              [
+                "judia_verde",
+                150
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
 };
