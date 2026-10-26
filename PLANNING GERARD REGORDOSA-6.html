@@ -437,8 +437,9 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
       for(ee in P[dd]) for(ww in P[dd][ee]) if((P[dd][ee][ww]||[]).some(function(s){return String(s).trim();})) L=Math.max(L,+ww); }
     return L;
   }
+  var SEM_NUBE=0; /* en el móvil de Marc: última semana que trae la nube */
   function ventana(){
-    var VIS=8, L=ultimaSemana(), ini=1, n=0;
+    var VIS=8, L=Math.max(ultimaSemana(), SEM_NUBE), ini=1, n=0;
     while(L>=ini+VIS-1 && n++<50) ini=L-1;
     return {ini:ini, fin:ini+VIS-1};
   }
@@ -480,6 +481,9 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
     });
     document.getElementById("trackerWrap").innerHTML = radios + '<div class="chip-tabs">'+chips+'</div>' + panes;
   }
+  /* lo usa elvyfit-nube.js en el móvil de Marc: si la nube trae semanas más nuevas, la tabla avanza igual que en el móvil del cliente */
+  window.ELVYFIT_ASEGURA_SEMANA = function(n){ n=+n||0; if(n<=SEM_NUBE) return false; var antes=window.TRK_SEM; SEM_NUBE=n; var V=ventana();
+    if(antes && V.ini===antes.ini && V.fin===antes.fin) return false; pintaTracker(); if(typeof loadTrk==='function') loadTrk(); return true; };
 
   /* ---------- números dentro de los textos ---------- */
   function gramosLun(k, comida){
