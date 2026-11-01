@@ -543,6 +543,7 @@ function saveTrk(manual){
   try{ localStorage.setItem(KEY,JSON.stringify(o)); ok=true; }catch(e){}
   try{ sessionStorage.setItem(KEY,JSON.stringify(o)); }catch(e){}
   idbSet(o);
+  try{ var nn=0; for(var kk in o.d) nn++; if(nn){ ck('marcos_apuntado','1'); ck('marcos_casillas',String(nn)); } }catch(e){}
   if(ok) marcar();
   else alerta('⚠️ <b>Tu navegador no está dejando guardar.</b> Abre el enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp) y dale a <b>📥 Descargar copia</b> al acabar cada entreno.','hot');
   if(manual==='boton') alert(ok?'✅ Progreso guardado en tu móvil.':'⚠️ No se ha podido guardar aquí. Abre el plan en Chrome o Safari.');
@@ -702,17 +703,54 @@ function sendToMarc(){
 }
 
 function instalado(){ try{ if(window.navigator.standalone===true) return true; if(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){} return false; }
+
+/* ---- marcas en cookie: sobreviven aunque el movil limpie el almacenamiento ---- */
+function ck(k,v){
+  try{
+    if(v===undefined){
+      var m=('; '+document.cookie).split('; '+k+'='); return m.length===2?decodeURIComponent(m.pop().split(';')[0]):'';
+    }
+    document.cookie=k+'='+encodeURIComponent(v)+';path=/;max-age=34560000;SameSite=Lax';
+  }catch(e){}
+  return '';
+}
+/* ¿esto es el navegador de dentro de una app (WhatsApp, Instagram…)? Ahí el guardado va por libre */
+function dentroDeApp(){
+  var u=navigator.userAgent||'';
+  if(/FBAN|FBAV|Instagram|Line\/|Twitter|MicroMessenger|SnapChat/i.test(u)) return true;
+  if(/Android/.test(u)&&/\bwv\b/.test(u)) return true;                 /* webview de Android (WhatsApp) */
+  if(/iPhone|iPad/.test(u)&&!/Safari/.test(u)&&!instalado()) return true; /* webview de iOS */
+  return false;
+}
+/* cuántas casillas hay apuntadas ahora mismo */
+function cuantas(){ var n=0; allInputs().forEach(function(i){ if(i.value.trim()!=='') n++; }); return n; }
 (function(){
   if(typeof GUTI_OK!=='undefined'&&!GUTI_OK) return;
   var puede=false; try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); puede=true; }catch(e){}
-  if(!puede) alerta('⚠️ <b>Aquí no se te va a guardar nada.</b> Estás en el visor de WhatsApp o en modo privado. Toca los tres puntos → <b>Abrir en Chrome</b> (o Safari) y desde ahí sí se guarda.','hot');
-  else if(instalado()){
-    var t=0; try{ t=parseInt(localStorage.getItem(COPIA)||'0'); }catch(e){}
-    var dias=t?Math.floor((Date.now()-t)/86400000):0;
-    alerta(dias>=7?'📥 Hace <b>'+dias+' días</b> que no bajas una copia. Dale a <b>📥 Descargar copia</b> y no pierdes nada pase lo que pase.':'✅ <b>Lo tienes instalado en el móvil.</b> Apunta y se guarda solo. Entra siempre desde este icono.', dias>=7?'hot':'ok');
-  } else alerta('📲 <b>Haz esto una vez y no se te borra nunca:</b><br>1. Abre este enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp).<br>2. <b>iPhone:</b> Compartir → <i>Añadir a pantalla de inicio</i>. &nbsp;<b>Android:</b> ⋮ → <i>Añadir a pantalla de inicio</i>.<br>3. Entra siempre desde ese icono.<br><br>Si entras cada vez desde WhatsApp, el móvil puede borrarte lo apuntado al cabo de unos días.');
   loadTrk();
   pintaSemanas();
+
+  /* ¿este móvil ya había apuntado alguna vez? (la marca va en cookie, aparte del almacenamiento) */
+  var habia=ck('marcos_apuntado')==='1', hay=cuantas(), antes=parseInt(ck('marcos_casillas')||'0',10)||0;
+  /* si antes tenía bastantes más casillas llenas que ahora, el móvil le ha borrado algo */
+  var perdido = habia && antes>0 && hay+2<antes;
+  var tCop=0; try{ tCop=parseInt(localStorage.getItem(COPIA)||'0'); }catch(e){}
+  var diasCop=tCop?Math.floor((Date.now()-tCop)/86400000):-1;
+
+  if(!puede){
+    alerta('⚠️ <b>Aquí no se te va a guardar nada.</b> Estás en el visor de WhatsApp o en modo privado. Toca los tres puntos → <b>Abrir en Chrome</b> (o Safari) y desde ahí sí se guarda.','hot');
+  } else if(dentroDeApp()){
+    alerta('🚨 <b>Estás abriendo el plan DENTRO de WhatsApp.</b> Lo que apuntes aquí se guarda solo aquí: si luego lo abres en Chrome o Safari te saldrá vacío, y al cabo de unos días WhatsApp lo borra.<br><br>👉 Toca los tres puntos → <b>Abrir en Chrome</b> (iPhone: <b>Abrir en Safari</b>) y desde ahí <b>Añadir a pantalla de inicio</b>. Entra siempre desde ese icono y no vuelves a perder nada.','hot');
+  } else if(perdido){
+    alerta('🚨 <b>Tu móvil ha borrado lo que tenías apuntado.</b> No es culpa tuya: pasa cuando se abre el plan desde sitios distintos o el móvil limpia datos.<br><br>👉 <b>Avisa a Marc por WhatsApp</b>: él tiene tus números guardados y te los vuelve a poner. Y a partir de ahora entra siempre desde el <b>icono de la pantalla de inicio</b> y dale a <b>📥 Descargar copia</b> al acabar cada entreno.','hot');
+  } else if(!instalado()){
+    alerta('📲 <b>Haz esto una vez y no se te borra nunca:</b><br>1. Abre este enlace en <b>Chrome o Safari</b> (no dentro de WhatsApp).<br>2. <b>iPhone:</b> Compartir → <i>Añadir a pantalla de inicio</i>. &nbsp;<b>Android:</b> ⋮ → <i>Añadir a pantalla de inicio</i>.<br>3. Entra siempre desde ese icono.'+(hay?'<br><br>📥 Y dale a <b>Descargar copia</b> al acabar cada entreno: es tu red de seguridad.':''),'hot');
+  } else if(hay && diasCop!==0 && (diasCop<0||diasCop>=7)){
+    alerta('📥 '+(diasCop<0?'<b>Todavía no has bajado ninguna copia.</b>':'Hace <b>'+diasCop+' días</b> que no bajas una copia.')+' Dale a <b>📥 Descargar copia</b> y no pierdes nada pase lo que pase.','hot');
+  } else {
+    alerta('✅ <b>Lo tienes instalado en el móvil.</b> Apunta y se guarda solo. Entra siempre desde este icono.','ok');
+  }
+  if(hay){ ck('marcos_apuntado','1'); if(hay>=antes) ck('marcos_casillas',String(hay)); }
   var selSem=document.getElementById('semEnvio');
   if(selSem) selSem.addEventListener('change',function(){ semTocada=true; });
   allInputs().forEach(function(i){ ['input','change','blur'].forEach(function(ev){ i.addEventListener(ev,function(){ tocado=true; saveTrk(); pintaSemanas(); }); }); });
