@@ -44,6 +44,14 @@ var CLIENTE = {
         "6": [
           "40x6",
           "40x8"
+        ],
+        "7": [
+          "55x8",
+          "55x8"
+        ],
+        "8": [
+          "50x6",
+          "40x8"
         ]
       },
       "Press máquina pecho inclinado": {
@@ -70,6 +78,10 @@ var CLIENTE = {
         "6": [
           "70x6",
           "60x8"
+        ],
+        "8": [
+          "60x6",
+          "50x"
         ]
       },
       "Pec Deck (aperturas)": {
@@ -94,6 +106,10 @@ var CLIENTE = {
           "55x8"
         ],
         "6": [
+          "60x6",
+          "55x8"
+        ],
+        "8": [
           "60x6",
           "55x8"
         ]
@@ -121,6 +137,10 @@ var CLIENTE = {
         ],
         "6": [
           "40x"
+        ],
+        "8": [
+          "40x6",
+          "30x8"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -174,6 +194,10 @@ var CLIENTE = {
         "5": [
           "80x6",
           "75x8"
+        ],
+        "8": [
+          "85x6",
+          "80x8"
         ]
       }
     },
@@ -202,6 +226,10 @@ var CLIENTE = {
         "6": [
           "80x6",
           "75x8"
+        ],
+        "8": [
+          "80x6",
+          "75x8"
         ]
       },
       "Remo máquina neutro unilateral": {
@@ -228,6 +256,10 @@ var CLIENTE = {
         "6": [
           "70x6",
           "65x8"
+        ],
+        "8": [
+          "75x6",
+          "70x8"
         ]
       },
       "Jalón al pecho agarre cerrado": {
@@ -254,6 +286,10 @@ var CLIENTE = {
         "6": [
           "75x6",
           "70x8"
+        ],
+        "8": [
+          "80x6",
+          "75x8"
         ]
       },
       "Pullover en polea": {
@@ -280,6 +316,10 @@ var CLIENTE = {
         "6": [
           "60x6",
           "55x8"
+        ],
+        "8": [
+          "55x6",
+          "50x8"
         ]
       },
       "Curl predicador máquina": {
@@ -306,6 +346,10 @@ var CLIENTE = {
         "6": [
           "55x6",
           "50x8"
+        ],
+        "8": [
+          "55x6",
+          "45x8"
         ]
       },
       "Curl martillo": {
@@ -332,6 +376,10 @@ var CLIENTE = {
         "6": [
           "16x6",
           "14x8"
+        ],
+        "8": [
+          "16x6",
+          "14x8"
         ]
       }
     },
@@ -356,6 +404,10 @@ var CLIENTE = {
         "6": [
           "24x6",
           "22x8"
+        ],
+        "8": [
+          "40x6",
+          "30x8"
         ]
       },
       "Elevación lateral unilateral en polea": {
@@ -376,6 +428,10 @@ var CLIENTE = {
           "15x8"
         ],
         "6": [
+          "20x6",
+          "15x8"
+        ],
+        "8": [
           "20x6",
           "15x8"
         ]
@@ -400,6 +456,10 @@ var CLIENTE = {
         "6": [
           "55x6",
           "60x8"
+        ],
+        "8": [
+          "55x6",
+          "50x8"
         ]
       },
       "Press inclinado en multipower (pecho superior)": {
@@ -418,6 +478,10 @@ var CLIENTE = {
         "6": [
           "30x6",
           "28x8"
+        ],
+        "8": [
+          "40x6",
+          "30x8"
         ]
       },
       "Cruces en polea baja (pecho inferior)": {
@@ -432,6 +496,10 @@ var CLIENTE = {
         "6": [
           "25x6",
           "22x8"
+        ],
+        "8": [
+          "40x6",
+          "35x8"
         ]
       }
     },
@@ -452,6 +520,10 @@ var CLIENTE = {
         "6": [
           "16x6",
           "14x8"
+        ],
+        "8": [
+          "18x6",
+          "16x8"
         ]
       },
       "Curl de bíceps en polea arriba unilateral": {
@@ -470,6 +542,10 @@ var CLIENTE = {
         "6": [
           "30x6",
           "25x8"
+        ],
+        "8": [
+          "35x6",
+          "30x8"
         ]
       },
       "Curl predicador en máquina o banco": {
@@ -484,6 +560,9 @@ var CLIENTE = {
         ],
         "6": [
           "50x6"
+        ],
+        "8": [
+          "50x8"
         ]
       },
       "Extensión de tríceps en polea unilateral": {
@@ -502,17 +581,31 @@ var CLIENTE = {
         "6": [
           "30x6",
           "30x8"
+        ],
+        "8": [
+          "35x6",
+          "30x8"
         ]
       },
       "Press francés barra recta": {
         "6": [
           "30x6",
           "30x8"
+        ],
+        "8": [
+          "30x6",
+          "30x9"
         ]
       }
     },
     "pesoCorporal": {
-      "6": "99"
+      "6": "99",
+      "7": "98.7",
+      "8": "98.1"
+    },
+    "pasosSemana": {
+      "7": 17000,
+      "8": 20000
     }
   },
   "kcal": 2300,
