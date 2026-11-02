@@ -1317,7 +1317,7 @@ var CLIENTE = {
             "8",
             "9"
           ],
-          "video": "https://www.youtube.com/watch?v=4zuqeotGiOA",
+          "video": "https://youtube.com/shorts/g636hZa106A",
           "nuevo": true
         }
       ]
