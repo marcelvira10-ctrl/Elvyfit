@@ -766,31 +766,49 @@ var CLIENTE = {
   ],
   "progreso": {
     "pesoCorporal": {
-      "2": "113.3"
+      "2": "113.3",
+      "3": "112.4"
     },
     "PUSH": {
       "Press máquina pecho plano": {
         "2": [
           "15x6",
           "10x11"
+        ],
+        "3": [
+          "20x8",
+          "20x7",
+          "15x8"
         ]
       },
       "Press máquina pecho inclinado": {
         "2": [
           "10x8",
           "7,5x8"
+        ],
+        "3": [
+          "10x8",
+          "10x8"
         ]
       },
       "Pec Deck (aperturas)": {
         "2": [
           "30x8",
           "30x9"
+        ],
+        "3": [
+          "30x8",
+          "30x8"
         ]
       },
       "Press militar en máquina": {
         "2": [
           "10x8",
           "10x7"
+        ],
+        "3": [
+          "10x8",
+          "10x8"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -798,19 +816,33 @@ var CLIENTE = {
           "7x5",
           "5x15",
           "5x13"
+        ],
+        "3": [
+          "7x8",
+          "7x6",
+          "7x6"
         ]
       },
       "Tríceps katana unilateral en polea": {
         "2": [
           "10x7",
           "10x5",
-          "10x53"
+          "10x5"
+        ],
+        "3": [
+          "10x7",
+          "10x6",
+          "10x5"
         ]
       },
       "Extensión tríceps polea barra recta": {
         "2": [
           "30x9",
           "25x12"
+        ],
+        "3": [
+          "30x8",
+          "30x8"
         ]
       }
     },
@@ -819,11 +851,19 @@ var CLIENTE = {
         "2": [
           "50x8",
           "55x9"
+        ],
+        "3": [
+          "50x8",
+          "50x8"
         ]
       },
       "Remo en T": {
         "2": [
           "25x7",
+          "25x8"
+        ],
+        "3": [
+          "25x8",
           "25x8"
         ]
       },
@@ -831,17 +871,29 @@ var CLIENTE = {
         "2": [
           "45x6",
           "45x5"
+        ],
+        "3": [
+          "45x8",
+          "45x8"
         ]
       },
       "Pullover en polea": {
         "2": [
           "35x9",
           "40x9"
+        ],
+        "3": [
+          "40x8",
+          "40x8"
         ]
       },
       "Curl predicador máquina": {
         "2": [
           "20x7",
+          "20x7"
+        ],
+        "3": [
+          "20x8",
           "20x7"
         ]
       },
@@ -849,6 +901,10 @@ var CLIENTE = {
         "2": [
           "10x7",
           "10x7"
+        ],
+        "3": [
+          "10x8",
+          "10x8"
         ]
       }
     },
