@@ -406,7 +406,7 @@ var CLIENTE = {
           "5x9"
         ]
       },
-      "Press francés": {
+      "Press francés en máquina": {
         "1": [
           "20x7",
           "20x8",
@@ -479,7 +479,7 @@ var CLIENTE = {
           "80x7"
         ]
       },
-      "Jalón al pecho agarre supino unilateral": {
+      "Jalón al pecho agarre supino unilateral en máquina": {
         "1": [
           "20x12",
           "24x10"
@@ -493,7 +493,7 @@ var CLIENTE = {
           "56x10"
         ]
       },
-      "Pullover con cuerda": {
+      "Pullover unilateral en polea": {
         "1": [
           "14x12",
           "14x11"
@@ -609,7 +609,7 @@ var CLIENTE = {
   "historial": [
     {
       "fecha": "2 nov",
-      "texto": "Nuevas alternativas para cambiar si quieres: alcachofa en lugar de judía verde (mismos gramos) y ñoquis de patata en lugar de arroz, pasta, patata o boniato (los gramos de ñoquis los tienes en cada comida). En el entreno del lunes, el press banca inclinado pasa a press inclinado en máquina. El resto del plan sigue igual."
+      "texto": "Nuevas alternativas para cambiar si quieres: alcachofa en lugar de judía verde (mismos gramos) y ñoquis de patata en lugar de arroz, pasta, patata o boniato (los gramos de ñoquis los tienes en cada comida). En el entreno cambian 4 ejercicios: lunes, press inclinado en máquina en lugar del press banca inclinado; jueves, press francés en máquina; viernes, jalón supino unilateral en máquina y pullover unilateral en polea. El resto del plan sigue igual."
     }
   ],
   "dias": [
@@ -1311,13 +1311,14 @@ var CLIENTE = {
           "video": "https://youtube.com/shorts/hip11n3QXzU"
         },
         {
-          "nombre": "Press francés",
+          "nombre": "Press francés en máquina",
           "reps": [
             "6",
             "8",
             "9"
           ],
-          "video": "https://youtu.be/hBz7jSJM3Yw"
+          "video": "https://www.youtube.com/watch?v=4zuqeotGiOA",
+          "nuevo": true
         }
       ]
     },
@@ -1346,20 +1347,22 @@ var CLIENTE = {
           "video": "https://youtube.com/shorts/rcS3dvtBXDY"
         },
         {
-          "nombre": "Jalón al pecho agarre supino unilateral",
+          "nombre": "Jalón al pecho agarre supino unilateral en máquina",
           "reps": [
             "8",
             "10"
           ],
-          "video": "https://youtu.be/QSN4qb6OPtY"
+          "video": "https://www.youtube.com/watch?v=KJ9p9yNZJr0",
+          "nuevo": true
         },
         {
-          "nombre": "Pullover con cuerda",
+          "nombre": "Pullover unilateral en polea",
           "reps": [
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/dX5DHCZ-7p8"
+          "video": "https://www.youtube.com/watch?v=rOQ5ltya-7E",
+          "nuevo": true
         },
         {
           "nombre": "Curl predicador",
@@ -1402,11 +1405,26 @@ var CLIENTE = {
       [
         "🏋️ Press inclinado en máquina",
         "lunes, en lugar del press banca inclinado"
+      ],
+      [
+        "🏋️ Press francés en máquina",
+        "jueves, en lugar del press francés"
+      ],
+      [
+        "🏋️ Jalón supino unilateral en máquina",
+        "viernes, ahora en máquina"
+      ],
+      [
+        "🏋️ Pullover unilateral en polea",
+        "viernes, en lugar del pullover con cuerda"
       ]
     ]
   },
   "renombres": {
-    "LUN|Press banca inclinado": "Press inclinado en máquina"
+    "LUN|Press banca inclinado": "Press inclinado en máquina",
+    "JUE|Press francés": "Press francés en máquina",
+    "VIE|Jalón al pecho agarre supino unilateral": "Jalón al pecho agarre supino unilateral en máquina",
+    "VIE|Pullover con cuerda": "Pullover unilateral en polea"
   },
   "alternativas": {
     "arroz": [
