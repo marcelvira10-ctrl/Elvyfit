@@ -77,6 +77,8 @@ input,select{font-family:inherit}
 .concl li{position:relative;padding:9px 0 9px 26px;border-top:1px solid #222;font-size:14px}
 .concl li:first-child{border-top:0}
 .concl li i{position:absolute;left:0;top:9px;font-style:normal;font-weight:700;width:18px;text-align:center}
+.wa summary{cursor:pointer;color:var(--kg);font-weight:700;font-size:14px;margin-top:10px}
+.watxt{white-space:pre-wrap;font-size:13.5px;line-height:1.5;background:#111;border-radius:8px;padding:10px;margin:8px 0}
 .concl li i.up{color:var(--up)}.concl li i.dn{color:var(--dn)}.concl li i.warn{color:var(--warn)}.concl li i.inf{color:var(--kg)}
 .plan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .plan div{background:var(--card2);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--text2)}
@@ -217,6 +219,11 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
   var $=function(id){ return document.getElementById(id); };
   var esc=function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
   function estado(t,cl){ var e=$('estado'); e.innerHTML=t||''; e.className='estado'+(cl?' '+cl:''); e.classList.toggle('hidden',!t); }
+  function copiaTexto(t){
+    (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).then(function(){ toast('Copiado'); },function(){
+      var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{ document.execCommand('copy'); toast('Copiado'); }catch(e){} document.body.removeChild(a);
+    });
+  }
   function toast(t){ var e=$('toast'); e.textContent=t; e.classList.add('on'); setTimeout(function(){ e.classList.remove('on'); },2200); }
   if(typeof firebase==='undefined'){ estado('⚠️ No se ha podido cargar la conexión. Revisa que tienes internet y recarga.','mal'); return; }
 
@@ -507,6 +514,14 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
       +kpi('Semanas',A.sems.length?'S'+A.sems[0]+'–S'+A.L:'—',A.sems.length?A.sems.length+' con series':'sin series')
       +'</div>';
     h+='<div class="panel"><h3>CONCLUSIONES</h3><ul class="concl">'+conclusiones(doc,A).map(function(c){ var i={up:'▲',dn:'▼',warn:'!',inf:'•'}[c[0]]; return '<li><i class="'+c[0]+'">'+i+'</i>'+esc(c[1])+'</li>'; }).join('')+'</ul></div>';
+    /* notas de Marc por semana (conclusiones y el mensaje que le manda), guardadas en coach/<slug>.notas */
+    var NT=(COACH[doc.slug]||{}).notas||{}, nk=Object.keys(NT).sort(function(a,b){ return b-a; }).slice(0,4);
+    nk.forEach(function(w){ var n=NT[w]||{};
+      h+='<div class="panel"><h3>TU NOTA · SEMANA '+esc(w)+(n.fecha?' · '+esc(fechaTxt(n.fecha)):'')+'</h3>'
+        +(n.conclusiones&&n.conclusiones.length?'<ul class="concl">'+n.conclusiones.map(function(c){ return '<li><i class="inf">•</i>'+esc(c)+'</li>'; }).join('')+'</ul>':'')
+        +(n.whatsapp?'<details class="wa"><summary>Mensaje de WhatsApp</summary><div class="watxt">'+esc(n.whatsapp)+'</div><button class="btn full" type="button" data-copia="'+esc(w)+'">Copiar mensaje</button></details>':'')
+        +'</div>';
+    });
     var ob=objetivosSemana(A);
     if(ob.length){
       var cur='', li='';
@@ -528,6 +543,7 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     h+='<div class="panel"><button class="btn full" id="informe" type="button"'+(hay?'':' disabled')+'>📤 Informe para '+esc(doc.nombre)+'</button><p class="nota">'+(hay?'Imagen con su peso y su % de fuerza, lista para mandársela por WhatsApp.':'Saldrá cuando haya al menos dos semanas de peso o de series.')+'</p></div>';
     $('tabBody').innerHTML=h;
     if(hay) $('informe').onclick=function(){ abreInforme(doc,A); };
+    [].forEach.call(document.querySelectorAll('[data-copia]'),function(b){ b.onclick=function(){ copiaTexto((NT[b.getAttribute('data-copia')]||{}).whatsapp||''); }; });
   }
 
   function pintaProgreso(doc,A){
