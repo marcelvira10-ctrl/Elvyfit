@@ -5,6 +5,9 @@ if (typeof ELVYFIT !== "undefined") {
   AL.carne_picada   = AL.carne_picada   || { n:"Carne picada de vacuno",      p:21.0, c:0.0,  g:6.0,  crudo:true,  ok:false, cat:"prote" };
   AL.hamburguesa    = AL.hamburguesa    || { n:"Hamburguesa de ternera",      p:18.0, c:1.0,  g:14.0, crudo:true,  ok:false, cat:"prote" };
   AL.tortitas_jamon = AL.tortitas_jamon || { n:"Tortitas de maíz sabor jamón", p:6.9,  c:77.0, g:8.6,  crudo:false, ok:false, cat:"carbo" };
+  /* alternativas (2/11): ñoquis Hacendado (etiqueta) y corazones de alcachofa al natural Hacendado */
+  AL.noquis         = AL.noquis         || { n:"Ñoquis de patata (pesados tal cual del paquete)", p:4.5, c:37.5, g:0.4, crudo:false, ok:false, cat:"carbo" };
+  AL.alcachofa      = AL.alcachofa      || { n:"Alcachofa (al natural escurrida, o fresca: solo lo que se come)", p:1.7, c:3.2, g:0.4, crudo:false, ok:false, cat:"verdura" };
 }
 
 var CLIENTE = {
@@ -72,7 +75,7 @@ var CLIENTE = {
           "95x7"
         ]
       },
-      "Press banca inclinado": {
+      "Press inclinado en máquina": {
         "1": [
           "30x13",
           "65x6"
@@ -605,8 +608,8 @@ var CLIENTE = {
   ],
   "historial": [
     {
-      "fecha": "26 oct",
-      "texto": "Lunes, martes, miércoles y viernes haces 3 comidas (C2, C3 y C4), sin desayuno. Jueves, sábado y domingo, 4 comidas con desayuno. Los días sin desayuno llevas 2 scoops de proteína en C3 y más carne o pescado en la cena, para llegar a 1,6 g de proteína por kilo (146 g con 91 kg). Arroz de C2 a 100 g en crudo. Media de la semana: 1.817 kcal al día (unas 1.635 los días sin desayuno y 2.059 los días con desayuno)."
+      "fecha": "2 nov",
+      "texto": "Nuevas alternativas para cambiar si quieres: alcachofa en lugar de judía verde (mismos gramos) y ñoquis de patata en lugar de arroz, pasta, patata o boniato (los gramos de ñoquis los tienes en cada comida). En el entreno del lunes, el press banca inclinado pasa a press inclinado en máquina. El resto del plan sigue igual."
     }
   ],
   "dias": [
@@ -1151,12 +1154,13 @@ var CLIENTE = {
           "video": "https://youtube.com/shorts/c-e5Gojxh8I"
         },
         {
-          "nombre": "Press banca inclinado",
+          "nombre": "Press inclinado en máquina",
           "reps": [
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/HboHdKXrYG8"
+          "video": "https://www.youtube.com/watch?v=T4M8IIKyFdk",
+          "nuevo": true
         },
         {
           "nombre": "Laterales mancuerna (banco inclinado atrás)",
@@ -1386,599 +1390,58 @@ var CLIENTE = {
     }
   ],
   "ajuste": {
-    "desdeKcal": 2005,
-    "desdePeso": 94,
-    "nota": "diasAntes = los gramos que veía antes del ajuste del 26/10 (solo para las flechas). kcal de cada día = objetivo del motor con el que deja los gramos tal cual; el total real de cada día lo pinta el planning y la media real de la semana es \"kcal\".",
-    "filas": [
+    "nuevos": [
       [
-        "🍳 Desayuno (C1)",
-        "down",
-        "solo JUE, SÁB y DOM"
+        "🥬 Alcachofa",
+        "en lugar de judía verde, mismos gramos"
       ],
       [
-        "🥤 Proteína en C3",
-        "up",
-        "2 scoops LUN, MAR, MIÉ y VIE"
+        "🥔 Ñoquis de patata",
+        "en lugar de arroz, pasta, patata o boniato"
       ],
       [
-        "🌙 Carne o pescado de la cena",
-        "up",
-        "más cantidad LUN, MAR, MIÉ y VIE"
-      ],
-      [
-        "🍚 Arroz en C2",
-        "up",
-        "100 g en crudo"
+        "🏋️ Press inclinado en máquina",
+        "lunes, en lugar del press banca inclinado"
       ]
+    ]
+  },
+  "renombres": {
+    "LUN|Press banca inclinado": "Press inclinado en máquina"
+  },
+  "alternativas": {
+    "arroz": [
+      {
+        "k": "noquis",
+        "modo": "kcal",
+        "nuevo": true
+      }
     ],
-    "quitada": "Hoy no hay desayuno. La proteína la tienes en los 2 scoops de C3 y en más carne o pescado en la cena.",
-    "diasAntes": [
+    "pasta": [
       {
-        "dia": "LUN",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "salmon",
-                90
-              ],
-              [
-                "arroz",
-                75
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "pollo",
-                150
-              ],
-              [
-                "boniato",
-                425
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
+        "k": "noquis",
+        "modo": "kcal",
+        "nuevo": true
+      }
+    ],
+    "patata": [
       {
-        "dia": "MAR",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "rodaballo",
-                152
-              ],
-              [
-                "pasta",
-                95
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "carne_picada",
-                130
-              ],
-              [
-                "patata",
-                495
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
+        "k": "noquis",
+        "modo": "kcal",
+        "nuevo": true
+      }
+    ],
+    "boniato": [
       {
-        "dia": "MIÉ",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "hamburguesa",
-                110
-              ],
-              [
-                "arroz",
-                80
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "rodaballo",
-                161
-              ],
-              [
-                "boniato",
-                395
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
+        "k": "noquis",
+        "modo": "kcal",
+        "nuevo": true
+      }
+    ],
+    "judia_verde": [
       {
-        "dia": "JUE",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "salmon",
-                90
-              ],
-              [
-                "arroz",
-                80
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "pollo",
-                150
-              ],
-              [
-                "patata",
-                490
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "dia": "VIE",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "ternera",
-                130
-              ],
-              [
-                "pasta",
-                90
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "rodaballo",
-                161
-              ],
-              [
-                "boniato",
-                435
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "dia": "SÁB",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "pollo",
-                150
-              ],
-              [
-                "arroz",
-                75
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "salmon",
-                90
-              ],
-              [
-                "boniato",
-                425
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "dia": "DOM",
-        "comidas": [
-          {
-            "titulo": "🍳 C1 — DESAYUNO",
-            "items": [
-              [
-                "pavo",
-                145
-              ],
-              [
-                "pan_integral",
-                150
-              ],
-              [
-                "aguacate",
-                20
-              ],
-              [
-                "arandanos",
-                80
-              ]
-            ]
-          },
-          {
-            "titulo": "🥗 C2 — ALMUERZO",
-            "items": [
-              [
-                "carne_picada",
-                120
-              ],
-              [
-                "arroz",
-                75
-              ],
-              [
-                "judia_verde",
-                150
-              ],
-              [
-                "manzana",
-                130
-              ]
-            ]
-          },
-          {
-            "titulo": "💪 C3 — POST ENTRENO",
-            "items": [
-              [
-                "tortitas_jamon",
-                35
-              ],
-              [
-                "isolate",
-                30
-              ],
-              [
-                "creatina",
-                8
-              ]
-            ]
-          },
-          {
-            "titulo": "🌙 C4 — CENA",
-            "items": [
-              [
-                "rodaballo",
-                161
-              ],
-              [
-                "boniato",
-                430
-              ],
-              [
-                "judia_verde",
-                150
-              ]
-            ]
-          }
-        ]
+        "k": "alcachofa",
+        "modo": "peso",
+        "nuevo": true
       }
     ]
   }

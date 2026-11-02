@@ -169,6 +169,10 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 .chg.down{background:rgba(255,159,67,.15);color:#ff9f43;border:1px solid rgba(255,159,67,.6)}
 .chg.new{background:rgba(111,208,255,.15);color:#6fd0ff;border:1px solid rgba(111,208,255,.6)}
 .meal-off{opacity:.8;border-style:dashed}
+.chg.ok{background:rgba(76,217,138,.15);color:#4cd98a;border:1px solid rgba(76,217,138,.6)}
+.food-row.alt-row{padding-top:0;margin-top:-4px}
+.alt-row .food-item{font-size:12.5px;color:var(--light-gray);padding-left:10px}
+.alt-row .food-qty{font-size:12.5px;opacity:.9}
 .meal-off .meal-foods{font-size:13px;color:var(--light-gray);line-height:1.6}
 .aj-box{background:linear-gradient(160deg,rgba(76,217,138,.12),rgba(0,0,0,0));border:1px solid #4cd98a;border-radius:12px;padding:16px;margin-bottom:18px}
 .aj-head{font-family:'Bebas Neue';font-size:20px;letter-spacing:.5px;color:#fff;margin-bottom:6px}
@@ -207,7 +211,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">🍽️ Tu punto crítico: los 5 días que comes fuera</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">No te comas la cabeza pesando: <b>nunca te saltes la proteína</b>. Pide carne o pescado a la plancha + arroz o patata. La palma de tu mano es una ración de proteína, tu puño es una de carbo. Evita salsas, rebozados y fritos. Si te pasas, no compenses dejando de comer: vuelves al plan en la siguiente comida.</div></div>
   <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">📋 Reglas del día</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">LUN, MAR, MIÉ y VIE: 3 comidas (C2, C3 y C4), sin desayuno · JUE, SÁB y DOM: 4 comidas con desayuno · gramos exactos · frutas: manzana cada día y arándanos en el desayuno (nada de plátano) · verdes en comida y cena (≈150 g cada una) · agua 3-4 L · pésate el domingo en ayunas</div></div>
   <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">💊 Suplementos al día</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)"><b style="color:#fff">Creatina monohidratada 8 g/día</b> (en la C3) · <b style="color:#fff">Proteína isolada</b>: LUN, MAR, MIÉ y VIE 2 scoops (60 g) en el batido de la C3 · JUE, SÁB y DOM 1 scoop (30 g) en la C3</div></div>
-  <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">🔁 Flexibilidad</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">Proteína en C2 y C4: <b>salmón, rodaballo o lenguado</b>, o carne (pollo, ternera magra, carne picada de vacuno, hamburguesa de ternera, pavo). C3 fija: 1 bolsita de tortitas de maíz sabor jamón + isolada + creatina. Alterna arroz ↔ pasta y boniato ↔ patata (mismo peso).</div></div>
+  <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">🔁 Flexibilidad</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">Proteína en C2 y C4: <b>salmón, rodaballo o lenguado</b>, o carne (pollo, ternera magra, carne picada de vacuno, hamburguesa de ternera, pavo). C3 fija: 1 bolsita de tortitas de maíz sabor jamón + isolada + creatina. Alterna arroz ↔ pasta y boniato ↔ patata (mismo peso). <span class="chg ok">✓ NUEVO</span> Judía verde ↔ alcachofa (mismo peso; al natural escurrida, o fresca pesando solo lo que se come). <span class="chg ok">✓ NUEVO</span> Ñoquis de patata en lugar de arroz, pasta, patata o boniato: los gramos de ñoquis los tienes debajo de cada uno en tu dieta (pesados tal cual del paquete).</div></div>
   <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">🫀 Actividad</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">Ya tienes mucha actividad: 9-10k pasos, trabajo en obra y fútbol sala 2 días. Eso suma déficit sin buscarlo.</div></div>
 </div>
 <div class="main-sec s2">
@@ -348,10 +352,23 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
       filas += '<div class="food-row"><span class="food-item">' + esc(E.nombre(it[0], txt(it[0])))
              + '</span><span class="food-end"><span class="food-qty ' + (QCL[a.cat] || "") + '">' + esc(E.cantidad(it[0], it[1]))
              + '</span>' + tag + '</span></div>';
+      filas += alternativas(it);
     });
     return '<div class="meal-card"><div class="meal-head"><div class="meal-name">' + esc(c.titulo)
          + '</div><div class="meal-cal">≈' + Math.round(m.kcal) + ' kcal · P' + Math.round(m.p)
          + '·C' + Math.round(m.c) + '·G' + Math.round(m.g) + '</div></div><div class="meal-foods">' + filas + '</div></div>';
+  }
+  /* alternativas de datos (C.alternativas): mismos gramos ("peso") o mismas kcal ("kcal"), redondeado a 5 g */
+  function alternativas(it){
+    var L = (C.alternativas || {})[it[0]] || [], h = "";
+    L.forEach(function(x){
+      var b = E.ALIMENTOS[x.k]; if (!b) return;
+      var g = x.modo === "kcal" ? Math.round(E.macros([it]).kcal / E.macros([[x.k, 100]]).kcal * 100 / 5) * 5 : it[1];
+      h += '<div class="food-row alt-row"><span class="food-item">↔ o ' + esc(E.nombre(x.k, txt(x.k)))
+         + '</span><span class="food-end"><span class="food-qty ' + (QCL[b.cat] || "") + '">' + esc(E.cantidad(x.k, g)) + '</span>'
+         + (x.nuevo ? '<span class="chg ok">✓ NUEVO</span>' : '') + '</span></div>';
+    });
+    return h;
   }
   function pintaDieta(){
     var radios="", chips="", panes="";
@@ -416,7 +433,7 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
       chips  += '<label for="tr'+i+'" class="chip">'+esc(d.chip||d.id)+'</label>';
       var ex = "";
       d.ejercicios.forEach(function(e){
-        ex += '<div class="ex-item"><div class="ex-head"><div class="ex-name">'+esc(e.nombre)+'</div><div class="ex-sets">'+serieTxt(e.reps)+'</div></div>'
+        ex += '<div class="ex-item"><div class="ex-head"><div class="ex-name">'+esc(e.nombre)+(e.nuevo?' <span class="chg ok">✓ NUEVO</span>':'')+'</div><div class="ex-sets">'+serieTxt(e.reps)+'</div></div>'
             + '<div class="ex-detail">' + (C.entreno && C.entreno.detalle ? C.entreno.detalle : "🔥 <b>Todas las series al fallo</b> · ⏱️ <b>3 min de descanso</b>") + '</div>'
             + (e.video ? '<a class="video-btn" href="'+e.video+'" target="_blank" rel="noopener">▶ Ver vídeo</a>' : '')
             + '<div class="ex-tip">' + (C.entreno && C.entreno.tip ? C.entreno.tip : "Técnica perfecta SIEMPRE.") + '</div></div>';
@@ -448,7 +465,7 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
           body += '<tr data-serie="'+(si+1)+'"><td class="scol">Serie '+(si+1)+'<span class="obj">obj '+esc(r)+'</span></td>'+cells+'</tr>';
         });
         ex += '<div class="ex-track" data-ex="'+esc(e.nombre)+'" data-day="'+esc(d.id)+'"><div class="ex-track-head"><span class="ex-track-name">'+esc(e.nombre)
-            + '</span><span class="ex-track-badge">'+serieTxt(e.reps)+'</span></div><div class="tscroll"><table class="tracker"><thead><tr>'+th1
+            + '</span><span class="ex-track-badge">'+serieTxt(e.reps)+'</span>'+(e.nuevo?' <span class="chg ok">✓ NUEVO</span>':'')+'</div><div class="tscroll"><table class="tracker"><thead><tr>'+th1
             + '</tr><tr class="sub">'+th2+'</tr></thead><tbody>'+body+'</tbody></table></div></div>';
       });
       panes += '<div class="day-pane pp'+i+'"><div class="day-pane-title" style="color:'+d.color+'">'+esc(d.id)+' · '+esc(d.titulo)+'</div>'+ex+'</div>';
@@ -502,10 +519,15 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
         filas += '<div class="aj-row"><span>' + esc(nom) + '</span><span>' + flecha(dd, E.peso(Math.round(Math.abs(dd)), m.ml) + " al día") + '</span></div>';
       });
     }
+    var nuevos = (A.nuevos || []).map(function(f){
+      return '<div class="aj-row"><span>' + esc(f[0]) + '</span><span><span class="chg ok">✓ ' + esc(f[1]) + '</span></span></div>';
+    }).join('');
     return '<div class="aj-box"><div class="aj-head">📌 ÚLTIMO AJUSTE' + (x ? ' · ' + esc(String(x.fecha).toUpperCase()) : '') + '</div>'
       + (x ? '<div class="aj-text">' + esc(x.texto) + '</div>' : '')
       + (filas ? '<div class="aj-sub">LO QUE CAMBIA EN TU PLATO</div>' + filas : '')
-      + '<div class="aj-foot">▲ sube · ▼ baja. Cada comida lleva su flecha, y en COMPRA ves las cantidades de la semana ya actualizadas.</div></div>';
+      + (nuevos ? '<div class="aj-sub">NUEVO</div>' + nuevos : '')
+      + '<div class="aj-foot">' + (PREV ? '▲ sube · ▼ baja. Cada comida lleva su flecha, y en COMPRA ves las cantidades de la semana ya actualizadas.'
+                                        : '✓ NUEVO en verde: lo tienes marcado en cada comida y en el entreno.') + '</div></div>';
   }
   function pintaCambios(){
     var h = bloqueAjuste();
@@ -544,6 +566,9 @@ function recoger(){
     if(v===base) delete d[k];                            /* igual que la base de Marc: no hace falta guardarlo */
     else d[k]=v;                                         /* lo apuntado (o vaciado a mano sobre un dato de base) */
   }
+  /* ejercicio renombrado: lo del nombre viejo ya está en su casilla con el nombre nuevo, así que se guarda solo ahí */
+  var R=(typeof CLIENTE!=='undefined'&&CLIENTE.renombres)||null;
+  if(R) for(k in d){ var q=k.split('|'), nn=q.length>=5&&R[q[0]+'|'+q[1]]; if(nn&&P[[q[0],nn].concat(q.slice(2)).join('|')]) delete d[k]; }
   return {v:3,t:Date.now(),d:d};
 }
 function parsear(s){ try{ var o=(typeof s==='string')?JSON.parse(s):s; if(!o) return null; if(!o.d) return {v:1,t:1,d:o}; return o; }catch(e){ return null; } }
@@ -616,13 +641,19 @@ function aEstable(o){
   }
   return {v:3,t:o.t||1,d:d,borrado:o.borrado,convertido:true};
 }
+function renombrar(o){
+  var R=(typeof CLIENTE!=='undefined'&&CLIENTE.renombres)||null; if(!o||!o.d||!R) return o;
+  for(var k in o.d){ var p=k.split('|'); if(p.length<5) continue; var nn=R[p[0]+'|'+p[1]];
+    if(nn){ var nk=[p[0],nn].concat(p.slice(2)).join('|'); if(!(nk in o.d)) o.d[nk]=o.d[k]; } }
+  return o;
+}
 function quitarBase(d){ var o={}; for(var k in d){ var b=(SEM[k]==null?null:String(SEM[k])); if(b===null||String(d[k])!==b) o[k]=d[k]; } return o; }
 function loadTrk(){
   SEM=semilla();
   var cands=[], raw=null;
   try{ raw=localStorage.getItem(KEY); if(raw) localStorage.setItem(KEY_COPIA,raw); }catch(e){}   /* copia de seguridad de lo que había */
-  cands.push(aEstable(parsear(raw)));
-  try{ cands.push(aEstable(parsear(sessionStorage.getItem(KEY)))); }catch(e){}
+  cands.push(renombrar(aEstable(parsear(raw))));
+  try{ cands.push(renombrar(aEstable(parsear(sessionStorage.getItem(KEY))))); }catch(e){}
   var antiguo=null; try{ if(KEY_OLD) antiguo=aEstable(migrar(parsear(localStorage.getItem(KEY_OLD)))); }catch(e){}
   /* debajo: la base de Marc y lo del planning anterior; encima: lo apuntado aquí */
   function pon(m){
@@ -638,7 +669,7 @@ function loadTrk(){
   }
   var b=mejor(cands);
   pon(b);
-  idbGet(function(o){ if(o&&!tocado){ var e=aEstable(o); cands.push(e); var m=mejor(cands); if(m&&m===e&&m!==b) pon(m); } });
+  idbGet(function(o){ if(o&&!tocado){ var e=renombrar(aEstable(o)); cands.push(e); var m=mejor(cands); if(m&&m===e&&m!==b) pon(m); } });
 }
 function resetTrk(){
   if(!confirm('¿Borrar TODO el progreso guardado?')) return;
@@ -660,7 +691,7 @@ function bajarCopia(){
 }
 function subirCopia(inp){
   var f=inp.files&&inp.files[0]; if(!f) return; var r=new FileReader();
-  r.onload=function(){ var o=aEstable(parsear(r.result)); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
+  r.onload=function(){ var o=renombrar(aEstable(parsear(r.result))); if(!o||!o.d){ alert('Ese archivo no es una copia válida.'); return; }
     for(var k in o.d) GUARD[k]=o.d[k]; aplicar(o); tocado=true; saveTrk(); alert('✅ Progreso restaurado.'); };
   r.readAsText(f); inp.value='';
 }
