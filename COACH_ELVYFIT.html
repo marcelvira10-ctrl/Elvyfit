@@ -163,6 +163,8 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:12px}
 .modal img{max-width:100%;max-height:78vh;border-radius:10px}
 .modal .acc{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.modal .pags{width:100%;max-height:78vh;overflow:auto;display:flex;flex-direction:column;gap:12px;align-items:center}
+.modal .pags img{max-height:none;width:100%;max-width:520px}
 .pie{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30}
 .toast.on{opacity:1}
@@ -778,27 +780,102 @@ td.c.v{background:transparent;border:1px dashed #2f2f2f}
     x.fillStyle='#e50914'; x.font='48px '+B; x.textAlign='right'; x.fillText(lema,1008,1306); x.textAlign='left';
     return c;
   }
+  /* ----- páginas extra del informe: resumen semana a semana y gráfica de cada ejercicio ----- */
+  function marcoPagina(x,W,H,titulo,sub){
+    var B='"Bebas Neue", Impact, "Arial Narrow", sans-serif', I='Inter, -apple-system, "Helvetica Neue", Arial, sans-serif';
+    x.fillStyle='#0a0a0a'; x.fillRect(0,0,W,H);
+    var gl=x.createRadialGradient(940,90,0,940,90,760); gl.addColorStop(0,'rgba(229,9,20,0.30)'); gl.addColorStop(1,'rgba(229,9,20,0)'); x.fillStyle=gl; x.fillRect(0,0,W,H);
+    x.fillStyle='#e50914'; x.fillRect(72,68,70,7);
+    x.font='800 26px '+I; x.fillStyle='#ffffff'; x.fillText('ELVYFIT',72,118);
+    var tam=110; x.font=tam+'px '+B; while(x.measureText(titulo).width>940&&tam>60){ tam-=4; x.font=tam+'px '+B; } x.fillText(titulo,66,236);
+    x.fillStyle='#bdbdbd'; x.font='600 30px '+I; x.fillText(sub,72,292);
+    x.fillStyle='#8c8c8c'; x.font='500 26px '+I; x.fillText('Marc  ·  Elvyfit  ·  @elvyfit9',72,1302);
+    return {B:B,I:I};
+  }
+  function dibujaSemanas(doc,A){
+    var W=1080,H=1350,c=document.createElement('canvas'); c.width=W; c.height=H; var x=c.getContext('2d');
+    var F=marcoPagina(x,W,H,'SEMANA A SEMANA', doc.nombre.toUpperCase()+'  ·  SEMANAS '+A.sems[0]+' – '+A.L), I=F.I;
+    var IDX=indiceFuerza(A), sems=A.sems, top=350, fin=1240, rh=Math.min(92,(fin-top-90)/sems.length);
+    x.fillStyle='#141414'; rr(x,56,top,968,fin-top,30); x.fill(); x.strokeStyle='#232323'; x.lineWidth=2; x.stroke();
+    x.fillStyle='#8c8c8c'; x.font='800 22px '+I;
+    x.fillText('SEMANA',100,top+54); x.fillText('PESO',300,top+54); x.fillText('SOBRECARGA',560,top+54); x.fillText('SERIES',820,top+54);
+    sems.forEach(function(w,i){
+      var y=top+100+i*rh;
+      if(i){ x.strokeStyle='#232323'; x.lineWidth=2; x.beginPath(); x.moveTo(90,y-rh/2); x.lineTo(990,y-rh/2); x.stroke(); }
+      var p=A.peso.filter(function(q){ return q.w===w; })[0], ix=IDX.filter(function(q){ return q.w===w; })[0];
+      var ns=0; A.ejs.forEach(function(e){ e.e.series.forEach(function(sr){ var cc=sr.sem[w]; if(cc&&(cc.kg||cc.rep)) ns++; }); });
+      x.fillStyle='#ffffff'; x.font='700 40px '+I; x.fillText('S'+w,100,y+12);
+      x.fillStyle=p?'#e8e8e8':'#555'; x.font='600 36px '+I; x.fillText(p?coma(p.kg)+' kg':'—',300,y+12);
+      x.fillStyle=ix?(ix.v>=0?'#2fbf5b':'#ef5b5b'):'#555'; x.fillText(ix?pctTxt(ix.v):'—',560,y+12);
+      x.fillStyle='#e8e8e8'; x.fillText(String(ns),820,y+12);
+    });
+    return c;
+  }
+  function dibujaEjercicios(doc,A,lista){
+    var W=1080,H=1350,c=document.createElement('canvas'); c.width=W; c.height=H; var x=c.getContext('2d');
+    var F=marcoPagina(x,W,H,'PROGRESO POR EJERCICIO', doc.nombre.toUpperCase()+'  ·  SEMANAS '+A.sems[0]+' – '+A.L), I=F.I;
+    var top=340, fin=1240, gap=24, cw=(968-gap)/2, ch=(fin-top-2*gap)/3;
+    lista.forEach(function(ej,i){
+      var cI=i%2, rI=Math.floor(i/2), x0=56+cI*(cw+gap), y0=top+rI*(ch+gap);
+      x.fillStyle='#141414'; rr(x,x0,y0,cw,ch,24); x.fill(); x.strokeStyle='#232323'; x.lineWidth=2; x.stroke();
+      var nm=ej.nombre; x.font='600 25px '+I;
+      while(x.measureText(nm).width>cw-200 && nm.length>4) nm=nm.slice(0,-1);
+      if(nm!==ej.nombre) nm=nm.trim()+'…';
+      x.textAlign='left'; x.fillStyle='#ffffff'; x.font='600 25px '+I; x.fillText(nm,x0+24,y0+44);
+      var pts=ej.pts, last=pts[pts.length-1];
+      x.fillStyle='#bdbdbd'; x.font='500 21px '+I; x.fillText('S'+last.w+': '+(last.con?last.kg+' × ':'')+last.rep,x0+24,y0+78);
+      if(ej.pct!=null&&!ej.fuera){ x.textAlign='right'; x.fillStyle=ej.pct>=0?'#2fbf5b':'#ef5b5b'; x.font='800 30px '+I; x.fillText(pctTxt(ej.pct),x0+cw-24,y0+44); x.textAlign='left'; }
+      var bx=x0+30, by=y0+102, bw=cw-60, bh=ch-102-46, n=pts.length;
+      var vs=pts.map(function(p){ return p.v; }), lo=Math.min.apply(null,vs), hi=Math.max.apply(null,vs);
+      if(hi-lo<1e-6){ hi+=1; lo-=1; } var pad=(hi-lo)*0.15; lo-=pad; hi+=pad;
+      var X=function(k){ return n===1?bx+bw/2:bx+k*bw/(n-1); }, Y=function(v){ return by+(hi-v)/(hi-lo)*bh; };
+      var col=(ej.pct==null||ej.fuera)?'#8c8c8c':(ej.pct>=0?'#2fbf5b':'#ef5b5b'), rgb=(ej.pct==null||ej.fuera)?'140,140,140':(ej.pct>=0?'47,191,91':'239,91,91');
+      var g=x.createLinearGradient(0,by,0,by+bh); g.addColorStop(0,'rgba('+rgb+',0.40)'); g.addColorStop(1,'rgba('+rgb+',0)');
+      x.beginPath(); x.moveTo(X(0),by+bh); pts.forEach(function(p,k){ x.lineTo(X(k),Y(p.v)); }); x.lineTo(X(n-1),by+bh); x.closePath(); x.fillStyle=g; x.fill();
+      if(n>1){ x.strokeStyle=col; x.lineWidth=5; x.lineJoin='round'; x.lineCap='round'; x.beginPath(); pts.forEach(function(p,k){ if(k) x.lineTo(X(k),Y(p.v)); else x.moveTo(X(k),Y(p.v)); }); x.stroke(); }
+      x.textAlign='center';
+      pts.forEach(function(p,k){
+        var lt=k===n-1, px=X(k), py=Y(p.v);
+        x.fillStyle=lt?col:'#141414'; x.strokeStyle=col; x.lineWidth=4; x.beginPath(); x.arc(px,py,lt?9:7,0,Math.PI*2); x.fill(); if(!lt) x.stroke();
+        x.font='500 19px '+I; x.fillStyle='#8c8c8c'; x.fillText('S'+p.w,px,by+bh+34);
+      });
+      x.textAlign='left';
+    });
+    return c;
+  }
+  function paginasInforme(doc,A){
+    var out=[dibujaInforme(doc,A)];
+    if(A.sems.length) out.push(dibujaSemanas(doc,A));
+    var lista=A.ejs.filter(function(e){ return e.pts&&e.pts.length; });
+    for(var i=0;i<lista.length;i+=6) out.push(dibujaEjercicios(doc,A,lista.slice(i,i+6)));
+    return out;
+  }
+  function bajaTodas(urls,nombres){
+    urls.forEach(function(u,i){ setTimeout(function(){ var a=document.createElement('a'); a.href=u; a.download=nombres[i]; document.body.appendChild(a); a.click(); a.remove(); },i*400); });
+  }
   function abreInforme(doc,A){
     var go=function(){
-      var c=dibujaInforme(doc,A), url=c.toDataURL('image/png'), nombre='progreso-'+doc.slug+'.png', archivo=null;
-      c.toBlob(function(b){ try{ archivo=new File([b],nombre,{type:'image/png'}); }catch(e){ archivo=null; } },'image/png');
-      modal('<img src="'+url+'" alt="Informe de '+esc(doc.nombre)+'"><div class="acc"><button class="btn" type="button" id="mEnviar">📤 Enviar por WhatsApp</button><a class="btn sec" id="mBajar" download="'+nombre+'" href="'+url+'">Descargar</a><button class="btn sec" type="button" data-cerrar>Cerrar</button></div>');
+      var cs=paginasInforme(doc,A), urls=cs.map(function(c){ return c.toDataURL('image/png'); });
+      var nombres=cs.map(function(c,i){ return 'progreso-'+doc.slug+'-'+(i+1)+'.png'; });
+      var archivos=cs.map(function(){ return null; });
+      cs.forEach(function(c,i){ c.toBlob(function(b){ try{ archivos[i]=new File([b],nombres[i],{type:'image/png'}); }catch(e){} },'image/png'); });
+      modal('<div class="pags">'+urls.map(function(u,i){ return '<img src="'+u+'" alt="Página '+(i+1)+' de '+esc(doc.nombre)+'">'; }).join('')+'</div><div class="acc"><button class="btn" type="button" id="mEnviar">📤 Enviar por WhatsApp</button><button class="btn sec" type="button" id="mBajar">Descargar todo</button><button class="btn sec" type="button" data-cerrar>Cerrar</button></div>');
       $('mEnviar').onclick=function(){
         var txt=doc.nombre+', tu progreso hasta la semana '+(A.L||'');
-        if(archivo&&navigator.canShare&&navigator.canShare({files:[archivo]})) navigator.share({files:[archivo],text:txt}).catch(function(){});
-        else { $('mBajar').click(); toast('Descargada: mándala por WhatsApp desde tus fotos'); }
+        var lis=archivos.filter(Boolean);
+        if(lis.length===cs.length&&navigator.canShare&&navigator.canShare({files:lis})) navigator.share({files:lis,text:txt}).catch(function(){});
+        else { bajaTodas(urls,nombres); toast('Descargadas: mándalas por WhatsApp desde tus fotos'); }
       };
+      $('mBajar').onclick=function(){ bajaTodas(urls,nombres); toast('Descargando '+urls.length+' imágenes'); };
     };
     if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('136px "Bebas Neue"'),document.fonts.load('800 26px Inter'),document.fonts.load('600 32px Inter')]).then(go,go); else go();
   }
 
   function bajaInforme(doc,A){
     var go=function(){
-      var c=dibujaInforme(doc,A), nombre='progreso-'+doc.slug+'-'+hoy()+'.png';
-      c.toBlob(function(b){
-        try{ var u=URL.createObjectURL(b), a=document.createElement('a'); a.href=u; a.download=nombre; document.body.appendChild(a); a.click(); setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(u); },4000); toast('Descargado: '+nombre); }
-        catch(e){ abreInforme(doc,A); }
-      },'image/png');
+      var cs=paginasInforme(doc,A), urls=cs.map(function(c){ return c.toDataURL('image/png'); });
+      var nombres=cs.map(function(c,i){ return 'progreso-'+doc.slug+'-'+hoy()+'-'+(i+1)+'.png'; });
+      bajaTodas(urls,nombres); toast('Descargando '+urls.length+' imágenes');
     };
     if(document.fonts&&document.fonts.load) Promise.all([document.fonts.load('136px "Bebas Neue"'),document.fonts.load('800 26px Inter'),document.fonts.load('600 32px Inter')]).then(go,go); else go();
   }
