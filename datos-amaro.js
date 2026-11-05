@@ -58,8 +58,8 @@ var CLIENTE = {
   "ajuste": { "desdeKcal": 4110 },
   "historial": [
     {
-      "fecha": "19 oct",
-      "texto": "Plan de volumen: 3.150 kcal al día, con 218 g de proteína y 88 g de grasa. Bajamos 960 kcal sobre todo en carbohidratos (de 612 g a 372 g). Proteína y grasa se mantienen en 218 g y 88 g, y alguna fuente de proteína sube unos gramos para cuadrar. Nueva rutina de 5 días con fondos, búlgara y bayesian, y abdominales en los días 1, 3 y 5."
+      "fecha": "25 oct",
+      "texto": "Recomposición corporal: 3.150 kcal al día (P 110 · C 543 · G 61, lo que pone su planning). Fuera aguacate y manzana: aceite de oliva 10 ml en las tostadas y arándanos 150 g en la C2. Pasos 9.000–10.000 al día. Día 3 variante por molestias lumbares."
     }
   ],
   "dias": [
@@ -1376,6 +1376,221 @@ var CLIENTE = {
       ]
     }
   ],
+  "ficha": {
+    "objetivo": "Recomposición corporal",
+    "pasos": "9–10k",
+    "agua": "3,5",
+    "fase": "Recomposición · desde el 25/10",
+    "meta": "recomp",
+    "resumen": "22 años, 1,72 m. Entrena 5 días con todas las series al fallo (RIR 0). La pierna la hace con el Día 3 variante por molestias lumbares. Prepara una Spartan de 5 km en septiembre.",
+    "macros": {
+      "kcal": 3150,
+      "p": 110,
+      "c": 543,
+      "g": 61,
+      "nota": "Son los números que pone su planning (contados al alza). Sumando los gramos del plato sale bastante más: ~3.800 kcal y ~200 g de proteína si se lo come todo."
+    },
+    "gasto": false,
+    "gastoNota": "Sin gasto calculado: la estimación del motor (~2.250 kcal) se queda muy corta para lo que come con el peso estable.",
+    "suplementos": [
+      "Creatina 6 g/día",
+      "Whey isolate 30 g (C4)"
+    ],
+    "habitos": [
+      [
+        "Pasos",
+        "9.000–10.000 al día, también el finde"
+      ],
+      [
+        "Sueño",
+        "objetivo 8 h · 12–18/10: 8 h 47 de media · 19–25/10: 7 h 31 (jueves 3 h 30)"
+      ],
+      [
+        "Agua",
+        "3,5 L mínimo"
+      ],
+      [
+        "Báscula",
+        "domingo en ayunas + cintura a la altura del ombligo"
+      ],
+      [
+        "Fotos",
+        "cada 2 semanas (frente, lado y espalda, misma luz)"
+      ],
+      [
+        "Estiramientos",
+        "12 min al día"
+      ]
+    ],
+    "comidas": [
+      {
+        "titulo": "🍳 C1 — Desayuno",
+        "kcal": 650,
+        "items": [
+          [
+            "Huevos",
+            "2 ud"
+          ],
+          [
+            "Claras",
+            "100 ml"
+          ],
+          [
+            "Pan de espelta integral",
+            "4 rebanadas"
+          ],
+          [
+            "Loncha de pavo",
+            "1 ud"
+          ],
+          [
+            "Aceite de oliva (en las tostadas)",
+            "10 ml"
+          ],
+          [
+            "Arándanos",
+            "40 g"
+          ]
+        ]
+      },
+      {
+        "titulo": "🥣 C2 — Media mañana",
+        "kcal": 555,
+        "items": [
+          [
+            "Almendras",
+            "15 g"
+          ],
+          [
+            "Arándanos",
+            "150 g"
+          ],
+          [
+            "Tortitas sabor jamón (2 paquetes)",
+            "70 g"
+          ],
+          [
+            "Crema de cacahuete",
+            "10 g"
+          ]
+        ]
+      },
+      {
+        "titulo": "🍽️ C3 — Comida",
+        "kcal": 870,
+        "items": [
+          [
+            "Arroz (integral o blanco) o pasta, en crudo",
+            "250 g"
+          ],
+          [
+            "Carne o pescado",
+            "140 g"
+          ],
+          [
+            "Verdura",
+            "150 g"
+          ],
+          [
+            "Aceite de oliva",
+            "5 ml"
+          ]
+        ],
+        "nota": "La proteína y la verdura cambian cada día."
+      },
+      {
+        "titulo": "💪 C4 — Pre/post entreno",
+        "kcal": 455,
+        "items": [
+          [
+            "Whey isolate",
+            "30 g"
+          ],
+          [
+            "Plátano",
+            "2 ud"
+          ],
+          [
+            "Tortitas sabor jamón (2 paquetes)",
+            "70 g"
+          ],
+          [
+            "Crema de cacahuete",
+            "25 g"
+          ],
+          [
+            "Creatina",
+            "6 g"
+          ]
+        ]
+      },
+      {
+        "titulo": "🌙 C5 — Cena",
+        "kcal": 565,
+        "items": [
+          [
+            "Carne o pescado",
+            "140 g"
+          ],
+          [
+            "Ensalada o verdura",
+            "150 g"
+          ],
+          [
+            "Patata",
+            "600 g"
+          ],
+          [
+            "Yogur de proteína",
+            "1 ud"
+          ]
+        ],
+        "nota": "La proteína cambia cada día (salmón, merluza, pollo…)."
+      }
+    ],
+    "comidasNota": "Su planning es estático: estas son las comidas que pone el HTML, no las calcula el motor.",
+    "rutinaPausada": [
+      "D3"
+    ],
+    "objetivos": [
+      "Recomposición: peso estable y cintura que baja",
+      "Volver a superar en el Día 1 lo que hacía antes de la descarga",
+      "Jalón prono a 77 kg para hacer 6–8 repes limpias",
+      "Spartan de 5 km en septiembre"
+    ],
+    "lesiones": [
+      "Molestias lumbares: hace el Día 3 variante (sin hack ni búlgara). El Día 3 de siempre queda en pausa por si vuelve.",
+      "Poca flexibilidad en la extensión de cuádriceps: estiramientos 12 min cada día."
+    ],
+    "notas": [
+      "Todas las series al fallo (RIR 0) con una serie de aproximación antes.",
+      "Semana 9 (19–25/10): descarga.",
+      "Semana 10: finde de Halloween con alcohol y el domingo sin pasos; se pesó la mañana siguiente (68,8 kg). No se tocan kcal.",
+      "Dice que ahora duerme mejor; falta la captura de sueño de esta semana para comprobarlo."
+    ],
+    "hitos": [
+      {
+        "fecha": "20/10",
+        "texto": "Vuelve su planning de 3.150 kcal (P 110 · C 543 · G 61)."
+      },
+      {
+        "fecha": "22/10",
+        "texto": "Activada la nube: lo que apunta llega a Coach."
+      },
+      {
+        "fecha": "25/10",
+        "texto": "Pasa a recomposición corporal. Fuera aguacate y manzana; aceite 10 ml en las tostadas y arándanos 150 g. Pasos 9–10k fijos. Añadido el Día 3 variante. Peso 68,3 kg."
+      },
+      {
+        "fecha": "2/11",
+        "texto": "Historial de su Excel en Coach (semanas 1–9). El planning sigue en la semana 10."
+      },
+      {
+        "fecha": "3/11",
+        "texto": "Semana 10: 68,8 kg tras Halloween. Pierna, D4 y D5 suben claro; D1 por debajo de antes de la descarga. Kcal igual, foco en subir cargas con técnica perfecta."
+      }
+    ]
+  },
   "progreso": {
     "D1": {
       "Press máquina pecho plano": {
