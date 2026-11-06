@@ -15,5 +15,6 @@ window.COACH_CLIENTES = [
   { slug: "alvaro",       nombre: "Álvaro",       planning: "PLANNING ALVARO LEAL.html",         datos: "datos-alvaro.js" },
   { slug: "marcos",       nombre: "Marcos",       planning: "PLANNING_MARCOS_BANDERA-2.html",    datos: "datos-marcos.js" },
   { slug: "alex-infante", nombre: "Alex Infante", planning: "PLANNING_ALEX_INFANTE_v3.html",     datos: "datos-alex-infante.js" },
-  { slug: "gerard",       nombre: "Gerard",       planning: "PLANNING GERARD REGORDOSA-6.html",  datos: "datos-gerard.js" }
+  { slug: "gerard",       nombre: "Gerard",       planning: "PLANNING GERARD REGORDOSA-6.html",  datos: "datos-gerard.js" },
+  { slug: "marc-torres",  nombre: "Marc Torres",  planning: "PLANNING_MARC_TORRES.html",         datos: "datos-marc-torres.js" }
 ];
