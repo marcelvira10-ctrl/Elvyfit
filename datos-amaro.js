@@ -1566,7 +1566,8 @@ var CLIENTE = {
       "Todas las series al fallo (RIR 0) con una serie de aproximación antes.",
       "Semana 9 (19–25/10): descarga.",
       "Semana 10: finde de Halloween con alcohol y el domingo sin pasos; se pesó la mañana siguiente (68,8 kg). No se tocan kcal.",
-      "Dice que ahora duerme mejor; falta la captura de sueño de esta semana para comprobarlo."
+      "Dice que ahora duerme mejor; falta la captura de sueño de esta semana para comprobarlo.",
+      "Semana 11: aún sin medidas de cintura ni captura de sueño; el peso se queda en 68,8."
     ],
     "hitos": [
       {
@@ -1588,6 +1589,10 @@ var CLIENTE = {
       {
         "fecha": "3/11",
         "texto": "Semana 10: 68,8 kg tras Halloween. Pierna, D4 y D5 suben claro; D1 por debajo de antes de la descarga. Kcal igual, foco en subir cargas con técnica perfecta."
+      },
+      {
+        "fecha": "8/11",
+        "texto": "Semana 11: 68,8 kg (igual que la 10, ya sin Halloween). D1 vuelve a lo de antes de la descarga, D4 y pierna siguen subiendo (prensa 155×10). D2 sale idéntico a la semana 10 y el Hammer lleva 3 semanas igual."
       }
     ]
   },
@@ -1617,6 +1622,10 @@ var CLIENTE = {
         "10": [
           "50x6",
           "45x7"
+        ],
+        "11": [
+          "50x7",
+          "45x8"
         ]
       },
       "Press máquina pecho inclinado": {
@@ -1643,6 +1652,10 @@ var CLIENTE = {
         "10": [
           "62,5x8",
           "57,5x8"
+        ],
+        "11": [
+          "62,5x8",
+          "57,5x9"
         ]
       },
       "Pec Deck (aperturas)": {
@@ -1669,6 +1682,10 @@ var CLIENTE = {
         "10": [
           "50x9",
           "40x11"
+        ],
+        "11": [
+          "50x10",
+          "40x12"
         ]
       },
       "Press militar máquina": {
@@ -1695,6 +1712,10 @@ var CLIENTE = {
         "10": [
           "50x7",
           "47,5x7"
+        ],
+        "11": [
+          "50x8",
+          "47,5x9"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -1727,6 +1748,11 @@ var CLIENTE = {
           "10x8",
           "7,5x11",
           "7,5x10"
+        ],
+        "11": [
+          "10x8",
+          "7,5x12",
+          "7,5x11"
         ]
       },
       "Tríceps katana unilateral": {
@@ -1759,6 +1785,11 @@ var CLIENTE = {
           "14,85x8",
           "13,6x8",
           "13,6x8"
+        ],
+        "11": [
+          "14,85x8",
+          "13,6x9",
+          "13,6x9"
         ]
       },
       "Fondos para tríceps": {
@@ -1791,6 +1822,11 @@ var CLIENTE = {
           "27,2x7",
           "23,95x9",
           "22,7x9"
+        ],
+        "11": [
+          "27,2x8",
+          "23,95x9",
+          "22,7x9"
         ]
       }
     },
@@ -1820,6 +1856,11 @@ var CLIENTE = {
           "81,7x4",
           "72,6x6",
           "63,6x8"
+        ],
+        "11": [
+          "81,7x4",
+          "72,6x6",
+          "63,6x8"
         ]
       },
       "Remo máquina neutro unilateral": {
@@ -1846,6 +1887,10 @@ var CLIENTE = {
         "10": [
           "40x10",
           "37,5x10"
+        ],
+        "11": [
+          "40x10",
+          "37,5x10"
         ]
       },
       "Jalón al pecho agarre cerrado": {
@@ -1870,6 +1915,10 @@ var CLIENTE = {
           "63,6x7"
         ],
         "10": [
+          "72,6x9",
+          "63,6x9"
+        ],
+        "11": [
           "72,6x9",
           "63,6x9"
         ]
@@ -1903,6 +1952,11 @@ var CLIENTE = {
           "49,9x8",
           "45,4x8",
           "40,8x9"
+        ],
+        "11": [
+          "49,9x8",
+          "45,4x8",
+          "40,8x9"
         ]
       },
       "Curl predicador máquina": {
@@ -1933,6 +1987,11 @@ var CLIENTE = {
           "40x10",
           "35x9",
           "30x10"
+        ],
+        "11": [
+          "40x10",
+          "35x9",
+          "30x10"
         ]
       },
       "Curl martillo": {
@@ -1957,6 +2016,10 @@ var CLIENTE = {
           "12,5x9"
         ],
         "10": [
+          "15x7",
+          "12,5x8"
+        ],
+        "11": [
           "15x7",
           "12,5x8"
         ]
@@ -2123,6 +2186,11 @@ var CLIENTE = {
           "150x10",
           "135x12",
           "120x11"
+        ],
+        "11": [
+          "155x10",
+          "140x12",
+          "120x12"
         ]
       },
       "Extensión de cuádriceps en máquina": {
@@ -2149,6 +2217,11 @@ var CLIENTE = {
           "90x12",
           "85x11",
           "80x11"
+        ],
+        "11": [
+          "90x8",
+          "85x8",
+          "75x8"
         ]
       },
       "Curl femoral tumbado": {
@@ -2175,6 +2248,11 @@ var CLIENTE = {
           "45x9",
           "40x10",
           "30x11"
+        ],
+        "11": [
+          "45x10",
+          "40x10",
+          "30x12"
         ]
       },
       "Hip thrust en máquina o con barra ligera": {
@@ -2196,6 +2274,11 @@ var CLIENTE = {
           "80x12",
           "80x12",
           "80x"
+        ],
+        "11": [
+          "80x12",
+          "80x12",
+          "80x12"
         ]
       },
       "Gemelo en prensa": {
@@ -2224,6 +2307,12 @@ var CLIENTE = {
           "50x10",
           "45x12",
           "40x13"
+        ],
+        "11": [
+          "60x9",
+          "50x10",
+          "45x12",
+          "40x13"
         ]
       }
     },
@@ -2247,6 +2336,10 @@ var CLIENTE = {
         ],
         "10": [
           "22,5x9",
+          "20x10"
+        ],
+        "11": [
+          "25x5",
           "20x10"
         ]
       },
@@ -2274,6 +2367,11 @@ var CLIENTE = {
           "13,6x9",
           "10,35x12",
           "9,1x15"
+        ],
+        "11": [
+          "13,6x11",
+          "10,35x13",
+          "10,35x11"
         ]
       },
       "Pájaros en máquina (Pec Deck invertido)": {
@@ -2296,6 +2394,10 @@ var CLIENTE = {
         "10": [
           "50x10",
           "45x10"
+        ],
+        "11": [
+          "50x11",
+          "45x12"
         ]
       },
       "Press inclinado en multipower (pecho superior)": {
@@ -2318,6 +2420,10 @@ var CLIENTE = {
         "10": [
           "42,5x8",
           "37,5x8"
+        ],
+        "11": [
+          "42,5x8",
+          "37,5x9"
         ]
       },
       "Cruces en polea baja (pecho inferior)": {
@@ -2344,6 +2450,11 @@ var CLIENTE = {
           "27,2x7",
           "22,7x9",
           "18,1x12"
+        ],
+        "11": [
+          "27,2x9",
+          "22,7x10",
+          "18,1x15"
         ]
       }
     },
@@ -2372,6 +2483,11 @@ var CLIENTE = {
           "81,7x6",
           "72,6x7",
           "63,6x8"
+        ],
+        "11": [
+          "81,7x6",
+          "72,6x7",
+          "63,6x8"
         ]
       },
       "Curl de bíceps tumbado en banco": {
@@ -2394,6 +2510,10 @@ var CLIENTE = {
         "10": [
           "15x7",
           "12,5x8"
+        ],
+        "11": [
+          "15x8",
+          "12,5x9"
         ]
       },
       "Curl de bíceps BAYESIAN unilateral (cada brazo)": {
@@ -2416,6 +2536,10 @@ var CLIENTE = {
         "10": [
           "19,35x11",
           "18,1x12"
+        ],
+        "11": [
+          "20,6x8",
+          "18,1x13"
         ]
       },
       "Curl predicador en máquina o banco": {
@@ -2438,6 +2562,10 @@ var CLIENTE = {
         "10": [
           "40x10",
           "30x12"
+        ],
+        "11": [
+          "45x8",
+          "35x11"
         ]
       },
       "Extensión de tríceps en polea unilateral": {
@@ -2463,6 +2591,11 @@ var CLIENTE = {
           "20,6x8",
           "18,1x11",
           "18,1x9"
+        ],
+        "11": [
+          "20,6x7",
+          "10,1x11",
+          "18,1x10"
         ]
       },
       "Press francés barra recta": {
@@ -2484,12 +2617,18 @@ var CLIENTE = {
           "20x8",
           "15x9",
           "15x8"
+        ],
+        "11": [
+          "20x7",
+          "15x10",
+          "12,5x12"
         ]
       }
     },
     "pesoCorporal": {
       "9": "68.3",
-      "10": "68.8"
+      "10": "68.8",
+      "11": "68.8"
     }
   },
   "textos": {
