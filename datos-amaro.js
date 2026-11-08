@@ -27,7 +27,7 @@ var CLIENTE = {
   "slug": "amaro",
   "clave": "amaro_plan_v12",
   "claveAntigua": "amaro_tracking_v1",
-  "kcal": 3150,
+  "kcal": 2950,
   "peso": 68.4,
   "pasos": 8000,
   "ratios": {
@@ -55,11 +55,11 @@ var CLIENTE = {
       "6 g/día (42 g)"
     ]
   ],
-  "ajuste": { "desdeKcal": 4110 },
+  "ajuste": { "desdeKcal": 3150 },
   "historial": [
     {
-      "fecha": "25 oct",
-      "texto": "Recomposición corporal: 3.150 kcal al día (P 110 · C 543 · G 61, lo que pone su planning). Fuera aguacate y manzana: aceite de oliva 10 ml en las tostadas y arándanos 150 g en la C2. Pasos 9.000–10.000 al día. Día 3 variante por molestias lumbares."
+      "fecha": "8 nov",
+      "texto": "Recomposición corporal: 2.950 kcal al día (P 105 · C 499 · G 61, lo que pone su planning). Bajamos 200 kcal quitando 260 g de patata en la cena: de 600 a 340 g todos los días. Dos semanas en 68,8 kg."
     }
   ],
   "dias": [
@@ -1384,11 +1384,11 @@ var CLIENTE = {
     "meta": "recomp",
     "resumen": "22 años, 1,72 m. Entrena 5 días con todas las series al fallo (RIR 0). La pierna la hace con el Día 3 variante por molestias lumbares. Prepara una Spartan de 5 km en septiembre.",
     "macros": {
-      "kcal": 3150,
-      "p": 110,
-      "c": 543,
+      "kcal": 2950,
+      "p": 105,
+      "c": 499,
       "g": 61,
-      "nota": "Son los números que pone su planning (contados al alza). Sumando los gramos del plato sale bastante más: ~3.800 kcal y ~200 g de proteína si se lo come todo."
+      "nota": "Son los números que pone su planning (contados al alza). Sumando los gramos del plato sale bastante más: ~3.600 kcal y ~195 g de proteína si se lo come todo."
     },
     "gasto": false,
     "gastoNota": "Sin gasto calculado: la estimación del motor (~2.250 kcal) se queda muy corta para lo que come con el peso estable.",
@@ -1526,7 +1526,7 @@ var CLIENTE = {
       },
       {
         "titulo": "🌙 C5 — Cena",
-        "kcal": 565,
+        "kcal": 365,
         "items": [
           [
             "Carne o pescado",
@@ -1538,7 +1538,7 @@ var CLIENTE = {
           ],
           [
             "Patata",
-            "600 g"
+            "340 g"
           ],
           [
             "Yogur de proteína",
@@ -1593,6 +1593,10 @@ var CLIENTE = {
       {
         "fecha": "8/11",
         "texto": "Semana 11: 68,8 kg (igual que la 10, ya sin Halloween). D1 vuelve a lo de antes de la descarga, D4 y pierna siguen subiendo (prensa 155×10). D2 sale idéntico a la semana 10 y el Hammer lleva 3 semanas igual."
+      },
+      {
+        "fecha": "8/11",
+        "texto": "−200 kcal: 3.150 → 2.950. Patata de la cena 600 → 340 g todos los días. El resto, igual."
       }
     ]
   },
@@ -2594,7 +2598,7 @@ var CLIENTE = {
         ],
         "11": [
           "20,6x7",
-          "10,1x11",
+          "18,1x11",
           "18,1x10"
         ]
       },
