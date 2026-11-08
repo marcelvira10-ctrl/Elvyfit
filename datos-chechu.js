@@ -1243,7 +1243,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtu.be/55X8yLezpwc"
+          "video": "https://youtube.com/shorts/ON-RH5nYzcU"
         },
         {
           "nombre": "Remo en máquina agarre neutro (2 manos)",
@@ -1251,7 +1251,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/c-e5Gojxh8I"
+          "video": "https://youtube.com/shorts/eZ5H5j5iBk4"
         },
         {
           "nombre": "Press inclinado en máquina",
@@ -1259,7 +1259,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://www.youtube.com/watch?v=T4M8IIKyFdk",
+          "video": "https://youtube.com/shorts/MlLOzsUSZZg",
           "nuevo": true
         },
         {
@@ -1277,7 +1277,7 @@ var CLIENTE = {
             "fallo",
             "fallo"
           ],
-          "video": "https://youtube.com/shorts/s5BLhbKWD3E"
+          "video": "https://youtube.com/shorts/N1Yd3QvShQE"
         },
         {
           "nombre": "Tríceps katana unilateral",
@@ -1293,7 +1293,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://www.youtube.com/watch?v=ysEVZPMY0Y8"
+          "video": "https://youtube.com/shorts/P_GrfYPwPPA"
         },
         {
           "nombre": "Dragon flag (abdominales)",
@@ -1321,7 +1321,7 @@ var CLIENTE = {
             "8",
             "9"
           ],
-          "video": "https://www.youtube.com/watch?v=xNRI7xVZpAQ"
+          "video": "https://youtube.com/shorts/bz5YbHvJmCY"
         },
         {
           "nombre": "Búlgara unilateral (pierna en banco)",
@@ -1330,7 +1330,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=7bV1tIUC2Es"
+          "video": "https://youtube.com/shorts/I8Qlppfsf6A"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1339,7 +1339,7 @@ var CLIENTE = {
             "8",
             "9"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral tumbado",
@@ -1348,7 +1348,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=9xbBr5Ytl8c"
+          "video": "https://youtube.com/shorts/wDaV9_SUPJM"
         },
         {
           "nombre": "Gemelo de pie en escalera (peso en mano)",
@@ -1357,7 +1357,7 @@ var CLIENTE = {
             "fallo",
             "fallo"
           ],
-          "video": "https://youtube.com/shorts/JhDqNv2DoAU"
+          "video": "https://youtube.com/shorts/wKvZvv58Cyg"
         }
       ]
     },
@@ -1375,7 +1375,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/6Ijq_ukPE50"
+          "video": "https://youtube.com/shorts/EXTwFezH_tQ"
         },
         {
           "nombre": "Peck deck (aperturas pecho)",
@@ -1383,7 +1383,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/HL88KYqhzQI"
+          "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Press militar con mancuernas",
@@ -1391,7 +1391,7 @@ var CLIENTE = {
             "fallo",
             "fallo"
           ],
-          "video": "https://youtube.com/shorts/PWtkHROaH3Y"
+          "video": "https://youtube.com/shorts/cNBXWUd9e_8"
         },
         {
           "nombre": "Elevaciones laterales en polea",
@@ -1400,7 +1400,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/_2fqg87DE1g"
+          "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Tríceps polea unilateral (muñequera)",
@@ -1436,7 +1436,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/bBM95Ir4zCs"
+          "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Remo alto en máquina (codos abiertos)",
@@ -1444,7 +1444,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/rcS3dvtBXDY"
+          "video": "https://youtube.com/shorts/zuxubd8oEmA"
         },
         {
           "nombre": "Jalón al pecho agarre supino unilateral en máquina",
@@ -1452,7 +1452,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=KJ9p9yNZJr0",
+          "video": "https://youtube.com/shorts/aUar_SLtXm4",
           "nuevo": true
         },
         {
@@ -1461,7 +1461,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=rOQ5ltya-7E",
+          "video": "https://youtube.com/shorts/mIIznjsVqU0",
           "nuevo": true
         },
         {
@@ -1470,7 +1470,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Curl bíceps barra (agarre ancho hombros)",
@@ -1478,7 +1478,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/l-BPupny6cM"
+          "video": "https://youtube.com/shorts/hXgZaao9rX8"
         },
         {
           "nombre": "Dragon flag (abdominales)",

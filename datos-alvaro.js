@@ -419,25 +419,25 @@ var CLIENTE = {
       ejercicios: [
         { nombre: "Press máquina pecho plano",
           reps:   [6, 8, 9],
-          video:  "https://youtube.com/shorts/m-KFtIghoqw" },
+          video:  "https://youtube.com/shorts/A7hGOJQTpq0" },
         { nombre: "Press máquina pecho inclinado",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/vdWbsdOtKII" },
+          video:  "https://youtube.com/shorts/MlLOzsUSZZg" },
         { nombre: "Pec Deck (aperturas)",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/HL88KYqhzQI" },
+          video:  "https://youtube.com/shorts/rfVptEGJOsU" },
         { nombre: "Press militar en máquina",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/BqdJeb6jHko" },
+          video:  "https://youtube.com/shorts/1UzJs7-v4Hk" },
         { nombre: "Elevaciones laterales mancuernas",
           reps:   [6, 8, 9],
-          video:  "https://youtube.com/shorts/j2tjiP-YoDU" },
+          video:  "https://youtube.com/shorts/QgpNsybiDoE" },
         { nombre: "Tríceps katana unilateral en polea",
           reps:   [6, 8, 9],
           video:  "https://youtube.com/shorts/HNH6a33SZB0" },
         { nombre: "Extensión tríceps polea barra recta",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/sU9snn0qTEs" }
+          video:  "https://youtube.com/shorts/jDEmN9FwS1U" }
       ]
     },
 
@@ -451,22 +451,22 @@ var CLIENTE = {
       ejercicios: [
         { nombre: "Jalón al pecho agarre prono",
           reps:   [10, 12],
-          video:  "https://youtu.be/55X8yLezpwc" },
+          video:  "https://youtube.com/shorts/ON-RH5nYzcU" },
         { nombre: "Remo en T",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/udi--2PLXAQ" },
+          video:  "https://youtube.com/shorts/RsQUTVBL25E" },
         { nombre: "Jalón en máquina unilateral",
           reps:   [10, 12],
-          video:  "https://youtube.com/shorts/ha8ql5D3G1o" },
+          video:  "https://youtube.com/shorts/X5e1dC0bRIk" },
         { nombre: "Pullover en polea",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/dX5DHCZ-7p8" },
+          video:  "https://youtube.com/shorts/0CMRVXlo80c" },
         { nombre: "Curl predicador máquina",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/vq9JynSsol8" },
+          video:  "https://youtube.com/shorts/zk8JJELT6dE" },
         { nombre: "Curl martillo",
           reps:   [6, 8],
-          video:  "https://youtube.com/shorts/NCeVr-vm6Ig" }
+          video:  "https://youtube.com/shorts/pYziGLf2EsA" }
       ]
     },
 
@@ -480,22 +480,22 @@ var CLIENTE = {
       ejercicios: [
         { nombre: "Sentadilla Hack en máquina",
           reps:   [6, 8, 10],
-          video:  "https://www.youtube.com/watch?v=R8ZyWx1EgoY" },
+          video:  "https://youtube.com/shorts/Gmq0SBcaZz4" },
         { nombre: "Prensa de piernas (leg press)",
           reps:   [6, 8, 10],
-          video:  "https://www.youtube.com/watch?v=AJ6N_TcoU6M" },
+          video:  "https://youtube.com/shorts/B2T2F2pa-co" },
         { nombre: "Extensión de cuádriceps en máquina",
           reps:   [6, 8],
-          video:  "https://www.youtube.com/watch?v=PAPf4i-VJoc" },
+          video:  "https://youtube.com/shorts/lUaVtil2FHc" },
         { nombre: "Isquiotibiales sentado en máquina",
           reps:   [6, 8, 10],
-          video:  "https://www.youtube.com/watch?v=CBCPBnMzsMI" },
+          video:  "https://youtube.com/shorts/p1jzT2MUGvk" },
         { nombre: "Abductor de glúteo en máquina",
           reps:   [6, 8],
-          video:  "https://www.youtube.com/watch?v=0wZ_dRSbnsA" },
+          video:  "https://youtube.com/shorts/-8GDbWX1MQo" },
         { nombre: "Gemelo en máquina",
           reps:   [6, 8, 9, 9, 9, 9],
-          video:  "https://www.youtube.com/watch?v=6KKDFgOKZY0" }
+          video:  "https://youtube.com/shorts/mwqmUDZINrQ" }
       ]
     }
   ],

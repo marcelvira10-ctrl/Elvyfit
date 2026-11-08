@@ -418,60 +418,60 @@ var CLIENTE = {
       id: "D1", emoji: "💪", color: "var(--blue)", chip: "D1 · PECHO",
       titulo: "DÍA 1 — PECHO · HOMBRO · TRÍCEPS",
       ejercicios: [
-        { nombre: "Press máquina pecho plano", reps: ["6", "8", "10"], video: "https://youtube.com/shorts/m-KFtIghoqw" },
-        { nombre: "Press máquina pecho inclinado", reps: ["8", "10"], video: "https://youtube.com/shorts/vdWbsdOtKII" },
-        { nombre: "Pec Deck (aperturas)", reps: ["10", "10"], video: "https://youtube.com/shorts/HL88KYqhzQI" },
-        { nombre: "Press militar en máquina", reps: ["6", "8"], video: "https://youtube.com/shorts/BqdJeb6jHko" },
-        { nombre: "Elevaciones laterales mancuernas", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/j2tjiP-YoDU" },
+        { nombre: "Press máquina pecho plano", reps: ["6", "8", "10"], video: "https://youtube.com/shorts/A7hGOJQTpq0" },
+        { nombre: "Press máquina pecho inclinado", reps: ["8", "10"], video: "https://youtube.com/shorts/MlLOzsUSZZg" },
+        { nombre: "Pec Deck (aperturas)", reps: ["10", "10"], video: "https://youtube.com/shorts/rfVptEGJOsU" },
+        { nombre: "Press militar en máquina", reps: ["6", "8"], video: "https://youtube.com/shorts/1UzJs7-v4Hk" },
+        { nombre: "Elevaciones laterales mancuernas", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/QgpNsybiDoE" },
         { nombre: "Tríceps katana unilateral en polea", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/HNH6a33SZB0" },
-        { nombre: "Extensión tríceps polea barra recta", reps: ["10", "10"], video: "https://youtube.com/shorts/sU9snn0qTEs" }
+        { nombre: "Extensión tríceps polea barra recta", reps: ["10", "10"], video: "https://youtube.com/shorts/jDEmN9FwS1U" }
       ]
     },
     {
       id: "D2", emoji: "🔙", color: "var(--orange)", chip: "D2 · ESPALDA",
       titulo: "DÍA 2 — ESPALDA · BÍCEPS",
       ejercicios: [
-        { nombre: "Jalón al pecho agarre prono", reps: ["6", "8", "8"], video: "https://youtu.be/55X8yLezpwc" },
-        { nombre: "Remo máquina neutro unilateral", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/sYl2uUE7kt0" },
-        { nombre: "Jalón al pecho agarre cerrado", reps: ["8", "10"], video: "https://youtube.com/shorts/bBM95Ir4zCs" },
-        { nombre: "Pullover en polea", reps: ["10", "10"], video: "https://youtube.com/shorts/dX5DHCZ-7p8" },
-        { nombre: "Curl predicador máquina", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/vq9JynSsol8" },
-        { nombre: "Curl martillo", reps: ["8", "10"], video: "https://youtube.com/shorts/NCeVr-vm6Ig" }
+        { nombre: "Jalón al pecho agarre prono", reps: ["6", "8", "8"], video: "https://youtube.com/shorts/ON-RH5nYzcU" },
+        { nombre: "Remo máquina neutro unilateral", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/RlN63rVkCGk" },
+        { nombre: "Jalón al pecho agarre cerrado", reps: ["8", "10"], video: "https://youtube.com/shorts/mtyPkNukKKE" },
+        { nombre: "Pullover en polea", reps: ["10", "10"], video: "https://youtube.com/shorts/0CMRVXlo80c" },
+        { nombre: "Curl predicador máquina", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/zk8JJELT6dE" },
+        { nombre: "Curl martillo", reps: ["8", "10"], video: "https://youtube.com/shorts/pYziGLf2EsA" }
       ]
     },
     {
       id: "D3", emoji: "🦵", color: "var(--green)", chip: "D3 · PIERNA",
       titulo: "DÍA 3 — PIERNA COMPLETA",
       ejercicios: [
-        { nombre: "Sentadilla Hack en máquina", reps: ["8", "10", "12"], video: "https://www.youtube.com/watch?v=R8ZyWx1EgoY" },
-        { nombre: "Prensa de piernas (leg press)", reps: ["10", "12", "12"], video: "https://www.youtube.com/watch?v=AJ6N_TcoU6M" },
-        { nombre: "Extensión de cuádriceps en máquina", reps: ["12", "12", "15"], video: "https://www.youtube.com/watch?v=PAPf4i-VJoc" },
-        { nombre: "Isquiotibiales sentado en máquina", reps: ["12", "12", "15"], video: "https://www.youtube.com/watch?v=CBCPBnMzsMI" },
-        { nombre: "Abductor de glúteo en máquina", reps: ["15", "15"], video: "https://www.youtube.com/watch?v=0wZ_dRSbnsA" },
-        { nombre: "Gemelo en máquina", reps: ["15-20", "15-20", "15-20", "15-20", "15-20"], video: "https://www.youtube.com/watch?v=6KKDFgOKZY0" }
+        { nombre: "Sentadilla Hack en máquina", reps: ["8", "10", "12"], video: "https://youtube.com/shorts/Gmq0SBcaZz4" },
+        { nombre: "Prensa de piernas (leg press)", reps: ["10", "12", "12"], video: "https://youtube.com/shorts/B2T2F2pa-co" },
+        { nombre: "Extensión de cuádriceps en máquina", reps: ["12", "12", "15"], video: "https://youtube.com/shorts/lUaVtil2FHc" },
+        { nombre: "Isquiotibiales sentado en máquina", reps: ["12", "12", "15"], video: "https://youtube.com/shorts/p1jzT2MUGvk" },
+        { nombre: "Abductor de glúteo en máquina", reps: ["15", "15"], video: "https://youtube.com/shorts/-8GDbWX1MQo" },
+        { nombre: "Gemelo en máquina", reps: ["15-20", "15-20", "15-20", "15-20", "15-20"], video: "https://youtube.com/shorts/mwqmUDZINrQ" }
       ]
     },
     {
       id: "D4", emoji: "💪", color: "var(--cyan)", chip: "D4 · PECHO",
       titulo: "DÍA 4 — PECHO · HOMBRO",
       ejercicios: [
-        { nombre: "Press militar con mancuernas", reps: ["6", "8"], video: "https://youtube.com/shorts/PWtkHROaH3Y" },
-        { nombre: "Elevación lateral unilateral en polea", reps: ["8", "10", "12"], video: "https://youtube.com/shorts/3uljNfhx1EI" },
-        { nombre: "Pájaros en máquina (Pec Deck invertido)", reps: ["8", "10"], video: "https://youtube.com/shorts/LLgkANwIKzk" },
-        { nombre: "Press inclinado en multipower (pecho superior)", reps: ["6", "8", "8"], video: "https://youtube.com/shorts/6Ijq_ukPE50" },
-        { nombre: "Cruces en polea baja (pecho inferior)", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/gHNpRoKeAdA" }
+        { nombre: "Press militar con mancuernas", reps: ["6", "8"], video: "https://youtube.com/shorts/cNBXWUd9e_8" },
+        { nombre: "Elevación lateral unilateral en polea", reps: ["8", "10", "12"], video: "https://youtube.com/shorts/YnKUoDiszTY" },
+        { nombre: "Pájaros en máquina (Pec Deck invertido)", reps: ["8", "10"], video: "https://youtube.com/shorts/Sws1EXvDTYU" },
+        { nombre: "Press inclinado en multipower (pecho superior)", reps: ["6", "8", "8"], video: "https://youtube.com/shorts/EXTwFezH_tQ" },
+        { nombre: "Cruces en polea baja (pecho inferior)", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/JZ6oKKEY2NY" }
       ]
     },
     {
       id: "D5", emoji: "🔙", color: "var(--red)", chip: "D5 · ESPALDA",
       titulo: "DÍA 5 — ESPALDA · BÍCEPS · TRÍCEPS",
       ejercicios: [
-        { nombre: "Remo en máquina convergente (Hammer Strength)", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/yFo-EFYzf1s" },
+        { nombre: "Remo en máquina convergente (Hammer Strength)", reps: ["8", "10", "10"], video: "https://youtube.com/shorts/gGsRlXt2E00" },
         { nombre: "Curl de bíceps tumbado en banco", reps: ["8", "10", "12"], video: "https://youtube.com/shorts/2bzTfdB3j4M" },
         { nombre: "Curl de bíceps en polea arriba unilateral", reps: ["8", "10"], video: "https://youtube.com/shorts/7kLT9OxHyw0" },
-        { nombre: "Curl predicador en máquina o banco", reps: ["12", "10"], video: "https://youtube.com/shorts/vq9JynSsol8" },
+        { nombre: "Curl predicador en máquina o banco", reps: ["12", "10"], video: "https://youtube.com/shorts/zk8JJELT6dE" },
         { nombre: "Extensión de tríceps en polea unilateral", reps: ["10", "10", "12"], video: "https://youtube.com/shorts/hip11n3QXzU" },
-        { nombre: "Press francés barra recta", reps: ["6", "8", "10"], video: "https://youtu.be/hBz7jSJM3Yw" }
+        { nombre: "Press francés barra recta", reps: ["6", "8", "10"], video: "https://youtube.com/shorts/cp_UtwkkDP4" }
       ]
     }
   ],

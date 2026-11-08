@@ -1361,7 +1361,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/m-KFtIghoqw"
+          "video": "https://youtube.com/shorts/A7hGOJQTpq0"
         },
         {
           "nombre": "Press máquina pecho inclinado",
@@ -1369,7 +1369,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/vdWbsdOtKII"
+          "video": "https://youtube.com/shorts/MlLOzsUSZZg"
         },
         {
           "nombre": "Pec Deck (aperturas)",
@@ -1377,7 +1377,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/HL88KYqhzQI"
+          "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Press militar en máquina",
@@ -1385,14 +1385,14 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/BqdJeb6jHko"
+          "video": "https://youtube.com/shorts/1UzJs7-v4Hk"
         },
         {
           "nombre": "Elevaciones laterales mancuernas",
           "reps": [
             "6"
           ],
-          "video": "https://youtube.com/shorts/j2tjiP-YoDU"
+          "video": "https://youtube.com/shorts/QgpNsybiDoE"
         },
         {
           "nombre": "Fondos de tríceps (en máquina o libres)",
@@ -1400,7 +1400,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://www.youtube.com/watch?v=4PEcd1VDpKY"
+          "video": "https://youtube.com/shorts/N1Yd3QvShQE"
         },
         {
           "nombre": "Extensión tríceps polea barra recta",
@@ -1408,7 +1408,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/sU9snn0qTEs"
+          "video": "https://youtube.com/shorts/jDEmN9FwS1U"
         }
       ]
     },
@@ -1426,7 +1426,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtu.be/55X8yLezpwc"
+          "video": "https://youtube.com/shorts/ON-RH5nYzcU"
         },
         {
           "nombre": "Remo máquina neutro unilateral",
@@ -1434,7 +1434,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/sYl2uUE7kt0"
+          "video": "https://youtube.com/shorts/RlN63rVkCGk"
         },
         {
           "nombre": "Jalón al pecho agarre cerrado",
@@ -1442,7 +1442,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/bBM95Ir4zCs"
+          "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Pullover en polea",
@@ -1450,7 +1450,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/dX5DHCZ-7p8"
+          "video": "https://youtube.com/shorts/0CMRVXlo80c"
         },
         {
           "nombre": "Curl predicador máquina",
@@ -1458,7 +1458,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Curl martillo",
@@ -1466,7 +1466,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/NCeVr-vm6Ig"
+          "video": "https://youtube.com/shorts/pYziGLf2EsA"
         }
       ]
     },
@@ -1484,35 +1484,35 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://www.youtube.com/watch?v=R8ZyWx1EgoY"
+          "video": "https://youtube.com/shorts/Gmq0SBcaZz4"
         },
         {
           "nombre": "Prensa de piernas (leg press)",
           "reps": [
             "6"
           ],
-          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
           "reps": [
             "6"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Isquiotibiales sentado en máquina",
           "reps": [
             "6"
           ],
-          "video": "https://www.youtube.com/watch?v=CBCPBnMzsMI"
+          "video": "https://youtube.com/shorts/p1jzT2MUGvk"
         },
         {
           "nombre": "Abductor de glúteo en máquina",
           "reps": [
             "6"
           ],
-          "video": "https://www.youtube.com/watch?v=0wZ_dRSbnsA"
+          "video": "https://youtube.com/shorts/-8GDbWX1MQo"
         },
         {
           "nombre": "Gemelo en máquina",
@@ -1524,7 +1524,7 @@ var CLIENTE = {
             "9",
             "9"
           ],
-          "video": "https://www.youtube.com/watch?v=6KKDFgOKZY0"
+          "video": "https://youtube.com/shorts/mwqmUDZINrQ"
         }
       ]
     },
@@ -1542,7 +1542,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/PWtkHROaH3Y"
+          "video": "https://youtube.com/shorts/cNBXWUd9e_8"
         },
         {
           "nombre": "Elevación lateral unilateral en polea",
@@ -1550,7 +1550,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/3uljNfhx1EI"
+          "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Pájaros en máquina (Pec Deck invertido)",
@@ -1558,7 +1558,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/LLgkANwIKzk"
+          "video": "https://youtube.com/shorts/Sws1EXvDTYU"
         },
         {
           "nombre": "Press inclinado en multipower (pecho superior)",
@@ -1566,7 +1566,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/6Ijq_ukPE50"
+          "video": "https://youtube.com/shorts/EXTwFezH_tQ"
         },
         {
           "nombre": "Cruces en polea baja (pecho inferior)",
@@ -1574,7 +1574,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/gHNpRoKeAdA"
+          "video": "https://youtube.com/shorts/JZ6oKKEY2NY"
         }
       ]
     },
@@ -1592,7 +1592,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/yFo-EFYzf1s"
+          "video": "https://youtube.com/shorts/gGsRlXt2E00"
         },
         {
           "nombre": "Curl de bíceps tumbado en banco",
@@ -1615,7 +1615,7 @@ var CLIENTE = {
           "reps": [
             "6"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Extensión de tríceps en polea unilateral",
@@ -1631,7 +1631,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtu.be/hBz7jSJM3Yw"
+          "video": "https://youtube.com/shorts/cp_UtwkkDP4"
         }
       ]
     }

@@ -820,7 +820,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20inclinado%20mancuernas%20pecho%20tutorial"
+          "video": "https://youtube.com/shorts/CQNf8D024uI"
         },
         {
           "nombre": "Press máquina pecho plano",
@@ -829,7 +829,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20maquina%20pecho%20plano%20tutorial"
+          "video": "https://youtube.com/shorts/A7hGOJQTpq0"
         },
         {
           "nombre": "Pec Deck",
@@ -838,7 +838,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=pec%20deck%20mariposa%20pecho%20tutorial"
+          "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Press militar máquina",
@@ -847,7 +847,7 @@ var CLIENTE = {
             "8",
             "8"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20militar%20maquina%20hombro%20tutorial"
+          "video": "https://youtube.com/shorts/1UzJs7-v4Hk"
         },
         {
           "nombre": "Elevaciones laterales mancuernas",
@@ -856,7 +856,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=elevaciones%20laterales%20mancuernas%20hombro%20tutorial"
+          "video": "https://youtube.com/shorts/QgpNsybiDoE"
         },
         {
           "nombre": "Tríceps katana unilateral",
@@ -874,7 +874,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=extension%20triceps%20cuerno%20polea%20tutorial"
+          "video": "https://youtube.com/shorts/ZRmZSdrir5I"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -884,7 +884,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=crunch%20abdominal%20maquina%20tutorial"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra",
@@ -892,7 +892,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=oblicuo%20lateral%20colgado%20barra%20dominadas%20tutorial"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     },
@@ -911,7 +911,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=jalon%20al%20pecho%20agarre%20prono%20espalda%20tutorial"
+          "video": "https://youtube.com/shorts/ON-RH5nYzcU"
         },
         {
           "nombre": "Remo unilateral en polea con banco",
@@ -929,7 +929,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=jalon%20agarre%20cerrado%20espalda%20tutorial"
+          "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Pullover en polea",
@@ -938,7 +938,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=pullover%20polea%20espalda%20tutorial"
+          "video": "https://youtube.com/shorts/0CMRVXlo80c"
         },
         {
           "nombre": "Curl predicador máquina",
@@ -947,7 +947,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=curl%20predicador%20maquina%20biceps%20tutorial"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Curl martillo",
@@ -956,7 +956,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=curl%20martillo%20mancuernas%20biceps%20tutorial"
+          "video": "https://youtube.com/shorts/pYziGLf2EsA"
         }
       ]
     },
@@ -975,7 +975,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=sentadilla%20hack%20maquina%20cuadriceps%20tutorial"
+          "video": "https://youtube.com/shorts/Gmq0SBcaZz4"
         },
         {
           "nombre": "Prensa inclinada",
@@ -984,7 +984,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=prensa%20inclinada%20pierna%20tutorial"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Sentadilla búlgara",
@@ -993,7 +993,7 @@ var CLIENTE = {
             "12",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=sentadilla%20bulgara%20pierna%20tutorial"
+          "video": "https://youtube.com/shorts/I8Qlppfsf6A"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1002,7 +1002,7 @@ var CLIENTE = {
             "12",
             "15"
           ],
-          "video": "https://www.youtube.com/results?search_query=extension%20cuadriceps%20maquina%20tutorial"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral sentado",
@@ -1012,7 +1012,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=curl%20femoral%20sentado%20isquiotibiales%20tutorial"
+          "video": "https://youtube.com/shorts/p1jzT2MUGvk"
         },
         {
           "nombre": "Gemelo en máquina",
@@ -1022,7 +1022,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=gemelo%20maquina%20pantorrilla%20tutorial"
+          "video": "https://youtube.com/shorts/mwqmUDZINrQ"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1032,7 +1032,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=crunch%20abdominal%20maquina%20tutorial"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra",
@@ -1040,7 +1040,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=oblicuo%20lateral%20colgado%20barra%20dominadas%20tutorial"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     },
@@ -1059,7 +1059,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20militar%20mancuernas%20hombro%20tutorial"
+          "video": "https://youtube.com/shorts/cNBXWUd9e_8"
         },
         {
           "nombre": "Elevación lateral unilateral en polea",
@@ -1068,7 +1068,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=elevacion%20lateral%20unilateral%20polea%20hombro%20tutorial"
+          "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Pájaros en polea unilateral (Pec Deck inv.)",
@@ -1086,7 +1086,7 @@ var CLIENTE = {
             "8",
             "8"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20inclinado%20smith%20multipower%20pecho%20tutorial"
+          "video": "https://youtube.com/shorts/EXTwFezH_tQ"
         },
         {
           "nombre": "Cruces en polea baja (pecho inferior)",
@@ -1095,7 +1095,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/results?search_query=cruces%20polea%20baja%20pecho%20inferior%20tutorial"
+          "video": "https://youtube.com/shorts/JZ6oKKEY2NY"
         }
       ]
     },
@@ -1140,7 +1140,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=curl%20predicador%20maquina%20banco%20biceps%20tutorial"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Extensión de tríceps en polea unilateral",
@@ -1158,7 +1158,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=press%20frances%20barra%20recta%20triceps%20tutorial"
+          "video": "https://youtube.com/shorts/cp_UtwkkDP4"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1168,7 +1168,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=crunch%20abdominal%20maquina%20tutorial"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra",
@@ -1176,7 +1176,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/results?search_query=oblicuo%20lateral%20colgado%20barra%20dominadas%20tutorial"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     }

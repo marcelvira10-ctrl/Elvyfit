@@ -979,7 +979,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=T4M8IIKyFdk"
+          "video": "https://youtube.com/shorts/MlLOzsUSZZg"
         },
         {
           "nombre": "Jalón al pecho agarre neutro",
@@ -987,7 +987,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=JeKrQHmcwhk"
+          "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Remo en T",
@@ -995,7 +995,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/udi--2PLXAQ"
+          "video": "https://youtube.com/shorts/RsQUTVBL25E"
         },
         {
           "nombre": "Elevaciones laterales con mancuernas",
@@ -1003,7 +1003,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/j2tjiP-YoDU"
+          "video": "https://youtube.com/shorts/QgpNsybiDoE"
         },
         {
           "nombre": "Curl predicador en máquina",
@@ -1011,7 +1011,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Extensión de tríceps en polea con barra recta",
@@ -1019,7 +1019,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/sU9snn0qTEs",
+          "video": "https://youtube.com/shorts/jDEmN9FwS1U",
           "nota": "⚡ Superserie con el crunch en máquina: acabas la serie de tríceps y sin descanso haces la de abdominales. Luego los 3 min."
         },
         {
@@ -1028,7 +1028,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g",
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI",
           "nota": "⚡ Va pegado a la extensión de tríceps con barra, sin descanso entre los dos."
         }
       ]
@@ -1047,7 +1047,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=R8ZyWx1EgoY"
+          "video": "https://youtube.com/shorts/Gmq0SBcaZz4"
         },
         {
           "nombre": "Prensa de piernas",
@@ -1055,7 +1055,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1063,7 +1063,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral sentado en máquina",
@@ -1071,7 +1071,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=jq03iefZxjc"
+          "video": "https://youtube.com/shorts/p1jzT2MUGvk"
         },
         {
           "nombre": "Abductor en máquina (triserie 1/3)",
@@ -1079,7 +1079,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=0wZ_dRSbnsA",
+          "video": "https://youtube.com/shorts/-8GDbWX1MQo",
           "nota": "⚡ TRISERIE: abductor → aductor → gemelo sentado, seguidos y sin descanso entre ellos. Al acabar el gemelo, los 3 min y vuelves a empezar."
         },
         {
@@ -1088,7 +1088,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=Bafpsi0ERiI",
+          "video": "https://youtube.com/shorts/_9aRtyNy4Ik",
           "nota": "⚡ TRISERIE: va justo después del abductor, sin descanso. Luego el gemelo."
         },
         {
@@ -1097,7 +1097,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=rfkYC-mbQus",
+          "video": "https://youtube.com/shorts/mwqmUDZINrQ",
           "nota": "⚡ TRISERIE: cierra la triserie. Ahora sí, 3 min de descanso."
         }
       ]
@@ -1132,7 +1132,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/HL88KYqhzQI"
+          "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Elevaciones laterales en polea",
@@ -1140,7 +1140,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/_2fqg87DE1g"
+          "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Curl de bíceps con codos apoyados (banco Scott)",
@@ -1148,7 +1148,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=YUhSi_sUGmM"
+          "video": "https://youtube.com/shorts/KBVGI8S3Foo"
         },
         {
           "nombre": "Fondos de tríceps (en máquina o libres)",
@@ -1156,7 +1156,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=4PEcd1VDpKY",
+          "video": "https://youtube.com/shorts/N1Yd3QvShQE",
           "nota": "⚡ Superserie con el crunch en máquina: acabas los fondos y sin descanso haces la de abdominales. Luego los 3 min."
         },
         {
@@ -1165,7 +1165,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g",
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI",
           "nota": "⚡ Va pegado a los fondos, sin descanso entre los dos."
         }
       ]
@@ -1184,7 +1184,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=R8ZyWx1EgoY"
+          "video": "https://youtube.com/shorts/Gmq0SBcaZz4"
         },
         {
           "nombre": "Prensa de piernas",
@@ -1192,7 +1192,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1200,7 +1200,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral sentado en máquina",
@@ -1208,7 +1208,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=jq03iefZxjc"
+          "video": "https://youtube.com/shorts/p1jzT2MUGvk"
         },
         {
           "nombre": "Abductor en máquina (triserie 1/3)",
@@ -1216,7 +1216,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=0wZ_dRSbnsA",
+          "video": "https://youtube.com/shorts/-8GDbWX1MQo",
           "nota": "⚡ TRISERIE: abductor → aductor → gemelo sentado, seguidos y sin descanso entre ellos. Al acabar el gemelo, los 3 min y vuelves a empezar."
         },
         {
@@ -1225,7 +1225,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=Bafpsi0ERiI",
+          "video": "https://youtube.com/shorts/_9aRtyNy4Ik",
           "nota": "⚡ TRISERIE: va justo después del abductor, sin descanso. Luego el gemelo."
         },
         {
@@ -1234,7 +1234,7 @@ var CLIENTE = {
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=rfkYC-mbQus",
+          "video": "https://youtube.com/shorts/mwqmUDZINrQ",
           "nota": "⚡ TRISERIE: cierra la triserie. Ahora sí, 3 min de descanso."
         }
       ]

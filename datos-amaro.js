@@ -944,7 +944,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/m-KFtIghoqw"
+          "video": "https://youtube.com/shorts/A7hGOJQTpq0"
         },
         {
           "nombre": "Press máquina pecho inclinado",
@@ -952,7 +952,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/vdWbsdOtKII"
+          "video": "https://youtube.com/shorts/MlLOzsUSZZg"
         },
         {
           "nombre": "Pec Deck (aperturas)",
@@ -960,7 +960,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/HL88KYqhzQI"
+          "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Press militar máquina",
@@ -968,7 +968,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/BqdJeb6jHko"
+          "video": "https://youtube.com/shorts/1UzJs7-v4Hk"
         },
         {
           "nombre": "Elevaciones laterales mancuernas",
@@ -977,7 +977,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/j2tjiP-YoDU"
+          "video": "https://youtube.com/shorts/QgpNsybiDoE"
         },
         {
           "nombre": "Tríceps katana unilateral",
@@ -995,7 +995,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=HRTD0ggY3MI"
+          "video": "https://youtube.com/shorts/N1Yd3QvShQE"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1005,7 +1005,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra (por lado)",
@@ -1013,7 +1013,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     },
@@ -1032,7 +1032,7 @@ var CLIENTE = {
             "8",
             "8"
           ],
-          "video": "https://youtu.be/55X8yLezpwc"
+          "video": "https://youtube.com/shorts/ON-RH5nYzcU"
         },
         {
           "nombre": "Remo máquina neutro unilateral",
@@ -1040,7 +1040,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/sYl2uUE7kt0"
+          "video": "https://youtube.com/shorts/RlN63rVkCGk"
         },
         {
           "nombre": "Jalón al pecho agarre cerrado",
@@ -1048,7 +1048,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/bBM95Ir4zCs"
+          "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Pullover polea",
@@ -1057,7 +1057,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/dX5DHCZ-7p8"
+          "video": "https://youtube.com/shorts/0CMRVXlo80c"
         },
         {
           "nombre": "Curl predicador máquina",
@@ -1066,7 +1066,7 @@ var CLIENTE = {
             "8",
             "8"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Curl martillo",
@@ -1074,7 +1074,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/NCeVr-vm6Ig"
+          "video": "https://youtube.com/shorts/pYziGLf2EsA"
         }
       ]
     },
@@ -1093,7 +1093,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=R8ZyWx1EgoY"
+          "video": "https://youtube.com/shorts/Gmq0SBcaZz4"
         },
         {
           "nombre": "Prensa inclinada",
@@ -1102,7 +1102,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Sentadilla búlgara (por pierna)",
@@ -1111,7 +1111,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=7bV1tIUC2Es"
+          "video": "https://youtube.com/shorts/I8Qlppfsf6A"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1120,7 +1120,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral tumbado (individual)",
@@ -1129,7 +1129,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=9xbBr5Ytl8c"
+          "video": "https://youtube.com/shorts/wDaV9_SUPJM"
         },
         {
           "nombre": "Gemelo en prensa",
@@ -1139,7 +1139,7 @@ var CLIENTE = {
             "12",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=zmNBx-Ilhdc"
+          "video": "https://youtube.com/shorts/oZujMzKYUDw"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1149,7 +1149,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra (por lado)",
@@ -1157,7 +1157,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     },
@@ -1176,7 +1176,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=AJ6N_TcoU6M"
+          "video": "https://youtube.com/shorts/B2T2F2pa-co"
         },
         {
           "nombre": "Extensión de cuádriceps en máquina",
@@ -1185,7 +1185,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=PAPf4i-VJoc"
+          "video": "https://youtube.com/shorts/lUaVtil2FHc"
         },
         {
           "nombre": "Curl femoral tumbado",
@@ -1194,7 +1194,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=9xbBr5Ytl8c"
+          "video": "https://youtube.com/shorts/wDaV9_SUPJM"
         },
         {
           "nombre": "Hip thrust en máquina o con barra ligera",
@@ -1203,7 +1203,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://youtube.com/shorts/bup775DiMUE"
+          "video": "https://youtube.com/shorts/lhF0xo5VCa4"
         },
         {
           "nombre": "Curl femoral sentado",
@@ -1212,7 +1212,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=jq03iefZxjc"
+          "video": "https://youtube.com/shorts/p1jzT2MUGvk"
         },
         {
           "nombre": "Gemelo en prensa",
@@ -1222,7 +1222,7 @@ var CLIENTE = {
             "12",
             "12"
           ],
-          "video": "https://www.youtube.com/watch?v=zmNBx-Ilhdc"
+          "video": "https://youtube.com/shorts/oZujMzKYUDw"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1232,7 +1232,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra (por lado)",
@@ -1240,7 +1240,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     },
@@ -1258,7 +1258,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/PWtkHROaH3Y"
+          "video": "https://youtube.com/shorts/cNBXWUd9e_8"
         },
         {
           "nombre": "Elevación lateral unilateral en polea",
@@ -1267,7 +1267,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/3uljNfhx1EI"
+          "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Pájaros en máquina (Pec Deck invertido)",
@@ -1275,7 +1275,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/LLgkANwIKzk"
+          "video": "https://youtube.com/shorts/Sws1EXvDTYU"
         },
         {
           "nombre": "Press inclinado en multipower (pecho superior)",
@@ -1283,7 +1283,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/6Ijq_ukPE50"
+          "video": "https://youtube.com/shorts/EXTwFezH_tQ"
         },
         {
           "nombre": "Cruces en polea baja (pecho inferior)",
@@ -1292,7 +1292,7 @@ var CLIENTE = {
             "10",
             "12"
           ],
-          "video": "https://youtube.com/shorts/gHNpRoKeAdA"
+          "video": "https://youtube.com/shorts/JZ6oKKEY2NY"
         }
       ]
     },
@@ -1311,7 +1311,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://youtube.com/shorts/yFo-EFYzf1s"
+          "video": "https://youtube.com/shorts/gGsRlXt2E00"
         },
         {
           "nombre": "Curl de bíceps tumbado en banco",
@@ -1327,7 +1327,7 @@ var CLIENTE = {
             "8",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=7e04YRwlZ9U"
+          "video": "https://youtube.com/shorts/BGt07gzfQlA"
         },
         {
           "nombre": "Curl predicador en máquina o banco",
@@ -1335,7 +1335,7 @@ var CLIENTE = {
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/vq9JynSsol8"
+          "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Extensión de tríceps en polea unilateral",
@@ -1353,7 +1353,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://youtu.be/hBz7jSJM3Yw"
+          "video": "https://youtube.com/shorts/cp_UtwkkDP4"
         },
         {
           "nombre": "Crunch abdominales en máquina",
@@ -1363,7 +1363,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=DLU0RKjZV2g"
+          "video": "https://youtube.com/shorts/9UA6L8ADUfI"
         },
         {
           "nombre": "Oblicuo de lado colgado en barra (por lado)",
@@ -1371,7 +1371,7 @@ var CLIENTE = {
             "10",
             "10"
           ],
-          "video": "https://www.youtube.com/watch?v=TXdViheU-b0"
+          "video": "https://youtube.com/shorts/XDk_-I6OrcI"
         }
       ]
     }
