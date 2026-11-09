@@ -5,6 +5,7 @@
 /* Alimentos que el motor común no tiene todavía (referencia, ok:false). */
 if (typeof ELVYFIT !== "undefined") {
   var AL = ELVYFIT.ALIMENTOS;
+  AL.mandarina = AL.mandarina || { n:"Mandarina", p:0.8, c:10.0, g:0.3, crudo:false, ok:false, cat:"fruta" };
   AL.lomo_cerdo = AL.lomo_cerdo || { n:"Cinta de lomo de cerdo", p:21.0, c:0.0, g:5.0, crudo:true, ok:false, cat:"prote" };
 }
 
@@ -33,7 +34,7 @@ var CLIENTE = {
     "tortas_arroz": "Tortitas de arroz (Hacendado · las normales)",
     "crema_arroz": "Crema de arroz (harina de arroz Hacendado · con agua)",
     "isolate": "Proteína aislada Zumub 100% Whey Isolate",
-    "arandanos": "Arándanos (frescos o congelados)",
+    "mandarina": "Mandarina",
     "manzana": "Manzana",
     "aove": "Aceite de oliva virgen extra (medido con cuchara)",
     "omega3": "Omega 3 Zumub (cápsulas)",
@@ -73,7 +74,18 @@ var CLIENTE = {
       "1 reb. pan espelta 55 g · 1 huevo · 170 ml claras · ½ aguacate"
     ]
   ],
-  "historial": [],
+  "historial": [
+    {
+      "fecha": "9 nov",
+      "texto": "Cambiamos los arándanos del desayuno (C1) por 2 mandarinas: 145 g, las mismas kcal. Lo demás de tu plan sigue igual."
+    }
+  ],
+  "ajuste": {
+    "nuevos": [
+      ["🍊 Desayuno (C1): mandarinas en lugar de arándanos", "NUEVO · 145 g (2 mandarinas)"]
+    ],
+    "nuevosAlimentos": ["mandarina"]
+  },
   "alternativas": {
     "arroz": [
       {
@@ -174,8 +186,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -289,8 +301,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -404,8 +416,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -519,8 +531,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -634,8 +646,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -749,8 +761,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
@@ -864,8 +876,8 @@ var CLIENTE = {
               63
             ],
             [
-              "arandanos",
-              150
+              "mandarina",
+              145
             ]
           ],
           "opcionB": {
