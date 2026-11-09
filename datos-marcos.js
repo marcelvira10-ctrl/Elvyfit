@@ -767,7 +767,8 @@ var CLIENTE = {
   "progreso": {
     "pesoCorporal": {
       "2": "113.3",
-      "3": "112.4"
+      "3": "112.4",
+      "4": "112.8"
     },
     "PUSH": {
       "Press máquina pecho plano": {
@@ -779,6 +780,11 @@ var CLIENTE = {
           "20x8",
           "20x7",
           "15x8"
+        ],
+        "4": [
+          "20x8",
+          "20x6",
+          "15x8"
         ]
       },
       "Press máquina pecho inclinado": {
@@ -788,6 +794,10 @@ var CLIENTE = {
         ],
         "3": [
           "10x8",
+          "10x8"
+        ],
+        "4": [
+          "10x10",
           "10x8"
         ]
       },
@@ -799,6 +809,10 @@ var CLIENTE = {
         "3": [
           "30x8",
           "30x8"
+        ],
+        "4": [
+          "30x10",
+          "35x9"
         ]
       },
       "Press militar en máquina": {
@@ -809,6 +823,10 @@ var CLIENTE = {
         "3": [
           "10x8",
           "10x8"
+        ],
+        "4": [
+          "15x10",
+          "15x8"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -821,6 +839,11 @@ var CLIENTE = {
           "7x8",
           "7x6",
           "7x6"
+        ],
+        "4": [
+          "7x10",
+          "7x10",
+          "7x11"
         ]
       },
       "Tríceps katana unilateral en polea": {
@@ -833,6 +856,11 @@ var CLIENTE = {
           "10x7",
           "10x6",
           "10x5"
+        ],
+        "4": [
+          "10x11",
+          "10x8",
+          "10x5"
         ]
       },
       "Extensión tríceps polea barra recta": {
@@ -843,6 +871,10 @@ var CLIENTE = {
         "3": [
           "30x8",
           "30x8"
+        ],
+        "4": [
+          "30x12",
+          "30x10"
         ]
       }
     },
@@ -855,6 +887,10 @@ var CLIENTE = {
         "3": [
           "50x8",
           "50x8"
+        ],
+        "4": [
+          "50x8",
+          "50x8"
         ]
       },
       "Remo en T": {
@@ -863,6 +899,10 @@ var CLIENTE = {
           "25x8"
         ],
         "3": [
+          "25x8",
+          "25x8"
+        ],
+        "4": [
           "25x8",
           "25x8"
         ]
@@ -875,6 +915,10 @@ var CLIENTE = {
         "3": [
           "45x8",
           "45x8"
+        ],
+        "4": [
+          "45x8",
+          "45x8"
         ]
       },
       "Pullover en polea": {
@@ -883,6 +927,10 @@ var CLIENTE = {
           "40x9"
         ],
         "3": [
+          "40x8",
+          "40x8"
+        ],
+        "4": [
           "40x8",
           "40x8"
         ]
@@ -895,6 +943,10 @@ var CLIENTE = {
         "3": [
           "20x8",
           "20x7"
+        ],
+        "4": [
+          "20x8",
+          "20x8"
         ]
       },
       "Curl martillo": {
@@ -905,11 +957,59 @@ var CLIENTE = {
         "3": [
           "10x8",
           "10x8"
+        ],
+        "4": [
+          "10x8",
+          "10x8"
+        ]
+      }
+    },
+    "LEGS": {
+      "Sentadilla Hack en máquina": {
+        "4": [
+          "30x11",
+          "35x8",
+          "30x9"
+        ]
+      },
+      "Prensa de piernas (leg press)": {
+        "4": [
+          "60x12",
+          "80x10",
+          "70x16"
+        ]
+      },
+      "Extensión de cuádriceps en máquina": {
+        "4": [
+          "35x8",
+          "35x8"
+        ]
+      },
+      "Isquiotibiales sentado en máquina": {
+        "4": [
+          "50x9",
+          "50x8",
+          "45x8"
+        ]
+      },
+      "Abductor de glúteo en máquina": {
+        "4": [
+          "50x6",
+          "45x8"
+        ]
+      },
+      "Gemelo en máquina prensa": {
+        "4": [
+          "40x10",
+          "40x10",
+          "40x10",
+          "40x10"
         ]
       }
     },
     "pasosSemana": {
-      "2": 5000
+      "2": 5000,
+      "4": 4000
     }
   },
   "rutina": [
