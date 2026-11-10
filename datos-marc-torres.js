@@ -76,12 +76,14 @@ var CLIENTE = {
   ],
   "historial": [
     {
-      "fecha": "9 nov",
-      "texto": "Cambiamos los arándanos del desayuno (C1) por 2 mandarinas: 145 g, las mismas kcal. Lo demás de tu plan sigue igual."
+      "fecha": "10 nov",
+      "texto": "Nuevas opciones de cardio: cinta en cuesta (40 min al 10 % a 5 km/h) o bici (60 min a ritmo normal). Queman lo mismo que llegar a 15.000 pasos: lo tienes todo en CARDIO. Y desde el 9/11, 2 mandarinas en el desayuno en lugar de arándanos. Lo demás de tu plan sigue igual."
     }
   ],
   "ajuste": {
     "nuevos": [
+      ["⛰️ Cardio: opción cinta en cuesta", "NUEVO · 40 min · 10 % · 5 km/h"],
+      ["🚴 Cardio: opción bicicleta", "NUEVO · 60 min a ritmo normal"],
       ["🍊 Desayuno (C1): mandarinas en lugar de arándanos", "NUEVO · 145 g (2 mandarinas)"]
     ],
     "nuevosAlimentos": ["mandarina"]
