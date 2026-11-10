@@ -18,9 +18,12 @@ var CLIENTE = {
   "slug": "gerard",
   "clave": "gerard_plan_v1",
   "claveAntigua": "gerard_tracking_v0",
+  "renombres": {
+    "Press máquina pecho plano": "Press plano con mancuernas"
+  },
   "progreso": {
     "D1": {
-      "Press máquina pecho plano": {
+      "Press plano con mancuernas": {
         "1": [
           "30x6",
           "30x8"
@@ -1443,12 +1446,12 @@ var CLIENTE = {
       "titulo": "DÍA 1 — PECHO · HOMBRO · TRÍCEPS",
       "ejercicios": [
         {
-          "nombre": "Press máquina pecho plano",
+          "nombre": "Press plano con mancuernas",
           "reps": [
             "6",
             "8"
           ],
-          "video": "https://youtube.com/shorts/A7hGOJQTpq0"
+          "video": "https://www.youtube.com/watch?v=jrDDz7x1Dpo"
         },
         {
           "nombre": "Press máquina pecho inclinado",
