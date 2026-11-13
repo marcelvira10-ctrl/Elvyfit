@@ -88,6 +88,9 @@ var CLIENTE = {
     ],
     "nuevosAlimentos": ["mandarina"]
   },
+  "renombres": {
+    "JUE|Fondos de tríceps (en máquina o libres)": "Extensión de tríceps por encima de la cabeza unilateral en polea"
+  },
   "alternativas": {
     "arroz": [
       {
@@ -1165,13 +1168,14 @@ var CLIENTE = {
           "video": "https://youtube.com/shorts/KBVGI8S3Foo"
         },
         {
-          "nombre": "Fondos de tríceps (en máquina o libres)",
+          "nombre": "Extensión de tríceps por encima de la cabeza unilateral en polea",
           "reps": [
             "6-8",
             "8-10"
           ],
-          "video": "https://youtube.com/shorts/N1Yd3QvShQE",
-          "nota": "⚡ Superserie con el crunch en máquina: acabas los fondos y sin descanso haces la de abdominales. Luego los 3 min."
+          "video": "https://youtube.com/shorts/HNH6a33SZB0",
+          "nuevo": true,
+          "nota": "⚡ Superserie con el crunch en máquina: acabas la extensión (las dos series con cada brazo) y sin descanso haces la de abdominales. Luego los 3 min."
         },
         {
           "nombre": "Crunch abdominal en máquina (superserie)",
@@ -1180,7 +1184,7 @@ var CLIENTE = {
             "8-10"
           ],
           "video": "https://youtube.com/shorts/9UA6L8ADUfI",
-          "nota": "⚡ Va pegado a los fondos, sin descanso entre los dos."
+          "nota": "⚡ Va pegado a la extensión de tríceps por encima de la cabeza, sin descanso entre los dos."
         }
       ]
     },
