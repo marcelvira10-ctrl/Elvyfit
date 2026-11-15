@@ -52,7 +52,172 @@ var CLIENTE = {
     "claras": "Claras de huevo (brick Hacendado)",
     "aguacate": "Aguacate (medio)"
   },
-  "progreso": {},
+  "progreso": {
+    "LUN": {
+      "Press inclinado en máquina": {
+        "1": [
+          "20x11",
+          "22x9"
+        ]
+      },
+      "Jalón al pecho agarre neutro": {
+        "1": [
+          "50x8",
+          "55x7"
+        ]
+      },
+      "Remo en T": {
+        "1": [
+          "35x14",
+          "45x10"
+        ]
+      },
+      "Elevaciones laterales con mancuernas": {
+        "1": [
+          "7x10",
+          "8x8"
+        ]
+      },
+      "Curl predicador en máquina": {
+        "1": [
+          "12.5x10",
+          "12.5x7"
+        ]
+      },
+      "Extensión de tríceps en polea con barra recta": {
+        "1": [
+          "17.5x15",
+          "20x10"
+        ]
+      },
+      "Crunch abdominal en máquina (superserie)": {
+        "1": [
+          "45x10",
+          "45x12"
+        ]
+      }
+    },
+    "MAR": {
+      "Sentadilla hack en máquina": {
+        "1": [
+          "40x8",
+          "40x9"
+        ]
+      },
+      "Prensa de piernas": {
+        "1": [
+          "40x14",
+          "80x12"
+        ]
+      },
+      "Extensión de cuádriceps en máquina": {
+        "1": [
+          "25x16",
+          "40x9"
+        ]
+      },
+      "Abductor en máquina (triserie 1/3)": {
+        "1": [
+          "40x20",
+          "50x18"
+        ]
+      },
+      "Aductor en máquina (triserie 2/3)": {
+        "1": [
+          "25x20",
+          "30x20"
+        ]
+      },
+      "Gemelo sentado en máquina (triserie 3/3)": {
+        "1": [
+          "20x12",
+          "20x10"
+        ]
+      }
+    },
+    "JUE": {
+      "Jalón unilateral en polea con banco inclinado": {
+        "1": [
+          "20x12",
+          "30x7"
+        ]
+      },
+      "Remo bajo en máquina": {
+        "1": [
+          "50x12",
+          "60x5"
+        ]
+      },
+      "Elevaciones laterales en polea": {
+        "1": [
+          "7.5x10",
+          "7.5x8"
+        ]
+      },
+      "Curl de bíceps con codos apoyados (banco Scott)": {
+        "1": [
+          "12.5x10",
+          "12.5x8"
+        ]
+      },
+      "Crunch abdominal en máquina (superserie)": {
+        "1": [
+          "35x20",
+          "45x14"
+        ]
+      }
+    },
+    "VIE": {
+      "Sentadilla hack en máquina": {
+        "1": [
+          "40x8",
+          "40x8"
+        ]
+      },
+      "Prensa de piernas": {
+        "1": [
+          "66x12",
+          "79x11"
+        ]
+      },
+      "Extensión de cuádriceps en máquina": {
+        "1": [
+          "39x10",
+          "45x10"
+        ]
+      },
+      "Curl femoral sentado en máquina": {
+        "1": [
+          "39x9",
+          "45x8"
+        ]
+      },
+      "Abductor en máquina (triserie 1/3)": {
+        "1": [
+          "59x14",
+          "66x12"
+        ]
+      },
+      "Aductor en máquina (triserie 2/3)": {
+        "1": [
+          "66x15",
+          "73x12"
+        ]
+      },
+      "Gemelo sentado en máquina (triserie 3/3)": {
+        "1": [
+          "20x12",
+          "40x10"
+        ]
+      }
+    },
+    "pesoCorporal": {
+      "1": "91"
+    },
+    "pasosSemana": {
+      "1": 8200
+    }
+  },
   "perfil": {
     "edad": 22,
     "altura": 185,
