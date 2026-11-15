@@ -55,6 +55,10 @@ var CLIENTE = {
         "6": [
           "70x10",
           "74x7"
+        ],
+        "7": [
+          "74x8",
+          "74x7"
         ]
       },
       "Remo en máquina agarre neutro (2 manos)": {
@@ -81,6 +85,10 @@ var CLIENTE = {
         "6": [
           "95x9",
           "95x7"
+        ],
+        "7": [
+          "95x9",
+          "95x8"
         ]
       },
       "Press inclinado en máquina": {
@@ -107,6 +115,10 @@ var CLIENTE = {
         "6": [
           "70x8",
           "70x6"
+        ],
+        "7": [
+          "70x9",
+          "70x9"
         ]
       },
       "Laterales mancuerna (banco inclinado atrás)": {
@@ -139,6 +151,11 @@ var CLIENTE = {
           "10x5",
           "8x10",
           "8x10"
+        ],
+        "7": [
+          "8x11",
+          "8x10",
+          "8x10"
         ]
       },
       "Fondos con peso corporal (tríceps)": {
@@ -165,6 +182,10 @@ var CLIENTE = {
         "6": [
           "x8",
           "x8"
+        ],
+        "7": [
+          "x9",
+          "x7"
         ]
       },
       "Tríceps katana unilateral": {
@@ -191,6 +212,10 @@ var CLIENTE = {
         "6": [
           "4x9",
           "4x6"
+        ],
+        "7": [
+          "4x7",
+          "4x8"
         ]
       },
       "Curl mancuernas (banco inclinado atrás)": {
@@ -217,6 +242,10 @@ var CLIENTE = {
         "6": [
           "14x8",
           "14x7"
+        ],
+        "7": [
+          "14x9",
+          "14x8"
         ]
       },
       "Dragon flag (abdominales)": {
@@ -233,6 +262,11 @@ var CLIENTE = {
         "6": [
           "x10",
           "x9"
+        ],
+        "7": [
+          "x10",
+          "x10",
+          "x8"
         ]
       }
     },
@@ -368,6 +402,10 @@ var CLIENTE = {
         "6": [
           "64x8",
           "60x7"
+        ],
+        "7": [
+          "64x7",
+          "64x7"
         ]
       },
       "Peck deck (aperturas pecho)": {
@@ -394,6 +432,10 @@ var CLIENTE = {
         "6": [
           "70x10",
           "70x7"
+        ],
+        "7": [
+          "74x10",
+          "74x8"
         ]
       },
       "Press militar con mancuernas": {
@@ -420,6 +462,10 @@ var CLIENTE = {
         "6": [
           "24x8",
           "24x7"
+        ],
+        "7": [
+          "24x6",
+          "23x9"
         ]
       },
       "Elevaciones laterales en polea": {
@@ -452,6 +498,11 @@ var CLIENTE = {
           "4x10",
           "4x9",
           "4x8"
+        ],
+        "7": [
+          "4x11",
+          "4x8",
+          "4x10"
         ]
       },
       "Tríceps polea unilateral (muñequera)": {
@@ -476,6 +527,10 @@ var CLIENTE = {
           "5x9"
         ],
         "6": [
+          "5x11",
+          "5x10"
+        ],
+        "7": [
           "5x11",
           "5x10"
         ]
@@ -510,6 +565,9 @@ var CLIENTE = {
           "20x14",
           "24x9",
           "24x7"
+        ],
+        "7": [
+          "24x12"
         ]
       }
     },
@@ -538,6 +596,10 @@ var CLIENTE = {
         "6": [
           "82x7",
           "82x7"
+        ],
+        "7": [
+          "82x8",
+          "82x6"
         ]
       },
       "Remo alto en máquina (codos abiertos)": {
@@ -564,6 +626,10 @@ var CLIENTE = {
         "6": [
           "82x10",
           "82x9"
+        ],
+        "7": [
+          "82x10",
+          "82x10"
         ]
       },
       "Jalón al pecho agarre supino unilateral en máquina": {
@@ -581,6 +647,10 @@ var CLIENTE = {
         ],
         "6": [
           "54x12",
+          "58x11"
+        ],
+        "7": [
+          "58x12",
           "58x11"
         ]
       },
@@ -603,6 +673,10 @@ var CLIENTE = {
         ],
         "6": [
           "3x10",
+          "3x10"
+        ],
+        "7": [
+          "3x11",
           "3x10"
         ]
       },
@@ -629,6 +703,10 @@ var CLIENTE = {
         "6": [
           "20x12",
           "20x11"
+        ],
+        "7": [
+          "20x12",
+          "20x12"
         ]
       },
       "Curl bíceps barra (agarre ancho hombros)": {
@@ -647,6 +725,14 @@ var CLIENTE = {
         "5": [
           "30x7",
           "32x5"
+        ],
+        "6": [
+          "30x7",
+          "30x6"
+        ],
+        "7": [
+          "30x7",
+          "30x7"
         ]
       },
       "Dragon flag (abdominales)": {
@@ -669,6 +755,11 @@ var CLIENTE = {
           "x10",
           "x10",
           "x9"
+        ],
+        "7": [
+          "x11",
+          "x10",
+          "x10"
         ]
       }
     },
@@ -678,7 +769,8 @@ var CLIENTE = {
       "3": "89.9",
       "4": "91",
       "5": "90",
-      "6": "89.5"
+      "6": "89.5",
+      "7": "89.4"
     },
     "pasosSemana": {
       "4": 9200,
