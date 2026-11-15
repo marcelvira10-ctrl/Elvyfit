@@ -136,7 +136,7 @@ var CLIENTE = {
       }
     },
     "JUE": {
-      "Jalón unilateral en polea con banco inclinado": {
+      "Jalón en máquina unilateral": {
         "1": [
           "20x12",
           "30x7"
@@ -254,7 +254,8 @@ var CLIENTE = {
     "nuevosAlimentos": ["mandarina"]
   },
   "renombres": {
-    "JUE|Fondos de tríceps (en máquina o libres)": "Extensión de tríceps por encima de la cabeza unilateral en polea"
+    "JUE|Fondos de tríceps (en máquina o libres)": "Extensión de tríceps por encima de la cabeza unilateral en polea",
+    "JUE|Jalón unilateral en polea con banco inclinado": "Jalón en máquina unilateral"
   },
   "alternativas": {
     "arroz": [
@@ -1293,12 +1294,13 @@ var CLIENTE = {
       "titulo": "JUEVES — UPPER 2 · ESPALDA · PECHO · HOMBRO · BRAZO + ABS",
       "ejercicios": [
         {
-          "nombre": "Jalón unilateral en polea con banco inclinado",
+          "nombre": "Jalón en máquina unilateral",
           "reps": [
             "6-8",
             "8-10"
           ],
-          "video": "https://www.youtube.com/watch?v=8gNlj7wMklA"
+          "video": "https://youtube.com/shorts/X5e1dC0bRIk",
+          "nuevo": true
         },
         {
           "nombre": "Remo bajo en máquina",
