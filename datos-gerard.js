@@ -59,6 +59,10 @@ var CLIENTE = {
         "9": [
           "50x6",
           "40x8"
+        ],
+        "10": [
+          "32x7",
+          "30x8"
         ]
       },
       "Press máquina pecho inclinado": {
@@ -91,6 +95,10 @@ var CLIENTE = {
           "50x"
         ],
         "9": [
+          "60x6",
+          "50x8"
+        ],
+        "10": [
           "60x6",
           "50x8"
         ]
@@ -127,6 +135,10 @@ var CLIENTE = {
         "9": [
           "60x6",
           "55x8"
+        ],
+        "10": [
+          "60x7",
+          "55x8"
         ]
       },
       "Press militar en máquina": {
@@ -160,6 +172,10 @@ var CLIENTE = {
         "9": [
           "40x6",
           "30x8"
+        ],
+        "10": [
+          "40x6",
+          "30x8"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -180,6 +196,9 @@ var CLIENTE = {
         ],
         "9": [
           "12x6"
+        ],
+        "10": [
+          "10x6"
         ]
       },
       "Fondos de tríceps (en máquina o libres)": {
@@ -194,6 +213,10 @@ var CLIENTE = {
         "5": [
           "20x6",
           "20x8"
+        ],
+        "10": [
+          "x6",
+          "x6"
         ]
       },
       "Extensión tríceps polea barra recta": {
@@ -222,6 +245,10 @@ var CLIENTE = {
           "80x8"
         ],
         "9": [
+          "85x6",
+          "80x8"
+        ],
+        "10": [
           "85x6",
           "80x8"
         ]
@@ -260,6 +287,10 @@ var CLIENTE = {
         "9": [
           "80x6",
           "75x8"
+        ],
+        "10": [
+          "85x6",
+          "75x8"
         ]
       },
       "Remo máquina neutro unilateral": {
@@ -292,6 +323,10 @@ var CLIENTE = {
           "70x8"
         ],
         "9": [
+          "80x6",
+          "75x8"
+        ],
+        "10": [
           "80x6",
           "75x8"
         ]
@@ -328,6 +363,10 @@ var CLIENTE = {
         "9": [
           "80x6",
           "70x8"
+        ],
+        "10": [
+          "80x6",
+          "70x8"
         ]
       },
       "Pullover en polea": {
@@ -360,6 +399,10 @@ var CLIENTE = {
           "50x8"
         ],
         "9": [
+          "65x6",
+          "60x8"
+        ],
+        "10": [
           "65x6",
           "60x8"
         ]
@@ -396,6 +439,10 @@ var CLIENTE = {
         "9": [
           "55x6",
           "50x8"
+        ],
+        "10": [
+          "55x6",
+          "50x8"
         ]
       },
       "Curl martillo": {
@@ -430,6 +477,10 @@ var CLIENTE = {
         "9": [
           "16x6",
           "14x8"
+        ],
+        "10": [
+          "16x6",
+          "14x8"
         ]
       }
     },
@@ -462,6 +513,10 @@ var CLIENTE = {
         "9": [
           "40x6",
           "30x8"
+        ],
+        "10": [
+          "40x6",
+          "30x8"
         ]
       },
       "Elevación lateral unilateral en polea": {
@@ -490,6 +545,10 @@ var CLIENTE = {
           "15x8"
         ],
         "9": [
+          "20x6",
+          "15x8"
+        ],
+        "10": [
           "20x6",
           "15x8"
         ]
@@ -522,6 +581,10 @@ var CLIENTE = {
         "9": [
           "55x6",
           "50x8"
+        ],
+        "10": [
+          "55x6",
+          "50x8"
         ]
       },
       "Press inclinado en multipower (pecho superior)": {
@@ -548,6 +611,10 @@ var CLIENTE = {
         "9": [
           "40x6",
           "30x8"
+        ],
+        "10": [
+          "40x6",
+          "30x8"
         ]
       },
       "Cruces en polea baja (pecho inferior)": {
@@ -568,6 +635,10 @@ var CLIENTE = {
           "35x8"
         ],
         "9": [
+          "40x6",
+          "35x8"
+        ],
+        "10": [
           "40x6",
           "35x8"
         ]
@@ -598,6 +669,10 @@ var CLIENTE = {
         "9": [
           "18x6",
           "16x8"
+        ],
+        "10": [
+          "18x6",
+          "16x8"
         ]
       },
       "Curl de bíceps en polea arriba unilateral": {
@@ -624,6 +699,10 @@ var CLIENTE = {
         "9": [
           "35x6",
           "30x8"
+        ],
+        "10": [
+          "35x6",
+          "30x8"
         ]
       },
       "Curl predicador en máquina o banco": {
@@ -644,6 +723,9 @@ var CLIENTE = {
         ],
         "9": [
           "50x8"
+        ],
+        "10": [
+          "55x8"
         ]
       },
       "Extensión de tríceps en polea unilateral": {
@@ -670,6 +752,10 @@ var CLIENTE = {
         "9": [
           "35x6",
           "30x8"
+        ],
+        "10": [
+          "35x6",
+          "25x8"
         ]
       },
       "Press francés barra recta": {
@@ -684,6 +770,10 @@ var CLIENTE = {
         "9": [
           "30x6",
           "30x9"
+        ],
+        "10": [
+          "30x6",
+          "30x10"
         ]
       }
     },
@@ -691,14 +781,19 @@ var CLIENTE = {
       "6": "99",
       "7": "98.7",
       "8": "98.1",
-      "9": "99"
+      "9": "99",
+      "10": "97.4"
     },
     "pasosSemana": {
       "7": 17000,
-      "8": 20000
+      "8": 20000,
+      "10": 15000
     }
   },
-  "kcal": 2300,
+  "ajuste": {
+    "desdeKcal": 2300
+  },
+  "kcal": 2500,
   "peso": 99,
   "pasos": 15000,
   "ratios": {
@@ -708,9 +803,7 @@ var CLIENTE = {
   "gastoTotal": 3230,
   "soloEstos": [
     "arroz",
-    "pasta",
-    "patata",
-    "boniato"
+    "pasta"
   ],
   "perfil": {
     "edad": 21,
@@ -735,8 +828,8 @@ var CLIENTE = {
   ],
   "historial": [
     {
-      "fecha": "19 oct",
-      "texto": "Recomposición: 2.300 kcal al día con 158 g de proteína, 59 g de grasa y 284 g de carbohidratos. Entreno en RIR 1-2 hasta el alta del cardiólogo. 15.000 pasos al día."
+      "fecha": "17 nov",
+      "texto": "Subimos a 2.500 kcal al día: +200 kcal de carbohidratos, todo en la comida (más arroz o pasta). La proteína (158 g) y la grasa (59 g) siguen igual; los carbohidratos pasan a 334 g. El resto del plan sigue igual: entreno en RIR 1-2 hasta el alta del cardiólogo y 15.000 pasos al día."
     }
   ],
   "dias": [
@@ -775,7 +868,7 @@ var CLIENTE = {
           "items": [
             [
               "arroz",
-              110
+              120
             ],
             [
               "pollo",
@@ -823,7 +916,7 @@ var CLIENTE = {
           "items": [
             [
               "patata",
-              360
+              390
             ],
             [
               "salmon",
@@ -872,7 +965,7 @@ var CLIENTE = {
           "items": [
             [
               "pasta",
-              135
+              115
             ],
             [
               "atun",
@@ -920,7 +1013,7 @@ var CLIENTE = {
           "items": [
             [
               "boniato",
-              360
+              315
             ],
             [
               "pavo",
@@ -973,7 +1066,7 @@ var CLIENTE = {
           "items": [
             [
               "arroz",
-              110
+              115
             ],
             [
               "pavo",
@@ -1021,7 +1114,7 @@ var CLIENTE = {
           "items": [
             [
               "patata",
-              360
+              370
             ],
             [
               "merluza",
@@ -1118,7 +1211,7 @@ var CLIENTE = {
           "items": [
             [
               "patata",
-              360
+              370
             ],
             [
               "ternera",
@@ -1171,7 +1264,7 @@ var CLIENTE = {
           "items": [
             [
               "pasta",
-              135
+              145
             ],
             [
               "atun",
@@ -1223,7 +1316,7 @@ var CLIENTE = {
           "items": [
             [
               "patata",
-              360
+              385
             ],
             [
               "pollo",
@@ -1272,7 +1365,7 @@ var CLIENTE = {
           "items": [
             [
               "arroz",
-              55
+              75
             ],
             [
               "pollo",
@@ -1316,7 +1409,7 @@ var CLIENTE = {
           "items": [
             [
               "patata",
-              360
+              495
             ],
             [
               "pollo",
@@ -1369,7 +1462,7 @@ var CLIENTE = {
           "items": [
             [
               "arroz",
-              110
+              70
             ],
             [
               "ternera",
@@ -1417,7 +1510,7 @@ var CLIENTE = {
           "items": [
             [
               "boniato",
-              360
+              235
             ],
             [
               "salmon",
