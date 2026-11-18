@@ -14,6 +14,8 @@
 if (typeof ELVYFIT !== "undefined") {
   ELVYFIT.ALIMENTOS.miel     = ELVYFIT.ALIMENTOS.miel     || { n:"Miel",     p:0.4, c:80.0, g:0.0, crudo:false, ok:false, cat:"carbo" };
   ELVYFIT.ALIMENTOS.espinaca = ELVYFIT.ALIMENTOS.espinaca || { n:"Espinaca", p:2.9, c:1.4,  g:0.4, crudo:false, ok:false, cat:"verdura" };
+  /* Patata de la COMIDA (C2): es la que sube con las kcal extra. La de la cena no se mueve. */
+  ELVYFIT.ALIMENTOS.patata_comida = ELVYFIT.ALIMENTOS.patata_comida || Object.assign({}, ELVYFIT.ALIMENTOS.patata, { n: "Patata (comida)" });
 }
 
 var CLIENTE = {
@@ -29,7 +31,7 @@ var CLIENTE = {
      solo subes kcal, TODO lo que sube son carbohidratos.
      ══════════════════════════════════════════════════ */
 
-  kcal:  3550,     /* kcal al día */
+  kcal:  3750,     /* kcal al día */
   peso:  64,       /* kg — de aquí salen la proteína y la grasa */
   pasos: 9579,     /* media diaria de pasos */
 
@@ -42,7 +44,7 @@ var CLIENTE = {
 
   /* SOLO se mueven estos alimentos al cambiar kcal. El resto del plan queda igual.
      Marc decide cada cambio; si no hay lista, se reparte entre todos. */
-  soloEstos: ["patata", "avena"],
+  soloEstos: ["patata_comida"],
 
   /* --- DATOS PARA CALCULAR SU GASTO --- */
   perfil: {
@@ -56,10 +58,10 @@ var CLIENTE = {
          "desdeKcal" = las kcal que tenía justo antes de este cambio.          --- */
   /* desdeKcal = las kcal de ANTES del último cambio. Cada vez que cambies kcal,
      pon aquí la cifra vieja: así el planning enseña ▲ / ▼ de lo que cambia. */
-  ajuste: { desdeKcal: 3300 },
+  ajuste: { desdeKcal: 3550 },
   /* --- ÚLTIMO AJUSTE: sale en el Perfil. Solo lo nuevo, sin números viejos --- */
   historial: [
-    { fecha: "19 oct", texto: "Subimos a 3.550 kcal al día. Solo cambian la patata y la avena; el resto del plan queda igual. Proteína y grasa con el método de siempre (1,6 y 0,6 g/kg)." }
+    { fecha: "18 nov", texto: "Subimos a 3.750 kcal al día: +200 kcal de carbohidratos, todos en la comida (más patata). La proteína y la grasa siguen igual. El resto del plan no cambia." }
   ],
 
   /* --- LAS 4 COMIDAS: ESTO ES LA BASE --- */
@@ -88,7 +90,7 @@ var CLIENTE = {
           clase:  "c2",
           items: [
             ["arroz", 40],
-            ["patata", 380],
+            ["patata_comida", 380],
             ["brocoli", 120],
             ["aove", 4]
           ]
@@ -137,7 +139,7 @@ var CLIENTE = {
           clase:  "c2",
           items: [
             ["arroz", 40],
-            ["patata", 380],
+            ["patata_comida", 380],
             ["zanahoria", 120],
             ["aove", 4]
           ]
@@ -185,7 +187,7 @@ var CLIENTE = {
           titulo: "🍖 C2 · ALMUERZO",
           clase:  "c2",
           items: [
-            ["patata", 560],
+            ["patata_comida", 560],
             ["judia_verde", 120],
             ["aove", 4]
           ]
@@ -234,7 +236,7 @@ var CLIENTE = {
           clase:  "c2",
           items: [
             ["pasta", 40],
-            ["patata", 380],
+            ["patata_comida", 380],
             ["calabacin", 120],
             ["aove", 4]
           ]
@@ -283,7 +285,7 @@ var CLIENTE = {
           clase:  "c2",
           items: [
             ["arroz", 40],
-            ["patata", 380],
+            ["patata_comida", 380],
             ["brocoli", 120],
             ["aove", 4]
           ]
@@ -332,6 +334,7 @@ var CLIENTE = {
           clase:  "c2",
           items: [
             ["boniato", 540],
+            ["patata_comida", 150],
             ["zanahoria", 120],
             ["aove", 4]
           ]
@@ -379,7 +382,7 @@ var CLIENTE = {
           titulo: "🍖 C2 · ALMUERZO",
           clase:  "c2",
           items: [
-            ["patata", 560],
+            ["patata_comida", 560],
             ["judia_verde", 120],
             ["aove", 4]
           ]
@@ -529,6 +532,7 @@ var CLIENTE = {
     pan_espelta: "Pan de espelta integral, tostado",
     pasta: "Pasta",
     patata: "Patata, cocida o al horno",
+    patata_comida: "Patata, cocida o al horno (comida)",
     platano: "Plátano",
     zanahoria: "Zanahoria"
   }
