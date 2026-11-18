@@ -488,31 +488,37 @@ var CLIENTE = {
   progreso: {
     pesoCorporal: { 1: "64,8", 2: "64", 3: "64,9", 4: "65,5" },
     D1: {
-      "Press máquina pecho plano": { 1: ["20x8", "22,5x8", "22,5x6"], 2: ["20x10", "20x10", "20x10"], 3: ["20x10", "20x10", "22,5x4"] },
-      "Press máquina pecho inclinado": { 1: ["30x8", "30x9"], 2: ["40x4", "40x5"], 3: ["40x8", "40x8"] },
-      "Pec Deck (aperturas)": { 1: ["25x10", "25x"], 2: ["45x8", "45x7"], 3: ["45x8", "45x8"] },
-      "Press militar en máquina": { 1: ["20x8", "20x8"], 2: ["20x8", "20x8"], 3: ["20x6", "20x6"] },
-      "Elevaciones laterales mancuernas": { 1: ["10x8", "10x8", "10x8"], 2: ["10x10", "10x12", "10x12"], 3: ["15x8", "15x8", "15x8"] },
-      "Tríceps katana unilateral en polea": { 1: ["15x10", "15x10", "15x10"], 2: ["15x12", "15x12", "15x12"], 3: ["15x10", "15x10", "15x10"] },
-      "Extensión tríceps polea barra recta": { 1: ["40x10", "40x10"], 2: ["45x7", "45x8"], 3: ["45x10", "45x8"] }
+      "Press máquina pecho plano": { 1: ["20x8", "22,5x8", "22,5x6"], 2: ["20x10", "20x10", "20x10"], 3: ["20x10", "20x10", "22,5x4"], "4": ["22,5x8", "22,5x8", "22,5x8"] },
+      "Press máquina pecho inclinado": { 1: ["30x8", "30x9"], 2: ["40x4", "40x5"], 3: ["40x8", "40x8"], "4": ["45x8", "45x6"] },
+      "Pec Deck (aperturas)": { 1: ["25x10", "25x"], 2: ["45x8", "45x7"], 3: ["45x8", "45x8"], "4": ["45x10", "45x10"] },
+      "Press militar en máquina": { 1: ["20x8", "20x8"], 2: ["20x8", "20x8"], 3: ["20x6", "20x6"], "4": ["25x8", "25x6"] },
+      "Elevaciones laterales mancuernas": { 1: ["10x8", "10x8", "10x8"], 2: ["10x10", "10x12", "10x12"], 3: ["15x8", "15x8", "15x8"], "4": ["15x10", "15x10", "15x10"] },
+      "Tríceps katana unilateral en polea": { 1: ["15x10", "15x10", "15x10"], 2: ["15x12", "15x12", "15x12"], 3: ["15x10", "15x10", "15x10"], "4": ["15x10", "15x10", "15x10"] },
+      "Extensión tríceps polea barra recta": { 1: ["40x10", "40x10"], 2: ["45x7", "45x8"], 3: ["45x10", "45x8"], "4": ["45x10", "45x10"] },
     },
     D2: {
-      "Jalón al pecho agarre prono": { 1: ["50x6", "50x6", "50x6"], 2: ["50x5", "50x6", "50x6"], 3: ["55x6", "55x7", "55x7"] },
-      "Remo máquina neutro unilateral": { 1: ["40x8", "40x8", "40x6"], 2: ["40x8", "40x8", "40x8"], 3: ["40x8", "40x10", "40x10"] },
-      "Jalón al pecho agarre cerrado": { 1: ["15x8", "15x10"], 2: ["15x8", "15x8"], 3: ["15x10", "15x10"] },
-      "Pullover en polea": { 1: ["35x10", "35x10"], 2: ["40x10", "40x11"], 3: ["40x12", "40x12"] },
-      "Curl predicador máquina": { 1: ["15x8", "15x8", "15x8"], 2: ["15x8", "15x8", "15x8"], 3: ["15x10", "15x10", "15x10"] },
-      "Curl martillo": { 1: ["10x10", "10x10"], 2: ["10x10", "10x10"], 3: ["10x10", "10x10"] }
+      "Jalón al pecho agarre prono": { 1: ["50x6", "50x6", "50x6"], 2: ["50x5", "50x6", "50x6"], 3: ["55x6", "55x7", "55x7"], "4": ["55x8", "55x8", "55x8"] },
+      "Remo máquina neutro unilateral": { 1: ["40x8", "40x8", "40x6"], 2: ["40x8", "40x8", "40x8"], 3: ["40x8", "40x10", "40x10"], "4": ["50x8", "50x7", "50x6"] },
+      "Jalón al pecho agarre cerrado": { 1: ["15x8", "15x10"], 2: ["15x8", "15x8"], 3: ["15x10", "15x10"], "4": ["20x8", "20x8"] },
+      "Pullover en polea": { 1: ["35x10", "35x10"], 2: ["40x10", "40x11"], 3: ["40x12", "40x12"], "4": ["45x10", "45x8"] },
+      "Curl predicador máquina": { 1: ["15x8", "15x8", "15x8"], 2: ["15x8", "15x8", "15x8"], 3: ["15x10", "15x10", "15x10"], "4": ["17,5x8", "17,5x8", "17,5x8"] },
+      "Curl martillo": { 1: ["10x10", "10x10"], 2: ["10x10", "10x10"], 3: ["10x10", "10x10"], "4": ["12,5x8", "12,5x7"] },
     },
     D4: {
-      "Press militar con mancuernas": { 1: ["15x10", "15x10"], 2: ["20x8", "20x8"], 3: ["20x8", "20x8"] },
-      "Elevación lateral unilateral en polea": { 1: ["10x6", "10x7", "10x7"], 2: ["10x8", "10x8", "10x8"], 3: ["10x8", "10x10", "10x10"] },
-      "Pájaros en máquina (Pec Deck invertido)": { 1: ["25x10", "25x10"], 2: ["30x10", "30x10"], 3: ["35x10", "35x10"] },
-      "Press inclinado en multipower (pecho superior)": { 1: ["20x10", "20x10", "20x10"], 2: ["22,5x8", "22,5x8", "22,5x8"], 3: ["22,5x8", "22,5x8", "22,5x8"] },
-      "Cruces en polea baja (pecho inferior)": { 2: ["25x10", "25x10", "25x10"], 3: ["30x8", "30x8", "30x8"] }
+      "Press militar con mancuernas": { 1: ["15x10", "15x10"], 2: ["20x8", "20x8"], 3: ["20x8", "20x8"], "4": ["20x10", "20x10"] },
+      "Elevación lateral unilateral en polea": { 1: ["10x6", "10x7", "10x7"], 2: ["10x8", "10x8", "10x8"], 3: ["10x8", "10x10", "10x10"], "4": ["10x10", "10x10", "10x10"] },
+      "Pájaros en máquina (Pec Deck invertido)": { 1: ["25x10", "25x10"], 2: ["30x10", "30x10"], 3: ["35x10", "35x10"], "4": ["40x8", "40x8"] },
+      "Press inclinado en multipower (pecho superior)": { 1: ["20x10", "20x10", "20x10"], 2: ["22,5x8", "22,5x8", "22,5x8"], 3: ["22,5x8", "22,5x8", "22,5x8"], "4": ["25x8", "25x6", "25x6"] },
+      "Cruces en polea baja (pecho inferior)": { 2: ["25x10", "25x10", "25x10"], 3: ["30x8", "30x8", "30x8"], "4": ["35x8", "35x7", "35x7"] },
+    },
+    D5: {
+      "Curl de bíceps tumbado en banco": { "4": ["20x8", "20x8", "20x8"] },
+      "Curl de bíceps en polea arriba unilateral": { "4": ["25x8", "25x8"] },
+      "Curl predicador en máquina o banco": { "4": ["17,5x10", "17,5x10"] },
+      "Extensión de tríceps en polea unilateral": { "4": ["15x10", "15x10", "15x10"] },
+      "Press francés barra recta": { "4": ["15x10", "15x10", "15x10"] }
     }
   },
-
   /* --- CÓMO SE LLAMA CADA ALIMENTO EN SU PLAN --- */
   /*  Cambia solo cómo se lee, no afecta a las cuentas  */
   textos: {
