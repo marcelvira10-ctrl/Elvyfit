@@ -31,7 +31,7 @@ var CLIENTE = {
 
   kcal:  3550,     /* kcal al día */
   peso:  64,       /* kg — de aquí salen la proteína y la grasa */
-  pasos: 9000,     /* media diaria de pasos */
+  pasos: 9579,     /* media diaria de pasos */
 
   /* proteína 1,6 g/kg · grasa 0,6 g/kg · el resto a carbohidratos.
      Con tantos carbos, la avena, el pan y la patata ya traen mucha
@@ -483,7 +483,7 @@ var CLIENTE = {
      PROGRESO; lo que él apunte en el móvil manda encima.
      ══════════════════════════════════════════════════ */
   progreso: {
-    pesoCorporal: { 1: "64,8", 2: "64", 3: "64,9" },
+    pesoCorporal: { 1: "64,8", 2: "64", 3: "64,9", 4: "65,5" },
     D1: {
       "Press máquina pecho plano": { 1: ["20x8", "22,5x8", "22,5x6"], 2: ["20x10", "20x10", "20x10"], 3: ["20x10", "20x10", "22,5x4"] },
       "Press máquina pecho inclinado": { 1: ["30x8", "30x9"], 2: ["40x4", "40x5"], 3: ["40x8", "40x8"] },
