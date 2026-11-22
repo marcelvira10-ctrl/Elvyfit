@@ -28,7 +28,7 @@ var CLIENTE = {
   "clave": "amaro_plan_v12",
   "claveAntigua": "amaro_tracking_v1",
   "kcal": 2950,
-  "peso": 68.4,
+  "peso": 67,
   "pasos": 8000,
   "ratios": {
     "p": 3.19,
@@ -59,7 +59,7 @@ var CLIENTE = {
   "historial": [
     {
       "fecha": "22 nov",
-      "texto": "Recomposición corporal: 2.950 kcal al día (P 96 · C 492 · G 67, lo que pone su planning). Mismas kcal: arroz o pasta de la comida 250 → 200 g y patata de la cena 340 → 570 g; fuera la crema de cacahuete y más aceite de oliva (desayuno 15 ml, comida 15 ml, cena 10 ml)."
+      "texto": "Recomposición corporal: 2.950 kcal al día (P 107 · C 492 · G 62, lo que pone su planning; proteína 1,6 g/kg con 67 kg). Mismas kcal: arroz o pasta de la comida 250 → 200 g y patata de la cena 340 → 570 g; fuera la crema de cacahuete, aceite de oliva en desayuno 15 ml, comida 10 ml y cena 8 ml; carne y pescado a 165 g en comida y cena."
     }
   ],
   "dias": [
@@ -1385,9 +1385,9 @@ var CLIENTE = {
     "resumen": "22 años, 1,72 m. Entrena 5 días con todas las series al fallo (RIR 0). La pierna la hace con el Día 3 variante por molestias lumbares. Prepara una Spartan de 5 km en septiembre.",
     "macros": {
       "kcal": 2950,
-      "p": 96,
+      "p": 107,
       "c": 492,
-      "g": 67,
+      "g": 62,
       "nota": "Son los números que pone su planning (contados al alza). Sumando los gramos del plato sale bastante más: ~3.600 kcal y ~195 g de proteína si se lo come todo."
     },
     "gasto": false,
@@ -1473,7 +1473,7 @@ var CLIENTE = {
       },
       {
         "titulo": "🍽️ C3 — Comida",
-        "kcal": 780,
+        "kcal": 770,
         "items": [
           [
             "Arroz (integral o blanco) o pasta, en crudo",
@@ -1481,7 +1481,7 @@ var CLIENTE = {
           ],
           [
             "Carne o pescado",
-            "140 g"
+            "165 g"
           ],
           [
             "Verdura",
@@ -1489,7 +1489,7 @@ var CLIENTE = {
           ],
           [
             "Aceite de oliva",
-            "15 ml"
+            "10 ml"
           ]
         ],
         "nota": "La proteína y la verdura cambian cada día."
@@ -1518,11 +1518,11 @@ var CLIENTE = {
       },
       {
         "titulo": "🌙 C5 — Cena",
-        "kcal": 625,
+        "kcal": 640,
         "items": [
           [
             "Carne o pescado",
-            "140 g"
+            "165 g"
           ],
           [
             "Ensalada o verdura",
@@ -1534,7 +1534,7 @@ var CLIENTE = {
           ],
           [
             "Aceite de oliva",
-            "10 ml"
+            "8 ml"
           ],
           [
             "Yogur de proteína",
@@ -1607,6 +1607,10 @@ var CLIENTE = {
       {
         "fecha": "22/11",
         "texto": "Semana 12: 67,0 kg (−1,8 desde los 68,8 del 8/11; −1,3 desde los 68,3 del 25/10). Fuerza +1,8 % de media (15 suben, 10 igual, 2 bajan). Jalón prono por fin a 77,6 kg (6 · 8 · 9) y Hammer 77,6×8. Prensa y extensión con otros pesos (30 y 20 kg): pendiente de saber si es otra máquina."
+      },
+      {
+        "fecha": "22/11",
+        "texto": "Proteína a 1,6 g/kg (107 g con 67 kg): carne y pescado 140 → 165 g en comida y cena; para mismas kcal, aceite de la comida 15 → 10 ml y de la cena 10 → 8 ml. Macros P 107 · C 492 · G 62."
       }
     ]
   },
