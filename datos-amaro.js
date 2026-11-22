@@ -58,8 +58,8 @@ var CLIENTE = {
   "ajuste": { "desdeKcal": 3150 },
   "historial": [
     {
-      "fecha": "8 nov",
-      "texto": "Recomposición corporal: 2.950 kcal al día (P 105 · C 499 · G 61, lo que pone su planning). Bajamos 200 kcal quitando 260 g de patata en la cena: de 600 a 340 g todos los días. Dos semanas en 68,8 kg."
+      "fecha": "22 nov",
+      "texto": "Recomposición corporal: 2.950 kcal al día (P 105 · C 499 · G 61, lo que pone su planning). Mismas kcal, pasamos hidratos de la comida a la cena: arroz o pasta 250 → 200 g y patata de la cena 340 → 570 g, que por la noche le entra mejor."
     }
   ],
   "dias": [
@@ -1477,11 +1477,11 @@ var CLIENTE = {
       },
       {
         "titulo": "🍽️ C3 — Comida",
-        "kcal": 870,
+        "kcal": 695,
         "items": [
           [
             "Arroz (integral o blanco) o pasta, en crudo",
-            "250 g"
+            "200 g"
           ],
           [
             "Carne o pescado",
@@ -1526,7 +1526,7 @@ var CLIENTE = {
       },
       {
         "titulo": "🌙 C5 — Cena",
-        "kcal": 365,
+        "kcal": 540,
         "items": [
           [
             "Carne o pescado",
@@ -1538,7 +1538,7 @@ var CLIENTE = {
           ],
           [
             "Patata",
-            "340 g"
+            "570 g"
           ],
           [
             "Yogur de proteína",
@@ -1597,6 +1597,10 @@ var CLIENTE = {
       {
         "fecha": "8/11",
         "texto": "−200 kcal: 3.150 → 2.950. Patata de la cena 600 → 340 g todos los días. El resto, igual."
+      },
+      {
+        "fecha": "22/11",
+        "texto": "Mismas 2.950 kcal: arroz o pasta de la comida 250 → 200 g y patata de la cena 340 → 570 g (+230 g), porque por la noche le entra mejor."
       }
     ]
   },
