@@ -63,6 +63,10 @@ var CLIENTE = {
         "10": [
           "32x7",
           "30x8"
+        ],
+        "11": [
+          "32x7",
+          "30x8"
         ]
       },
       "Press máquina pecho inclinado": {
@@ -99,6 +103,10 @@ var CLIENTE = {
           "50x8"
         ],
         "10": [
+          "60x6",
+          "50x8"
+        ],
+        "11": [
           "60x6",
           "50x8"
         ]
@@ -139,6 +147,10 @@ var CLIENTE = {
         "10": [
           "60x7",
           "55x8"
+        ],
+        "11": [
+          "60x7",
+          "55x8"
         ]
       },
       "Press militar en máquina": {
@@ -176,6 +188,10 @@ var CLIENTE = {
         "10": [
           "40x6",
           "30x8"
+        ],
+        "11": [
+          "40x6",
+          "30x8"
         ]
       },
       "Elevaciones laterales mancuernas": {
@@ -199,6 +215,9 @@ var CLIENTE = {
         ],
         "10": [
           "10x6"
+        ],
+        "11": [
+          "10x6"
         ]
       },
       "Fondos de tríceps (en máquina o libres)": {
@@ -217,6 +236,10 @@ var CLIENTE = {
         "10": [
           "x6",
           "x6"
+        ],
+        "11": [
+          "97x8",
+          "97x6"
         ]
       },
       "Extensión tríceps polea barra recta": {
@@ -249,6 +272,10 @@ var CLIENTE = {
           "80x8"
         ],
         "10": [
+          "85x6",
+          "80x8"
+        ],
+        "11": [
           "85x6",
           "80x8"
         ]
@@ -291,6 +318,10 @@ var CLIENTE = {
         "10": [
           "85x6",
           "75x8"
+        ],
+        "11": [
+          "85x6",
+          "70x8"
         ]
       },
       "Remo máquina neutro unilateral": {
@@ -327,6 +358,10 @@ var CLIENTE = {
           "75x8"
         ],
         "10": [
+          "80x6",
+          "75x8"
+        ],
+        "11": [
           "80x6",
           "75x8"
         ]
@@ -367,6 +402,10 @@ var CLIENTE = {
         "10": [
           "80x6",
           "70x8"
+        ],
+        "11": [
+          "80x6",
+          "70x8"
         ]
       },
       "Pullover en polea": {
@@ -403,6 +442,10 @@ var CLIENTE = {
           "60x8"
         ],
         "10": [
+          "65x6",
+          "60x8"
+        ],
+        "11": [
           "65x6",
           "60x8"
         ]
@@ -443,6 +486,10 @@ var CLIENTE = {
         "10": [
           "55x6",
           "50x8"
+        ],
+        "11": [
+          "55x6",
+          "50x8"
         ]
       },
       "Curl martillo": {
@@ -481,6 +528,10 @@ var CLIENTE = {
         "10": [
           "16x6",
           "14x8"
+        ],
+        "11": [
+          "16x6",
+          "14x8"
         ]
       }
     },
@@ -517,6 +568,10 @@ var CLIENTE = {
         "10": [
           "40x6",
           "30x8"
+        ],
+        "11": [
+          "40x6",
+          "35x8"
         ]
       },
       "Elevación lateral unilateral en polea": {
@@ -549,6 +604,10 @@ var CLIENTE = {
           "15x8"
         ],
         "10": [
+          "20x6",
+          "15x8"
+        ],
+        "11": [
           "20x6",
           "15x8"
         ]
@@ -585,6 +644,10 @@ var CLIENTE = {
         "10": [
           "55x6",
           "50x8"
+        ],
+        "11": [
+          "55x6",
+          "50x8"
         ]
       },
       "Press inclinado en multipower (pecho superior)": {
@@ -615,6 +678,10 @@ var CLIENTE = {
         "10": [
           "40x6",
           "30x8"
+        ],
+        "11": [
+          "40x6",
+          "35x8"
         ]
       },
       "Cruces en polea baja (pecho inferior)": {
@@ -639,6 +706,10 @@ var CLIENTE = {
           "35x8"
         ],
         "10": [
+          "40x6",
+          "35x8"
+        ],
+        "11": [
           "40x6",
           "35x8"
         ]
@@ -673,6 +744,10 @@ var CLIENTE = {
         "10": [
           "18x6",
           "16x8"
+        ],
+        "11": [
+          "18x6",
+          "16x8"
         ]
       },
       "Curl de bíceps en polea arriba unilateral": {
@@ -703,6 +778,10 @@ var CLIENTE = {
         "10": [
           "35x6",
           "30x8"
+        ],
+        "11": [
+          "35x6",
+          "30x8"
         ]
       },
       "Curl predicador en máquina o banco": {
@@ -725,6 +804,9 @@ var CLIENTE = {
           "50x8"
         ],
         "10": [
+          "55x8"
+        ],
+        "11": [
           "55x8"
         ]
       },
@@ -756,6 +838,10 @@ var CLIENTE = {
         "10": [
           "35x6",
           "25x8"
+        ],
+        "11": [
+          "35x6",
+          "25x8"
         ]
       },
       "Press francés barra recta": {
@@ -774,6 +860,10 @@ var CLIENTE = {
         "10": [
           "30x6",
           "30x10"
+        ],
+        "11": [
+          "30x6",
+          "30x10"
         ]
       }
     },
@@ -782,12 +872,14 @@ var CLIENTE = {
       "7": "98.7",
       "8": "98.1",
       "9": "99",
-      "10": "97.4"
+      "10": "97.4",
+      "11": "96.9"
     },
     "pasosSemana": {
       "7": 17000,
       "8": 20000,
-      "10": 15000
+      "10": 15000,
+      "11": 17000
     }
   },
   "ajuste": {
@@ -817,7 +909,7 @@ var CLIENTE = {
     "deporteMin": 40
   },
   "entreno": {
-    "detalle": "❤️ <b>RIR 1-2, sin llegar al fallo</b> hasta el alta del cardiólogo · ⏱️ <b>2:30 entre series</b> · tempo 2-1-1",
+    "detalle": "📈 <b>Doble progresión:</b> 1ª serie 6-8 reps y 2ª 8-10. Con el mismo peso, cada semana una rep más; cuando llegues arriba (8 y 10) en todas las series, sube peso · ❤️ <b>RIR 1-2, sin llegar al fallo</b> hasta el alta del cardiólogo · ⏱️ <b>2:30 entre series</b> · tempo 2-1-1",
     "tip": "🎬 Toca «Ver vídeo». Respira siempre, nunca aguantes el aire al empujar. Apunta kg y reps en Progreso."
   },
   "extraCompra": [
@@ -1541,55 +1633,55 @@ var CLIENTE = {
         {
           "nombre": "Press plano con mancuernas",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://www.youtube.com/watch?v=jrDDz7x1Dpo"
         },
         {
           "nombre": "Press máquina pecho inclinado",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/MlLOzsUSZZg"
         },
         {
           "nombre": "Pec Deck (aperturas)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/rfVptEGJOsU"
         },
         {
           "nombre": "Press militar en máquina",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/1UzJs7-v4Hk"
         },
         {
           "nombre": "Elevaciones laterales mancuernas",
           "reps": [
-            "6"
+            "6-8"
           ],
           "video": "https://youtube.com/shorts/QgpNsybiDoE"
         },
         {
           "nombre": "Fondos de tríceps (en máquina o libres)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/N1Yd3QvShQE"
         },
         {
           "nombre": "Extensión tríceps polea barra recta",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/jDEmN9FwS1U"
         }
@@ -1606,48 +1698,48 @@ var CLIENTE = {
         {
           "nombre": "Jalón al pecho agarre prono",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/ON-RH5nYzcU"
         },
         {
           "nombre": "Remo máquina neutro unilateral",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/RlN63rVkCGk"
         },
         {
           "nombre": "Jalón al pecho agarre cerrado",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/mtyPkNukKKE"
         },
         {
           "nombre": "Pullover en polea",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/0CMRVXlo80c"
         },
         {
           "nombre": "Curl predicador máquina",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Curl martillo",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/pYziGLf2EsA"
         }
@@ -1722,40 +1814,40 @@ var CLIENTE = {
         {
           "nombre": "Press militar con mancuernas",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/cNBXWUd9e_8"
         },
         {
           "nombre": "Elevación lateral unilateral en polea",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/YnKUoDiszTY"
         },
         {
           "nombre": "Pájaros en máquina (Pec Deck invertido)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/Sws1EXvDTYU"
         },
         {
           "nombre": "Press inclinado en multipower (pecho superior)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/EXTwFezH_tQ"
         },
         {
           "nombre": "Cruces en polea baja (pecho inferior)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/JZ6oKKEY2NY"
         }
@@ -1772,47 +1864,47 @@ var CLIENTE = {
         {
           "nombre": "Remo en máquina convergente (Hammer Strength)",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/gGsRlXt2E00"
         },
         {
           "nombre": "Curl de bíceps tumbado en banco",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/2bzTfdB3j4M"
         },
         {
           "nombre": "Curl de bíceps en polea arriba unilateral",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/7kLT9OxHyw0"
         },
         {
           "nombre": "Curl predicador en máquina o banco",
           "reps": [
-            "6"
+            "6-8"
           ],
           "video": "https://youtube.com/shorts/zk8JJELT6dE"
         },
         {
           "nombre": "Extensión de tríceps en polea unilateral",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/hip11n3QXzU"
         },
         {
           "nombre": "Press francés barra recta",
           "reps": [
-            "6",
-            "8"
+            "6-8",
+            "8-10"
           ],
           "video": "https://youtube.com/shorts/cp_UtwkkDP4"
         }
