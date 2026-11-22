@@ -15,8 +15,8 @@ h1,h2,h3,.bebas{font-family:'Bebas Neue';letter-spacing:1px;font-weight:400;}
 /* NAV toggle */
 .main-sec{display:none;padding:30px 18px 40px;max-width:1180px;margin:0 auto;animation:fade .25s ease;}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-#r0:checked~main .s0,#r1:checked~main .s1,#r2:checked~main .s2,#r3:checked~main .s3,#r4:checked~main .s4,#r5:checked~main .s5,#r6:checked~main .s6,#r7:checked~main .s7,#r8:checked~main .s8,#r9:checked~main .s9{display:block;}
-#r0:checked~nav .t0,#r1:checked~nav .t1,#r2:checked~nav .t2,#r3:checked~nav .t3,#r4:checked~nav .t4,#r5:checked~nav .t5,#r6:checked~nav .t6,#r7:checked~nav .t7,#r8:checked~nav .t8,#r9:checked~nav .t9{color:var(--red);border-bottom-color:var(--red);}
+#r0:checked~main .s0,#r1:checked~main .s1,#r2:checked~main .s2,#r3:checked~main .s3,#r4:checked~main .s4,#r5:checked~main .s5,#r6:checked~main .s6,#r7:checked~main .s7,#r8:checked~main .s8,#r9:checked~main .s9,#r10:checked~main .s10{display:block;}
+#r0:checked~nav .t0,#r1:checked~nav .t1,#r2:checked~nav .t2,#r3:checked~nav .t3,#r4:checked~nav .t4,#r5:checked~nav .t5,#r6:checked~nav .t6,#r7:checked~nav .t7,#r8:checked~nav .t8,#r9:checked~nav .t9,#r10:checked~nav .t10{color:var(--red);border-bottom-color:var(--red);}
 
 /* HERO */
 .hero{position:relative;text-align:center;padding:46px 20px 38px;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at 50% -10%,rgba(229,9,20,.25),transparent 55%),#0a0a0a;}
@@ -186,6 +186,15 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 .opt-b{margin-top:12px;padding:12px;border:1px dashed var(--orange);border-radius:10px;background:rgba(245,166,35,.05);font-size:13px}
 .opt-b-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:700;color:#fff;margin-bottom:6px;font-size:12.5px}
 .opt-b-nota{font-size:11px;color:var(--gray);margin-top:8px;line-height:1.5}
+.var-sub{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:#fff;margin:22px 0 10px}
+.var-pasos{margin:8px 0 0 18px;font-size:12px;color:var(--light-gray);line-height:1.55}
+.var-pasos li{margin:3px 0}
+.var-aud{font-size:11px;color:#4cd98a;margin-top:8px;font-weight:600}
+.var-tab{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px}
+.var-tab th{text-align:left;color:var(--gray);font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:6px 4px;border-bottom:1px solid var(--border)}
+.var-tab td{padding:7px 4px;border-bottom:1px dotted rgba(255,255,255,.08);color:var(--light-gray);vertical-align:top}
+.var-tab td.r{text-align:right;white-space:nowrap;color:#fff;font-weight:700}
+.obj-tab td.c{text-align:center;font-weight:700}
 .ex-ss{font-size:11.5px;color:#ffd84d;margin-top:9px;background:rgba(255,216,77,.07);padding:7px 10px;border-radius:6px;border-left:3px solid #ffd84d}
 .gst{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
 .gst td{padding:7px 4px;border-bottom:1px dotted rgba(255,255,255,.08);color:var(--light-gray)}
@@ -197,7 +206,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
 .wk-d b{display:block;font-family:'Bebas Neue';font-size:16px;letter-spacing:.5px;color:#fff;font-weight:400}
 </style></head><body>
 
-<input type="radio" id="r0" class="tgl" name="nav" checked><input type="radio" id="r1" class="tgl" name="nav"><input type="radio" id="r2" class="tgl" name="nav"><input type="radio" id="r3" class="tgl" name="nav"><input type="radio" id="r4" class="tgl" name="nav"><input type="radio" id="r5" class="tgl" name="nav"><input type="radio" id="r6" class="tgl" name="nav"><input type="radio" id="r7" class="tgl" name="nav"><input type="radio" id="r8" class="tgl" name="nav"><input type="radio" id="r9" class="tgl" name="nav">
+<input type="radio" id="r0" class="tgl" name="nav" checked><input type="radio" id="r1" class="tgl" name="nav"><input type="radio" id="r2" class="tgl" name="nav"><input type="radio" id="r3" class="tgl" name="nav"><input type="radio" id="r4" class="tgl" name="nav"><input type="radio" id="r5" class="tgl" name="nav"><input type="radio" id="r6" class="tgl" name="nav"><input type="radio" id="r7" class="tgl" name="nav"><input type="radio" id="r8" class="tgl" name="nav"><input type="radio" id="r9" class="tgl" name="nav"><input type="radio" id="r10" class="tgl" name="nav">
 
 <div class="hero">
   <div class="hero-tag">🏋️ ASESORÍA ELVYFIT — MARC ELVIRA</div>
@@ -206,7 +215,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <p class="hero-quote">"Marc, la grasa no se convierte en músculo: se pierde grasa y se gana músculo a la vez, y eso solo pasa con constancia. Cumple los gramos, llega a tus pasos y mete intensidad a cada serie. El cambio se va a ver."</p>
   <div class="badges"><div class="badge b-o">🔥 <span data-v="kcal">—</span> kcal/día</div><div class="badge b-c">💪 P<span data-v="preal">—</span> · C<span data-v="c">—</span> · G<span data-v="g">—</span></div><div class="badge b-g">🎯 Perder grasa + ganar músculo</div><div class="badge b-r">🏋️ Upper/Lower 4 días + fútbol</div><div class="badge b-c">🚶 15.000 pasos</div><div class="badge b-c">💧 <span data-v="agua">—</span> agua</div></div>
 </div>
-<nav><label class="nav-tab t0" for="r0">PERFIL</label><label class="nav-tab t1" for="r1">ESTRATEGIA</label><label class="nav-tab t2" for="r2">DIETA</label><label class="nav-tab t3" for="r3">COMPRA</label><label class="nav-tab t4" for="r4">COCINA</label><label class="nav-tab t5" for="r5">ENTRENO</label><label class="nav-tab t9" for="r9">ESTIRAMIENTOS</label><label class="nav-tab t6" for="r6">CARDIO</label><label class="nav-tab t7" for="r7">MENTE</label><label class="nav-tab t8" for="r8">📊 PROGRESO</label></nav>
+<nav><label class="nav-tab t0" for="r0">PERFIL</label><label class="nav-tab t1" for="r1">ESTRATEGIA</label><label class="nav-tab t2" for="r2">DIETA</label><label class="nav-tab t3" for="r3">COMPRA</label><label class="nav-tab t10" for="r10">VARIACIONES</label><label class="nav-tab t4" for="r4">COCINA</label><label class="nav-tab t5" for="r5">ENTRENO</label><label class="nav-tab t9" for="r9">ESTIRAMIENTOS</label><label class="nav-tab t6" for="r6">CARDIO</label><label class="nav-tab t7" for="r7">MENTE</label><label class="nav-tab t8" for="r8">📊 PROGRESO</label></nav>
 
 <main>
 
@@ -250,6 +259,10 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <div class="meal-card" style="margin-bottom:14px"><div class="meal-head"><div class="meal-name">🥩 Qué carne coger en Mercadona</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)"><b>Pollo:</b> pechuga de pollo fileteada (bandeja de carnicería) · <b>Pavo:</b> solomillo de pavo · <b>Ternera:</b> filetes de ternera blanca (los magros, no la de guisar) · <b>Cerdo:</b> cinta de lomo en filetes, quitando la tira de grasa del borde. Nada de carne picada, hamburguesas ni salchichas: llevan mucha más grasa. En Bonpreu, lo mismo: pechuga, solomillo de pavo, ternera magra y cinta de lomo.</div></div>
   <div id="compraWrap"><div class="noscript-warn">⚠️ Si no ves la compra, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></div>
   <div class="info-box ib-blue">💡 <b>Estas cantidades son la suma exacta de tus comidas de la semana.</b> Si un día comes fuera, ese día gastas menos de casa: lo que sobre, para el día siguiente. Suplementos en <b>zumub.com</b> con el código <b>ELVYFIT</b>: un bote de isolate de 1 kg te dura unos 16 días y uno de 90 cápsulas de omega 3, un mes.</div>
+</div>
+<div class="main-sec s10">
+  <div class="sec-title">Tus <span>Variaciones</span> <span class="chg ok">✓ NUEVO</span></div>
+  <div id="varWrap"><div class="noscript-warn">⚠️ Si no ves las variaciones, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></div>
 </div>
 <div class="main-sec s4">
   <div class="sec-title">Tu <span>Cocina</span></div>
@@ -296,6 +309,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <noscript><div class="noscript-warn">⚠️ Para guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></noscript>
   <div class="savewarn" id="saveWarn"></div>
   <div class="bw-box"><h4>⚖️ PESO CORPORAL (KG) · DOMINGO EN AYUNAS</h4><table class="bw-table"><tr><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th><th>S7</th><th>S8</th></tr><tr><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_1" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_2" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_3" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_4" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_5" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_6" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_7" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_8" placeholder="kg"></td></tr></table></div>
+  <div id="objWrap"></div>
   <div id="trackerWrap"><div class="noscript-warn">⚠️ Para apuntar y guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></div>
   <div class="btn-group"><label class="semsel" for="semEnvio">Semana <select id="semEnvio" onchange="this.setAttribute('data-elegida','1')"><option value="1">S1</option></select></label><button class="btn btn-wa" onclick="sendToMarc()">📤 Enviar a Marc</button><button class="btn btn-save" onclick="showSummary()">📈 Ver resumen</button><button class="btn btn-save" style="background:#2b6cb0" onclick="saveTrk('boton')">💾 Guardar</button></div>
   <div class="btn-group" style="margin-top:10px"><button class="btn btn-reset" onclick="bajarCopia()">📥 Descargar copia</button><button class="btn btn-reset" onclick="document.getElementById('fileIn').click()">📂 Restaurar copia</button><button class="btn btn-reset" onclick="resetTrk()">🗑️ Borrar todo</button></div>
@@ -594,7 +608,79 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
     var a2 = document.getElementById("dietAjuste"); if (a2) a2.innerHTML = h;
   }
 
-  pintaNumeros(); pintaCambios(); pintaDieta(); pintaCompra(); pintaEntreno(); pintaTracker();
+
+  /* ===== VARIACIONES (mismas kcal) y OBJETIVOS DE LA SEMANA ===== */
+  function pintaVariaciones(){
+    var W = document.getElementById("varWrap"), V = C.variaciones; if (!W || !V) return;
+    function cant(k, g){
+      if (k === "tortilla_int") return g + " g (" + Math.round(g/40) + " tortillas)";
+      if (k === "platano") return g + " g (~" + Math.max(1, Math.round(g/120)) + " plátanos)";
+      return E.cantidad(k, g);
+    }
+    function filas(items){
+      return items.map(function(it){ var a = E.ALIMENTOS[it[0]]; return '<div class="food-row"><span class="food-item">' + esc(E.nombre(it[0], txt(it[0]))) + '</span><span class="food-end"><span class="food-qty ' + ((a && QCL[a.cat]) || "") + '">' + esc(cant(it[0], it[1])) + '</span></span></div>'; }).join("");
+    }
+    function mtxt(m){ return Math.round(m.kcal) + ' kcal · P' + Math.round(m.p) + ' · C' + Math.round(m.c) + ' · G' + Math.round(m.g); }
+    /* lo que comes cada día en C2 y C4 (sin omega 3), para la auditoría */
+    function media(ci, sinOmega){
+      var ks = DIAS.map(function(d){ var it = d.comidas[ci].items.filter(function(x){ return !sinOmega || x[0] !== "omega3"; }); return E.macros(it); });
+      var s = { kcal:0, p:0, c:0, g:0 }; ks.forEach(function(m){ s.kcal += m.kcal; s.p += m.p; s.c += m.c; s.g += m.g; });
+      var n = ks.length, k = ks.map(function(m){ return m.kcal; });
+      return { kcal:s.kcal/n, p:s.p/n, c:s.c/n, g:s.g/n, min:Math.min.apply(null,k), max:Math.max.apply(null,k) };
+    }
+    var M2 = media(1, false), M4 = media(3, true);
+    function bloque(lista, M, etiqueta){
+      return lista.map(function(r){
+        var m = E.macros(r.items), d = Math.round(m.kcal - M.kcal);
+        return '<div class="meal-card"><div class="meal-head"><div class="meal-name">' + esc(r.titulo) + '</div><div class="meal-cal">' + mtxt(m) + '</div></div><div class="meal-foods">'
+          + filas(r.items)
+          + '<ol class="var-pasos">' + (r.pasos || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join("") + '</ol>'
+          + '<div class="var-aud">✓ ' + etiqueta + ' media de tu semana: ' + Math.round(M.kcal) + ' kcal · P' + Math.round(M.p) + ' → esta receta ' + (d >= 0 ? "+" : "") + d + ' kcal</div>'
+          + '</div></div>';
+      }).join("");
+    }
+    var h = '';
+    h += '<div class="info-box ib-green">🔁 <b>Cambia la comida (C2) o la cena (C4) de cualquier día por una de estas recetas.</b> Tienen las mismas kcal y la misma proteína que tus comidas de siempre: el resto del día no cambia. Todo pesado en <b>crudo</b> (carne, arroz, pasta, patata, boniato); los ñoquis y las tortillas, tal cual salen del paquete.</div>';
+    h += '<div class="info-box ib-blue">🥤 <b>Batido:</b> 1 scoop (30 g) de isolate con <b>250-300 ml de agua</b>, nada más. Tómatelo cuando puedas en tu día: lo importante es tomarte los 2.</div>';
+    h += '<div class="var-sub">🍝 Comida (C2) · tus comidas de ' + Math.round(M2.min) + ' a ' + Math.round(M2.max) + ' kcal</div>' + bloque(V.c2 || [], M2, "Tu C2:");
+    h += '<div class="var-sub">🌙 Cena (C4) · tus cenas de ' + Math.round(M4.min) + ' a ' + Math.round(M4.max) + ' kcal</div><div class="info-box ib-blue">Las 3 cápsulas de omega 3 van aparte con la cena, como siempre.</div>' + bloque(V.c4 || [], M4, "Tu C4 (sin omega 3):");
+    /* verduras */
+    h += '<div class="var-sub">🥗 Verduras y ensaladas</div><div class="info-box ib-green">Cambia los <b>200 g de verdura</b> de tu comida o cena por cualquiera de estas. Todas están entre 30 y 60 kcal: no hace falta tocar nada más. Aliña con el aceite que ya lleva esa comida + vinagre o limón.</div>';
+    h += '<div class="meal-card"><div class="meal-foods"><table class="var-tab"><tr><th>Opción</th><th>Qué lleva</th><th style="text-align:right">kcal</th></tr>'
+       + (V.verduras || []).map(function(v){ var m = E.macros(v[1]); return '<tr><td style="color:#fff;font-weight:600">' + esc(v[0]) + '</td><td>' + v[1].map(function(x){ return esc(txt(x[0])) + ' ' + x[1] + ' g'; }).join(' · ') + '</td><td class="r">' + Math.round(m.kcal) + '</td></tr>'; }).join("")
+       + '</table></div></div>';
+    /* tortitas */
+    function eqTortitas(g){
+      var base = E.macros([["tortas_arroz", g]]);
+      return (V.tortitas || []).map(function(k){
+        var u = E.macros([[k, 100]]), gg = Math.round(base.kcal / u.kcal * 100 / 5) * 5, m = E.macros([[k, gg]]);
+        return '<tr><td style="color:#fff;font-weight:600">' + esc(txt(k)) + '</td><td class="r">' + esc(cant(k, gg)) + '</td><td class="r">' + Math.round(m.kcal) + '</td></tr>';
+      }).join("");
+    }
+    var g1 = gramosLun("tortas_arroz", 0), g3 = gramosLun("tortas_arroz", 2);
+    h += '<div class="var-sub">🍘 Sustitutos de las tortitas</div><div class="info-box ib-green">Mismas kcal que tus tortitas. La crema de arroz y la avena, con agua.</div>';
+    [[g1, "C1 · desayuno"], [g3, "C3 · merienda"]].forEach(function(x){
+      var b = E.macros([["tortas_arroz", x[0]]]);
+      h += '<div class="meal-card"><div class="meal-head"><div class="meal-name">' + x[1] + ': ' + x[0] + ' g de tortitas (~' + Math.round(x[0]/7) + ')</div><div class="meal-cal">' + Math.round(b.kcal) + ' kcal</div></div><div class="meal-foods"><table class="var-tab"><tr><th>En su lugar</th><th style="text-align:right">Cantidad</th><th style="text-align:right">kcal</th></tr>' + eqTortitas(x[0]) + '</table></div></div>';
+    });
+    /* compra de equivalencias */
+    h += '<div class="var-sub">🛒 Lista de la compra de las variaciones</div><div class="info-box ib-red">Lo que necesitas <b>por cada vez que hagas la receta</b> (1 ración). Ese día no gastas la carne, el arroz o la patata de la comida o cena que cambias: lo que sobre, para otro día. Todo en Mercadona o Bonpreu.</div>';
+    (V.c2 || []).concat(V.c4 || []).forEach(function(r){
+      h += '<div class="meal-card"><div class="meal-head"><div class="meal-name">' + esc(r.titulo) + '</div><div class="meal-cal">1 ración</div></div><div class="meal-foods">' + filas(r.items) + '</div></div>';
+    });
+    W.innerHTML = h;
+  }
+  function pintaObjetivos(){
+    var W = document.getElementById("objWrap"), O = C.objetivosSemana; if (!W || !O) return;
+    var tit = { LUN:"LUNES · UPPER 1", MAR:"MARTES · LOWER", JUE:"JUEVES · UPPER 2", VIE:"VIERNES · LOWER" };
+    var h = '<div class="meal-card" style="border:1px solid #4cd98a"><div class="meal-head"><div class="meal-name">🎯 Tus pesos objetivo · semana ' + O.semana + ' <span class="chg ok">✓ NUEVO</span></div></div><div class="meal-foods"><p style="font-size:12px;color:var(--light-gray);margin-bottom:8px">' + esc(O.nota) + '</p>';
+    Object.keys(O.dias).forEach(function(d){
+      h += '<div style="color:#fff;font-weight:800;font-size:12px;margin:12px 0 4px">' + (tit[d] || d) + '</div><table class="var-tab obj-tab"><tr><th>Ejercicio</th><th style="text-align:center">1ª · 6-8</th><th style="text-align:center">2ª · 8-10</th></tr>'
+        + O.dias[d].map(function(x){ return '<tr><td>' + esc(x[0]) + '</td><td class="c" style="color:#6fd0ff">' + esc(x[1]) + '</td><td class="c" style="color:#ffd84d">' + esc(x[2]) + '</td></tr>'; }).join("") + '</table>';
+    });
+    W.innerHTML = h + '</div></div>';
+  }
+  pintaNumeros(); pintaCambios(); pintaDieta(); pintaCompra(); pintaEntreno(); pintaTracker(); pintaVariaciones(); pintaObjetivos();
 })();
 </script>
 <script>
