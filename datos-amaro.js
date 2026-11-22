@@ -59,7 +59,7 @@ var CLIENTE = {
   "historial": [
     {
       "fecha": "22 nov",
-      "texto": "Recomposición corporal: 2.950 kcal al día (P 105 · C 499 · G 61, lo que pone su planning). Mismas kcal, pasamos hidratos de la comida a la cena: arroz o pasta 250 → 200 g y patata de la cena 340 → 570 g, que por la noche le entra mejor."
+      "texto": "Recomposición corporal: 2.950 kcal al día (P 96 · C 492 · G 67, lo que pone su planning). Mismas kcal: arroz o pasta de la comida 250 → 200 g y patata de la cena 340 → 570 g; fuera la crema de cacahuete y más aceite de oliva (desayuno 15 ml, comida 15 ml, cena 10 ml)."
     }
   ],
   "dias": [
@@ -1385,9 +1385,9 @@ var CLIENTE = {
     "resumen": "22 años, 1,72 m. Entrena 5 días con todas las series al fallo (RIR 0). La pierna la hace con el Día 3 variante por molestias lumbares. Prepara una Spartan de 5 km en septiembre.",
     "macros": {
       "kcal": 2950,
-      "p": 105,
-      "c": 499,
-      "g": 61,
+      "p": 96,
+      "c": 492,
+      "g": 67,
       "nota": "Son los números que pone su planning (contados al alza). Sumando los gramos del plato sale bastante más: ~3.600 kcal y ~195 g de proteína si se lo come todo."
     },
     "gasto": false,
@@ -1425,7 +1425,7 @@ var CLIENTE = {
     "comidas": [
       {
         "titulo": "🍳 C1 — Desayuno",
-        "kcal": 650,
+        "kcal": 690,
         "items": [
           [
             "Huevos",
@@ -1445,7 +1445,7 @@ var CLIENTE = {
           ],
           [
             "Aceite de oliva (en las tostadas)",
-            "10 ml"
+            "15 ml"
           ],
           [
             "Arándanos",
@@ -1455,7 +1455,7 @@ var CLIENTE = {
       },
       {
         "titulo": "🥣 C2 — Media mañana",
-        "kcal": 555,
+        "kcal": 490,
         "items": [
           [
             "Almendras",
@@ -1468,16 +1468,12 @@ var CLIENTE = {
           [
             "Tortitas sabor jamón (2 paquetes)",
             "70 g"
-          ],
-          [
-            "Crema de cacahuete",
-            "10 g"
           ]
         ]
       },
       {
         "titulo": "🍽️ C3 — Comida",
-        "kcal": 695,
+        "kcal": 780,
         "items": [
           [
             "Arroz (integral o blanco) o pasta, en crudo",
@@ -1493,14 +1489,14 @@ var CLIENTE = {
           ],
           [
             "Aceite de oliva",
-            "5 ml"
+            "15 ml"
           ]
         ],
         "nota": "La proteína y la verdura cambian cada día."
       },
       {
         "titulo": "💪 C4 — Pre/post entreno",
-        "kcal": 455,
+        "kcal": 300,
         "items": [
           [
             "Whey isolate",
@@ -1515,10 +1511,6 @@ var CLIENTE = {
             "70 g"
           ],
           [
-            "Crema de cacahuete",
-            "25 g"
-          ],
-          [
             "Creatina",
             "6 g"
           ]
@@ -1526,7 +1518,7 @@ var CLIENTE = {
       },
       {
         "titulo": "🌙 C5 — Cena",
-        "kcal": 540,
+        "kcal": 625,
         "items": [
           [
             "Carne o pescado",
@@ -1539,6 +1531,10 @@ var CLIENTE = {
           [
             "Patata",
             "570 g"
+          ],
+          [
+            "Aceite de oliva",
+            "10 ml"
           ],
           [
             "Yogur de proteína",
@@ -1601,6 +1597,10 @@ var CLIENTE = {
       {
         "fecha": "22/11",
         "texto": "Mismas 2.950 kcal: arroz o pasta de la comida 250 → 200 g y patata de la cena 340 → 570 g (+230 g), porque por la noche le entra mejor."
+      },
+      {
+        "fecha": "22/11",
+        "texto": "Fuera la crema de cacahuete (10 g en la C2 y 25 g en la C4); su grasa pasa a aceite de oliva: desayuno 10 → 15 ml, comida 5 → 15 ml y cena 10 ml nuevo. Mismas 2.950 kcal; macros P 96 · C 492 · G 67."
       }
     ]
   },
