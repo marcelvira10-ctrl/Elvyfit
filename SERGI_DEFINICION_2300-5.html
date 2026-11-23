@@ -95,6 +95,8 @@ main{background:#0a0a0a;min-height:72vh;}
 .bw-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:20px;}
 .bw-box h4{font-family:'Bebas Neue';color:var(--yellow);font-size:15px;margin-bottom:12px;letter-spacing:.5px;}
 .bw-table{width:100%;border-collapse:collapse;}
+.wo{display:none}
+.tracker th .ant,.bw-table th .ant{display:block;font-size:8px;font-weight:600;color:var(--gray);letter-spacing:.5px}
 .bw-table th{background:rgba(229,9,20,.15);color:var(--red);padding:8px 4px;font-size:11px;border:1px solid var(--border);}
 .bw-table td{padding:6px 4px;border:1px solid var(--border);text-align:center;}
 .bw-table input{background:var(--surface);border:1px solid var(--border);color:#fff;padding:6px 2px;border-radius:3px;width:100%;max-width:58px;text-align:center;font-size:11px;}
@@ -257,11 +259,11 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);ba
   <div class="meal-card" style="margin-bottom:12px"><div class="meal-head"><div class="meal-name">💬 Sueño, alcohol y tabaco</div></div><div class="meal-foods" style="line-height:1.8;color:var(--light-gray)">Tienes el estrés alto y duermes 7 h: intenta subir a 8 h los días que entrenas fuerte, es cuando de verdad creces. El finde con alcohol, planifícalo: ese día tira más de proteína y verdura y recorta un poco los carbos de la cena, y al día siguiente vuelves al plan. Con el tabaco: cada cigarro que le quites lo notarás en la pista y en la recuperación. No te pido que lo dejes mañana, pero tenlo en el radar.</div></div>
 </div>
 <div class="main-sec s8">
-  <div class="sec-title">Tu <span>Progreso</span> · 8 Semanas</div>
+  <div class="sec-title" id="trkTitulo">Tu <span>Progreso</span> · 8 Semanas</div>
   <div class="trk-intro">💾 Aquí tienes <b>cada serie de cada ejercicio</b> (todas al fallo). Apunta el <span style="color:var(--cyan)">kg</span> y las <span style="color:var(--yellow)">reps</span> que haces en cada serie, cada semana: <b>se guarda solo</b> en cuanto escribes. Objetivo: superar la semana anterior en peso o reps. Ábrelo en Chrome/Safari. Al acabar la semana, elige la <b>semana</b> y dale a <b>📤 Enviar a Marc</b>.</div>
   <noscript><div class="noscript-warn">⚠️ Para guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></noscript>
   <div class="savewarn" id="saveWarn"></div>
-  <div class="bw-box"><h4>⚖️ PESO CORPORAL (KG) · DOMINGO EN AYUNAS</h4><table class="bw-table"><tr><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th><th>S7</th><th>S8</th></tr><tr><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_1" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_2" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_3" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_4" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_5" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_6" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_7" placeholder="kg"></td><td><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_8" placeholder="kg"></td></tr></table></div>
+  <div class="bw-box"><h4>⚖️ PESO CORPORAL (KG) · DOMINGO EN AYUNAS</h4><div id="bwWrap"></div></div>
   <div id="trackerWrap"><div class="noscript-warn">⚠️ Para apuntar y guardar tu progreso, abre este plan en <b>Chrome</b> o <b>Safari</b>.</div></div>
   <div class="btn-group"><label class="semsel" for="semEnvio">Semana <select id="semEnvio" onchange="this.setAttribute('data-elegida','1')"><option value="1">S1</option></select></label><button class="btn btn-wa" onclick="sendToMarc()">📤 Enviar a Marc</button><button class="btn btn-save" onclick="showSummary()">📈 Ver resumen</button><button class="btn btn-save" style="background:#2b6cb0" onclick="saveTrk('boton')">💾 Guardar</button></div>
   <div class="btn-group" style="margin-top:10px"><button class="btn btn-reset" onclick="bajarCopia()">📥 Descargar copia</button><button class="btn btn-reset" onclick="document.getElementById('fileIn').click()">📂 Restaurar copia</button><button class="btn btn-reset" onclick="resetTrk()">🗑️ Borrar todo</button></div>
@@ -289,6 +291,27 @@ function claveSerie(day, ei, si, w, campo){
   return day.id+'|'+e.nombre+(n?'#'+(n+1):'')+'|s'+(si+1)+'|w'+w+'|'+campo;
 }
 var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined");
+/* SEMANAS SIN LÍMITE (23/11): se ven 8 semanas. Si hay algo apuntado en la última a la vista,
+   la primera columna pasa a ser la semana anterior a la que apunta ("anterior") y detrás salen semanas nuevas.
+   La numeración sigue (S7, S8, S9…). Las semanas viejas siguen en la página, ocultas: se guardan y llegan a Coach. */
+function ultimaSemana(){
+  var u=0;
+  function mira(k,v){ if(v==null||String(v).trim()==='') return; var m=/\|w(\d+)\|/.exec(k)||/^pc_(\d+)$/.exec(k)||/_w(\d+)_(?:kg|rep)$/.exec(k)||/^peso_w(\d+)$/.exec(k); if(m) u=Math.max(u,+m[1]); }
+  function de(raw){ try{ var o=JSON.parse(raw); if(!o) return; var d=o.d||o; for(var k in d) mira(k,d[k]); }catch(e){} }
+  try{ var K=CLIENTE.clave, KO=CLIENTE.claveAntigua; de(localStorage.getItem(K)); de(sessionStorage.getItem(K)); if(KO) de(localStorage.getItem(KO)); }catch(e){}
+  var P=(typeof CLIENTE!=='undefined'&&CLIENTE.progreso)||{};
+  for(var dia in P){ if(dia==='pesoCorporal'){ for(var w in P[dia]) mira('pc_'+w,P[dia][w]); continue; }
+    if(dia==='pasosSemana') continue;
+    for(var ex in P[dia]) for(var w2 in P[dia][ex]) if((P[dia][ex][w2]||[]).some(function(x){ return String(x).trim(); })) u=Math.max(u,+w2); }
+  return u;
+}
+var VENTANA={ini:1,fin:8};
+function calculaVentana(extra){
+  var u=Math.max(ultimaSemana(), extra||0), ini=1;
+  while(u>=ini+7) ini=u-1;
+  VENTANA={ini:ini,fin:ini+7}; return VENTANA;
+}
+calculaVentana();
 (function(){
   if (!GUTI_OK) {
     var av = '<div class="noscript-warn">⚠️ No se han podido cargar los datos del plan. Abre el enlace completo en <b>Chrome o Safari</b> y recarga la página.</div>';
@@ -446,21 +469,23 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
   /* ---------- PROGRESO (mismos identificadores que el plan anterior,
      así lo que Guti ya tenía apuntado en el móvil sigue saliendo) ---------- */
   function pintaTracker(){
-    var SEM = 8, radios="", chips="", panes="";
+    var SEM = VENTANA.fin, INI = VENTANA.ini, radios="", chips="", panes="";
+    var wo = function(w){ return w<INI ? ' wo' : ''; };
+    var cab = function(w){ return 'SEM '+w+(w===INI&&INI>1?'<span class="ant">anterior</span>':''); };
     C.rutina.forEach(function(d,i){
       radios += '<input type="radio" name="pg" id="pg'+i+'" class="tgl"'+(i===0?" checked":"")+'>';
       chips  += '<label for="pg'+i+'" class="chip">'+esc(d.id)+'</label>';
       var ex = "";
       d.ejercicios.forEach(function(e,ei){
         var th1='<th class="scol">SERIE</th>', th2='<th class="scol"></th>';
-        for (var w=1; w<=SEM; w++){ th1+='<th colspan="2" class="wk">SEM '+w+'</th>'; th2+='<th class="kgh">KG</th><th class="reph">REP</th>'; }
+        for (var w=1; w<=SEM; w++){ th1+='<th colspan="2" class="wk'+wo(w)+'">'+cab(w)+'</th>'; th2+='<th class="kgh'+wo(w)+'">KG</th><th class="reph'+wo(w)+'">REP</th>'; }
         var body="";
         e.reps.forEach(function(r,si){
           var cells="";
           for (var w=1; w<=SEM; w++){
             var b = d.id+"_e"+(ei+1)+"_s"+(si+1)+"_w"+w;
-            cells += '<td><input type="text" inputmode="decimal" maxlength="5" class="ti ik" id="'+b+'_kg" data-k="'+esc(claveSerie(d,ei,si,w,'kg'))+'" placeholder="kg"></td>'
-                   + '<td><input type="text" inputmode="numeric" maxlength="3" class="ti ir" id="'+b+'_rep" data-k="'+esc(claveSerie(d,ei,si,w,'rep'))+'" placeholder="r"></td>';
+            cells += '<td class="'+wo(w).trim()+'"><input type="text" inputmode="decimal" maxlength="5" class="ti ik" id="'+b+'_kg" data-k="'+esc(claveSerie(d,ei,si,w,'kg'))+'" placeholder="kg"></td>'
+                   + '<td class="'+wo(w).trim()+'"><input type="text" inputmode="numeric" maxlength="3" class="ti ir" id="'+b+'_rep" data-k="'+esc(claveSerie(d,ei,si,w,'rep'))+'" placeholder="r"></td>';
           }
           body += '<tr data-serie="'+(si+1)+'"><td class="scol">Serie '+(si+1)+'<span class="obj">obj '+esc(r)+'</span></td>'+cells+'</tr>';
         });
@@ -471,7 +496,14 @@ var GUTI_OK = (typeof ELVYFIT !== "undefined" && typeof CLIENTE !== "undefined")
       panes += '<div class="day-pane pp'+i+'"><div class="day-pane-title" style="color:'+d.color+'">'+esc(d.id)+' · '+esc(d.titulo)+'</div>'+ex+'</div>';
     });
     document.getElementById("trackerWrap").innerHTML = radios + '<div class="chip-tabs">'+chips+'</div>' + panes;
+    /* peso corporal: misma ventana y mismos id (pc_1, pc_2…) */
+    var ph='', pi='';
+    for (var w2=1; w2<=SEM; w2++){ ph+='<th class="'+wo(w2).trim()+'">S'+w2+(w2===INI&&INI>1?'<span class="ant">anterior</span>':'')+'</th>';
+      pi+='<td class="'+wo(w2).trim()+'"><input type="text" inputmode="decimal" maxlength="5" class="ti" id="pc_'+w2+'" placeholder="kg"></td>'; }
+    var bw=document.getElementById("bwWrap"); if (bw) bw.innerHTML='<table class="bw-table"><tr>'+ph+'</tr><tr>'+pi+'</tr></table>';
+    var tt=document.getElementById("trkTitulo"); if (tt) tt.innerHTML='Tu <span>Progreso</span> · '+(INI>1?'Sem '+INI+'–'+SEM:'8 Semanas');
   }
+  window.CHECHU_PINTA_TRACKER = pintaTracker;
 
   /* ---------- números dentro de los textos ---------- */
   function gramosLun(k, comida){
@@ -698,8 +730,8 @@ function subirCopia(inp){
 
 /* por ejercicio: semanas con datos y volumen (kg × reps) de cada una */
 function exData(ex){
-  var rows=ex.querySelectorAll('tr[data-serie]'), wk=[];
-  for(var w=0;w<8;w++){
+  var rows=ex.querySelectorAll('tr[data-serie]'), wk=[], NW=rows.length?rows[0].querySelectorAll('.ik').length:0;
+  for(var w=0;w<NW;w++){
     var series=[],vol=0,any=false;
     rows.forEach(function(r){
       var k=r.querySelectorAll('.ik')[w], p=r.querySelectorAll('.ir')[w];
@@ -711,7 +743,7 @@ function exData(ex){
   return wk;
 }
 function lastTwo(wk){ var d=wk.filter(function(x){return x;}); return {last:d[d.length-1]||null, prev:d[d.length-2]||null}; }
-function pesos(sep){ var pc=[]; for(var w=1;w<=8;w++){ var el=document.getElementById('pc_'+w); if(el&&el.value.trim()) pc.push('Sem '+w+': '+el.value.trim()+' kg'); } return pc.join(sep); }
+function pesos(sep){ var pc=[]; for(var w=1;document.getElementById('pc_'+w);w++){ var el=document.getElementById('pc_'+w); if(el&&el.value.trim()) pc.push('Sem '+w+': '+el.value.trim()+' kg'); } return pc.join(sep); }
 
 function showSummary(){
   var html='', cur='';
@@ -736,7 +768,7 @@ function closeSummary(){ document.getElementById('sumModal').classList.remove('o
 function semanasConDatos(){
   var w={};
   document.querySelectorAll('.main-sec.s8 .ex-track').forEach(function(ex){ exData(ex).forEach(function(x){ if(x) w[x.w]=1; }); });
-  for(var i=1;i<=8;i++){ var el=document.getElementById('pc_'+i); if(el&&el.value.trim()) w[i]=1; }
+  for(var i=1;document.getElementById('pc_'+i);i++){ var el=document.getElementById('pc_'+i); if(el&&el.value.trim()) w[i]=1; }
   return Object.keys(w).map(Number).sort(function(a,b){ return a-b; });
 }
 function ponSemana(){
@@ -781,6 +813,10 @@ function sendToMarc(){
   if(!v) location.href=u;
 }
 
+window.ELVYFIT_ASEGURA_SEMANA=function(n){
+  if(!(n>=VENTANA.fin) || typeof window.CHECHU_PINTA_TRACKER!=='function') return false;
+  calculaVentana(n); window.CHECHU_PINTA_TRACKER(); PORCLAVE=null; try{ ponSemana(); }catch(e){} return true;
+};
 function instalado(){ try{ if(window.navigator.standalone===true) return true; if(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches) return true; }catch(e){} return false; }
 (function(){
   if(typeof GUTI_OK!=='undefined'&&!GUTI_OK) return;
