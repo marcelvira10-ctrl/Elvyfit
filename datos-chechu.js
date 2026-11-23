@@ -59,6 +59,10 @@ var CLIENTE = {
         "7": [
           "74x8",
           "74x7"
+        ],
+        "8": [
+          "74x9",
+          "74x7"
         ]
       },
       "Remo en máquina agarre neutro (2 manos)": {
@@ -89,6 +93,10 @@ var CLIENTE = {
         "7": [
           "95x9",
           "95x8"
+        ],
+        "8": [
+          "95x10",
+          "95x8"
         ]
       },
       "Press inclinado en máquina": {
@@ -118,6 +126,10 @@ var CLIENTE = {
         ],
         "7": [
           "70x9",
+          "70x9"
+        ],
+        "8": [
+          "70x12",
           "70x9"
         ]
       },
@@ -156,6 +168,11 @@ var CLIENTE = {
           "8x11",
           "8x10",
           "8x10"
+        ],
+        "8": [
+          "8x11",
+          "8x11",
+          "8x10"
         ]
       },
       "Fondos con peso corporal (tríceps)": {
@@ -186,6 +203,10 @@ var CLIENTE = {
         "7": [
           "x9",
           "x7"
+        ],
+        "8": [
+          "x10",
+          "x10"
         ]
       },
       "Tríceps katana unilateral": {
@@ -216,6 +237,10 @@ var CLIENTE = {
         "7": [
           "4x7",
           "4x8"
+        ],
+        "8": [
+          "4x7",
+          "4x7"
         ]
       },
       "Curl mancuernas (banco inclinado atrás)": {
@@ -246,6 +271,9 @@ var CLIENTE = {
         "7": [
           "14x9",
           "14x8"
+        ],
+        "8": [
+          "14x9"
         ]
       },
       "Dragon flag (abdominales)": {
@@ -291,6 +319,11 @@ var CLIENTE = {
           "62x7",
           "60x7",
           "58x9"
+        ],
+        "8": [
+          "62x8",
+          "62x7",
+          "60x7"
         ]
       },
       "Búlgara unilateral (pierna en banco)": {
@@ -325,6 +358,11 @@ var CLIENTE = {
           "45x10",
           "45x10",
           "45x10"
+        ],
+        "8": [
+          "45x12",
+          "45x11",
+          "45x9"
         ]
       },
       "Curl femoral tumbado": {
@@ -347,6 +385,11 @@ var CLIENTE = {
           "45x7",
           "40x8",
           "40x9"
+        ],
+        "8": [
+          "45x8",
+          "42x7",
+          "42x7"
         ]
       },
       "Gemelo de pie en escalera (peso en mano)": {
@@ -374,6 +417,11 @@ var CLIENTE = {
           "24x28",
           "24x27",
           "24x24"
+        ],
+        "8": [
+          "24x28",
+          "x28",
+          "x26"
         ]
       }
     },
@@ -406,6 +454,10 @@ var CLIENTE = {
         "7": [
           "64x7",
           "64x7"
+        ],
+        "8": [
+          "64x7",
+          "64x6"
         ]
       },
       "Peck deck (aperturas pecho)": {
@@ -436,6 +488,10 @@ var CLIENTE = {
         "7": [
           "74x10",
           "74x8"
+        ],
+        "8": [
+          "74x10",
+          "74x10"
         ]
       },
       "Press militar con mancuernas": {
@@ -466,6 +522,10 @@ var CLIENTE = {
         "7": [
           "24x6",
           "23x9"
+        ],
+        "8": [
+          "24x7",
+          "24x6"
         ]
       },
       "Elevaciones laterales en polea": {
@@ -503,6 +563,11 @@ var CLIENTE = {
           "4x11",
           "4x8",
           "4x10"
+        ],
+        "8": [
+          "4x11",
+          "4x10",
+          "4x9"
         ]
       },
       "Tríceps polea unilateral (muñequera)": {
@@ -533,6 +598,10 @@ var CLIENTE = {
         "7": [
           "5x11",
           "5x10"
+        ],
+        "8": [
+          "5x12",
+          "5x11"
         ]
       },
       "Press francés en máquina": {
@@ -567,7 +636,14 @@ var CLIENTE = {
           "24x7"
         ],
         "7": [
-          "24x12"
+          "24x12",
+          "24x11",
+          "24x9"
+        ],
+        "8": [
+          "24x12",
+          "24x12",
+          "24x10"
         ]
       }
     },
@@ -600,6 +676,10 @@ var CLIENTE = {
         "7": [
           "82x8",
           "82x6"
+        ],
+        "8": [
+          "82x8",
+          "82x7"
         ]
       },
       "Remo alto en máquina (codos abiertos)": {
@@ -630,6 +710,10 @@ var CLIENTE = {
         "7": [
           "82x10",
           "82x10"
+        ],
+        "8": [
+          "82x10",
+          "82x9"
         ]
       },
       "Jalón al pecho agarre supino unilateral en máquina": {
@@ -652,6 +736,10 @@ var CLIENTE = {
         "7": [
           "58x12",
           "58x11"
+        ],
+        "8": [
+          "60x11",
+          "x10"
         ]
       },
       "Pullover unilateral en polea": {
@@ -678,6 +766,10 @@ var CLIENTE = {
         "7": [
           "3x11",
           "3x10"
+        ],
+        "8": [
+          "3x11",
+          "3x11"
         ]
       },
       "Curl predicador": {
@@ -707,6 +799,10 @@ var CLIENTE = {
         "7": [
           "20x12",
           "20x12"
+        ],
+        "8": [
+          "20x12",
+          "20x12"
         ]
       },
       "Curl bíceps barra (agarre ancho hombros)": {
@@ -732,6 +828,10 @@ var CLIENTE = {
         ],
         "7": [
           "30x7",
+          "30x7"
+        ],
+        "8": [
+          "30x8",
           "30x7"
         ]
       },
@@ -770,7 +870,8 @@ var CLIENTE = {
       "4": "91",
       "5": "90",
       "6": "89.5",
-      "7": "89.4"
+      "7": "89.4",
+      "8": "89.1"
     },
     "pasosSemana": {
       "4": 9200,
